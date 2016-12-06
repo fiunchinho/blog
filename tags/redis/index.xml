@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jose Armesto&#39;s Blog</title>
-    <link>https://fiunchinho.github.io/blog/tags/redis/index.xml</link>
+    <link>https://blog.armesto.net/tags/redis/index.xml</link>
     <description>Recent content on Jose Armesto&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-es</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <atom:link href="https://fiunchinho.github.io/blog/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.armesto.net/tags/redis/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Limitar memoria máxima de Redis</title>
-      <link>https://fiunchinho.github.io/blog/limitar-memoria-maxima-de-redis/</link>
+      <link>https://blog.armesto.net/limitar-memoria-maxima-de-redis/</link>
       <pubDate>Thu, 21 Nov 2013 17:59:32 +0000</pubDate>
       
-      <guid>https://fiunchinho.github.io/blog/limitar-memoria-maxima-de-redis/</guid>
+      <guid>https://blog.armesto.net/limitar-memoria-maxima-de-redis/</guid>
       <description>&lt;p&gt;Haciendo pruebas en uno de los proyectos que tengo, utilicé &lt;a title=&#34;Redis&#34; href=&#34;http://redis.io/&#34; target=&#34;_blank&#34;&gt;Redis&lt;/a&gt; como sistema de caché, en vez de utilizar &lt;a title=&#34;Memcached&#34; href=&#34;http://memcached.org/&#34; target=&#34;_blank&#34;&gt;Memcached&lt;/a&gt; que es el que normalmente uso. Por defecto, Memcached va llenando su memoria hasta que esta se llena, y es entonces cuando empieza a borrar valores existentes para hacer sitio a las nuevas. La estrategia elegida para borrar es eliminar aquellas keys de la cache que han sido menos utilizadas.&lt;/p&gt;
 
 &lt;p&gt;Cuando activé Redis para mi proyecto, el proceso _daemon_ del servidor empezó a ocupar más y más memoria hasta que ocupaba casi la totalidad de la RAM del servidor. Poco después, el propio sistema operativo decidió matar el proceso de redis para no morir en el intento.&lt;/p&gt;

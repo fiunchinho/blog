@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jose Armesto&#39;s Blog</title>
-    <link>https://fiunchinho.github.io/blog/tags/ddd/index.xml</link>
+    <link>https://blog.armesto.net/tags/ddd/index.xml</link>
     <description>Recent content on Jose Armesto&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-es</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <atom:link href="https://fiunchinho.github.io/blog/tags/ddd/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.armesto.net/tags/ddd/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Jugando con conceptos de DDD</title>
-      <link>https://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/</link>
+      <link>https://blog.armesto.net/jugando-con-conceptos-de-ddd/</link>
       <pubDate>Wed, 29 Oct 2014 00:46:39 +0000</pubDate>
       
-      <guid>https://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/</guid>
+      <guid>https://blog.armesto.net/jugando-con-conceptos-de-ddd/</guid>
       <description>&lt;p&gt;El pasado fin de semana se celebró en Barcelona una &lt;a title=&#34;Software Craftmanship Barcelona&#34; href=&#34;http://www.softwarecraftsmanshipbarcelona.org/&#34; target=&#34;_blank&#34;&gt;nueva edición de la Software Craftmanship&lt;/a&gt;, donde se hablaron de diversos temas relacionados con las buenas prácticas a la hora de crear software. Entre ellos, en mi opinión, hubo uno que pareció suscitar mayor interés en la gente y ocupó un papel protagonista en los dos días de conferencia: &lt;strong&gt;Domain Driven Design&lt;/strong&gt;. Es un tema en el que creo que muchos estamos todavía aprendiendo, intentando dar sentido a la inmensa cantidad de conceptos e información que aparecen tanto en &lt;a title=&#34;DDD - Eric Evans&#34; href=&#34;http://www.amazon.es/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215&#34; target=&#34;_blank&#34;&gt;el libro azul&lt;/a&gt; como en &lt;a title=&#34;DDD - Vaughn Vernon&#34; href=&#34;http://www.amazon.es/gp/product/0321834577/ref=pd_lpo_sbs_dp_ss_1?pf_rd_p=479290847&amp;pf_rd_s=lpo-top-stripe&amp;pf_rd_t=201&amp;pf_rd_i=0321125215&amp;pf_rd_m=A1AT7YVPFBWXBL&amp;pf_rd_r=1N6RWXVM4AFMHH9P0EGZ&#34; target=&#34;_blank&#34;&gt;el rojo&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;En esta búsqueda de sentido, me surgió una duda que creo que no aparece resuelta directamente en ninguno de los dos libros, y que compartí con el resto de asistentes en una de las charlas sobre DDD. Quiero reproducirla otra vez aquí, para poder hablar un poco más sobre el tema. Creo que no hace falta mostrar código, pero realmente me gustaría vuestra opinión, así que si es necesario, decídmelo y añadiré código.&lt;/p&gt;

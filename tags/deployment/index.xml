@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jose Armesto&#39;s Blog</title>
-    <link>https://fiunchinho.github.io/blog/tags/deployment/index.xml</link>
+    <link>https://blog.armesto.net/tags/deployment/index.xml</link>
     <description>Recent content on Jose Armesto&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-es</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <atom:link href="https://fiunchinho.github.io/blog/tags/deployment/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.armesto.net/tags/deployment/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Problemas desplegando código si usas Apache, symlinks y opcache</title>
-      <link>https://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</link>
+      <link>https://blog.armesto.net/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</link>
       <pubDate>Fri, 01 May 2015 12:14:32 +0000</pubDate>
       
-      <guid>https://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</guid>
+      <guid>https://blog.armesto.net/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</guid>
       <description>&lt;p&gt;Muchas de las soluciones disponibles en el mercado para desplegar aplicaciones se basan en el uso de enlaces simbólicos (o symlinks) para activar la última versión de código en el servidor.&lt;/p&gt;
 
 &lt;p&gt;Simplificando mucho, podríamos decir que un flujo habitual a la hora de desplegar sería el siguiente:&lt;/p&gt;
