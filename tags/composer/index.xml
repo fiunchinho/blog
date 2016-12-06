@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jose Armesto&#39;s Blog</title>
+    <link>http://fiunchinho.github.io/blog/tags/composer/index.xml</link>
+    <description>Recent content on Jose Armesto&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es-es</language>
+    <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
+    <atom:link href="http://fiunchinho.github.io/blog/tags/composer/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>¿Qué es el versionamiento semántico y por qué es importante?</title>
+      <link>http://fiunchinho.github.io/blog/que-es-el-versionamiento-semantico-y-por-que-es-importante/</link>
+      <pubDate>Sat, 23 Nov 2013 18:02:29 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/que-es-el-versionamiento-semantico-y-por-que-es-importante/</guid>
+      <description>&lt;p&gt;Cuando decides utilizar un código que no es tuyo como puede ser un framework o una librería, una de las cosas de las que tienes que preocuparte es de estar al día con las últimas versiones que vayan sacando. No solo porque quizá incluyan cosas que te puedan interesar, si no porque puede que la última versión del framework en el que acabas de basar toda tu aplicación no sea compatible con código de versiones anteriores.&lt;/p&gt;
+
+&lt;p&gt;Aquí nacen dos problemas del mundo del software. Uno, para el consumidor de ese código, que necesita una forma de saber si la última versión de una herramienta es un cambio absoluto del comportamiento o solo arregla unos fallos menores. Y dos, para el creador de código, que necesita de una manera de comunicar a sus usuarios la naturaleza y el alcance de la última versión que va a publicar.&lt;/p&gt;
+
+&lt;p&gt;Para esto se inventó lo que conocemos a día de hoy como &lt;a title=&#34;Semantic Versioning&#34; href=&#34;http://semver.org/&#34; target=&#34;_blank&#34;&gt;versionamiento semántico, o semantic versioning&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;distintos-tipos-de-versiones&#34;&gt;Distintos tipos de versiones&lt;/h2&gt;
+
+&lt;p&gt;El versionamiento semántico es un convenio o estándar a la hora de definir la versión de tu código, dependiendo de la naturaleza del cambio que estás introduciendo. De tal forma, se identifican 3 tipos de cambios:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Major&lt;/strong&gt;: Cambio drástico en el software. No es compatible con código hecho en versiones anteriores.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Minor&lt;/strong&gt;: Cambio que añade alguna característica nueva al software o modifica alguna ya existente, pero que sigue siendo compatible con código existente. También cuando marcamos algo como obsoleto.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Patch&lt;/strong&gt;: Cuando arreglamos un bug siendo el cambio retrocompatible.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;De esta forma, tenemos un lenguaje común entre desarrolladores y consumidores a la hora de hablar de versiones.&lt;/p&gt;
+
+&lt;h2 id=&#34;cómo-se-marca-una-versión-como-major-minor-o-patch&#34;&gt;¿Cómo se marca una versión como major, minor o patch?&lt;/h2&gt;
+
+&lt;p&gt;Cada vez que enviemos código al repositorio crearemos un nuevo tag siguiendo el convenio semántico, dependiendo de los cambios introducidos. El tag contendrá la información, separando las versiones de cada tipo por puntos, de la forma&lt;strong&gt;major&lt;/strong&gt;.&lt;strong&gt;minor&lt;/strong&gt;.&lt;strong&gt;patch&lt;/strong&gt;. Esta versión en concreto, el tag que lo representa, &lt;strong&gt;no puede ser cambiado jamás&lt;/strong&gt;, para que si alguien depende de esa versión en particular, pueda seguir haciéndolo sin problemas.&lt;/p&gt;
+
+&lt;p&gt;Si el framework o librería que yo utilizo sigue el versionamiento semántico a rajatabla, sé que &lt;strong&gt;puedo actualizar sin miedo&lt;/strong&gt; todos las versiones marcadas como patches o minor porque no romperán mi código. Yo podría actualizar de la versión 5.3.3 a la 5.3.4 o incluso 5.4.0, porque solo estarían incrementando las versiones minor y patch, que son compatibles con código existente.&lt;/p&gt;
+
+&lt;p&gt;Si por el contrario pasase de la versión 1.4 a la versión 2.0, &lt;strong&gt;tendría que tener cuidado&lt;/strong&gt; porque seguramente habría muchas cosas que dejarían de funcionar: ha cambiado la major.&lt;/p&gt;
+
+&lt;h2 id=&#34;identificadores-de-estabilidad&#34;&gt;Identificadores de estabilidad&lt;/h2&gt;
+
+&lt;p&gt;Además de poder definir los cambios en el código como major, minor o patch, se suelen añadir unos identificadores que ayudan a marcar versiones específicas que quieres diferenciar, &lt;strong&gt;indicando la estabilidad de esa versión&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Por ejemplo, tienes tu aplicación a la versión 1.4.6 pero decides empezar el desarrollo de la próxima gran versión, la 2. Entonces los primeros desarrollos en esa versión nueva irán a la 2.0.0, pero como todavía estás empezando y probando cosas, podrías ponerle un identificador que le dijese a la gente &lt;strong&gt;la estabilidad de esa versión&lt;/strong&gt;. Tu versión quedaría en algo como &lt;strong&gt;2.0.0-alpha,&lt;/strong&gt; por ejemplo, y la gente sabría que es una versión _alpha_ no muy estable.&lt;/p&gt;
+
+&lt;p&gt;Según fueses avanzando en el desarrollo, llegarías a una versión beta la cual marcarías por ejemplo como &lt;strong&gt;2.1.3-beta&lt;/strong&gt;. Así hasta que todo estuviese listo para publicarse, y marcases una versión como candidata para ser publicada como &lt;strong&gt;2.1.5-rc1&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Si dos versiones iguales tienen distinto identificador, da igual: &lt;strong&gt;se consideran iguales a todos los efectos&lt;/strong&gt;. Esto nos permite ir actualizando la estabilidad de una versión, pudiéndola pasar de _alpha_ a _beta_ o incluso a &lt;em&gt;release candidate&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;También por convenio, encontrarás otro identificador conocido como &lt;strong&gt;dev-master&lt;/strong&gt;. Este identificador apunta a la última revisión enviada al repositorio, que no tiene por qué ser la última estable. Si dependes en esta versión estarás al día con todos los últimos cambios, pero te arriesgas a recibir cambios no retrocompatibles.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusión&#34;&gt;Conclusión&lt;/h2&gt;
+
+&lt;p&gt;El &lt;a title=&#34;Semantic Versioning&#34; href=&#34;http://semver.org/lang/es/&#34; target=&#34;_blank&#34;&gt;versionamiento semántico&lt;/a&gt; es un estándar de facto y deberías conocerlo. Si estás en el mundillo PHP, &lt;a title=&#34;Composer&#34; href=&#34;http://getcomposer.org/&#34; target=&#34;_blank&#34;&gt;Composer&lt;/a&gt; se basa en él: las dependencias que especificas en el archivo _composer.json_ deberían tener en cuenta lo visto en este artículo.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Herramientas para el programador PHP moderno</title>
+      <link>http://fiunchinho.github.io/blog/herramientas-para-el-programador-php-moderno/</link>
+      <pubDate>Fri, 18 Oct 2013 23:47:55 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/herramientas-para-el-programador-php-moderno/</guid>
+      <description>&lt;div&gt;
+  &lt;p&gt;
+    &lt;span style=&#34;font-size: 14px; line-height: 1.5em;&#34;&gt;La comunidad de PHP ha evolucionado muchísimo en los últimos años, no pareciéndose en nada a las versiones anteriores. No solo ha cambiado mucho, si no que cada vez cambia más frecuentemente. Y cuando hablo de comunidad, me refiero tanto al lenguaje, como a las personas que lo utilizan, así como a las herramientas que nacen alrededor.&lt;/span&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+  &lt;p&gt;
+    Hoy vengo a hablaros precisamente de herramientas. No puede ser que programes PHP con las mismas herramientas que utilizabas hace 3 años. Haber actualizado tu IDE a la última versión es un comienzo, pero no es suficiente. Estás perdiendo la posibilidad de trabajar más cómodamente y ser más productivo, pudiéndote centrar en lo que realmente importa: crear cosas.
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    De entre todas las herramientas que han nacido en los últimos años, voy a hacer hincapié en las que para mí son las más útiles, y ya no podría vivir sin ellas.
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    Estas herramientas son:
+  &lt;/p&gt;
+  
+  &lt;h2&gt;
+    Boris
+  &lt;/h2&gt;
+  
+  &lt;p&gt;
+    Cuando empecé a aprender Python, una de las cosas que más me sorprendió fue que para dar los primeros pasos con el lenguaje, no había que crear nuevos ficheros y ejecutarlos. Sencillamente ibas a un intérprete por línea de comandos y programabas directamente allí. Adiós complicaciones de cómo ejecutar lo que acabas de escribir en otro fichero, o de como incluir el fichero A en el fichero B. Todo eso fuera para poder centrarte en lo que realmente quieres: aprender el lenguaje.
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    Este intérprete se conoce comúnmente como un &lt;a title=&#34;REPL&#34; href=&#34;http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop&#34; target=&#34;_blank&#34;&gt;REPL: Read-Eval-Print-Loop &lt;/a&gt;. PHP trae por defecto con un &lt;a title=&#34;PHP Interactive Mode&#34; href=&#34;http://www.php.net/manual/en/features.commandline.interactive.php&#34; target=&#34;_blank&#34;&gt;modo interactivo &lt;/a&gt;para poder lanzar comandos, que puedes utilizar así
+  &lt;/p&gt;
+  
+  &lt;pre&gt;php -aInteractive shellphp &amp;gt; 1 + 3;php &amp;gt; var_dump( 1 + 3 );int(4)php &amp;gt; function plusTwo( $number ){php {php { return $number + 2;php { }php &amp;gt; echo plusTwo( 3 );5php &amp;gt;&lt;/pre&gt;
+  
+  &lt;p&gt;
+    pero es bastante limitado. No printa automáticamente el resultado de las expresiones ejecutadas, por tanto tienes que manualmente hacer &lt;em&gt;echo’s&lt;/em&gt; o&lt;em&gt;var_dumps&lt;/em&gt;. Además, si se produce un fatal error, el modo interactivo terminará y perderás el estado actual. Esto no ocurriría con &lt;a title=&#34;Boris&#34; href=&#34;https://github.com/d11wtq/boris&#34; target=&#34;_blank&#34;&gt;Boris &lt;/a&gt;. Os dejo el gif con la demo de &lt;a title=&#34;Boris&#34; href=&#34;https://github.com/d11wtq/boris&#34; target=&#34;_blank&#34;&gt;Boris &lt;/a&gt;, porque una imagen vale más que mil palabras (sobretodo si es animada):
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    &amp;nbsp;
+  &lt;/p&gt;
+  
+  &lt;div&gt;
+    &lt;div&gt;
+      &lt;img alt=&#34;Boris Demo&#34; src=&#34;https://mail.google.com/mail/u/0/?ui=2&amp;ik=10c6244d6d&amp;view=att&amp;th=14540c648bdc9adb&amp;attid=0.2&amp;disp=emb&amp;zw&amp;atsh=1&#34; width=&#34;684&#34; height=&#34;476&#34; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+
+&lt;p&gt;&lt;p&gt;
+    &amp;nbsp;
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;h2&gt;
+    LadyBug
+  &lt;/h2&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    Calidad que sale desde nuestro país. &lt;a title=&#34;Raúl Fraile&#34; href=&#34;https://twitter.com/raulfraile&#34; target=&#34;_blank&#34;&gt;Raúl Fraile &lt;/a&gt;se ha currado un sustituto para el &lt;em&gt;var_dump()&lt;/em&gt; nativo de &lt;strong&gt;PHP&lt;/strong&gt; que te dejará ojiplático. Se llama &lt;a title=&#34;LadyBug&#34; href=&#34;https://github.com/raulfraile/ladybug&#34; target=&#34;_blank&#34;&gt;LadyBug &lt;/a&gt;y después de verlo te preguntarás cómo has sido capaz de interpretar el output del &lt;em&gt;var_dump&lt;/em&gt; de &lt;strong&gt;PHP&lt;/strong&gt; sin quedarte ciego. Para utilizarlo solo tienes que instalarlo via Composer, y utilizar la función &lt;em&gt;ladybug_dump()&lt;/em&gt; en vez de &lt;em&gt;var_dump()&lt;/em&gt; cuando quieras mostrar el valor de algo por pantalla. En su &lt;a title=&#34;LadyBug&#34; href=&#34;https://github.com/raulfraile/ladybug&#34; target=&#34;_blank&#34;&gt;página de Github &lt;/a&gt;hay bastantes ejemplos de cual sería el output por pantalla, pero quiero poner uno aquí mismo:
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    &amp;nbsp;
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;div&gt;
+    &lt;div&gt;
+      &lt;img alt=&#34;LadyBug&#34; src=&#34;https://mail.google.com/mail/u/0/?ui=2&amp;ik=10c6244d6d&amp;view=att&amp;th=14540c648bdc9adb&amp;attid=0.1&amp;disp=emb&amp;zw&amp;atsh=1&#34; width=&#34;710&#34; height=&#34;585&#34; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    &amp;nbsp;
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    Eso es el output cuando quieres pintar un objeto por pantalla y ver qué contiene. Fíjate que además de ponerte el contenido de las propiedades del objeto, como hace &lt;em&gt;var_dump()&lt;/em&gt;, te muestra información de la clase del objeto, como donde está definida, constantes de clase e incluso los métodos y &lt;strong&gt;su visibilidad mediante unos iconos&lt;/strong&gt;. Todo esto está genial, pero queda a la sombra de lo que me hubiese ahorrado horas de búsqueda en mis años iniciales con &lt;strong&gt;PHP&lt;/strong&gt;: te dice en qué línea has llamado a la función &lt;em&gt;ladybug_dump()&lt;/em&gt;. ¿Quién no se ha pasado un buen rato buscando dónde habías puesto el &lt;em&gt;var_dump()&lt;/em&gt;? ¿Nadie? ¿Solo yo? Ok, vale.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;h2&gt;
+    Composer
+  &lt;/h2&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    Si todavía no lo conoces es que has vivido debajo de una piedra los últimos 2 años. No me extenderé mucho: solo utilízalo. En serio. &lt;a title=&#34;Composer&#34; href=&#34;http://getcomposer.org/&#34; target=&#34;_blank&#34;&gt;Aquí tienes la documentación &lt;/a&gt;.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;h2&gt;
+    Bonus track: Vagrant y Puphet
+  &lt;/h2&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    &lt;a title=&#34;Vagrant&#34; href=&#34;http://vagrantup.com/&#34; target=&#34;_blank&#34;&gt;Vagrant &lt;/a&gt;no es una herramienta para &lt;strong&gt;PHP&lt;/strong&gt; específicamente, pero en el mundo de muchos gigas de RAM en el que vivimos, trabajar con máquinas virtuales locales se está convirtiendo en un standard. El hecho de que con un simple archivo de configuración puedas tener el mismo entorno que tu compañero, es increíble.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    Hace 2 años que hice el curso sobre &lt;a title=&#34;Puppet&#34; href=&#34;http://puppetlabs.com/&#34; target=&#34;_blank&#34;&gt;Puppet &lt;/a&gt;, y aunque no considero que haya sido perder el tiempo ni mucho menos, gracias a herramientas como &lt;a title=&#34;Puphet&#34; href=&#34;https://puphpet.com/&#34; target=&#34;_blank&#34;&gt;Puphet &lt;/a&gt;, cada vez es menos necesario saber las entrañas de muchas cosas. &lt;a title=&#34;Puphet&#34; href=&#34;https://puphpet.com/&#34; target=&#34;_blank&#34;&gt;Puphet &lt;/a&gt; es una abstracción de &lt;a title=&#34;Puppet&#34; href=&#34;http://puppetlabs.com/&#34; target=&#34;_blank&#34;&gt;Puppet &lt;/a&gt; orientada a entornos &lt;strong&gt;PHP&lt;/strong&gt;, de tal forma que como si un catálogo se tratase, vas eligiendo las tecnologías y configuraciones que quieres que tenga tu entorno de desarrollo. Con un par de clicks puedes elegir todo lo que necesites. Esto generará un archivo de configuración que será leído por &lt;a title=&#34;Vagrant&#34; href=&#34;http://vagrantup.com/&#34; target=&#34;_blank&#34;&gt;Vagrant &lt;/a&gt;para moldear tu máquina virtual. Así de simple. Olvídate de como se instalan y configuran un montón de cosas: un par de clicks y listo. Si quieres cosas más avanzadas, tendrás que saber cómo funcionan, pero para el desarrollador &lt;strong&gt;PHP&lt;/strong&gt; medio, esto es más que suficiente.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;h2&gt;
+    Conclusión
+  &lt;/h2&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    Además de estas herramientas, no olvides utilizar un IDE que te sea cómodo, y si no has probado &lt;a title=&#34;PHPStorm&#34; href=&#34;http://www.jetbrains.com/phpstorm/&#34; target=&#34;_blank&#34;&gt;PHPStorm &lt;/a&gt;, te lo recomiendo.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    Así que ya sabes: utiliza Puphet y asegúrate de crear una máquina virtual que contenga composer, ladybug y boris, y fabrícate el entorno de desarrollo perfecto. No puedes programar igual que lo hacías hace 3 o 5 años. Esto va demasiado rápido como para permitírtelo.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    Y tú, ¿usas alguna herramienta interesante?
+  &lt;/p&gt;
+&lt;/div&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

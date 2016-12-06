@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="es-es">
+<head>
+    <title>Sácale el máximo partido a tu terminal con zsh &middot; Jose Armesto&#39;s Blog</title>
+    <meta name="generator" content="Hugo 0.17" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Jose Armesto">
+    
+      <meta name="description" content="Software como estilo de vida">
+    
+    
+    <link rel="canonical" href="http://fiunchinho.github.io/blog/sacale-el-maximo-partido-a-tu-terminal-con-zsh/"/>
+    <link rel="icon" href="http://fiunchinho.github.io/blog/favicon.ico">
+    <link rel="apple-touch-icon" href="http://fiunchinho.github.io/blog/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/style.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/monokai.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/fancybox/jquery.fancybox.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="Sácale el máximo partido a tu terminal con zsh" />
+<meta property="og:description" content="No quiero tirar de términos de moda y hablar de DevOps, pero sí es cierto que, yo por lo menos, paso cada vez más tiempo delante de una terminal de UNIX. Estoy empezando a sentirme como en casa en algo que hace unos años me asustaba bastante.
+
+Hoy vengo a hablaros de zshell, una alternativa a bash, el intérprete que viene por defecto en la mayoría de distribuciones. Algunos pensaréis&#8230; &#8220;¿Cambiar el intérprete? ¡Eso suena muy difícil!&#8220;, pero nada más lejos de la realidad! Otros diréis&#8230; &#8220;¿Para qué iba yo a querer uno distinto? ¿Cual es el problema con bash?&#8221; Problema ninguno! Pero con este post espero enseñaros todo lo que os estáis perdiendo por no utilizar zshell. Además, lo más importante es que no hay que aprender ningún comando nuevo: practicamente todo lo que usas en bash funcionará en zsh.
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fiunchinho.github.io/blog/sacale-el-maximo-partido-a-tu-terminal-con-zsh/" />
+
+
+<meta property="og:updated_time" content="2014-04-12T13:42:17&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content="Sácale el máximo partido a tu terminal con zsh">
+<meta itemprop="description" content="No quiero tirar de términos de moda y hablar de DevOps, pero sí es cierto que, yo por lo menos, paso cada vez más tiempo delante de una terminal de UNIX. Estoy empezando a sentirme como en casa en algo que hace unos años me asustaba bastante.
+
+Hoy vengo a hablaros de zshell, una alternativa a bash, el intérprete que viene por defecto en la mayoría de distribuciones. Algunos pensaréis&#8230; &#8220;¿Cambiar el intérprete? ¡Eso suena muy difícil!&#8220;, pero nada más lejos de la realidad! Otros diréis&#8230; &#8220;¿Para qué iba yo a querer uno distinto? ¿Cual es el problema con bash?&#8221; Problema ninguno! Pero con este post espero enseñaros todo lo que os estáis perdiendo por no utilizar zshell. Además, lo más importante es que no hay que aprender ningún comando nuevo: practicamente todo lo que usas en bash funcionará en zsh.
+
+">
+
+
+<meta itemprop="dateModified" content="2014-04-12T13:42:17&#43;00:00" />
+<meta itemprop="wordCount" content="1290">
+
+
+
+<meta itemprop="keywords" content="code,linux,opinion,apache,composer,conferences,ddd,deployment,performance,php,puppet,redis,refactoring,softonic,tdd,unit-testing,unix,vagrant," />
+
+    
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="Sácale el máximo partido a tu terminal con zsh"/>
+<meta name="twitter:description" content="No quiero tirar de términos de moda y hablar de DevOps, pero sí es cierto que, yo por lo menos, paso cada vez más tiempo delante de una terminal de UNIX. Estoy empezando a sentirme como en casa en algo que hace unos años me asustaba bastante.
+
+Hoy vengo a hablaros de zshell, una alternativa a bash, el intérprete que viene por defecto en la mayoría de distribuciones. Algunos pensaréis&#8230; &#8220;¿Cambiar el intérprete? ¡Eso suena muy difícil!&#8220;, pero nada más lejos de la realidad! Otros diréis&#8230; &#8220;¿Para qué iba yo a querer uno distinto? ¿Cual es el problema con bash?&#8221; Problema ninguno! Pero con este post espero enseñaros todo lo que os estáis perdiendo por no utilizar zshell. Además, lo más importante es que no hay que aprender ningún comando nuevo: practicamente todo lo que usas en bash funcionará en zsh.
+
+"/>
+<meta name="twitter:site" content="@fiunchinho"/>
+
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="http://fiunchinho.github.io/blog" id="logo">
+          
+          <i class="logo" style="background-image: url('http://fiunchinho.github.io/blog/images/avatar.png')"></i>
+          
+          <span class="site-title">Jose Armesto&#39;s Blog</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="http://fiunchinho.github.io/">Home</a>
+          
+          
+
+          
+
+          
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="http://fiunchinho.github.io/blog/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="Search">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="q" value="site:http://fiunchinho.github.io/blog">
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="http://fiunchinho.github.io/">Home</a></td>
+          
+          
+
+          
+
+          
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="q" value="site:http://fiunchinho.github.io/blog">
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   		
+	    <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="http://fiunchinho.github.io/blog/images/avatar.png">
+      <h2 id="name">Jose Armesto</h2>
+      <h3 id="title">Soy Jose Armesto</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Barcelona</span>
+      
+          <a id="follow" href="https://twitter.com/fiunchinho">
+              Follow
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        22
+        <span>Posts</span>
+      </div>
+      <div class="article-info-block">
+        
+          15
+        
+        <span>
+            Tags
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/fiunchinho" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//medium.com/@fiunchinho" target="_blank" title="Medium"><i class="fa fa-medium"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//stackoverflow.com/users/563072/fiunchinho" target="_blank" title="Stack Overflow"><i class="fa fa-stack-overflow"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//twitter.com/fiunchinho" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+	    
+
+	    
+<section id="main">
+
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+
+            <header class="article-header">
+    <a href="http://fiunchinho.github.io/blog/sacale-el-maximo-partido-a-tu-terminal-con-zsh/">
+    <h1 class="article-title" itemprop="name">
+        Sácale el máximo partido a tu terminal con zsh
+    </h1>
+    </a>
+    <div class="article-meta">
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2014-04-12 13:42:17 &#43;0000 UTC" itemprop="datePublished">04-08-2014</time>
+            &middot;
+            1290
+            words
+            &middot;
+            7
+            minute read
+        </div>
+
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="categories/linux">Linux</a>
+                
+                
+            </div>
+            
+        
+
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>No quiero tirar de términos de moda y hablar de <em>DevOps</em>, pero sí es cierto que, yo por lo menos, paso cada vez más tiempo delante de una terminal de UNIX. Estoy empezando a sentirme como en casa en algo que hace unos años me asustaba bastante.</p>
+
+<p>Hoy vengo a hablaros de <a title="zsh" href="http://www.zsh.org/" target="_blank">zshell</a>, una alternativa a <em>bash</em>, el intérprete que viene por defecto en la mayoría de distribuciones. Algunos pensaréis&#8230; &#8220;¿<em>Cambiar el intérprete? ¡Eso suena muy difícil!</em>&#8220;, pero nada más lejos de la realidad! Otros diréis&#8230; &#8220;¿<em>Para qué iba yo a querer uno distinto? ¿Cual es el problema con bash?</em>&#8221; Problema ninguno! Pero con este post espero enseñaros todo lo que os estáis perdiendo por no utilizar zshell. Además, lo más importante es que no hay que aprender ningún comando nuevo: <strong>practicamente todo lo que usas en bash funcionará en zsh</strong>.</p>
+
+<p></p>
+
+<h2 id="instalación-de-zshell">Instalación de zshell</h2>
+
+<p>Instalarlo es muy simple en la mayoría de distribuciones, ya que hay un paquete ya listo para nosotros. No os preocupéis que por el hecho de instalarlo, no lo estamos activando todavía. Por ejemplo, en Ubuntu:</p>
+
+<pre>sudo apt-get install zsh</pre>
+
+<p>Una vez instalado tenemos que configurarlo. Una de las ventajas de zshell, es que está pensado para que puedas configurarlo de forma modular a través de plugins y templates. Para ayudarnos a gestionar la configuración, vamos a instalar otra cosa rápidamente: <a title="oh-my-zsh" href="http://ohmyz.sh/" target="_blank">oh-my-zsh</a>. Es un framework hecho por la comunidad <strong>con un montón de plugins</strong> que además de aportarnos funcionalidad extra, hará que sea fácil configurar zsh a nuestro antojo. Tranquilos, instalar esto tampoco activará zsh. Para instalar oh-my-zsh automáticamente solo ejecutamos:</p>
+
+<pre>curl -L http://install.ohmyz.sh | sh</pre>
+
+<p>Para los indecisos (espero que no quede ninguno al finalizar el post), podéis probar este intérprete sin ponerlo por defecto, y solo hacer el cambio cuando estéis 100% seguros. Para probarlo y ver de qué va esto, ejecutad en la consola:</p>
+
+<pre>zsh</pre>
+
+<p>Veréis que de repente vuestro <em>prompt</em> ha cambiado. Tranquilos, es normal: zsh tiene configurado un prompt distinto al que bash tiene. Vamos a ver algunas de las ventajas más obvias de zsh. Recordad que siempre podéis volver a dejarlo todo como estaba escribiendo:</p>
+
+<pre>bash</pre>
+
+<h2 id="ventajas-de-zsh">Ventajas de zsh</h2>
+
+<h3 id="prompt">Prompt</h3>
+
+<p>Una de las cosas que más nos gusta a los frikis de la consola es configurar nuestro prompt para que aparezca información relevante más allá del _path_ actual en el que estamos. El que <em>zsh</em> trae por defecto ya es bastante bueno, indicando información de la rama actual de git en la que estamos. Esto ya es configurable con <em>bash</em>, pero al haber instalado <em>oh-my-zsh</em> tenemos acceso a <a title="zsh themes" href="https://github.com/robbyrussell/oh-my-zsh/wiki/Themes" target="_blank">todos los themes de la comunidad</a> donde podremos elegir <strong>verdaderas maravillas</strong>. Para activar un theme, tan solo tenemos que modificar el archivo de configuración en <em>~/.zshrc</em> y cambiar el que viene por defecto, por uno del listado. La línea a modificar es:</p>
+
+<pre>ZSH_THEME="robbyrussell"</pre>
+
+<p>Si queremos hacerlo nosotros mismos, podemos configurar no solo el prompt normal, sino que <strong>nos permite configurar texto a la derecha del prompt</strong>. Para que os hagáis una idea, el que yo utilizo actualmente muestra, además de lo habitual, la rama actual de git, si hay cambios por comittear pendientes, el <em>load</em> de la máquina y la hora actual, estos dos últimos en la parte derecha del prompt. Luce así:</p>
+
+<p><a href="http://blog.armesto.net/wp-content/uploads/2014/04/Selección_031.png"><img class="alignnone size-large wp-image-67" src="http://blog.armesto.net/wp-content/uploads/2014/04/Selección_031-1024x47.png" alt="zsh prompt" width="620" height="28" srcset="http://blog.armesto.net/wp-content/uploads/2014/04/Selección_031-1024x47.png 1024w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_031-300x14.png 300w" sizes="(max-width: 620px) 100vw, 620px" /></a></p>
+
+<h3 id="navegación-entre-directorios">Navegación entre directorios</h3>
+
+<p>Probad a escribir &#8216;cd &#8216; y darle a tabulador para que os sugiera los posibles directorios. Dadle varias veces a tabulador y podréis ir eligiendo uno a uno. ¿Que no queréis ir uno a uno? ¡Sin problema! Utilizad las flechas del teclado para navegar entre las sugerencias.</p>
+
+<p>Elegid uno de los directorios para entrar en él. Ahora probad a escribir &#8216;..&#8217;. Con eso iréis al directorio padre. Y si ponéis &#8216;&#8230;&#8217; al superior. Y así sucesivamente. Útil, ¿no?</p>
+
+<p>A veces es un poco engorroso recordar exactamente el nombre del directorio al que queremos acceder. Tranquilos, <strong>zsh es muy listo</strong> y si intentáis entrar en un directorio pero poniendo solo parte de su nombre, zsh intentará averiguar a cual te refieres y, si lo consigue, entrará en él. <strong>Incluso aunque lo que hayas escrito no sea el principio del nombre del directorio</strong>.</p>
+
+<p>Además, escribir &#8220;cd&#8221; para movernos es <em>poco eficiente</em>. Si probáis a escribir tan solo el nombre de la carpeta, sin ponerle el &#8220;cd&#8221; delante, también entrará en el directorio.</p>
+
+<p>Si llegados a esto todavía no os parece canela en rama, tranquilos, que hay más.</p>
+
+<h3 id="mejor-historial">Mejor historial</h3>
+
+<p>En la consola acabamos repitiendo los mismos comandos varias veces. Hasta ahora, yo utilizaba control+R para buscar en el historial, o si era un comando reciente, le daba a la flecha hacia arriba del cursor para ir hacia atrás en el historial. Esto está bien, pero zsh lo mejora haciendo que solo vaya recorriendo <strong>aquellos comandos que coinciden con lo que tienes actualmente escrito</strong>. Es decir, si yo escribo &#8220;vim&#8221; y voy dándole hacia arriba, solo irá navegando por el historial de comandos que empezaban con &#8220;vim&#8221;.</p>
+
+<p>Además, siempre podemos conseguir que zsh sea más eficiente, viendo qué comandos son los que más utilizamos y creando alias para ellos. Igual que en <em>bash</em>, con la diferencia de que zsh nos proporciona un comando con información detallada sobre lo que más utilizamos:</p>
+
+<p><a href="http://blog.armesto.net/wp-content/uploads/2014/04/Selección_032.png"><img class="alignnone size-full wp-image-69" src="http://blog.armesto.net/wp-content/uploads/2014/04/Selección_032.png" alt="zsh_stats" width="493" height="182" srcset="http://blog.armesto.net/wp-content/uploads/2014/04/Selección_032.png 493w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_032-300x110.png 300w" sizes="(max-width: 493px) 100vw, 493px" /></a></p>
+
+<h3 id="plugins">Plugins</h3>
+
+<p>Todo esto es lo que nos ofrece zsh por defecto, pero lo bueno de oh-my-zsh es que <strong>nos ofrece un montón de plugins</strong> que añaden alias a acciones de nuestro día a día para que la shell sea todavía más cómoda. Para añadir o quitar plugins, tan solo tenemos que editar el archivo de configuración de zsh situado en ~/.zshrc y modificar la línea de los plugins. Actualmente la mía está así:</p>
+
+<pre>plugins=(git autojump colored-man colorize extract zsh-syntax-highlighting)</pre>
+
+<p>Con estos plugins obtengo desde archivos del manual con texto coloreado, hasta un comando nuevo llamado <strong><em>extract</em></strong> que puedo utilizar para descomprimir cualquier tipo de archivo comprimido <strong>sin preocuparme de cómo se descomprime</strong>: él decidirá qué es lo que debe utilizar: zip, gz, etc. Además, como habréis notado en los pantallazos anteriores, cuando estoy escribiendo un comando en la terminal, está coloreado en verde si la shell lo reconoce. Si estoy escribiendo un comando que no existe, zsh lo escribe en rojo.</p>
+
+<h4 id="autojump">AutoJump</h4>
+
+<p>Quiero hacer mención especial a uno de los plugins que tengo activados: <strong>autojump</strong>. Si la navegación entre directorio ya es la más cómoda del mundo con zsh, autojump va todavía más allá y va guardando tus directorios más utilizados en tu día a día. De tal forma que tan solo tienes que escribir &#8220;j&#8221; seguido de una cadena que él intentará matchear contra tu historial de directorios, y entrará en aquel que más hayas visitado. Esta cadena puede ser desde una letra, hasta el nombre entero de la carpeta. En este ejemplo, escribiendo &#8220;j w&#8221;, él ya sabía que me estaba refiriendo a <em>/var/www</em>.</p>
+
+<p><a href="http://blog.armesto.net/wp-content/uploads/2014/04/Selección_034.png"><img class="alignnone size-full wp-image-70" src="http://blog.armesto.net/wp-content/uploads/2014/04/Selección_034.png" alt="Autojump" width="373" height="145" srcset="http://blog.armesto.net/wp-content/uploads/2014/04/Selección_034.png 373w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_034-300x116.png 300w" sizes="(max-width: 373px) 100vw, 373px" /></a></p>
+
+<p>Para instalarlo tan solo ejecuta:</p>
+
+<pre>sudo apt-get install autojump</pre>
+
+<h2 id="dejando-zsh-por-defecto-en-vez-de-bash">Dejando zsh por defecto en vez de bash</h2>
+
+<p>Si finalmente os he convencido, solo queda activar zsh para que sea siempre vuestra shell, en vez de bash. Para hacer esto, solo tenéis que ejecutar:</p>
+
+<pre>chsh -s $(which zsh)</pre>
+
+<p>Si por algún motivo que se me escapa quisierais volver a utilizar bash, solo tenéis que ejecutar:</p>
+
+<pre>chsh -s $(which bash)</pre>
+
+<h2 id="conclusión">Conclusión</h2>
+
+<p>Hay <a title="zsh features" href="http://www.slideshare.net/jaguardesignstudio/why-zsh-is-cooler-than-your-shell-16194692" target="_blank">muchísimas más cosas</a> que me dejo en el tintero. Como véis, <strong>zsh</strong> aporta un montón de comodidades extras a <em>bash</em>. Realmente, no hay nada que no podamos hacer a mano en bash, configurando alias y creando scripts, pero es mucho mejor apoyarnos en la sabiduría de toda una comunidad dedicada a esto.</p>
+
+<p>¿Alguno no se ha convencido de cambiarse?</p>
+
+<h2 id="enlaces-de-interés">Enlaces de interés</h2>
+
+<p><a title="Problema con ciertos prompts que duplican el comando" href="http://unix.stackexchange.com/questions/90772/first-characters-of-the-command-repeated-in-the-display-when-completing" target="_blank">Problema con ciertos prompts que duplican el comando</a>. Asegúrate de que tu fichero .zshrc tiene estas dos líneas:</p>
+
+<pre>export LANG=en_US.utf8
+export LC_ALL=en_US.utf8</pre>
+
+<p><a title="Tutorial de zsh" href="Getting started with ZSH on Ubuntu" target="_blank">Tutorial de zsh</a></p>
+
+<p><a title="oh-my-zsh" href="http://ohmyz.sh/" target="_blank">Oh-My-zsh!</a></p>
+
+<p><a title="Plugins de oh-my-zsh" href="https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins" target="_blank">Plugins de oh-my-zsh</a></p>
+
+<p><a title="autojump" href="https://github.com/joelthelion/autojump" target="_blank">Autojump</a></p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://fiunchinho.github.io/blog/sacale-el-maximo-partido-a-tu-terminal-con-zsh/" data-id="23487bc19a04e626d6e7917a78acce68" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="http://fiunchinho.github.io/blog/sacale-el-maximo-partido-a-tu-terminal-con-zsh//#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+
+        
+<nav id="article-nav">
+    
+    <a href="http://fiunchinho.github.io/blog/sacale-todo-el-partido-a-los-tests-haciendo-que-griten/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">Sácale todo el partido a los tests haciendo que griten</div>
+    </a>
+    
+
+    
+    <a href="http://fiunchinho.github.io/blog/utilizando-puphpet-tambien-en-produccion/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Newer
+      </strong>
+      <div class="article-nav-title">Utilizando Puphpet también en producción</div>
+    </a>
+    
+</nav>
+
+
+    </article>
+
+    
+    <section id="comments">
+        <div id="disqus_thread">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'fiunchinho';
+    var disqus_identifier = 'http:\/\/fiunchinho.github.io\/blog\/sacale-el-maximo-partido-a-tu-terminal-con-zsh\/';
+    var disqus_title = 'Sácale el máximo partido a tu terminal con zsh';
+    var disqus_url = 'http:\/\/fiunchinho.github.io\/blog\/sacale-el-maximo-partido-a-tu-terminal-con-zsh\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </section>
+    
+</section>
+
+
+	    
+	    <aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Recents
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/codemotion-2016/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://2016.codemotion.es/img/l_black.png)" alt="Sácale el máximo partido a tu terminal con zsh" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                        Opinion
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/codemotion-2016/" class="title">Codemotion 2016</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-11-30 20:48:31 &#43;0000 UTC" itemprop="datePublished">11-08-2016</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/auto-completado-en-zsh/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://ih1.redbubble.net/image.154489147.8220/sticker,375x360.png)" alt="Sácale el máximo partido a tu terminal con zsh" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/linux">
+                        Linux
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/auto-completado-en-zsh/" class="title">Auto completado en zsh</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-07-16 17:49:15 &#43;0000 UTC" itemprop="datePublished">07-08-2016</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://www.emiliotorrens.com/wp-content/uploads/2014/03/apache-logo.png)" alt="Sácale el máximo partido a tu terminal con zsh" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/code">
+                        Code
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/" class="title">Problemas desplegando código si usas Apache, symlinks y opcache</a></p>
+                    <p class="item-date">
+                        <time datetime="2015-05-01 12:14:32 &#43;0000 UTC" itemprop="datePublished">05-08-2015</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://images-na.ssl-images-amazon.com/images/I/51sZW87slRL._SX375_BO1,204,203,200_.jpg)" alt="Sácale el máximo partido a tu terminal con zsh" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/code">
+                        Code
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/" class="title">Jugando con conceptos de DDD</a></p>
+                    <p class="item-date">
+                        <time datetime="2014-10-29 00:46:39 &#43;0000 UTC" itemprop="datePublished">10-08-2014</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://25.media.tumblr.com/45bb569edfcf14a03e9448397cd4ff27/tumblr_mh6v96548x1qhoi9qo1_r1_500.jpg)" alt="Sácale el máximo partido a tu terminal con zsh" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                        Opinion
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/" class="title">Mis impresiones sobre el debate #isTDDDead</a></p>
+                    <p class="item-date">
+                        <time datetime="2014-05-23 20:35:44 &#43;0000 UTC" itemprop="datePublished">05-08-2014</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/code">
+                    code
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/linux">
+                    linux
+                </a>
+                <span class="category-list-count">7</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                    opinion
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tags
+    </h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/apache">
+                    apache
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/composer">
+                    composer
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/conferences">
+                    conferences
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/ddd">
+                    ddd
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/deployment">
+                    deployment
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/performance">
+                    performance
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/php">
+                    php
+                </a>
+                <span class="category-list-count">6</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/puppet">
+                    puppet
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/redis">
+                    redis
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/refactoring">
+                    refactoring
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/softonic">
+                    softonic
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/tdd">
+                    tdd
+                </a>
+                <span class="category-list-count">4</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/unit-testing">
+                    unit-testing
+                </a>
+                <span class="category-list-count">6</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/unix">
+                    unix
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/vagrant">
+                    vagrant
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tag cloud
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/apache" style="font-size: 12px;">apache</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/composer" style="font-size: 12px;">composer</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/conferences" style="font-size: 12px;">conferences</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/ddd" style="font-size: 12px;">ddd</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/deployment" style="font-size: 12px;">deployment</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/performance" style="font-size: 12px;">performance</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/php" style="font-size: 12px;">php</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/puppet" style="font-size: 12px;">puppet</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/redis" style="font-size: 12px;">redis</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/refactoring" style="font-size: 12px;">refactoring</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/softonic" style="font-size: 12px;">softonic</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/tdd" style="font-size: 12px;">tdd</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/unit-testing" style="font-size: 12px;">unit-testing</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/unix" style="font-size: 12px;">unix</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/vagrant" style="font-size: 12px;">vagrant</a>
+        
+    </div>
+</div>
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+	    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016
+      Powered by <a href="//gohugo.io">Hugo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>.
+    </div>
+  </div>
+</footer>
+
+
+<script src="http://fiunchinho.github.io/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://fiunchinho.github.io/blog/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+</body>
+</html>

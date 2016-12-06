@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jose Armesto&#39;s Blog</title>
+    <link>http://fiunchinho.github.io/blog/tags/deployment/index.xml</link>
+    <description>Recent content on Jose Armesto&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es-es</language>
+    <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
+    <atom:link href="http://fiunchinho.github.io/blog/tags/deployment/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Problemas desplegando código si usas Apache, symlinks y opcache</title>
+      <link>http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</link>
+      <pubDate>Fri, 01 May 2015 12:14:32 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</guid>
+      <description>&lt;p&gt;Muchas de las soluciones disponibles en el mercado para desplegar aplicaciones se basan en el uso de enlaces simbólicos (o symlinks) para activar la última versión de código en el servidor.&lt;/p&gt;
+
+&lt;p&gt;Simplificando mucho, podríamos decir que un flujo habitual a la hora de desplegar sería el siguiente:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ejecutamos comando para iniciar el proceso de despliegue de código nuevo.&lt;/li&gt;
+&lt;li&gt;Se descarga el código del repositorio y se construye la aplicación. Esto suele significar instalar dependencias, generar ficheros, etc.&lt;/li&gt;
+&lt;li&gt;Se mueve el resultado del paso anterior al servidor y se pone en una carpeta nueva.&lt;/li&gt;
+&lt;li&gt;La carpeta a la que apunta el &lt;em&gt;document root&lt;/em&gt; de nuestro servidor web es en realidad un enlace simbólico a otra carpeta que contiene código en la versión anterior. Por tanto solo nos queda cambiar ese enlace simbólico para que apunte a la nueva que acabamos de crear.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Como el cambio de enlace simbólico es practicamente instantáneo, conseguimos reducir la ventana de tiempo en la que el servidor está en un estado inconsistente, por ejemplo, porque todavía no se hayan terminado de copiar ficheros. Mientras se están subiendo la versión nueva, seguimos sirviendo la versión vieja, sin dejar de dar servicio. Y solo cuando la nueva está lista, hacemos el cambio de forma casi instantánea.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;problemas-con-este-enfoque&#34;&gt;Problemas con este enfoque&lt;/h2&gt;
+
+&lt;p&gt;Esta manera de desplegar, que parece sencilla y perfecta, tiene algunas complicaciones. Con la que la gente más suele pelearse es con el hecho de que a pesar de haber desplegado una versión nueva en el servidor, a veces siguen viendo la versión vieja, debido a la extensión &lt;a href=&#34;https://www.google.es/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=0CCUQFjAA&amp;url=http%3A%2F%2Fphp.net%2Fmanual%2Fes%2Fbook.opcache.php&amp;ei=HlFDVZfPI8T2Us6sgLAI&amp;usg=AFQjCNF9sKlRWdBbTEBKa1M2w25s5TBQGw&amp;sig2=6xMwOb3cZagbFnheUWkDTQ&amp;bvm=bv.92291466,d.d24&#34; target=&#34;_blank&#34;&gt;Opcache&lt;/a&gt; (antiguo APC) que guarda la compilación del código PHP interpretado en memoria. Por tanto, aunque la versión nueva ya está activa, PHP sigue tirando de esta caché para no tener que leer del disco y volver a compilar código PHP, así que se sirve el código de la versión vieja hasta que caduque esta caché (si es que lo tenemos configurado para que caduque), o hasta que reiniciemos el servidor dejando de dar servicio mientras dure el reinicio del servidor.&lt;/p&gt;
+
+&lt;p&gt;Antes de ver cómo solventarlo, vamos a ver un par de detalles interesantes.&lt;/p&gt;
+
+&lt;h2 id=&#34;te-presento-a-tu-nueva-amiga-realpath-cache&#34;&gt;Te presento a tu nueva amiga realpath_cache&lt;/h2&gt;
+
+&lt;p&gt;Cada vez que utilizas una ruta del sistema de archivos, por ejemplo porque vas a hacer un require/include de ese archivo, o porque vas lees/escribir en esa ruta, &lt;strong&gt;el sistema tiene que resolver esa ruta&lt;/strong&gt;: saber donde es exactamente, si es un directorio o un archivo, etc.&lt;/p&gt;
+
+&lt;p&gt;Para mejorar su rendimiento y minimizar lecturas de disco, PHP utiliza una caché interna donde guarda información sobre el sistema de archivos. No estoy hablando de Opcache, sino de otra caché llamada &lt;a href=&#34;https://php.net/manual/es/ini.core.php#ini.realpath-cache-size&#34; target=&#34;_blank&#34;&gt;realpath_cache&lt;/a&gt;. Si intentas resolver la misma ruta dos veces seguidas, solo en la primera PHP le pedirá información al lentísimo sistema de archivos: la segunda se leerá directamente de la caché, mejorando mucho el rendimiento.&lt;/p&gt;
+
+&lt;p&gt;Esto es bueno, ¿no?&lt;/p&gt;
+
+&lt;p&gt;Sí, claro. El tema es que, como con todas las cachés del mundo, el problema viene a la hora de invalidar la caché y decirle que queremos utilizar contenido nuevo.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;There are only two hard things in Computer Science: cache invalidation and naming things.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Cuando desplegamos código nuevo, el contenido de la ruta de nuestro &lt;em&gt;Document Root&lt;/em&gt; cambia. Aunque en nuestro código siempre usemos la misma ruta para hacer algo, piensa por ejemplo la ruta relativa que usas para incluir el autoload, despues de cada deploy, &lt;strong&gt;esa ruta se resuelve a un lugar distinto en el disco&lt;/strong&gt;, porque el enlace simbólico apunta a otro sitio. Esto evitará que veamos la versión nueva del código desplegado, hasta que esta caché no caduque o hagamos algo al respecto.&lt;/p&gt;
+
+&lt;h2 id=&#34;cómo-funciona-apache&#34;&gt;Cómo funciona Apache&lt;/h2&gt;
+
+&lt;p&gt;A diferencia de Opcache, que se guarda en memoria compartida por todos los procesos, la realpath_cache es local para cada proceso del sistema. Este detalle es importante porque si utilizas Apache &lt;em&gt;prefork&lt;/em&gt; para servir tu aplicación, cuando inicias Apache, este crea varios procesos hijos, tantos como le hayas configurado. Cada proceso hijo creado servirá X número de peticiones en su vida (esto también es configurable), y una vez que ha cumplido su deber, Apache lo matará y lo reemplazará con otro proceso hijo, poco a poco renovando todos los procesos que sirven páginas.&lt;/p&gt;
+
+&lt;p&gt;Es decir, &lt;strong&gt;no podemos preveer exactamente cuando los procesos dejarán de existir&lt;/strong&gt;. Sumado a que la realpath_cache es local a cada proceso,&lt;strong&gt; la nueva versión que acabamos de desplegar se irá sirviendo aleatoriamente&lt;/strong&gt;, dependiendo de qué proceso de Apache te haya asignado el servidor.&lt;/p&gt;
+
+&lt;p&gt;Como dijimos antes, podríamos solventarlo haciendo un reinicio de Apache despues de cada despliegue, pero dejaríamos de servir páginas el tiempo que tardase en reiniciar.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Mal, mal, mal, verdadera mal, por no deci borchenoso&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;reiniciando-elegantemente&#34;&gt;Reiniciando elegantemente&lt;/h2&gt;
+
+&lt;p&gt;Pero tranquilo, no sufras, hay solución. Apache nos ofrece una variante al reinicio, llamada &lt;em&gt;graceful restart&lt;/em&gt;. Esta variante, en vez de matar al proceso de Apache y todos sus hijos para reiniciarlo, lo que hace es que el proceso padre revisa a los procesos hijos de forma que:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Si no están haciendo nada, los sustituye por un proceso nuevo.&lt;/li&gt;
+&lt;li&gt;Si está sirviendo una petición en este momento, cuando termine lo sustituye por un proceso nuevo.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Como dijimos que realpath_cache era local a cada proceso, cuando Apache levanta un nuevo proceso hijo &lt;strong&gt;la realpath_cache está vacía para ese proceso y las rutas se resolverán al código nuevo que acabamos de desplegar&lt;/strong&gt;. Todo esto sin dejar de dar servicio, porque siempre hay procesos sirviendo páginas.&lt;/p&gt;
+
+&lt;h2 id=&#34;pesao-que-yo-venía-aquí-a-solventar-el-problema-de-opcache&#34;&gt;&lt;em&gt;Pesao&lt;/em&gt;. Que yo venía aquí a solventar el problema de Opcache&lt;/h2&gt;
+
+&lt;p&gt;Cierto. Opcache no es más que un diccionario (piensa en un array PHP), en el que cada &lt;em&gt;key&lt;/em&gt; es la ruta del fichero compilado, y el &lt;em&gt;value&lt;/em&gt; es el resultado de esa compilación. Cuando se va a ejecutar un fichero PHP, se ve si la ruta de ese archivo ya es una de las _keys_ en el diccionario, si ya lo está significa que ya lo hemos compilado antes, y se utiliza directamente el &lt;em&gt;value&lt;/em&gt;. Si no, se compila y se guarda en el diccionario.&lt;/p&gt;
+
+&lt;p&gt;El &amp;#8216;&lt;em&gt;final plot twist&amp;#8217;&lt;/em&gt; de todo esto es que &lt;strong&gt;Opcache utiliza realpath_cache internamente para resolver la ruta de los ficheros&lt;/strong&gt;. Por tanto, si hacemos un &lt;em&gt;graceful restart&lt;/em&gt; después de cada despliegue, la ruta del archivo habrá cambiado, resuelve a una carpeta distinta, así que &lt;strong&gt;será como un fichero totalmente nuevo para Opcache y volverá a compilarlo, haciendo que sirvamos la versión nueva&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;alignnone&#34; src=&#34;https://s-media-cache-ak0.pinimg.com/originals/ce/9c/94/ce9c949d6c73dbfb889f6036bac022dd.jpg&#34; alt=&#34;Mind Blown&#34; width=&#34;480&#34; height=&#34;360&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusión&#34;&gt;Conclusión&lt;/h2&gt;
+
+&lt;p&gt;Lo que hemos visto hoy es tan solo uno de los posibles problemas a la hora de desplegar código. Otro problema, por ejemplo, sería el que se produce cuando iniciamos un despliegue, un visitante entra en la web, justo después se cambia el enlace simbólico y estamos sirviendo archivos estáticos como javascript o css. Es posible que algunos archivos hayan sido de la versión vieja, y otros de la versión nueva, llevando a posibles inconsistencias. &lt;a href=&#34;https://codeascraft.com/2013/07/01/atomic-deploys-at-etsy/&#34; target=&#34;_blank&#34;&gt;Hay módulos de apache que intentan solventar este tipo de problemas&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;El despliegue de código es un tema complicado y muy interesante. Últimamente está avanzando mucho con conceptos como servidores inmutables y los contenedores, pero eso ya es tema de otro post.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

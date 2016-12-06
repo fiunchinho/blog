@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="es-es">
+<head>
+    <title>Jugando con conceptos de DDD &middot; Jose Armesto&#39;s Blog</title>
+    <meta name="generator" content="Hugo 0.17" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Jose Armesto">
+    
+      <meta name="description" content="Software como estilo de vida">
+    
+    
+    <link rel="canonical" href="http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/"/>
+    <link rel="icon" href="http://fiunchinho.github.io/blog/favicon.ico">
+    <link rel="apple-touch-icon" href="http://fiunchinho.github.io/blog/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/style.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/monokai.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/fancybox/jquery.fancybox.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="Jugando con conceptos de DDD" />
+<meta property="og:description" content="El pasado fin de semana se celebró en Barcelona una nueva edición de la Software Craftmanship, donde se hablaron de diversos temas relacionados con las buenas prácticas a la hora de crear software. Entre ellos, en mi opinión, hubo uno que pareció suscitar mayor interés en la gente y ocupó un papel protagonista en los dos días de conferencia: Domain Driven Design. Es un tema en el que creo que muchos estamos todavía aprendiendo, intentando dar sentido a la inmensa cantidad de conceptos e información que aparecen tanto en el libro azul como en el rojo.
+
+En esta búsqueda de sentido, me surgió una duda que creo que no aparece resuelta directamente en ninguno de los dos libros, y que compartí con el resto de asistentes en una de las charlas sobre DDD. Quiero reproducirla otra vez aquí, para poder hablar un poco más sobre el tema. Creo que no hace falta mostrar código, pero realmente me gustaría vuestra opinión, así que si es necesario, decídmelo y añadiré código.
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/" />
+
+
+<meta property="og:updated_time" content="2014-10-29T00:46:39&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content="Jugando con conceptos de DDD">
+<meta itemprop="description" content="El pasado fin de semana se celebró en Barcelona una nueva edición de la Software Craftmanship, donde se hablaron de diversos temas relacionados con las buenas prácticas a la hora de crear software. Entre ellos, en mi opinión, hubo uno que pareció suscitar mayor interés en la gente y ocupó un papel protagonista en los dos días de conferencia: Domain Driven Design. Es un tema en el que creo que muchos estamos todavía aprendiendo, intentando dar sentido a la inmensa cantidad de conceptos e información que aparecen tanto en el libro azul como en el rojo.
+
+En esta búsqueda de sentido, me surgió una duda que creo que no aparece resuelta directamente en ninguno de los dos libros, y que compartí con el resto de asistentes en una de las charlas sobre DDD. Quiero reproducirla otra vez aquí, para poder hablar un poco más sobre el tema. Creo que no hace falta mostrar código, pero realmente me gustaría vuestra opinión, así que si es necesario, decídmelo y añadiré código.
+
+">
+
+
+<meta itemprop="dateModified" content="2014-10-29T00:46:39&#43;00:00" />
+<meta itemprop="wordCount" content="818">
+
+
+
+<meta itemprop="keywords" content="code,linux,opinion,apache,composer,conferences,ddd,deployment,performance,php,puppet,redis,refactoring,softonic,tdd,unit-testing,unix,vagrant," />
+
+    
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="Jugando con conceptos de DDD"/>
+<meta name="twitter:description" content="El pasado fin de semana se celebró en Barcelona una nueva edición de la Software Craftmanship, donde se hablaron de diversos temas relacionados con las buenas prácticas a la hora de crear software. Entre ellos, en mi opinión, hubo uno que pareció suscitar mayor interés en la gente y ocupó un papel protagonista en los dos días de conferencia: Domain Driven Design. Es un tema en el que creo que muchos estamos todavía aprendiendo, intentando dar sentido a la inmensa cantidad de conceptos e información que aparecen tanto en el libro azul como en el rojo.
+
+En esta búsqueda de sentido, me surgió una duda que creo que no aparece resuelta directamente en ninguno de los dos libros, y que compartí con el resto de asistentes en una de las charlas sobre DDD. Quiero reproducirla otra vez aquí, para poder hablar un poco más sobre el tema. Creo que no hace falta mostrar código, pero realmente me gustaría vuestra opinión, así que si es necesario, decídmelo y añadiré código.
+
+"/>
+<meta name="twitter:site" content="@fiunchinho"/>
+
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="http://fiunchinho.github.io/blog" id="logo">
+          
+          <i class="logo" style="background-image: url('http://fiunchinho.github.io/blog/images/avatar.png')"></i>
+          
+          <span class="site-title">Jose Armesto&#39;s Blog</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="http://fiunchinho.github.io/">Home</a>
+          
+          
+
+          
+
+          
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="http://fiunchinho.github.io/blog/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="Search">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="q" value="site:http://fiunchinho.github.io/blog">
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="http://fiunchinho.github.io/">Home</a></td>
+          
+          
+
+          
+
+          
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="q" value="site:http://fiunchinho.github.io/blog">
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   		
+	    <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="http://fiunchinho.github.io/blog/images/avatar.png">
+      <h2 id="name">Jose Armesto</h2>
+      <h3 id="title">Soy Jose Armesto</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Barcelona</span>
+      
+          <a id="follow" href="https://twitter.com/fiunchinho">
+              Follow
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        22
+        <span>Posts</span>
+      </div>
+      <div class="article-info-block">
+        
+          15
+        
+        <span>
+            Tags
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/fiunchinho" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//medium.com/@fiunchinho" target="_blank" title="Medium"><i class="fa fa-medium"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//stackoverflow.com/users/563072/fiunchinho" target="_blank" title="Stack Overflow"><i class="fa fa-stack-overflow"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//twitter.com/fiunchinho" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+	    
+
+	    
+<section id="main">
+
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+
+            <header class="article-header">
+    <a href="http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/">
+    <h1 class="article-title" itemprop="name">
+        Jugando con conceptos de DDD
+    </h1>
+    </a>
+    <div class="article-meta">
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2014-10-29 00:46:39 &#43;0000 UTC" itemprop="datePublished">10-08-2014</time>
+            &middot;
+            818
+            words
+            &middot;
+            4
+            minute read
+        </div>
+
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="categories/code">Code</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="tags/ddd">ddd</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>El pasado fin de semana se celebró en Barcelona una <a title="Software Craftmanship Barcelona" href="http://www.softwarecraftsmanshipbarcelona.org/" target="_blank">nueva edición de la Software Craftmanship</a>, donde se hablaron de diversos temas relacionados con las buenas prácticas a la hora de crear software. Entre ellos, en mi opinión, hubo uno que pareció suscitar mayor interés en la gente y ocupó un papel protagonista en los dos días de conferencia: <strong>Domain Driven Design</strong>. Es un tema en el que creo que muchos estamos todavía aprendiendo, intentando dar sentido a la inmensa cantidad de conceptos e información que aparecen tanto en <a title="DDD - Eric Evans" href="http://www.amazon.es/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215" target="_blank">el libro azul</a> como en <a title="DDD - Vaughn Vernon" href="http://www.amazon.es/gp/product/0321834577/ref=pd_lpo_sbs_dp_ss_1?pf_rd_p=479290847&pf_rd_s=lpo-top-stripe&pf_rd_t=201&pf_rd_i=0321125215&pf_rd_m=A1AT7YVPFBWXBL&pf_rd_r=1N6RWXVM4AFMHH9P0EGZ" target="_blank">el rojo</a>.</p>
+
+<p>En esta búsqueda de sentido, me surgió una duda que creo que no aparece resuelta directamente en ninguno de los dos libros, y que compartí con el resto de asistentes en una de las charlas sobre DDD. Quiero reproducirla otra vez aquí, para poder hablar un poco más sobre el tema. Creo que no hace falta mostrar código, pero realmente me gustaría vuestra opinión, así que si es necesario, decídmelo y añadiré código.</p>
+
+<p></p>
+
+<h2 id="creando-value-objects-a-partir-de-entidades">Creando value objects a partir de entidades</h2>
+
+<p>Mi duda viene a la hora de combinar dos de los objetos básicos de DDD: las <strong>entidades</strong> y los <strong>value objects</strong>. En todos los ejemplos que he visto, los value objects pueden ser simples objetos que no dependen de ningún otro, o que se construyan utilizando otros value objects. Por su parte, las entidades se construyen tradicionalmente sin dependencias, o utilizando algún value object. Mi pregunta es: <strong>¿hay algo que nos impida construir value objects que dependan de entidades, que reciban entidades en su constructor?</strong></p>
+
+<p>Cuando lancé esta pregunta durante la sesión de DDD Táctico que impartía <a title="Christian Soronellas" href="https://twitter.com/theUniC" target="_blank">Christian</a>, la mayoría de gente me miró como si fuese un loco (solo <a title="Carlos Ble" href="https://twitter.com/carlosble/" target="_blank">Carlos</a> parecía encontrar sentido a mis palabras), pero dejadme explicar por qué creo que construir value objects con entidades puede ser perfectamente válido.</p>
+
+<p>Un value object es un objeto el cual su identidad viene dada por el valor que contiene. No tiene un identificador como tal, porque su propio valor lo identifica. Dos value objects que contienen el mismo valor, son iguales.</p>
+
+<p>Un ejemplo de caso de uso para mi pregunta podría ser cuando intentamos modelar una aplicación para votar en unas elecciones. Una práctica que suelo utilizar es la de intentar modelar todo el dominio con value objects, y solo &#8220;promocionar&#8221; el objeto a entidad cuando es estrictamente necesario. En este caso, si tenemos ciudadanos que votan, y partidos políticos que pueden ser votados, veo lógico que esos sean entidades, ya que un ciudadano puede hasta cambiarse el nombre y seguir siendo el mismo ciudadano. <strong>Tiene una identidad que lo identifica</strong> (valga la redundancia). Con el partido político pasa algo parecido: podría cambiar su logotipo, o hasta su nombre, y seguir siendo el mismo.</p>
+
+<p>Pero para modelar los votos que la gente hace a los partidos, quise intentar hacerlo con un value object. Este value object debe contener qué ciudadano ha votado, a qué partido político, y quizá el momento exacto en el que ha votado. Si decíamos que tanto los ciudadanos como los partidos políticos son entidades&#8230; <strong>este objeto &#8220;voto&#8221; tendría que construirse a partir de entidades</strong>.</p>
+
+<h2 id="inmutabilidad-del-value-object">Inmutabilidad del value object</h2>
+
+<p>No recuerdo quién, argumentó que, por definición, los value objects son inmutables, y si un ciudadano se cambiase el nombre entonces el voto habría cambiado, perdiendo su inmutabilidad. Pero esto no es cierto. Precisamente, debido a que las entidades tienen identidad, la forma de decir si una entidad es o no igual a otra, es comparando los identificadores de esas entidades. Si un ciudadano se cambia el nombre, sigue siendo el mismo ciudadano. Por tanto, si un value object <em>Voto</em> contiene una entidad <em>Ciudadano</em>, y este ciudadano se cambia el nombre, <strong>el value object sigue sin haber mutado, ya que sigue conteniendo la misma entidad</strong>: la identidad del ciudadano es la misma.</p>
+
+<p>Si cambiase el ciudadano que ha votado, o el partido político al que ha votado, <strong>sería otro voto</strong>. Es el valor del value object lo que le identifica. Es inmutable: yo no puedo coger la papeleta de un voto y tachar una cosa para poner otra.</p>
+
+<p>Alguien podría preguntarme que por qué complicarme la vida y no hacer una entidad. Creo que modelar con value objects es más simple, manteniendo la inmutabilidad lo máximo posible. Estos votos podrían formar parte de una entidad de elecciones (o algo parecido), que sería lo que finalmente persistiría esos votos en base de datos. Cuantas menos entidades, más sencillo de programar y más sencillo de razonar. ¿Para qué añadir identidades a cosas que no las necesitan?</p>
+
+<p>Ya sé que no es un ejemplo que aparezca en los libros, pero a mí es un diseño que a priori me cuadra. Solo lo he desarrollado en mi cabeza, así que no sé con qué problemas me podría encontrar. Como soy masoca, lo expongo aquí públicamente para que me lo crujáis.</p>
+
+<p><strong>¿Qué os parece?</strong></p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/" data-id="0408af60fc2e7a8b4f55ec056dfe77f5" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd//#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+
+        
+<nav id="article-nav">
+    
+    <a href="http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">Mis impresiones sobre el debate #isTDDDead</div>
+    </a>
+    
+
+    
+    <a href="http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Newer
+      </strong>
+      <div class="article-nav-title">Problemas desplegando código si usas Apache, symlinks y opcache</div>
+    </a>
+    
+</nav>
+
+
+    </article>
+
+    
+    <section id="comments">
+        <div id="disqus_thread">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'fiunchinho';
+    var disqus_identifier = 'http:\/\/fiunchinho.github.io\/blog\/jugando-con-conceptos-de-ddd\/';
+    var disqus_title = 'Jugando con conceptos de DDD';
+    var disqus_url = 'http:\/\/fiunchinho.github.io\/blog\/jugando-con-conceptos-de-ddd\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </section>
+    
+</section>
+
+
+	    
+	    <aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Recents
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/codemotion-2016/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://2016.codemotion.es/img/l_black.png)" alt="Jugando con conceptos de DDD" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                        Opinion
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/codemotion-2016/" class="title">Codemotion 2016</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-11-30 20:48:31 &#43;0000 UTC" itemprop="datePublished">11-08-2016</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/auto-completado-en-zsh/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://ih1.redbubble.net/image.154489147.8220/sticker,375x360.png)" alt="Jugando con conceptos de DDD" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/linux">
+                        Linux
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/auto-completado-en-zsh/" class="title">Auto completado en zsh</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-07-16 17:49:15 &#43;0000 UTC" itemprop="datePublished">07-08-2016</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://www.emiliotorrens.com/wp-content/uploads/2014/03/apache-logo.png)" alt="Jugando con conceptos de DDD" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/code">
+                        Code
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/" class="title">Problemas desplegando código si usas Apache, symlinks y opcache</a></p>
+                    <p class="item-date">
+                        <time datetime="2015-05-01 12:14:32 &#43;0000 UTC" itemprop="datePublished">05-08-2015</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://images-na.ssl-images-amazon.com/images/I/51sZW87slRL._SX375_BO1,204,203,200_.jpg)" alt="Jugando con conceptos de DDD" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/code">
+                        Code
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/" class="title">Jugando con conceptos de DDD</a></p>
+                    <p class="item-date">
+                        <time datetime="2014-10-29 00:46:39 &#43;0000 UTC" itemprop="datePublished">10-08-2014</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://25.media.tumblr.com/45bb569edfcf14a03e9448397cd4ff27/tumblr_mh6v96548x1qhoi9qo1_r1_500.jpg)" alt="Jugando con conceptos de DDD" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                        Opinion
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/" class="title">Mis impresiones sobre el debate #isTDDDead</a></p>
+                    <p class="item-date">
+                        <time datetime="2014-05-23 20:35:44 &#43;0000 UTC" itemprop="datePublished">05-08-2014</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/code">
+                    code
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/linux">
+                    linux
+                </a>
+                <span class="category-list-count">7</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                    opinion
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tags
+    </h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/apache">
+                    apache
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/composer">
+                    composer
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/conferences">
+                    conferences
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/ddd">
+                    ddd
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/deployment">
+                    deployment
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/performance">
+                    performance
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/php">
+                    php
+                </a>
+                <span class="category-list-count">6</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/puppet">
+                    puppet
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/redis">
+                    redis
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/refactoring">
+                    refactoring
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/softonic">
+                    softonic
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/tdd">
+                    tdd
+                </a>
+                <span class="category-list-count">4</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/unit-testing">
+                    unit-testing
+                </a>
+                <span class="category-list-count">6</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/unix">
+                    unix
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/vagrant">
+                    vagrant
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tag cloud
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/apache" style="font-size: 12px;">apache</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/composer" style="font-size: 12px;">composer</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/conferences" style="font-size: 12px;">conferences</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/ddd" style="font-size: 12px;">ddd</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/deployment" style="font-size: 12px;">deployment</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/performance" style="font-size: 12px;">performance</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/php" style="font-size: 12px;">php</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/puppet" style="font-size: 12px;">puppet</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/redis" style="font-size: 12px;">redis</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/refactoring" style="font-size: 12px;">refactoring</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/softonic" style="font-size: 12px;">softonic</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/tdd" style="font-size: 12px;">tdd</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/unit-testing" style="font-size: 12px;">unit-testing</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/unix" style="font-size: 12px;">unix</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/vagrant" style="font-size: 12px;">vagrant</a>
+        
+    </div>
+</div>
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+	    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016
+      Powered by <a href="//gohugo.io">Hugo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>.
+    </div>
+  </div>
+</footer>
+
+
+<script src="http://fiunchinho.github.io/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://fiunchinho.github.io/blog/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+</body>
+</html>

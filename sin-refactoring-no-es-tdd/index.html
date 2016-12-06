@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="es-es">
+<head>
+    <title>Sin refactoring no es TDD &middot; Jose Armesto&#39;s Blog</title>
+    <meta name="generator" content="Hugo 0.17" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Jose Armesto">
+    
+      <meta name="description" content="Software como estilo de vida">
+    
+    
+    <link rel="canonical" href="http://fiunchinho.github.io/blog/sin-refactoring-no-es-tdd/"/>
+    <link rel="icon" href="http://fiunchinho.github.io/blog/favicon.ico">
+    <link rel="apple-touch-icon" href="http://fiunchinho.github.io/blog/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/style.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/monokai.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/fancybox/jquery.fancybox.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="Sin refactoring no es TDD" />
+<meta property="og:description" content="Parece evidente, ¿verdad? Cuando explicas TDD (Test Driven Development), explicas que tiene 3 fases: rojo, verde y refactoring. Sin embargo, parece que son las 2 primeras las que entran con mayor facilidad en la mente del programador.
+
+Presentas la kata y allí van disparados a escribir su primer test para estar en rojo. Una vez allí, _baby step_ en el código con lo mínimo indispensable para pasar el test y ponernos en verde. Es entonces cuando deberíamos pensar en el refactoring, pero normalmente es difícil encontrar cosas a refactorizar en nuestro (poquito) código en las primeras iteraciones, así que pasamos a rojo otra vez escribiendo un nuevo test.
+
+Este proceso se repite de forma rápida durante los primeros tests, y con la excusa de que con pocos tests es difícil encontrar duplicaciones o cosas a mejorar en el código que hace pasar estos tests, poco a poco entramos en el modo semárofo del rojo-verde.
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fiunchinho.github.io/blog/sin-refactoring-no-es-tdd/" />
+
+
+<meta property="og:updated_time" content="2013-10-11T17:57:56&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content="Sin refactoring no es TDD">
+<meta itemprop="description" content="Parece evidente, ¿verdad? Cuando explicas TDD (Test Driven Development), explicas que tiene 3 fases: rojo, verde y refactoring. Sin embargo, parece que son las 2 primeras las que entran con mayor facilidad en la mente del programador.
+
+Presentas la kata y allí van disparados a escribir su primer test para estar en rojo. Una vez allí, _baby step_ en el código con lo mínimo indispensable para pasar el test y ponernos en verde. Es entonces cuando deberíamos pensar en el refactoring, pero normalmente es difícil encontrar cosas a refactorizar en nuestro (poquito) código en las primeras iteraciones, así que pasamos a rojo otra vez escribiendo un nuevo test.
+
+Este proceso se repite de forma rápida durante los primeros tests, y con la excusa de que con pocos tests es difícil encontrar duplicaciones o cosas a mejorar en el código que hace pasar estos tests, poco a poco entramos en el modo semárofo del rojo-verde.
+
+">
+
+
+<meta itemprop="dateModified" content="2013-10-11T17:57:56&#43;00:00" />
+<meta itemprop="wordCount" content="487">
+
+
+
+<meta itemprop="keywords" content="code,linux,opinion,apache,composer,conferences,ddd,deployment,performance,php,puppet,redis,refactoring,softonic,tdd,unit-testing,unix,vagrant," />
+
+    
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="Sin refactoring no es TDD"/>
+<meta name="twitter:description" content="Parece evidente, ¿verdad? Cuando explicas TDD (Test Driven Development), explicas que tiene 3 fases: rojo, verde y refactoring. Sin embargo, parece que son las 2 primeras las que entran con mayor facilidad en la mente del programador.
+
+Presentas la kata y allí van disparados a escribir su primer test para estar en rojo. Una vez allí, _baby step_ en el código con lo mínimo indispensable para pasar el test y ponernos en verde. Es entonces cuando deberíamos pensar en el refactoring, pero normalmente es difícil encontrar cosas a refactorizar en nuestro (poquito) código en las primeras iteraciones, así que pasamos a rojo otra vez escribiendo un nuevo test.
+
+Este proceso se repite de forma rápida durante los primeros tests, y con la excusa de que con pocos tests es difícil encontrar duplicaciones o cosas a mejorar en el código que hace pasar estos tests, poco a poco entramos en el modo semárofo del rojo-verde.
+
+"/>
+<meta name="twitter:site" content="@fiunchinho"/>
+
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="http://fiunchinho.github.io/blog" id="logo">
+          
+          <i class="logo" style="background-image: url('http://fiunchinho.github.io/blog/images/avatar.png')"></i>
+          
+          <span class="site-title">Jose Armesto&#39;s Blog</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="http://fiunchinho.github.io/">Home</a>
+          
+          
+
+          
+
+          
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="http://fiunchinho.github.io/blog/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="Search">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="q" value="site:http://fiunchinho.github.io/blog">
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="http://fiunchinho.github.io/">Home</a></td>
+          
+          
+
+          
+
+          
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="q" value="site:http://fiunchinho.github.io/blog">
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   		
+	    <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="http://fiunchinho.github.io/blog/images/avatar.png">
+      <h2 id="name">Jose Armesto</h2>
+      <h3 id="title">Soy Jose Armesto</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Barcelona</span>
+      
+          <a id="follow" href="https://twitter.com/fiunchinho">
+              Follow
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        22
+        <span>Posts</span>
+      </div>
+      <div class="article-info-block">
+        
+          15
+        
+        <span>
+            Tags
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/fiunchinho" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//medium.com/@fiunchinho" target="_blank" title="Medium"><i class="fa fa-medium"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//stackoverflow.com/users/563072/fiunchinho" target="_blank" title="Stack Overflow"><i class="fa fa-stack-overflow"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//twitter.com/fiunchinho" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+	    
+
+	    
+<section id="main">
+
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+
+            <header class="article-header">
+    <a href="http://fiunchinho.github.io/blog/sin-refactoring-no-es-tdd/">
+    <h1 class="article-title" itemprop="name">
+        Sin refactoring no es TDD
+    </h1>
+    </a>
+    <div class="article-meta">
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2013-10-11 17:57:56 &#43;0000 UTC" itemprop="datePublished">10-08-2013</time>
+            &middot;
+            487
+            words
+            &middot;
+            3
+            minute read
+        </div>
+
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="categories/opinion">Opinion</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="tags/refactoring">refactoring</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="tags/tdd">tdd</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>Parece evidente, ¿verdad? Cuando explicas <a title="TDD" href="http://c2.com/cgi/wiki?TestDrivenDevelopment" target="_blank">TDD (Test Driven Development)</a>, explicas que tiene 3 fases: rojo, verde y refactoring. Sin embargo, parece que son las 2 primeras las que entran con mayor facilidad en la mente del programador.</p>
+
+<p>Presentas la kata y allí van disparados a escribir su primer test para estar en rojo. Una vez allí, _baby step_ en el código con lo mínimo indispensable para pasar el test y ponernos en verde. Es entonces cuando deberíamos pensar en el refactoring, pero normalmente es difícil encontrar cosas a refactorizar en nuestro (poquito) código en las primeras iteraciones, así que pasamos a rojo otra vez escribiendo un nuevo test.</p>
+
+<p>Este proceso se repite de forma rápida durante los primeros tests, y con la excusa de que con pocos tests es difícil encontrar duplicaciones o cosas a mejorar en el código que hace pasar estos tests, poco a poco entramos en el modo semárofo del rojo-verde.</p>
+
+<p></p>
+
+<p>Los más aventajados del lugar se aventuran a mejorar alguna cosilla cuando están en verde, pero suele ser algún cambio pequeño sin importancia, mientras la casuística de if’s y else’s sigue creciendo sin que nadie haga nada por evitarlo. Se olvidan los principios <a title="SOLID" href="http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod" target="_blank">SOLID</a>, como si fuesen principios teóricos que poco o nada tienen que ver con la práctica. “La teoría no es lo mío, yo soy más práctico”: ¿os suena?</p>
+
+<p>Como facilitador, solo te queda realizar las preguntas adecuadas:</p>
+
+<ul>
+<li>¿si quiero ampliar el funcionamiento con una <strong>nueva</strong> regla de negocio, tendré que cambiar mi clase? ¿cómo de <strong>costoso</strong> será el cambio?</li>
+<li>¿está ese comportamiento bien <strong>encapsulado</strong>? ¿hay suficiente <strong>abstracción</strong>?</li>
+<li>¿hace esta clase una y solo una cosa?</li>
+</ul>
+
+<p>Es sobretodo con la primera pregunta con la que la gente se da cuenta de los problemas de su diseño actual, quizá porque es la pregunta más “práctica”, por así decirlo. En el fondo son los mismos principios, pero forzando a la gente a pensar en un caso práctico, por ejemplo dando tú mismo nuevas e imprevistas reglas de negocio, la gente entiende por qué es mejor seguir <a title="SOLID" href="http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod" target="_blank">SOLID</a>.</p>
+
+<p>Estas preguntas hay que realizarlas desde muy temprano. Si la gente va posponiendo el refactoring, cada vez es más difícil cambiar el diseño actual porque cada vez habrá más reglas de negocio en el código, y cada vez habrá más tests que quizá haya que retocar, si el refactoring más que un simple refactoring.</p>
+
+<p>También se tiende a olvidar que en ese momento tenemos un conocimiento grande del dominio, y podemos plasmar las reglas del dominio de una forma que ahora entendemos, pero quizá no entendamos en el futuro. Justo ahora es el mejor momento para dar nombres que expresen la intención del código. Por ejemplo: introducir condiciones en métodos o variables con nombres expresivos.</p>
+
+<p>Una de las grandes ventajas del TDD, es que el refactoring está dentro del ciclo de desarrollo. Si no lo hacemos frecuentemente, se pierde el efecto.</p>
+
+<p>Sin refactoring no es TDD.</p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://fiunchinho.github.io/blog/sin-refactoring-no-es-tdd/" data-id="0629d224e733db877b175cffab12562f" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="http://fiunchinho.github.io/blog/sin-refactoring-no-es-tdd//#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+
+        
+<nav id="article-nav">
+    
+    <a href="http://fiunchinho.github.io/blog/detectando-tests-dependientes-con-phpunit/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">Detectando tests dependientes con PHPUnit</div>
+    </a>
+    
+
+    
+    <a href="http://fiunchinho.github.io/blog/herramientas-para-el-programador-php-moderno/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Newer
+      </strong>
+      <div class="article-nav-title">Herramientas para el programador PHP moderno</div>
+    </a>
+    
+</nav>
+
+
+    </article>
+
+    
+    <section id="comments">
+        <div id="disqus_thread">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'fiunchinho';
+    var disqus_identifier = 'http:\/\/fiunchinho.github.io\/blog\/sin-refactoring-no-es-tdd\/';
+    var disqus_title = 'Sin refactoring no es TDD';
+    var disqus_url = 'http:\/\/fiunchinho.github.io\/blog\/sin-refactoring-no-es-tdd\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </section>
+    
+</section>
+
+
+	    
+	    <aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Recents
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/codemotion-2016/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://2016.codemotion.es/img/l_black.png)" alt="Sin refactoring no es TDD" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                        Opinion
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/codemotion-2016/" class="title">Codemotion 2016</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-11-30 20:48:31 &#43;0000 UTC" itemprop="datePublished">11-08-2016</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/auto-completado-en-zsh/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://ih1.redbubble.net/image.154489147.8220/sticker,375x360.png)" alt="Sin refactoring no es TDD" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/linux">
+                        Linux
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/auto-completado-en-zsh/" class="title">Auto completado en zsh</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-07-16 17:49:15 &#43;0000 UTC" itemprop="datePublished">07-08-2016</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://www.emiliotorrens.com/wp-content/uploads/2014/03/apache-logo.png)" alt="Sin refactoring no es TDD" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/code">
+                        Code
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/" class="title">Problemas desplegando código si usas Apache, symlinks y opcache</a></p>
+                    <p class="item-date">
+                        <time datetime="2015-05-01 12:14:32 &#43;0000 UTC" itemprop="datePublished">05-08-2015</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://images-na.ssl-images-amazon.com/images/I/51sZW87slRL._SX375_BO1,204,203,200_.jpg)" alt="Sin refactoring no es TDD" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/code">
+                        Code
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/" class="title">Jugando con conceptos de DDD</a></p>
+                    <p class="item-date">
+                        <time datetime="2014-10-29 00:46:39 &#43;0000 UTC" itemprop="datePublished">10-08-2014</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://25.media.tumblr.com/45bb569edfcf14a03e9448397cd4ff27/tumblr_mh6v96548x1qhoi9qo1_r1_500.jpg)" alt="Sin refactoring no es TDD" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                        Opinion
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/" class="title">Mis impresiones sobre el debate #isTDDDead</a></p>
+                    <p class="item-date">
+                        <time datetime="2014-05-23 20:35:44 &#43;0000 UTC" itemprop="datePublished">05-08-2014</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/code">
+                    code
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/linux">
+                    linux
+                </a>
+                <span class="category-list-count">7</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                    opinion
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tags
+    </h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/apache">
+                    apache
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/composer">
+                    composer
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/conferences">
+                    conferences
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/ddd">
+                    ddd
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/deployment">
+                    deployment
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/performance">
+                    performance
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/php">
+                    php
+                </a>
+                <span class="category-list-count">6</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/puppet">
+                    puppet
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/redis">
+                    redis
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/refactoring">
+                    refactoring
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/softonic">
+                    softonic
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/tdd">
+                    tdd
+                </a>
+                <span class="category-list-count">4</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/unit-testing">
+                    unit-testing
+                </a>
+                <span class="category-list-count">6</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/unix">
+                    unix
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/vagrant">
+                    vagrant
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tag cloud
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/apache" style="font-size: 12px;">apache</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/composer" style="font-size: 12px;">composer</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/conferences" style="font-size: 12px;">conferences</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/ddd" style="font-size: 12px;">ddd</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/deployment" style="font-size: 12px;">deployment</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/performance" style="font-size: 12px;">performance</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/php" style="font-size: 12px;">php</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/puppet" style="font-size: 12px;">puppet</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/redis" style="font-size: 12px;">redis</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/refactoring" style="font-size: 12px;">refactoring</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/softonic" style="font-size: 12px;">softonic</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/tdd" style="font-size: 12px;">tdd</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/unit-testing" style="font-size: 12px;">unit-testing</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/unix" style="font-size: 12px;">unix</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/vagrant" style="font-size: 12px;">vagrant</a>
+        
+    </div>
+</div>
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+	    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016
+      Powered by <a href="//gohugo.io">Hugo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>.
+    </div>
+  </div>
+</footer>
+
+
+<script src="http://fiunchinho.github.io/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://fiunchinho.github.io/blog/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+</body>
+</html>

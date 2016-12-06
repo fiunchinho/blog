@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="es-es">
+<head>
+    <title>Yo no soy DHH. Long live TDD &middot; Jose Armesto&#39;s Blog</title>
+    <meta name="generator" content="Hugo 0.17" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Jose Armesto">
+    
+      <meta name="description" content="Software como estilo de vida">
+    
+    
+    <link rel="canonical" href="http://fiunchinho.github.io/blog/yo-no-soy-dhh-long-live-tdd/"/>
+    <link rel="icon" href="http://fiunchinho.github.io/blog/favicon.ico">
+    <link rel="apple-touch-icon" href="http://fiunchinho.github.io/blog/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/style.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/monokai.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/fancybox/jquery.fancybox.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="Yo no soy DHH. Long live TDD" />
+<meta property="og:description" content="DHH es un gran programador, creador de algo como Rails, framework que quedará en la historia de la programación web. Hoy, él, ha sido noticia por escribir un post titulado &#8220;TDD is dead&#8221;.
+
+Quizá DHH está en lo cierto diciendo que TDD es algo que está muerto, que es momento de seguir hacia adelante y dejarlo atrás. Como cuando crecemos y dejamos de utilizar los ruedines de la bicicleta: es algo para niños pequeños, pero de mayores ya no nos hacen falta. Quizá tiene razón.
+
+Si eres lo suficientemente experto, entonces quizá ya no tiene sentido. Porque para mí TDD es eso: unos ruedines para programar que me ayudan a conseguir un mejor código. Si fuese capaz de escribir el mejor código posible a la primera, que siguiese los principios SOLID, que fuese auto explicativo, etc., entonces yo tampoco haría TDD.  ¿Para qué molestarme?
+
+Si me saliese a la primera, no necesitaría refactorizar muy frecuentemente y tener un unit testing que me avise cuando he roto algo. No me haría falta ese loop de feedback tan corto.
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fiunchinho.github.io/blog/yo-no-soy-dhh-long-live-tdd/" />
+
+
+<meta property="og:updated_time" content="2014-04-24T00:35:31&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content="Yo no soy DHH. Long live TDD">
+<meta itemprop="description" content="DHH es un gran programador, creador de algo como Rails, framework que quedará en la historia de la programación web. Hoy, él, ha sido noticia por escribir un post titulado &#8220;TDD is dead&#8221;.
+
+Quizá DHH está en lo cierto diciendo que TDD es algo que está muerto, que es momento de seguir hacia adelante y dejarlo atrás. Como cuando crecemos y dejamos de utilizar los ruedines de la bicicleta: es algo para niños pequeños, pero de mayores ya no nos hacen falta. Quizá tiene razón.
+
+Si eres lo suficientemente experto, entonces quizá ya no tiene sentido. Porque para mí TDD es eso: unos ruedines para programar que me ayudan a conseguir un mejor código. Si fuese capaz de escribir el mejor código posible a la primera, que siguiese los principios SOLID, que fuese auto explicativo, etc., entonces yo tampoco haría TDD.  ¿Para qué molestarme?
+
+Si me saliese a la primera, no necesitaría refactorizar muy frecuentemente y tener un unit testing que me avise cuando he roto algo. No me haría falta ese loop de feedback tan corto.
+
+">
+
+
+<meta itemprop="dateModified" content="2014-04-24T00:35:31&#43;00:00" />
+<meta itemprop="wordCount" content="862">
+
+
+
+<meta itemprop="keywords" content="code,linux,opinion,apache,composer,conferences,ddd,deployment,performance,php,puppet,redis,refactoring,softonic,tdd,unit-testing,unix,vagrant," />
+
+    
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="Yo no soy DHH. Long live TDD"/>
+<meta name="twitter:description" content="DHH es un gran programador, creador de algo como Rails, framework que quedará en la historia de la programación web. Hoy, él, ha sido noticia por escribir un post titulado &#8220;TDD is dead&#8221;.
+
+Quizá DHH está en lo cierto diciendo que TDD es algo que está muerto, que es momento de seguir hacia adelante y dejarlo atrás. Como cuando crecemos y dejamos de utilizar los ruedines de la bicicleta: es algo para niños pequeños, pero de mayores ya no nos hacen falta. Quizá tiene razón.
+
+Si eres lo suficientemente experto, entonces quizá ya no tiene sentido. Porque para mí TDD es eso: unos ruedines para programar que me ayudan a conseguir un mejor código. Si fuese capaz de escribir el mejor código posible a la primera, que siguiese los principios SOLID, que fuese auto explicativo, etc., entonces yo tampoco haría TDD.  ¿Para qué molestarme?
+
+Si me saliese a la primera, no necesitaría refactorizar muy frecuentemente y tener un unit testing que me avise cuando he roto algo. No me haría falta ese loop de feedback tan corto.
+
+"/>
+<meta name="twitter:site" content="@fiunchinho"/>
+
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="http://fiunchinho.github.io/blog" id="logo">
+          
+          <i class="logo" style="background-image: url('http://fiunchinho.github.io/blog/images/avatar.png')"></i>
+          
+          <span class="site-title">Jose Armesto&#39;s Blog</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="http://fiunchinho.github.io/">Home</a>
+          
+          
+
+          
+
+          
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="http://fiunchinho.github.io/blog/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="Search">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="q" value="site:http://fiunchinho.github.io/blog">
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="http://fiunchinho.github.io/">Home</a></td>
+          
+          
+
+          
+
+          
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="q" value="site:http://fiunchinho.github.io/blog">
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   		
+	    <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="http://fiunchinho.github.io/blog/images/avatar.png">
+      <h2 id="name">Jose Armesto</h2>
+      <h3 id="title">Soy Jose Armesto</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Barcelona</span>
+      
+          <a id="follow" href="https://twitter.com/fiunchinho">
+              Follow
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        22
+        <span>Posts</span>
+      </div>
+      <div class="article-info-block">
+        
+          15
+        
+        <span>
+            Tags
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/fiunchinho" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//medium.com/@fiunchinho" target="_blank" title="Medium"><i class="fa fa-medium"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//stackoverflow.com/users/563072/fiunchinho" target="_blank" title="Stack Overflow"><i class="fa fa-stack-overflow"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//twitter.com/fiunchinho" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+	    
+
+	    
+<section id="main">
+
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+
+            <header class="article-header">
+    <a href="http://fiunchinho.github.io/blog/yo-no-soy-dhh-long-live-tdd/">
+    <h1 class="article-title" itemprop="name">
+        Yo no soy DHH. Long live TDD
+    </h1>
+    </a>
+    <div class="article-meta">
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2014-04-24 00:35:31 &#43;0000 UTC" itemprop="datePublished">04-08-2014</time>
+            &middot;
+            862
+            words
+            &middot;
+            5
+            minute read
+        </div>
+
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="categories/opinion">Opinion</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="tags/tdd">tdd</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="tags/unit-testing">unit testing</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>DHH es un gran programador, creador de algo como <a title="Rails" href="http://rubyonrails.org/" target="_blank">Rails</a>, framework que quedará en la historia de la programación web. Hoy, él, ha sido noticia por escribir <a title="TDD is dead" href="http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html" target="_blank">un post titulado &#8220;TDD is dead&#8221;</a>.</p>
+
+<p>Quizá DHH está en lo cierto diciendo que TDD es algo que está muerto, que es momento de seguir hacia adelante y dejarlo atrás. Como cuando crecemos y dejamos de utilizar los <a title="ruedines de bici" href="http://1.bp.blogspot.com/_95Yb4E_y8Cs/S_HClbzs9YI/AAAAAAAADVs/iiwdG-vqq3Y/s1600/orbea-bicicleta-kids-atlantis-14.jpg" target="_blank">ruedines de la bicicleta</a>: es algo para niños pequeños, pero de mayores ya no nos hacen falta. Quizá tiene razón.</p>
+
+<p>Si eres lo suficientemente experto, entonces quizá ya no tiene sentido. Porque para mí TDD es eso: unos ruedines para programar que me ayudan a conseguir un mejor código. Si fuese capaz de escribir el mejor código posible a la primera, que siguiese los principios SOLID, que fuese auto explicativo, etc., entonces yo tampoco haría TDD.  <strong>¿Para qué molestarme?</strong></p>
+
+<p>Si me saliese a la primera, no necesitaría refactorizar muy frecuentemente y tener un unit testing que me avise cuando he roto algo. No me haría falta ese loop de feedback tan corto.</p>
+
+<p></p>
+
+<h2 id="no-todos-somos-dhh">No todos somos DHH</h2>
+
+<p>El problema es que poca gente tiene la capacidad de hacerlo así de bien siempre. Sobre todo porque normalmente programamos cosas que nunca antes hemos programado. Si estoy haciendo algo que ya hice con anterioridad, quizá no es tan importante seguir un TDD estricto. Ahí tomaré atajos.</p>
+
+<p>Pero si lo que estoy haciendo es completamente nuevo y no sé por donde atacarlo, créeme que haré TDD sin dudarlo, <strong>siguiendo todos y cada uno de los pasos</strong>.</p>
+
+<p>Como la mayoría de la gente no tiene esa capacidad que decía antes, la metedura de pata del post de DHH me parece mayúscula. Me lo parece porque no solo dice que TDD no es para él, sino que anima a la gente a no utilizarlo, y deja entrever que hará cambios en rails para animar a la gente a hacer menos unit testings y más tests de otro tipo.</p>
+
+<p>Teniendo en cuenta su posición de lider en la comunidad, me parece una temeridad por su parte. Está invitando a la gente a que rompa algo tan establecido y aprobado como la <a title="Testing Pyramid" href="http://martinfowler.com/bliki/TestPyramid.html" target="_blank">pirámide de testing</a>, basándose en que no han sido tests útiles para testear aplicaciones basadas en rails. Un vistazo rápido a las charlas de las conferencias de Ruby de los últimos años y vemos como hay un tema recurrente en todas ellas: <a title="Deconstructing the framework" href="https://www.youtube.com/watch?v=iUe6tacW3JE" target="_blank">cómo escapar de Rails</a>. Bien sea por hacer <a title="Fast tests" href="https://www.youtube.com/watch?v=bNn6M2vqxHE" target="_blank">tests más rápidos</a> y tener feedback antes; o porque los modelos de mi aplicación no <a title="ActiveRecord" href="https://www.youtube.com/watch?v=yuh9COzp5vo" target="_blank">estén entre mezclados con el sistema de persistencia</a>; o porque quiero tener a<a title="Hexagonal Rails" href="https://www.youtube.com/watch?v=CGN4RFkhH2M" target="_blank">rquitecturas que me permitan intercambiar componentes fácilmente</a>.</p>
+
+<p>Siempre lo que se busca es escapar de Rails, minimizar la dependencia con el framework. Los unit testings son costosos de hacer cuando el framework está en el medio. Por eso no le han sido útiles: porque su framework no permitía que lo fuesen. La solución, obviamente, no es dejar de hacerlos, sino arreglar el framework.</p>
+
+<blockquote class="twitter-tweet" width="550">
+  <p>
+    Sit-ups are dead. They don’t work when I eat all this sugar and take on all this severe stress. Long live gastric bypass surgery.
+  </p>
+  
+  <p>
+    &mdash; ☕ J. B. Rainsberger (@jbrains) <a href="https://twitter.com/jbrains/statuses/458983164502093824">April 23, 2014</a>
+  </p>
+</blockquote>
+
+<h2 id="el-dogma">El Dogma</h2>
+
+<p>De todas formas sí que comparto con él una cosa, y es el nivel de dogma que TDD ha alcanzado en los últimos años. Personas como Uncle Bob, cuando hablan de TDD, se ponen una sotana encima para predicar la palabra sagrada. Uncle Bob ha sido capaz de convertir la práctica de TDD en una religión.</p>
+
+<div style="width: 213px" class="wp-caption alignleft">
+  <img alt="Uncle Bob, el predicador" src="http://blogs.msdn.com/blogfiles/cdndevs/WindowsLiveWriter/CraftsmanshipandEthicsUncleBobsKeynote_E0E9/uncle_bob_martin_3.jpg" width="203" height="214" />
+  
+  <p class="wp-caption-text">
+    Uncle Bob, el predicador de Texas
+  </p>
+</div>
+
+<p>Es una religión porque al igual que las religiones, el TDD de Uncle Bob promete la salvación eterna si cumples con los mandamientos (<a title="3 rules of TDD" href="http://butunclebob.com/ArticleS.UncleBob.TheThreeRulesOfTdd" target="_blank">3 en el caso del TDD</a>). Pero no solo eso, sino que también asegura el castigo eterno para aquellos que no lo hagan. Eso es lo que hace cuando alude al poco profesionalismo de la gente que no lo practica. Está señalando a los herejes.</p>
+
+<p>En mi opinión, <strong>hacer TDD es una herramienta más</strong>. Una herramienta casi imprescindible para mi, pero una herramienta al fin y al cabo. A alguien que utilizase el bloc de notas para programar le recomendaría que probase Sublime o PHPStorm. Al igual que le recomendaría TDD si no lo utiliza. En ambos casos creo que esa persona será más productiva y hará mejor código. Por tanto será un programador más rentable. ¿Quiere decir esto que no se puede ser rentable si no se usa TDD? Claro que no, al igual que también puedes ser un crack en el bloc de notas.</p>
+
+<blockquote>
+<p>Los defensores de TDD también debemos hacer auto-crítica y pensar en si la forma que elegimos para comunicar las bondades de TDD es la más correcta.</p>
+</blockquote>
+
+<h2 id="conclusión"><strong>Conclusión</strong></h2>
+
+<p>Para mi su post de hoy ha sido una gran metedura de pata. Los unit testings aportan muchísimo valor a la hora de detectar errores, y el TDD es una de las mejores herramientas para que nuestro diseño sea mejor.</p>
+
+<p>Yo no soy DHH. No he inventado Rails ni soy el CTO de <a title="Basecamp" href="https://basecamp.com/" target="_blank">una gran compañía</a>. Yo seguiré utilizando TDD para que me ayude a hacer el mejor código posible.</p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://fiunchinho.github.io/blog/yo-no-soy-dhh-long-live-tdd/" data-id="a304d1a6e0f3befedbd16d4e55c5ce8e" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="http://fiunchinho.github.io/blog/yo-no-soy-dhh-long-live-tdd//#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+
+        
+<nav id="article-nav">
+    
+    <a href="http://fiunchinho.github.io/blog/utilizando-puphpet-tambien-en-produccion/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">Utilizando Puphpet también en producción</div>
+    </a>
+    
+
+    
+    <a href="http://fiunchinho.github.io/blog/el-problema-con-el-code-coverage/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Newer
+      </strong>
+      <div class="article-nav-title">El problema con el code coverage</div>
+    </a>
+    
+</nav>
+
+
+    </article>
+
+    
+    <section id="comments">
+        <div id="disqus_thread">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'fiunchinho';
+    var disqus_identifier = 'http:\/\/fiunchinho.github.io\/blog\/yo-no-soy-dhh-long-live-tdd\/';
+    var disqus_title = 'Yo no soy DHH. Long live TDD';
+    var disqus_url = 'http:\/\/fiunchinho.github.io\/blog\/yo-no-soy-dhh-long-live-tdd\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </section>
+    
+</section>
+
+
+	    
+	    <aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Recents
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/codemotion-2016/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://2016.codemotion.es/img/l_black.png)" alt="Yo no soy DHH. Long live TDD" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                        Opinion
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/codemotion-2016/" class="title">Codemotion 2016</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-11-30 20:48:31 &#43;0000 UTC" itemprop="datePublished">11-08-2016</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/auto-completado-en-zsh/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://ih1.redbubble.net/image.154489147.8220/sticker,375x360.png)" alt="Yo no soy DHH. Long live TDD" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/linux">
+                        Linux
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/auto-completado-en-zsh/" class="title">Auto completado en zsh</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-07-16 17:49:15 &#43;0000 UTC" itemprop="datePublished">07-08-2016</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://www.emiliotorrens.com/wp-content/uploads/2014/03/apache-logo.png)" alt="Yo no soy DHH. Long live TDD" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/code">
+                        Code
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/" class="title">Problemas desplegando código si usas Apache, symlinks y opcache</a></p>
+                    <p class="item-date">
+                        <time datetime="2015-05-01 12:14:32 &#43;0000 UTC" itemprop="datePublished">05-08-2015</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://images-na.ssl-images-amazon.com/images/I/51sZW87slRL._SX375_BO1,204,203,200_.jpg)" alt="Yo no soy DHH. Long live TDD" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/code">
+                        Code
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/" class="title">Jugando con conceptos de DDD</a></p>
+                    <p class="item-date">
+                        <time datetime="2014-10-29 00:46:39 &#43;0000 UTC" itemprop="datePublished">10-08-2014</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://25.media.tumblr.com/45bb569edfcf14a03e9448397cd4ff27/tumblr_mh6v96548x1qhoi9qo1_r1_500.jpg)" alt="Yo no soy DHH. Long live TDD" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                        Opinion
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/" class="title">Mis impresiones sobre el debate #isTDDDead</a></p>
+                    <p class="item-date">
+                        <time datetime="2014-05-23 20:35:44 &#43;0000 UTC" itemprop="datePublished">05-08-2014</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/code">
+                    code
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/linux">
+                    linux
+                </a>
+                <span class="category-list-count">7</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                    opinion
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tags
+    </h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/apache">
+                    apache
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/composer">
+                    composer
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/conferences">
+                    conferences
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/ddd">
+                    ddd
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/deployment">
+                    deployment
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/performance">
+                    performance
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/php">
+                    php
+                </a>
+                <span class="category-list-count">6</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/puppet">
+                    puppet
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/redis">
+                    redis
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/refactoring">
+                    refactoring
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/softonic">
+                    softonic
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/tdd">
+                    tdd
+                </a>
+                <span class="category-list-count">4</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/unit-testing">
+                    unit-testing
+                </a>
+                <span class="category-list-count">6</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/unix">
+                    unix
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/vagrant">
+                    vagrant
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tag cloud
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/apache" style="font-size: 12px;">apache</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/composer" style="font-size: 12px;">composer</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/conferences" style="font-size: 12px;">conferences</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/ddd" style="font-size: 12px;">ddd</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/deployment" style="font-size: 12px;">deployment</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/performance" style="font-size: 12px;">performance</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/php" style="font-size: 12px;">php</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/puppet" style="font-size: 12px;">puppet</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/redis" style="font-size: 12px;">redis</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/refactoring" style="font-size: 12px;">refactoring</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/softonic" style="font-size: 12px;">softonic</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/tdd" style="font-size: 12px;">tdd</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/unit-testing" style="font-size: 12px;">unit-testing</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/unix" style="font-size: 12px;">unix</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/vagrant" style="font-size: 12px;">vagrant</a>
+        
+    </div>
+</div>
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+	    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016
+      Powered by <a href="//gohugo.io">Hugo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>.
+    </div>
+  </div>
+</footer>
+
+
+<script src="http://fiunchinho.github.io/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://fiunchinho.github.io/blog/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+</body>
+</html>

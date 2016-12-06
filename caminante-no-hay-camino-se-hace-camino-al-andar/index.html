@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="es-es">
+<head>
+    <title>Caminante no hay camino, se hace camino al andar &middot; Jose Armesto&#39;s Blog</title>
+    <meta name="generator" content="Hugo 0.17" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Jose Armesto">
+    
+      <meta name="description" content="Software como estilo de vida">
+    
+    
+    <link rel="canonical" href="http://fiunchinho.github.io/blog/caminante-no-hay-camino-se-hace-camino-al-andar/"/>
+    <link rel="icon" href="http://fiunchinho.github.io/blog/favicon.ico">
+    <link rel="apple-touch-icon" href="http://fiunchinho.github.io/blog/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/style.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/monokai.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/fancybox/jquery.fancybox.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="Caminante no hay camino, se hace camino al andar" />
+<meta property="og:description" content="Llevo 3 años enseñando buenas prácticas en el desarrollo de software entre el internship de Softonic y las colaboraciones esporádicas con la universidad, y algo que he aprendido de todo esto es que es muy difícil.
+
+Es difícil explicarle a alguien que la duplicación es mala si no ha sufrido las consecuencias en sus carnes. Es complicado decirle que no abuse de la herencia entre clases si no se ha visto incapaz de cambiar su código por culpa de esto.
+
+Es decir, podemos enseñar buenas prácticas a estudiantes, decirles que hagan esto y aquello, o que eviten eso de allí, pero no lo interiorizarán de verdad hasta que no vean claras las consecuencias. Podemos explicarles los beneficios, los pros y los contras de una decisión y lo memorizarán. Pero no lo entenderán del todo y lo dominarán hasta que no lo sufran y se digan a sí mismos: “mierda”.
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fiunchinho.github.io/blog/caminante-no-hay-camino-se-hace-camino-al-andar/" />
+
+
+<meta property="og:updated_time" content="2014-01-12T17:54:18&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content="Caminante no hay camino, se hace camino al andar">
+<meta itemprop="description" content="Llevo 3 años enseñando buenas prácticas en el desarrollo de software entre el internship de Softonic y las colaboraciones esporádicas con la universidad, y algo que he aprendido de todo esto es que es muy difícil.
+
+Es difícil explicarle a alguien que la duplicación es mala si no ha sufrido las consecuencias en sus carnes. Es complicado decirle que no abuse de la herencia entre clases si no se ha visto incapaz de cambiar su código por culpa de esto.
+
+Es decir, podemos enseñar buenas prácticas a estudiantes, decirles que hagan esto y aquello, o que eviten eso de allí, pero no lo interiorizarán de verdad hasta que no vean claras las consecuencias. Podemos explicarles los beneficios, los pros y los contras de una decisión y lo memorizarán. Pero no lo entenderán del todo y lo dominarán hasta que no lo sufran y se digan a sí mismos: “mierda”.
+
+">
+
+
+<meta itemprop="dateModified" content="2014-01-12T17:54:18&#43;00:00" />
+<meta itemprop="wordCount" content="460">
+
+
+
+<meta itemprop="keywords" content="code,linux,opinion,apache,composer,conferences,ddd,deployment,performance,php,puppet,redis,refactoring,softonic,tdd,unit-testing,unix,vagrant," />
+
+    
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="Caminante no hay camino, se hace camino al andar"/>
+<meta name="twitter:description" content="Llevo 3 años enseñando buenas prácticas en el desarrollo de software entre el internship de Softonic y las colaboraciones esporádicas con la universidad, y algo que he aprendido de todo esto es que es muy difícil.
+
+Es difícil explicarle a alguien que la duplicación es mala si no ha sufrido las consecuencias en sus carnes. Es complicado decirle que no abuse de la herencia entre clases si no se ha visto incapaz de cambiar su código por culpa de esto.
+
+Es decir, podemos enseñar buenas prácticas a estudiantes, decirles que hagan esto y aquello, o que eviten eso de allí, pero no lo interiorizarán de verdad hasta que no vean claras las consecuencias. Podemos explicarles los beneficios, los pros y los contras de una decisión y lo memorizarán. Pero no lo entenderán del todo y lo dominarán hasta que no lo sufran y se digan a sí mismos: “mierda”.
+
+"/>
+<meta name="twitter:site" content="@fiunchinho"/>
+
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="http://fiunchinho.github.io/blog" id="logo">
+          
+          <i class="logo" style="background-image: url('http://fiunchinho.github.io/blog/images/avatar.png')"></i>
+          
+          <span class="site-title">Jose Armesto&#39;s Blog</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="http://fiunchinho.github.io/">Home</a>
+          
+          
+
+          
+
+          
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="http://fiunchinho.github.io/blog/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="Search">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="q" value="site:http://fiunchinho.github.io/blog">
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="http://fiunchinho.github.io/">Home</a></td>
+          
+          
+
+          
+
+          
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="q" value="site:http://fiunchinho.github.io/blog">
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   		
+	    <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="http://fiunchinho.github.io/blog/images/avatar.png">
+      <h2 id="name">Jose Armesto</h2>
+      <h3 id="title">Soy Jose Armesto</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Barcelona</span>
+      
+          <a id="follow" href="https://twitter.com/fiunchinho">
+              Follow
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        22
+        <span>Posts</span>
+      </div>
+      <div class="article-info-block">
+        
+          15
+        
+        <span>
+            Tags
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/fiunchinho" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//medium.com/@fiunchinho" target="_blank" title="Medium"><i class="fa fa-medium"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//stackoverflow.com/users/563072/fiunchinho" target="_blank" title="Stack Overflow"><i class="fa fa-stack-overflow"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//twitter.com/fiunchinho" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+	    
+
+	    
+<section id="main">
+
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+
+            <header class="article-header">
+    <a href="http://fiunchinho.github.io/blog/caminante-no-hay-camino-se-hace-camino-al-andar/">
+    <h1 class="article-title" itemprop="name">
+        Caminante no hay camino, se hace camino al andar
+    </h1>
+    </a>
+    <div class="article-meta">
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2014-01-12 17:54:18 &#43;0000 UTC" itemprop="datePublished">01-08-2014</time>
+            &middot;
+            460
+            words
+            &middot;
+            3
+            minute read
+        </div>
+
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="categories/opinion">Opinion</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="tags/softonic">softonic</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>Llevo 3 años enseñando buenas prácticas en el desarrollo de software entre <a title="Softonic Internship" href="http://careers.en.softonic.com/internship-program/" target="_blank">el internship de Softonic</a> y las colaboraciones esporádicas con la universidad, y algo que he aprendido de todo esto es que <strong>es muy difícil</strong>.</p>
+
+<p>Es difícil explicarle a alguien que la duplicación es mala si no ha sufrido las consecuencias en sus carnes. Es complicado decirle que no abuse de la herencia entre clases si no se ha visto incapaz de cambiar su código por culpa de esto.</p>
+
+<p>Es decir, podemos enseñar buenas prácticas a estudiantes, decirles que hagan esto y aquello, o que eviten eso de allí, pero <strong>no lo interiorizarán de verdad hasta que no vean claras las consecuencias</strong>. Podemos explicarles los beneficios, los pros y los contras de una decisión y lo memorizarán. Pero no lo entenderán del todo y lo dominarán hasta que no lo sufran y se digan a sí mismos: “mierda”.</p>
+
+<p></p>
+
+<p>Igual que un piloto o un soldado pueden aprender su oficio con los libros o simuladores, no se convertirán en seniors en su profesión hasta que no lo hagan de verdad.</p>
+
+<blockquote>
+<p>Para muchos, mantener una pieza de software durante un par de meses será el tiempo más largo que hayan tenido que mantener algo</p>
+</blockquote>
+
+<p>En <a title="Softonic Internship" href="http://careers.en.softonic.com/internship-program/" target="_blank">el internship de Softonic</a> enseñamos desarrollo de software durante 3 meses a estudiantes que estén terminando la carrera. Es un curso intensivo donde se ven muchas cosas. Es poco tiempo, pero para intentar que vayan ganando horas de vuelo, disparos en el campo de batalla, desde el principio tienen que desarrollar su propio framework desde cero. Y ese es el framework que utilizarán hasta el final del curso. Cuando nuevas funcionalidades se vayan pidiendo, verán si ciertas decisiones que han tomado les han ayudado o perjudicado y cuan costoso es de modificar.</p>
+
+<p>Para muchos, mantener una pieza de software durante un par de meses será el tiempo más largo que hayan tenido que mantener algo. <strong>Es en el mantenimiento donde se ponen de manifiesto los pros y los contras que se explican en la teoría del curso</strong>.</p>
+
+<p>Si usásemos un framework open source existente o diésemos una solución igual para todos, se quedarían sin aprender esto. Y creo que es primordial en el camino para convertirse en un programador senior. Porque son los seniors los que tienen suficientes horas de vuelo como para, con el libro en la mano, saber cuando pueden saltarse las reglas para hacer mejor software.</p>
+
+<p>Los libros, los vídeos y los cursos son recursos muy buenos para aprender a programar. Pero estos son solo la semilla para que luego podamos crecer. <strong>No sirve de nada si no salimos ahí fuera e intentamos solventar problemas reales</strong>.</p>
+
+<p>¿Quieres aprender a programar? Construye algo que dure en el tiempo, compártelo con los demás y utilízalo.</p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://fiunchinho.github.io/blog/caminante-no-hay-camino-se-hace-camino-al-andar/" data-id="bb135ff62448a5686f8a53cbf64f0fa0" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="http://fiunchinho.github.io/blog/caminante-no-hay-camino-se-hace-camino-al-andar//#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+
+        
+<nav id="article-nav">
+    
+    <a href="http://fiunchinho.github.io/blog/que-es-el-versionamiento-semantico-y-por-que-es-importante/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">¿Qué es el versionamiento semántico y por qué es importante?</div>
+    </a>
+    
+
+    
+    <a href="http://fiunchinho.github.io/blog/administrar-recursos-frontend-con-assetic-sin-symfony2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Newer
+      </strong>
+      <div class="article-nav-title">Administrar recursos frontend con Assetic (sin Symfony2)</div>
+    </a>
+    
+</nav>
+
+
+    </article>
+
+    
+    <section id="comments">
+        <div id="disqus_thread">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'fiunchinho';
+    var disqus_identifier = 'http:\/\/fiunchinho.github.io\/blog\/caminante-no-hay-camino-se-hace-camino-al-andar\/';
+    var disqus_title = 'Caminante no hay camino, se hace camino al andar';
+    var disqus_url = 'http:\/\/fiunchinho.github.io\/blog\/caminante-no-hay-camino-se-hace-camino-al-andar\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </section>
+    
+</section>
+
+
+	    
+	    <aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Recents
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/codemotion-2016/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://2016.codemotion.es/img/l_black.png)" alt="Caminante no hay camino, se hace camino al andar" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                        Opinion
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/codemotion-2016/" class="title">Codemotion 2016</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-11-30 20:48:31 &#43;0000 UTC" itemprop="datePublished">11-08-2016</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/auto-completado-en-zsh/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://ih1.redbubble.net/image.154489147.8220/sticker,375x360.png)" alt="Caminante no hay camino, se hace camino al andar" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/linux">
+                        Linux
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/auto-completado-en-zsh/" class="title">Auto completado en zsh</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-07-16 17:49:15 &#43;0000 UTC" itemprop="datePublished">07-08-2016</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://www.emiliotorrens.com/wp-content/uploads/2014/03/apache-logo.png)" alt="Caminante no hay camino, se hace camino al andar" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/code">
+                        Code
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/" class="title">Problemas desplegando código si usas Apache, symlinks y opcache</a></p>
+                    <p class="item-date">
+                        <time datetime="2015-05-01 12:14:32 &#43;0000 UTC" itemprop="datePublished">05-08-2015</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://images-na.ssl-images-amazon.com/images/I/51sZW87slRL._SX375_BO1,204,203,200_.jpg)" alt="Caminante no hay camino, se hace camino al andar" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/code">
+                        Code
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/" class="title">Jugando con conceptos de DDD</a></p>
+                    <p class="item-date">
+                        <time datetime="2014-10-29 00:46:39 &#43;0000 UTC" itemprop="datePublished">10-08-2014</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://25.media.tumblr.com/45bb569edfcf14a03e9448397cd4ff27/tumblr_mh6v96548x1qhoi9qo1_r1_500.jpg)" alt="Caminante no hay camino, se hace camino al andar" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                        Opinion
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/" class="title">Mis impresiones sobre el debate #isTDDDead</a></p>
+                    <p class="item-date">
+                        <time datetime="2014-05-23 20:35:44 &#43;0000 UTC" itemprop="datePublished">05-08-2014</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/code">
+                    code
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/linux">
+                    linux
+                </a>
+                <span class="category-list-count">7</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                    opinion
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tags
+    </h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/apache">
+                    apache
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/composer">
+                    composer
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/conferences">
+                    conferences
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/ddd">
+                    ddd
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/deployment">
+                    deployment
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/performance">
+                    performance
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/php">
+                    php
+                </a>
+                <span class="category-list-count">6</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/puppet">
+                    puppet
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/redis">
+                    redis
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/refactoring">
+                    refactoring
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/softonic">
+                    softonic
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/tdd">
+                    tdd
+                </a>
+                <span class="category-list-count">4</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/unit-testing">
+                    unit-testing
+                </a>
+                <span class="category-list-count">6</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/unix">
+                    unix
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/vagrant">
+                    vagrant
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tag cloud
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/apache" style="font-size: 12px;">apache</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/composer" style="font-size: 12px;">composer</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/conferences" style="font-size: 12px;">conferences</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/ddd" style="font-size: 12px;">ddd</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/deployment" style="font-size: 12px;">deployment</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/performance" style="font-size: 12px;">performance</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/php" style="font-size: 12px;">php</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/puppet" style="font-size: 12px;">puppet</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/redis" style="font-size: 12px;">redis</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/refactoring" style="font-size: 12px;">refactoring</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/softonic" style="font-size: 12px;">softonic</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/tdd" style="font-size: 12px;">tdd</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/unit-testing" style="font-size: 12px;">unit-testing</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/unix" style="font-size: 12px;">unix</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/vagrant" style="font-size: 12px;">vagrant</a>
+        
+    </div>
+</div>
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+	    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016
+      Powered by <a href="//gohugo.io">Hugo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>.
+    </div>
+  </div>
+</footer>
+
+
+<script src="http://fiunchinho.github.io/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://fiunchinho.github.io/blog/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+</body>
+</html>

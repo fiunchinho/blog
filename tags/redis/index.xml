@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jose Armesto&#39;s Blog</title>
+    <link>http://fiunchinho.github.io/blog/tags/redis/index.xml</link>
+    <description>Recent content on Jose Armesto&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es-es</language>
+    <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
+    <atom:link href="http://fiunchinho.github.io/blog/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Limitar memoria máxima de Redis</title>
+      <link>http://fiunchinho.github.io/blog/limitar-memoria-maxima-de-redis/</link>
+      <pubDate>Thu, 21 Nov 2013 17:59:32 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/limitar-memoria-maxima-de-redis/</guid>
+      <description>&lt;p&gt;Haciendo pruebas en uno de los proyectos que tengo, utilicé &lt;a title=&#34;Redis&#34; href=&#34;http://redis.io/&#34; target=&#34;_blank&#34;&gt;Redis&lt;/a&gt; como sistema de caché, en vez de utilizar &lt;a title=&#34;Memcached&#34; href=&#34;http://memcached.org/&#34; target=&#34;_blank&#34;&gt;Memcached&lt;/a&gt; que es el que normalmente uso. Por defecto, Memcached va llenando su memoria hasta que esta se llena, y es entonces cuando empieza a borrar valores existentes para hacer sitio a las nuevas. La estrategia elegida para borrar es eliminar aquellas keys de la cache que han sido menos utilizadas.&lt;/p&gt;
+
+&lt;p&gt;Cuando activé Redis para mi proyecto, el proceso _daemon_ del servidor empezó a ocupar más y más memoria hasta que ocupaba casi la totalidad de la RAM del servidor. Poco después, el propio sistema operativo decidió matar el proceso de redis para no morir en el intento.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Si no quería tener que conectarme todos los días a levantar manualmente el daemon de Redis debía encontrar una manera de que esto no ocurriese. Así que decidí que Redis se comportase igual que Memcached: decidir una &lt;strong&gt;memoria límite&lt;/strong&gt;, y que cuando esté llena, &lt;strong&gt;empiece a descartar las claves menos utilizadas&lt;/strong&gt;. Para ello abrí el archivo de configuración de Redis (en mi caso se encontraba bajo &lt;em&gt;/etc/redis/redis.conf&lt;/em&gt;), y me llevé una grata sorpresa ya que parecía casi un manual. Todas las opciones estaban muy bien explicadas, incluso con ejemplos.&lt;/p&gt;
+
+&lt;p&gt;Buscando la opción &lt;code&gt;maxmemory&lt;/code&gt;, me encontré con lo siguiente en el propio archivo de configuración&lt;/p&gt;
+
+&lt;pre&gt;# Don&#39;t use more memory than the specified amount of bytes.
+# When the memory limit is reached Redis will try to remove keys with an
+# EXPIRE set. It will try to start freeing keys that are going to expire
+# in little time and preserve keys with a longer time to live.
+# Redis will also try to remove objects from free lists if possible.
+#
+# If all this fails, Redis will start to reply with errors to commands
+# that will use more memory, like SET, LPUSH, and so on, and will continue
+# to reply to most read-only commands like GET.
+#
+# WARNING: maxmemory can be a good idea mainly if you want to use Redis as a
+# &#39;state&#39; server or cache, not as a real DB. When Redis is used as a real
+# database the memory usage will grow over the weeks, it will be obvious if
+# it is going to use too much memory in the long run, and you&#39;ll have the time
+# to upgrade. With maxmemory after the limit is reached you&#39;ll start to get
+# errors for write operations, and this may even lead to DB inconsistency.
+#
+# maxmemory &amp;lt;bytes&amp;gt;&lt;/pre&gt;
+
+&lt;p&gt;Así que solo tenía que decidir cuanta memoria quería designar como máximo para Redis. Como lo estaba utilizando de caché, y no como base de datos, no hacía falta que fuese demasiado. Así que decidí poner &lt;strong&gt;256Mb&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;maxmemory 268435456&lt;/pre&gt;
+
+&lt;p&gt;Lo siguiente, era decidir qué estrategia debía seguir Redis para descartar claves guardadas en memoria. Una línea más abajo de donde estaba en el fichero de configuración me encuentro esto&lt;/p&gt;
+
+&lt;pre&gt;# MAXMEMORY POLICY: how Redis will select what to remove when maxmemory
+# is reached? You can select among five behavior:
+# 
+# volatile-lru -&amp;gt; remove the key with an expire set using an LRU algorithm
+# allkeys-lru -&amp;gt; remove any key accordingly to the LRU algorithm
+# volatile-random -&amp;gt; remove a random key with an expire set
+# allkeys-&amp;gt;random -&amp;gt; remove a random key, any key
+# volatile-ttl -&amp;gt; remove the key with the nearest expire time (minor TTL)
+# noeviction -&amp;gt; don&#39;t expire at all, just return an error on write operations
+# 
+# Note: with all the kind of policies, Redis will return an error on write
+# operations, when there are not suitable keys for eviction.
+#
+# At the date of writing this commands are: set setnx setex append
+# incr decr rpush lpush rpushx lpushx linsert lset rpoplpush sadd
+# sinter sinterstore sunion sunionstore sdiff sdiffstore zadd zincrby
+# zunionstore zinterstore hset hsetnx hmset hincrby incrby decrby
+# getset mset msetnx exec sort
+#
+# The default is:
+#
+# maxmemory-policy volatile-lru&lt;/pre&gt;
+
+&lt;p&gt;Así que cualquiera de las 2 primeras estrategias podía valerme para lo que yo quería conseguir. Añadí la siguiente línea&lt;/p&gt;
+
+&lt;pre&gt;maxmemory-policy volatile-lru&lt;/pre&gt;
+
+&lt;p&gt;Y listo. Ahora Redis tenía un ímite de memoria, y cuando se llenase, iría borrando valores que hubiesen sido menos utilizados recientemente. Podemos comprobar que funciona correctamente, controlando cuánta memoria está utilizando Redis en un momento determinado. Para ello, tan solo tenemos que utilizar el siguiente comando&lt;/p&gt;
+
+&lt;pre&gt;redis-cli info | grep memory&lt;/pre&gt;
+
+&lt;p&gt;Y debería mostrarnos algo parecido a esto&lt;/p&gt;
+
+&lt;pre&gt;used_memory:268227192
+used_memory_human:255.80M
+used_memory_rss:293154816&lt;/pre&gt;
+
+&lt;p&gt;Ahí podemos ver que la memoria no supera el límite que elegimos. El sistema operativo ya no tendrá que volver a preocuparse.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

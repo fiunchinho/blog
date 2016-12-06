@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jose Armesto&#39;s Blog</title>
+    <link>http://fiunchinho.github.io/blog/tags/puppet/index.xml</link>
+    <description>Recent content on Jose Armesto&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es-es</language>
+    <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
+    <atom:link href="http://fiunchinho.github.io/blog/tags/puppet/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Utilizando Puphpet también en producción</title>
+      <link>http://fiunchinho.github.io/blog/utilizando-puphpet-tambien-en-produccion/</link>
+      <pubDate>Sat, 19 Apr 2014 09:00:56 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/utilizando-puphpet-tambien-en-produccion/</guid>
+      <description>&lt;p&gt;Ya &lt;a title=&#34;Herramientas para el programador PHP moderno&#34; href=&#34;http://blog.armesto.net/herramientas-para-el-programador-php-moderno/&#34; target=&#34;_blank&#34;&gt;hablé en el pasado sobre Puphpet&lt;/a&gt;, una herramienta web que genera manifiestos de &lt;a title=&#34;Puppet&#34; href=&#34;http://puppetlabs.com/&#34; target=&#34;_blank&#34;&gt;Puppet&lt;/a&gt; y de &lt;a title=&#34;Vagrant&#34; href=&#34;http://www.vagrantup.com/&#34; target=&#34;_blank&#34;&gt;Vagrant&lt;/a&gt; de forma rápida y sencilla.&lt;/p&gt;
+
+&lt;p&gt;Llevo tiempo utilizándolo para configurar mis máquinas virtuales de desarrollo junto a Vagrant, pero siempre estaba un poco con la mosca detrás de la oreja por el hecho de no poder utilizarlo también en producción.&lt;/p&gt;
+
+&lt;p&gt;Así que el otro día me decidí a echar un ojo al código fuente de &lt;a title=&#34;Puphpet&#34; href=&#34;https://puphpet.com/&#34; target=&#34;_blank&#34;&gt;Puphpet&lt;/a&gt; y ver si podía utilizar solo la parte generada de &lt;a title=&#34;Puppet&#34; href=&#34;http://puppetlabs.com/&#34; target=&#34;_blank&#34;&gt;Puppet&lt;/a&gt;, y olvidarme de la parte de &lt;a title=&#34;Vagrant&#34; href=&#34;http://www.vagrantup.com/&#34; target=&#34;_blank&#34;&gt;Vagrant&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Resulta que para hacer su magia, &lt;a title=&#34;Puphpet&#34; href=&#34;https://puphpet.com/&#34; target=&#34;_blank&#34;&gt;Puphpet&lt;/a&gt; tan solo le dice a Vagrant que ejecute unos scripts de &lt;em&gt;bash&lt;/em&gt;. Así que pensé, &lt;strong&gt;¿qué pasa si los ejecuto yo manualmente en producción?&lt;/strong&gt; Los scripts solo se encargaban de instalar puppet, curl y alguna librería más, así que no debía de haber mucho problema. Después de hacer esto, tan solo le diría a puppet que leyese el manifiesto generado por Puphpet y listo. Mi plan sonaba bien, así que me propuse a intentarlo.&lt;/p&gt;
+
+&lt;p&gt;Para asegurarme de que nada fallaba, coloqué los archivos generados por &lt;a title=&#34;Puphpet&#34; href=&#34;https://puphpet.com/&#34; target=&#34;_blank&#34;&gt;Puphpet&lt;/a&gt; en el mismo sitio que cuando &lt;a title=&#34;Vagrant&#34; href=&#34;http://www.vagrantup.com/&#34; target=&#34;_blank&#34;&gt;Vagrant&lt;/a&gt; los utiliza, es decir &lt;em&gt;/vagrant&lt;/em&gt;. Entré en mi servidor de producción y subí los archivos de forma que quedaron así:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_035.png&#34;&gt;&lt;img class=&#34;alignnone size-full wp-image-78&#34; alt=&#34;Puphpet tree&#34; src=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_035.png&#34; width=&#34;365&#34; height=&#34;509&#34; srcset=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_035.png 365w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_035-215x300.png 215w&#34; sizes=&#34;(max-width: 365px) 100vw, 365px&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Una vez que tenía todo en su sitio, tan solo me quedaba ejecutar los scripts &lt;strong&gt;en el mismo orden&lt;/strong&gt; que &lt;a title=&#34;Vagrant&#34; href=&#34;http://www.vagrantup.com/&#34; target=&#34;_blank&#34;&gt;Vagrant&lt;/a&gt; lo hace. Acordaos de dar permisos de ejecución a esos ficheros. El orden es el siguiente:&lt;/p&gt;
+
+&lt;pre&gt;chmod +x /vagrant/puphpet/shell/*.sh
+sudo ./vagrant/puphpet/shell/initial-setup.sh /vagrant/puphpet
+sudo ./vagrant/puphpet/shell/update-puppet.sh
+sudo ./vagrant/puphpet/shell/r10k.sh&lt;/pre&gt;
+
+&lt;p&gt;Esto instalará todas las dependencias necesarias para que podamos empezar a utilizar &lt;a title=&#34;Puppet&#34; href=&#34;http://puppetlabs.com/&#34; target=&#34;_blank&#34;&gt;puppet&lt;/a&gt; en producción. Así que una vez finalizado, &lt;strong&gt;solo queda decirle a puppet que aplique los cambios del manifiesto&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;pre&gt;sudo puppet apply --debug --verbose --hiera_config /vagrant/puphpet/puppet/hiera.yaml --parser future /vagrant/puphpet/puppet/manifest.pp&lt;/pre&gt;
+
+&lt;p&gt;Este comando hará todo lo que hemos pedido en el manifiesto. Para asegurarnos de que todo sigue en orden en el servidor, podemos crear un cron que lo ejecute cada cierto tiempo, o tan solo ejecutarlo manualmente cuando añadimos o borramos algo al manifiesto.&lt;/p&gt;
+
+&lt;p&gt;Así que con esto tengo la misma configuración en mi máquina virtual de desarrollo que en mi máquina de producción. Y es una configuración que he ido seleccionando a través de una cómoda interfaz web gracias a &lt;a title=&#34;Puphpet&#34; href=&#34;https://puphpet.com/&#34; target=&#34;_blank&#34;&gt;Puphpet&lt;/a&gt;. Épico.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

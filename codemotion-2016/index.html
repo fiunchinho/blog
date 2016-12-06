@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="es-es">
+<head>
+    <title>Codemotion 2016 &middot; Jose Armesto&#39;s Blog</title>
+    <meta name="generator" content="Hugo 0.17" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Jose Armesto">
+    
+      <meta name="description" content="Software como estilo de vida">
+    
+    
+    <link rel="canonical" href="http://fiunchinho.github.io/blog/codemotion-2016/"/>
+    <link rel="icon" href="http://fiunchinho.github.io/blog/favicon.ico">
+    <link rel="apple-touch-icon" href="http://fiunchinho.github.io/blog/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/style.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/monokai.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/fancybox/jquery.fancybox.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="Codemotion 2016" />
+<meta property="og:description" content="Ya sé que voy un poco tarde con el post hablando sobre cómo fue la Codemotion 2016, pero tenía ganas de compartir mi experiencia en la conferencia.
+
+Vaya por delante que es dificilísimo organizar una conferencia a nivel nacional, y que hacerlo durante varios años seguidos, tiene mucho mérito. Pero también es importante compartir aquellas cosas que son mejorables para, entre todos, conseguir eventos de mejor calidad en nuestro país. Así que sin más dilación, compartiré con vosotros mi experiencia en la Codemotion 2016, tanto desde el punto de vista de asistente, como desde el punto de vista de ponente.
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fiunchinho.github.io/blog/codemotion-2016/" />
+
+
+<meta property="og:updated_time" content="2016-11-30T20:48:31&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content="Codemotion 2016">
+<meta itemprop="description" content="Ya sé que voy un poco tarde con el post hablando sobre cómo fue la Codemotion 2016, pero tenía ganas de compartir mi experiencia en la conferencia.
+
+Vaya por delante que es dificilísimo organizar una conferencia a nivel nacional, y que hacerlo durante varios años seguidos, tiene mucho mérito. Pero también es importante compartir aquellas cosas que son mejorables para, entre todos, conseguir eventos de mejor calidad en nuestro país. Así que sin más dilación, compartiré con vosotros mi experiencia en la Codemotion 2016, tanto desde el punto de vista de asistente, como desde el punto de vista de ponente.
+
+">
+
+
+<meta itemprop="dateModified" content="2016-11-30T20:48:31&#43;00:00" />
+<meta itemprop="wordCount" content="1261">
+
+
+
+<meta itemprop="keywords" content="code,linux,opinion,apache,composer,conferences,ddd,deployment,performance,php,puppet,redis,refactoring,softonic,tdd,unit-testing,unix,vagrant," />
+
+    
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="Codemotion 2016"/>
+<meta name="twitter:description" content="Ya sé que voy un poco tarde con el post hablando sobre cómo fue la Codemotion 2016, pero tenía ganas de compartir mi experiencia en la conferencia.
+
+Vaya por delante que es dificilísimo organizar una conferencia a nivel nacional, y que hacerlo durante varios años seguidos, tiene mucho mérito. Pero también es importante compartir aquellas cosas que son mejorables para, entre todos, conseguir eventos de mejor calidad en nuestro país. Así que sin más dilación, compartiré con vosotros mi experiencia en la Codemotion 2016, tanto desde el punto de vista de asistente, como desde el punto de vista de ponente.
+
+"/>
+<meta name="twitter:site" content="@fiunchinho"/>
+
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="http://fiunchinho.github.io/blog" id="logo">
+          
+          <i class="logo" style="background-image: url('http://fiunchinho.github.io/blog/images/avatar.png')"></i>
+          
+          <span class="site-title">Jose Armesto&#39;s Blog</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="http://fiunchinho.github.io/">Home</a>
+          
+          
+
+          
+
+          
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="http://fiunchinho.github.io/blog/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="Search">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="q" value="site:http://fiunchinho.github.io/blog">
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="http://fiunchinho.github.io/">Home</a></td>
+          
+          
+
+          
+
+          
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="q" value="site:http://fiunchinho.github.io/blog">
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   		
+	    <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="http://fiunchinho.github.io/blog/images/avatar.png">
+      <h2 id="name">Jose Armesto</h2>
+      <h3 id="title">Soy Jose Armesto</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Barcelona</span>
+      
+          <a id="follow" href="https://twitter.com/fiunchinho">
+              Follow
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        22
+        <span>Posts</span>
+      </div>
+      <div class="article-info-block">
+        
+          15
+        
+        <span>
+            Tags
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/fiunchinho" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//medium.com/@fiunchinho" target="_blank" title="Medium"><i class="fa fa-medium"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//stackoverflow.com/users/563072/fiunchinho" target="_blank" title="Stack Overflow"><i class="fa fa-stack-overflow"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//twitter.com/fiunchinho" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+	    
+
+	    
+<section id="main">
+
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+
+            <header class="article-header">
+    <a href="http://fiunchinho.github.io/blog/codemotion-2016/">
+    <h1 class="article-title" itemprop="name">
+        Codemotion 2016
+    </h1>
+    </a>
+    <div class="article-meta">
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-11-30 20:48:31 &#43;0000 UTC" itemprop="datePublished">11-08-2016</time>
+            &middot;
+            1261
+            words
+            &middot;
+            6
+            minute read
+        </div>
+
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="categories/opinion">Opinion</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="tags/conferences">conferences</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>Ya sé que voy un poco tarde con el post hablando sobre cómo fue la Codemotion 2016, pero tenía ganas de compartir mi experiencia en la conferencia.</p>
+
+<p>Vaya por delante que es dificilísimo organizar una conferencia a nivel nacional, y que hacerlo durante varios años seguidos, tiene mucho mérito. Pero también es importante compartir aquellas cosas que son mejorables para, entre todos, conseguir eventos de mejor calidad en nuestro país. Así que sin más dilación, compartiré con vosotros mi experiencia en la Codemotion 2016, tanto desde el punto de vista de asistente, como desde el punto de vista de ponente.</p>
+
+<p></p>
+
+<h2 id="como-asistente">Como asistente</h2>
+
+<h3 id="número-de-asistentes">Número de asistentes</h3>
+
+<p>No vamos a andarnos por las ramas e iremos directos al que, para mi, es el principal problema de esta conferencia: el número de asistentes. Organizar una conferencia es difícil, pero organizar una de 1000 o 2000 asistentes es complicadísimo. A pesar de que me ya me habían avisado de años anteriores, el año pasado decidí asistir a la Codemotion por primera vez, y me encontré de lleno con el pastel. Colas larguísimas para asistir a charlas y talleres; gente de pie viendo las charlas; talleres prácticos de 100 personas&#8230; <strong>Masificación</strong>.</p>
+
+<p>Este año, la organización pidió a los asistentes que votasen las charlas para poder preveer un poco la asistencia de cada una, pero no creo que mucha gente haya votado. Además, salvo el aula magna de la universidad, el resto de aulas donde había charlas apenas podían acoger un 10% de la asistencia al evento, lo que hacía imposible acoger tanta gente. El hecho de tener muchos tracks en paralelo no da vía libre para recibir 2000 personas.</p>
+
+<p>En mi caso, como iba con conocimiento de causa del año pasado, me quedé a la mayoría de las charlas del aula magna. Solo me atrevía a ir a otra aula cuando la charla era después de un parón, o después de comer. Haciendo esto solo tuve que ver una charla sentado en el suelo, y hacer cola durante 10-15 mins para la charla de <a href="https://twitter.com/carlosble">Carlos Blé</a>.</p>
+
+<p>La solución propuesta sería hacer una conferencia de menos asistentes. Entiendo que tener el título de &#8220;Conferencia más grande de España&#8221;, y poder decir a patrocinadores que tantos miles de programadores asisten al evento es tentador, pero hacen la experiencia muchísimo peor para los que asisten.</p>
+
+<p>Por ejemplo, <a href="https://twitter.com/fiunchinho/status/799960255279013888">hubo una falta de respeto generalizada hacia los ponentes y los asistentes</a> interesados en la ronda de preguntas de cada charla. Al haber espacio tan limitado, la gente prefiere levantarse para coger sitio en la siguiente que esperarse a terminar la sesión de preguntas, haciendo que el ponente apenas pueda responder, y la gente no se entere bien de qué está ocurriendo. Una pena.</p>
+
+<h3 id="lugar-del-evento">Lugar del evento</h3>
+
+<p>El otro gran fallo del evento en mi opinión es el lugar del mismo. La universidad donde se celebra está demasiado lejos de&#8230; bueno, de todo. La organización intentó mejorar esto poniendo un servicio gratuito de autobuses desde plaza de España, lo cual es un buen detalle, aunque insuficiente. El autobus era solo a ciertas horas, y los que venimos de fuera, muchas veces llegamos más tarde de lo habitual a Madrid, o tenemos que irnos antes de que termine el evento, así que no podemos utilizar esos autobuses.</p>
+
+<p>El tema autobuses también es mejorable. No se especificaba en donde exactamente paraba el autobús, y los que somos de fuera agradeceríamos unas mejores indicaciones. Además, el segundo día fui a coger el autobus de las 9:30 para ir a la conferencia, y, o salió con mucha antelación, o <strong>ese día no hubo autobús</strong>. Envié <a href="https://twitter.com/fiunchinho/status/799893331136352256">un tweet a la organización</a> mientras esperábamos por el autobús yo y otras personas, pero <strong>nadie contestó</strong>.</p>
+
+<p>Una mejora sería que alguien de la organización fuese siempre en los pocos autobuses que hay. Aunque sigo pensando que la mejor solución sería buscar un sitio más cercano. Preferiría pagar un poco más y no tener que ir a Mordor a ver las charlas.</p>
+
+<h3 id="comida">Comida</h3>
+
+<p>Creo que la comida fue algo muy positivo, con muchas opciones distintas. Como todo lo demás está influido por el número de asistentes, pero me pareció bien solucionado.</p>
+
+<p>Eché en falta que el sábado no hubiese una fuente de café/comida, ya que la cafetería de la universidad estaba cerrada, y no hay nada en kilómetros a la redonda.</p>
+
+<h3 id="acreditación">Acreditación</h3>
+
+<p>Como el año pasado, nadie controla quién entra en la conferencia. Sobretodo porque el viernes compartimos recinto con los universitarios.</p>
+
+<h2 id="como-ponente">Como ponente</h2>
+
+<p>Antes de nada dar las gracias a las comunidades que votaron las charlas y me permitieron compartir cosas como ponente. Un honor y un placer.</p>
+
+<p>También decir que nadie me obliga a dar una charla. Es algo que hago porque yo quiero.</p>
+
+<p>Dicho lo cual, otras conferencias mucho más pequeñas y modestas pagan viaje, o estancia, o ambas para los pontentes, sobretodo si vienen de fuera. No digo que en esta se tenga que pagar todo, pero el taxi para llegar o irse de la conferencia, hubiese ayudado mucho.</p>
+
+<p>Mi charla era la segunda del día, después de <a href="https://twitter.com/kinisoftware">@kinisoftware</a>, así que estuve repasándola, y antes de que terminase la anterior, ya estaba en la sala para poder preparar todo con calma. Al rato de estar ya sobre el escenario, se acercó alguien con un pen drive para que le pases las diapositivas. El pen drive no funcionaba en mi mac, no sé por qué, así que como me sugirió el propio <a href="https://twitter.com/kinisoftware">@kinisoftware</a> subí la presentación al Google Drive que la organización puso a disposición de los ponentes para subir las charlas. Cuando volvió la persona de las diapositivas le dije que ya estaba subida la presentación al Drive, y me dijo que <strong>no sabía de ningún Google Drive</strong>. Supongo que no era de la organización, si no de la empresa que grababa las charlas.</p>
+
+<p>Un poco descolocado, y como soy un tío con recursos, recordé que traía las slides en mi propio pen drive, así que le dije que se llevase el mío.</p>
+
+<p>Y esa fue la última vez que vi a alguien no-asistente interesarse por la charla. Nadie vino a ayudarme a configurar nada. Al poco de empezar la charla tuve problemas de sonido con un vídeo, y <strong>absolutamente nadie ni de la organización ni de la gente del streaming se acercó a interesarse</strong>. Superando las dificultades técnicas como podía, seguí con la charla hasta que llegando a la parte final, mi micrófono deja de funcionar. No veo que ocurra nada, y al poco vuelve a funcionar. Sigo hablando pero ya entiendo qué estaba pasando: alguien de la organización se acerca por fin, pero para decirme que <strong>el tiempo de la charla se había terminado</strong>. En otras conferencias en las que he estado, te van avisando cuando quedan 10 o 5 minutos, para que sepas que el tiempo se acaba. Aquí el aviso parece que era cortar el micro cuando se acabase el tiempo.</p>
+
+<p>Como pude, pasé las diapositivas rápidamente para al menos mencionarlas y terminar finalmente la charla. Una pena.</p>
+
+<p>Al acabar tampoco volví a ver a nadie de la organización. Ah! Ni tampoco a mi pen drive (a pesar de ir a pedirlo 🙁</p>
+
+<h2 id="conclusiones">Conclusiones</h2>
+
+<p>Fue un placer hablar con amigos y compañeros de profesión a los que solo veo en conferencias como <a href="https://twitter.com/carlosble">Carlos Blé</a>, y desvirtualizar a ilustres como <a href="https://twitter.com/flopezluis">Félix López</a>, <a href="https://twitter.com/agonzalezro">Álex González</a> o <a href="https://twitter.com/kinisoftware">Kini</a>, entre otros.</p>
+
+<p>Pero eso podría hacerlo en otras conferencias. Así que el año que viene me tomaré un descanso de la Codemotion, e invertiré ese tiempo y dinero en ver a esos <em>camaradas del metal</em> en otro sarao.</p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://fiunchinho.github.io/blog/codemotion-2016/" data-id="d748f29f184e9ffc726f9cf1a5eee8cb" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="http://fiunchinho.github.io/blog/codemotion-2016//#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+
+        
+<nav id="article-nav">
+    
+    <a href="http://fiunchinho.github.io/blog/auto-completado-en-zsh/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">Auto completado en zsh</div>
+    </a>
+    
+
+    
+</nav>
+
+
+    </article>
+
+    
+    <section id="comments">
+        <div id="disqus_thread">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'fiunchinho';
+    var disqus_identifier = 'http:\/\/fiunchinho.github.io\/blog\/codemotion-2016\/';
+    var disqus_title = 'Codemotion 2016';
+    var disqus_url = 'http:\/\/fiunchinho.github.io\/blog\/codemotion-2016\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </section>
+    
+</section>
+
+
+	    
+	    <aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Recents
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/codemotion-2016/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://2016.codemotion.es/img/l_black.png)" alt="Codemotion 2016" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                        Opinion
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/codemotion-2016/" class="title">Codemotion 2016</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-11-30 20:48:31 &#43;0000 UTC" itemprop="datePublished">11-08-2016</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/auto-completado-en-zsh/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://ih1.redbubble.net/image.154489147.8220/sticker,375x360.png)" alt="Codemotion 2016" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/linux">
+                        Linux
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/auto-completado-en-zsh/" class="title">Auto completado en zsh</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-07-16 17:49:15 &#43;0000 UTC" itemprop="datePublished">07-08-2016</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://www.emiliotorrens.com/wp-content/uploads/2014/03/apache-logo.png)" alt="Codemotion 2016" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/code">
+                        Code
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/" class="title">Problemas desplegando código si usas Apache, symlinks y opcache</a></p>
+                    <p class="item-date">
+                        <time datetime="2015-05-01 12:14:32 &#43;0000 UTC" itemprop="datePublished">05-08-2015</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://images-na.ssl-images-amazon.com/images/I/51sZW87slRL._SX375_BO1,204,203,200_.jpg)" alt="Codemotion 2016" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/code">
+                        Code
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/" class="title">Jugando con conceptos de DDD</a></p>
+                    <p class="item-date">
+                        <time datetime="2014-10-29 00:46:39 &#43;0000 UTC" itemprop="datePublished">10-08-2014</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://25.media.tumblr.com/45bb569edfcf14a03e9448397cd4ff27/tumblr_mh6v96548x1qhoi9qo1_r1_500.jpg)" alt="Codemotion 2016" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                        Opinion
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/" class="title">Mis impresiones sobre el debate #isTDDDead</a></p>
+                    <p class="item-date">
+                        <time datetime="2014-05-23 20:35:44 &#43;0000 UTC" itemprop="datePublished">05-08-2014</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/code">
+                    code
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/linux">
+                    linux
+                </a>
+                <span class="category-list-count">7</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                    opinion
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tags
+    </h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/apache">
+                    apache
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/composer">
+                    composer
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/conferences">
+                    conferences
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/ddd">
+                    ddd
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/deployment">
+                    deployment
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/performance">
+                    performance
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/php">
+                    php
+                </a>
+                <span class="category-list-count">6</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/puppet">
+                    puppet
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/redis">
+                    redis
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/refactoring">
+                    refactoring
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/softonic">
+                    softonic
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/tdd">
+                    tdd
+                </a>
+                <span class="category-list-count">4</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/unit-testing">
+                    unit-testing
+                </a>
+                <span class="category-list-count">6</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/unix">
+                    unix
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/vagrant">
+                    vagrant
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tag cloud
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/apache" style="font-size: 12px;">apache</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/composer" style="font-size: 12px;">composer</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/conferences" style="font-size: 12px;">conferences</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/ddd" style="font-size: 12px;">ddd</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/deployment" style="font-size: 12px;">deployment</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/performance" style="font-size: 12px;">performance</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/php" style="font-size: 12px;">php</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/puppet" style="font-size: 12px;">puppet</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/redis" style="font-size: 12px;">redis</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/refactoring" style="font-size: 12px;">refactoring</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/softonic" style="font-size: 12px;">softonic</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/tdd" style="font-size: 12px;">tdd</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/unit-testing" style="font-size: 12px;">unit-testing</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/unix" style="font-size: 12px;">unix</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/vagrant" style="font-size: 12px;">vagrant</a>
+        
+    </div>
+</div>
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+	    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016
+      Powered by <a href="//gohugo.io">Hugo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>.
+    </div>
+  </div>
+</footer>
+
+
+<script src="http://fiunchinho.github.io/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://fiunchinho.github.io/blog/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+</body>
+</html>

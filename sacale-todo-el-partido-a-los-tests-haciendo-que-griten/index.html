@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="es-es">
+<head>
+    <title>Sácale todo el partido a los tests haciendo que griten &middot; Jose Armesto&#39;s Blog</title>
+    <meta name="generator" content="Hugo 0.17" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Jose Armesto">
+    
+      <meta name="description" content="Software como estilo de vida">
+    
+    
+    <link rel="canonical" href="http://fiunchinho.github.io/blog/sacale-todo-el-partido-a-los-tests-haciendo-que-griten/"/>
+    <link rel="icon" href="http://fiunchinho.github.io/blog/favicon.ico">
+    <link rel="apple-touch-icon" href="http://fiunchinho.github.io/blog/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/style.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/monokai.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/fancybox/jquery.fancybox.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="Sácale todo el partido a los tests haciendo que griten" />
+<meta property="og:description" content="Si tuviese que decir en qué se basa una prueba unitaria, diría que las principales características que debe cumplir son (sin ningún orden en particular):
+
+
+Que sea rápido y sin efectos secundarios.
+Que sea realmente unitario.
+Que sea auto explicativo.
+
+
+Pero con el tiempo veo que la gente tiende a centrarse en las dos primeras de mi lista.
+
+Se busca que sea rápido y sin efectos secundarios porque de esa forma podemos lanzarlos siempre que queramos, dándonos confianza. Si tuviésemos que esperar minutos en saber el resultado, o tuviésemos que andar limpiando una base de datos cada vez que quisiésemos lanzar pruebas, simplemente no lo haríamos tan frecuentemente como debiéramos.
+
+También se prioriza que sean unitarios y aislados, para que cuando algo falle, tengamos la granularidad suficiente para identificar el problema en cuestión de segundos. Si tuviésemos una prueba que lo probase todo, el día que fallase, no sabríamos cual de las partes ha sido la culpable.
+
+Y aunque considero que estas dos características son importantísimas, creo que se desprecia la última de mi lista. Las pruebas deberían ser auto explicativas, en el sentido de que debería ser muy fácil saber qué se está probando en todo momento, y sobretodo, qué hace el componente que estamos probando.
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fiunchinho.github.io/blog/sacale-todo-el-partido-a-los-tests-haciendo-que-griten/" />
+
+
+<meta property="og:updated_time" content="2014-01-26T18:09:33&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content="Sácale todo el partido a los tests haciendo que griten">
+<meta itemprop="description" content="Si tuviese que decir en qué se basa una prueba unitaria, diría que las principales características que debe cumplir son (sin ningún orden en particular):
+
+
+Que sea rápido y sin efectos secundarios.
+Que sea realmente unitario.
+Que sea auto explicativo.
+
+
+Pero con el tiempo veo que la gente tiende a centrarse en las dos primeras de mi lista.
+
+Se busca que sea rápido y sin efectos secundarios porque de esa forma podemos lanzarlos siempre que queramos, dándonos confianza. Si tuviésemos que esperar minutos en saber el resultado, o tuviésemos que andar limpiando una base de datos cada vez que quisiésemos lanzar pruebas, simplemente no lo haríamos tan frecuentemente como debiéramos.
+
+También se prioriza que sean unitarios y aislados, para que cuando algo falle, tengamos la granularidad suficiente para identificar el problema en cuestión de segundos. Si tuviésemos una prueba que lo probase todo, el día que fallase, no sabríamos cual de las partes ha sido la culpable.
+
+Y aunque considero que estas dos características son importantísimas, creo que se desprecia la última de mi lista. Las pruebas deberían ser auto explicativas, en el sentido de que debería ser muy fácil saber qué se está probando en todo momento, y sobretodo, qué hace el componente que estamos probando.
+
+">
+
+
+<meta itemprop="dateModified" content="2014-01-26T18:09:33&#43;00:00" />
+<meta itemprop="wordCount" content="1221">
+
+
+
+<meta itemprop="keywords" content="code,linux,opinion,apache,composer,conferences,ddd,deployment,performance,php,puppet,redis,refactoring,softonic,tdd,unit-testing,unix,vagrant," />
+
+    
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="Sácale todo el partido a los tests haciendo que griten"/>
+<meta name="twitter:description" content="Si tuviese que decir en qué se basa una prueba unitaria, diría que las principales características que debe cumplir son (sin ningún orden en particular):
+
+
+Que sea rápido y sin efectos secundarios.
+Que sea realmente unitario.
+Que sea auto explicativo.
+
+
+Pero con el tiempo veo que la gente tiende a centrarse en las dos primeras de mi lista.
+
+Se busca que sea rápido y sin efectos secundarios porque de esa forma podemos lanzarlos siempre que queramos, dándonos confianza. Si tuviésemos que esperar minutos en saber el resultado, o tuviésemos que andar limpiando una base de datos cada vez que quisiésemos lanzar pruebas, simplemente no lo haríamos tan frecuentemente como debiéramos.
+
+También se prioriza que sean unitarios y aislados, para que cuando algo falle, tengamos la granularidad suficiente para identificar el problema en cuestión de segundos. Si tuviésemos una prueba que lo probase todo, el día que fallase, no sabríamos cual de las partes ha sido la culpable.
+
+Y aunque considero que estas dos características son importantísimas, creo que se desprecia la última de mi lista. Las pruebas deberían ser auto explicativas, en el sentido de que debería ser muy fácil saber qué se está probando en todo momento, y sobretodo, qué hace el componente que estamos probando.
+
+"/>
+<meta name="twitter:site" content="@fiunchinho"/>
+
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="http://fiunchinho.github.io/blog" id="logo">
+          
+          <i class="logo" style="background-image: url('http://fiunchinho.github.io/blog/images/avatar.png')"></i>
+          
+          <span class="site-title">Jose Armesto&#39;s Blog</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="http://fiunchinho.github.io/">Home</a>
+          
+          
+
+          
+
+          
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="http://fiunchinho.github.io/blog/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="Search">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="q" value="site:http://fiunchinho.github.io/blog">
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="http://fiunchinho.github.io/">Home</a></td>
+          
+          
+
+          
+
+          
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="q" value="site:http://fiunchinho.github.io/blog">
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   		
+	    <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="http://fiunchinho.github.io/blog/images/avatar.png">
+      <h2 id="name">Jose Armesto</h2>
+      <h3 id="title">Soy Jose Armesto</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Barcelona</span>
+      
+          <a id="follow" href="https://twitter.com/fiunchinho">
+              Follow
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        22
+        <span>Posts</span>
+      </div>
+      <div class="article-info-block">
+        
+          15
+        
+        <span>
+            Tags
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/fiunchinho" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//medium.com/@fiunchinho" target="_blank" title="Medium"><i class="fa fa-medium"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//stackoverflow.com/users/563072/fiunchinho" target="_blank" title="Stack Overflow"><i class="fa fa-stack-overflow"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//twitter.com/fiunchinho" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+	    
+
+	    
+<section id="main">
+
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+
+            <header class="article-header">
+    <a href="http://fiunchinho.github.io/blog/sacale-todo-el-partido-a-los-tests-haciendo-que-griten/">
+    <h1 class="article-title" itemprop="name">
+        Sácale todo el partido a los tests haciendo que griten
+    </h1>
+    </a>
+    <div class="article-meta">
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2014-01-26 18:09:33 &#43;0000 UTC" itemprop="datePublished">01-08-2014</time>
+            &middot;
+            1221
+            words
+            &middot;
+            6
+            minute read
+        </div>
+
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="categories/code">Code</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="tags/php">php</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="tags/unit-testing">unit testing</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>Si tuviese que decir en qué se basa una prueba unitaria, diría que las principales características que debe cumplir son (sin ningún orden en particular):</p>
+
+<ul>
+<li>Que sea rápido y sin efectos secundarios.</li>
+<li>Que sea realmente unitario.</li>
+<li>Que sea auto explicativo.</li>
+</ul>
+
+<p>Pero con el tiempo veo que la gente tiende a <strong>centrarse en las dos primeras de mi lista</strong>.</p>
+
+<p>Se busca que sea rápido y sin efectos secundarios porque de esa forma podemos lanzarlos siempre que queramos, dándonos confianza. Si tuviésemos que esperar minutos en saber el resultado, o tuviésemos que andar limpiando una base de datos cada vez que quisiésemos lanzar pruebas, simplemente no lo haríamos tan frecuentemente como debiéramos.</p>
+
+<p>También se prioriza que sean unitarios y aislados, para que cuando algo falle, tengamos la granularidad suficiente para identificar el problema en cuestión de segundos. Si tuviésemos una prueba que lo probase todo, el día que fallase, no sabríamos cual de las partes ha sido la culpable.</p>
+
+<p>Y aunque considero que estas dos características son importantísimas, <strong>creo que se desprecia la última de mi lista</strong>. Las pruebas deberían ser auto explicativas, en el sentido de que debería ser muy fácil saber qué se está probando en todo momento, y sobretodo, qué hace el componente que estamos probando.</p>
+
+<p></p>
+
+<p>La mayoría del tiempo que programamos nos la pasamos leyendo código ya existente, intentando entender qué es lo que hace. Esto implica tener que leer las pruebas. Y no sé vosotros, pero yo me he encontrado con tests infumables.</p>
+
+<h2 id="como-mejorar-la-legibilidad-de-los-tests">Como mejorar la legibilidad de los tests</h2>
+
+<p>Voy a poner un ejemplo muy sencillo donde podemos aplicar una serie de mejoras. Quizá al ser tan simple se vea menos el efecto, pero aplicándolo a esos mastodontes que nos podemos encontrar en la vida real, creedme que mejoraremos mucho los tests.</p>
+
+<blockquote>
+<p>El refactoring de extraer método no sirve para ahorrar líneas de código, si no para que el método sea más fácil de leer.</p>
+</blockquote>
+
+<h3 id="primera-aproximación-mocks-en-métodos-privados">Primera aproximación: mocks en métodos privados</h3>
+
+<p>En el siguiente ejemplo, tenemos una clase encargada de identificar usuarios. Tiene dos colaboradores: el repositorio de usuarios para encontrar usuarios, y un codificador de contraseñas.</p>
+
+<pre><code data-lang="php">public function testShouldReturnAuthenticatedUserForValidCredentials()
+{
+    $email      = 'john@doe.com';
+    $encoded_pass   = 'encoded_pass';
+    $password           = 'decoded_pass';
+    $user       = new User( $email, $encoded_pass );
+    $user_repo  = $this-&gt;getMock( 'UserRepository' );
+    $user_repo
+    -&gt;expect( $this-&gt;any() )
+    -&gt;method( 'findByEmail' )
+    -&gt;will( $this-&gt;returnValue( $user ) );
+
+    $pass_encoder   = $this-&gt;getMock( 'PasswordEncoder' );
+    $pass_encoder
+    -&gt;expect( $this-&gt;once() )
+        -&gt;method( 'hash' )
+    -&gt;with( $password )
+    -&gt;will( $this-&gt;returnValue( $encoded_pass ) );
+
+    $auth_service   = new AuthService( $user_repo, $pass_encoder );
+
+    $this-&gt;assertEquals(
+    $user,
+    $auth_service-&gt;authenticate( $email, $password ),
+    'Must return the user when credentials are valid.'
+    );
+}</code></pre>
+
+<p>A pesar de que apenas hay lógica que testear, y gracias en parte a lo incómodo de PHPUnit (tenéis que probar <a title="PHPSpec" href="http://www.phpspec.net/" target="_blank">PHPSpec</a>, en serio), los tests empiezan a crecer, <strong>obligándonos a leer un montón de líneas cada vez que queramos entender qué hace esto</strong>.</p>
+
+<p>Muchos programadores intentan solventar este problema extrayendo un método para, por ejemplo, la creación de mocks. Queda algo tal que así.</p>
+
+<pre><code data-lang="php">public function testShouldReturnAuthenticatedUserForValidCredentials()
+{
+    $email      = 'john@doe.com';
+    $encoded_pass   = 'encoded_pass';
+    $password   = 'decoded_pass';
+    $user       = new User( $email, $encoded_pass );
+
+    $this-&gt;createRepositoryMock( $email, $encoded_pass );
+    $this-&gt;createEncoderMock( $password, $encoded_pass );
+
+    $auth_service   = new AuthService( $user_repo, $pass_encoder );
+
+    $this-&gt;assertEquals(
+    $user,
+    $auth_service-&gt;authenticate( $email, $password ),
+    'Must return the user when credentials are valid.'
+    );
+}
+
+private function createRepositoryMock( $email, $password )
+{
+    $user       = new User( $email, $password );
+    $user_repo  = $this-&gt;getMock( 'UserRepository' );
+    $user_repo
+    -&gt;expect( $this-&gt;any() )
+    -&gt;method( 'findByEmail' )
+    -&gt;will( $this-&gt;returnValue( $user ) );
+
+    return $user_repo;
+}
+
+private function createEncoderMock( $password, $encoded_pass )
+{
+    $pass_encoder   = $this-&gt;getMock( 'PasswordEncoder' );
+    $pass_encoder
+    -&gt;expect( $this-&gt;once() )
+    -&gt;method( 'hash' )
+    -&gt;with( $password )
+    -&gt;will( $this-&gt;returnValue( $encoded_pass ) );
+
+    return $pass_encoder;
+}</code></pre>
+
+<p>Aunque a priori pueda parecer que esto ha mejorado la legibilidad de nuestros tests, nada más lejos de la realidad. Lo único que hemos hecho es reducir el número de líneas del test, pero sigo teniendo que leerme todo cada vez que necesite entenderlo.</p>
+
+<p><strong>El refactoring de extraer método no sirve para ahorrar líneas, si no para que el método sea más fácil de leer.</strong> El nombre _createRepositoryMock()_ no me dice absolutamente nada sobre por qué lo estamos haciendo.</p>
+
+<h3 id="un-enfoque-mejor">Un enfoque mejor</h3>
+
+<p>Si el objetivo es que se entienda mejor el código, ¿por qué no hace todo explícito? Vamos a hacer lo mismo, pero pensando en el por qué de las cosas.</p>
+
+<pre><code data-lang="php">public function testShouldReturnAuthenticatedUserForValidCredentials()
+{
+    $email      = 'john@doe.com';
+    $encoded_pass   = 'encoded_pass';
+    $password   = 'decoded_pass';
+    $user       = $this-&gt;createExistingUser( $email, $encoded_password );
+    $user_repo  = $this-&gt;createUserRepoWhenUserExists( $user );
+    $pass_encoder   = $this-&gt;createEncoderWhenEncoderMustEncodePassword( $password, $encoded_pass );
+
+    $auth_service   = new AuthService( $user_repo, $pass_encoder );
+
+    $this-&gt;assertEquals(
+    $user,
+    $auth_service-&gt;authenticate( $email, $password ),
+    'Must return the valid user when credentials are valid.'
+    );
+}
+
+private function createUserRepoWhenUserExists( $user )
+{
+    $user_repo = $this-&gt;getMock( 'UserRepository' );
+    $user_repo
+    -&gt;expect( $this-&gt;any() )
+    -&gt;method( 'findByEmail' )
+    -&gt;will( $this-&gt;returnValue( $user ) );
+
+    return $user_repo;
+}
+
+private function createExistingUser( $email, $password )
+{
+    return new User( $email, $password );
+}
+
+private function createEncoderWhenEncoderMustEncodePassword( $password, $encoded_pass )
+{
+    $pass_encoder = $this-&gt;getMock( 'PasswordEncoder' );
+    $pass_encoder
+    -&gt;expect( $this-&gt;once() )
+    -&gt;method( 'hash' )
+    -&gt;with( $password )
+    -&gt;will( $this-&gt;returnValue( $encoded_pass ) );
+
+    return $pass_encoder;
+}
+</code></pre>
+
+<p>Estos nombres no tienen por qué ser los mejores, pero la idea es esa: hacer explícito el motivo de todo, para que cuando volvamos a leer el código (o algún compañero nuestro), todo lo que está ocurriendo se entienda a la perfección.</p>
+
+<p>Este primer enfoque es bastante básico, y si vemos que se complica, siempre podemos acudir a patrones de creación como el patrón builder o factories para los mocks.</p>
+
+<blockquote>
+<p>Revelar la intención de nuestro código y el objetivo del test: lo más importante</p>
+</blockquote>
+
+<p>Haciendo que el objetivo de cada línea sea revelar con claridad la intención de nuestro código y qué caso concreto estamos testeando en ese momento, reduciremos muchísimo el tiempo necesario para entenderlo. <strong>Da igual que ocupe más líneas, o que tarde dos microsegundos más en ejecutarse</strong>. Los objetivos de los tests son los que vimos al principio de este artículo, no son el rendimiento o tener menos líneas de código.</p>
+
+<h2 id="luchando-contra-la-duplicación">Luchando contra la duplicación</h2>
+
+<p>He visto desarrolladores que detectan que necesitarán un stub en todos los test cases, así que sacan la creación del stub al método de setUp, para ahorrar las líneas de configuración del stub.</p>
+
+<p>Volvemos a lo mismo. Debemos preguntarnos si eso mejora la legibilidad del test. En mi opinión, normalmente no lo hace, porque _esconde_ una colaboración, que puede que pasemos por alto ya que está en el setUp y no en el test case.</p>
+
+<p><em>“Pero entonces tendremos duplicación!”</em>, me dirán los lectores más atentos. Pero yo no digo que dupliquemos, sino que lo hagamos explícito. Si vemos que por hacerlo explícito vamos a duplicar código, saquemos la duplicación a un método privado que contenga la lógica que se duplica, y llamemos a este método privado desde el test case. El nombre de ese método privado nos dirá el motivo de por qué está ese código ahí.</p>
+
+<h2 id="conclusión">Conclusión</h2>
+
+<p>Nunca debemos olvidar que <strong>los tests son nuestra primera documentación</strong>. Es la mejor forma de ver cómo funciona un componente, cómo se configura, y qué valores debo esperar que devuelva. Cuando tengo que modificar código ya existente, entender qué es lo que hace es vital. Si no hago que mis tests <strong>GRITEN</strong> el comportamiento de mis clases, me estoy perdiendo otra de las grandes ventajas de los tests.</p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://fiunchinho.github.io/blog/sacale-todo-el-partido-a-los-tests-haciendo-que-griten/" data-id="567afc3bce0039838b80e7898d3bd4c1" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="http://fiunchinho.github.io/blog/sacale-todo-el-partido-a-los-tests-haciendo-que-griten//#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+
+        
+<nav id="article-nav">
+    
+    <a href="http://fiunchinho.github.io/blog/administrar-recursos-frontend-con-assetic-sin-symfony2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">Administrar recursos frontend con Assetic (sin Symfony2)</div>
+    </a>
+    
+
+    
+    <a href="http://fiunchinho.github.io/blog/sacale-el-maximo-partido-a-tu-terminal-con-zsh/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Newer
+      </strong>
+      <div class="article-nav-title">Sácale el máximo partido a tu terminal con zsh</div>
+    </a>
+    
+</nav>
+
+
+    </article>
+
+    
+    <section id="comments">
+        <div id="disqus_thread">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'fiunchinho';
+    var disqus_identifier = 'http:\/\/fiunchinho.github.io\/blog\/sacale-todo-el-partido-a-los-tests-haciendo-que-griten\/';
+    var disqus_title = 'Sácale todo el partido a los tests haciendo que griten';
+    var disqus_url = 'http:\/\/fiunchinho.github.io\/blog\/sacale-todo-el-partido-a-los-tests-haciendo-que-griten\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </section>
+    
+</section>
+
+
+	    
+	    <aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Recents
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/codemotion-2016/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://2016.codemotion.es/img/l_black.png)" alt="Sácale todo el partido a los tests haciendo que griten" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                        Opinion
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/codemotion-2016/" class="title">Codemotion 2016</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-11-30 20:48:31 &#43;0000 UTC" itemprop="datePublished">11-08-2016</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/auto-completado-en-zsh/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://ih1.redbubble.net/image.154489147.8220/sticker,375x360.png)" alt="Sácale todo el partido a los tests haciendo que griten" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/linux">
+                        Linux
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/auto-completado-en-zsh/" class="title">Auto completado en zsh</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-07-16 17:49:15 &#43;0000 UTC" itemprop="datePublished">07-08-2016</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://www.emiliotorrens.com/wp-content/uploads/2014/03/apache-logo.png)" alt="Sácale todo el partido a los tests haciendo que griten" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/code">
+                        Code
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/" class="title">Problemas desplegando código si usas Apache, symlinks y opcache</a></p>
+                    <p class="item-date">
+                        <time datetime="2015-05-01 12:14:32 &#43;0000 UTC" itemprop="datePublished">05-08-2015</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://images-na.ssl-images-amazon.com/images/I/51sZW87slRL._SX375_BO1,204,203,200_.jpg)" alt="Sácale todo el partido a los tests haciendo que griten" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/code">
+                        Code
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/" class="title">Jugando con conceptos de DDD</a></p>
+                    <p class="item-date">
+                        <time datetime="2014-10-29 00:46:39 &#43;0000 UTC" itemprop="datePublished">10-08-2014</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://25.media.tumblr.com/45bb569edfcf14a03e9448397cd4ff27/tumblr_mh6v96548x1qhoi9qo1_r1_500.jpg)" alt="Sácale todo el partido a los tests haciendo que griten" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                        Opinion
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/" class="title">Mis impresiones sobre el debate #isTDDDead</a></p>
+                    <p class="item-date">
+                        <time datetime="2014-05-23 20:35:44 &#43;0000 UTC" itemprop="datePublished">05-08-2014</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/code">
+                    code
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/linux">
+                    linux
+                </a>
+                <span class="category-list-count">7</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                    opinion
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tags
+    </h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/apache">
+                    apache
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/composer">
+                    composer
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/conferences">
+                    conferences
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/ddd">
+                    ddd
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/deployment">
+                    deployment
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/performance">
+                    performance
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/php">
+                    php
+                </a>
+                <span class="category-list-count">6</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/puppet">
+                    puppet
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/redis">
+                    redis
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/refactoring">
+                    refactoring
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/softonic">
+                    softonic
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/tdd">
+                    tdd
+                </a>
+                <span class="category-list-count">4</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/unit-testing">
+                    unit-testing
+                </a>
+                <span class="category-list-count">6</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/unix">
+                    unix
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/vagrant">
+                    vagrant
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tag cloud
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/apache" style="font-size: 12px;">apache</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/composer" style="font-size: 12px;">composer</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/conferences" style="font-size: 12px;">conferences</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/ddd" style="font-size: 12px;">ddd</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/deployment" style="font-size: 12px;">deployment</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/performance" style="font-size: 12px;">performance</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/php" style="font-size: 12px;">php</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/puppet" style="font-size: 12px;">puppet</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/redis" style="font-size: 12px;">redis</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/refactoring" style="font-size: 12px;">refactoring</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/softonic" style="font-size: 12px;">softonic</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/tdd" style="font-size: 12px;">tdd</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/unit-testing" style="font-size: 12px;">unit-testing</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/unix" style="font-size: 12px;">unix</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/vagrant" style="font-size: 12px;">vagrant</a>
+        
+    </div>
+</div>
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+	    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016
+      Powered by <a href="//gohugo.io">Hugo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>.
+    </div>
+  </div>
+</footer>
+
+
+<script src="http://fiunchinho.github.io/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://fiunchinho.github.io/blog/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+</body>
+</html>

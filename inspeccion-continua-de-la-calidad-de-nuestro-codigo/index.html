@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="es-es">
+<head>
+    <title>Inspección continua de la calidad de nuestro código &middot; Jose Armesto&#39;s Blog</title>
+    <meta name="generator" content="Hugo 0.17" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Jose Armesto">
+    
+      <meta name="description" content="Software como estilo de vida">
+    
+    
+    <link rel="canonical" href="http://fiunchinho.github.io/blog/inspeccion-continua-de-la-calidad-de-nuestro-codigo/"/>
+    <link rel="icon" href="http://fiunchinho.github.io/blog/favicon.ico">
+    <link rel="apple-touch-icon" href="http://fiunchinho.github.io/blog/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/style.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/monokai.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/fancybox/jquery.fancybox.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="Inspección continua de la calidad de nuestro código" />
+<meta property="og:description" content="Una de las formas que tenemos para poder mejorar el código de nuestro proyecto es someterlo a una inspección continua y constante. Lo primero que podemos hacer es lanzar nuestros tests tras cada push al repositorio, de forma que sabremos en todo momento si hay algo que no funciona bien.
+
+También podemos analizar la complejidad del código y comprobar si estamos incrementándola o disminuyéndola.
+
+Hasta ahora, todas estas tareas eran posibles solamente teniendo un servidor de integración continua configurado, siendo Jenkins el más famoso. En él podemos ejecutar todas estas tareas tras cada push. Recursos como http://jenkins-php.org/ te ayudarán a configurar este versátil servidor hecho en Java.
+
+La buena noticia es que cada vez hay más herramientas online que te permiten hacer estas tareas sin necesidad de configurar practicamente nada. Hoy veremos como lanzar tests y analizar la calidad de nuestro código sin utilizar un servidor de integración continua.
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fiunchinho.github.io/blog/inspeccion-continua-de-la-calidad-de-nuestro-codigo/" />
+
+
+<meta property="og:updated_time" content="2013-11-05T18:05:53&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content="Inspección continua de la calidad de nuestro código">
+<meta itemprop="description" content="Una de las formas que tenemos para poder mejorar el código de nuestro proyecto es someterlo a una inspección continua y constante. Lo primero que podemos hacer es lanzar nuestros tests tras cada push al repositorio, de forma que sabremos en todo momento si hay algo que no funciona bien.
+
+También podemos analizar la complejidad del código y comprobar si estamos incrementándola o disminuyéndola.
+
+Hasta ahora, todas estas tareas eran posibles solamente teniendo un servidor de integración continua configurado, siendo Jenkins el más famoso. En él podemos ejecutar todas estas tareas tras cada push. Recursos como http://jenkins-php.org/ te ayudarán a configurar este versátil servidor hecho en Java.
+
+La buena noticia es que cada vez hay más herramientas online que te permiten hacer estas tareas sin necesidad de configurar practicamente nada. Hoy veremos como lanzar tests y analizar la calidad de nuestro código sin utilizar un servidor de integración continua.
+
+">
+
+
+<meta itemprop="dateModified" content="2013-11-05T18:05:53&#43;00:00" />
+<meta itemprop="wordCount" content="917">
+
+
+
+<meta itemprop="keywords" content="code,linux,opinion,apache,composer,conferences,ddd,deployment,performance,php,puppet,redis,refactoring,softonic,tdd,unit-testing,unix,vagrant," />
+
+    
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="Inspección continua de la calidad de nuestro código"/>
+<meta name="twitter:description" content="Una de las formas que tenemos para poder mejorar el código de nuestro proyecto es someterlo a una inspección continua y constante. Lo primero que podemos hacer es lanzar nuestros tests tras cada push al repositorio, de forma que sabremos en todo momento si hay algo que no funciona bien.
+
+También podemos analizar la complejidad del código y comprobar si estamos incrementándola o disminuyéndola.
+
+Hasta ahora, todas estas tareas eran posibles solamente teniendo un servidor de integración continua configurado, siendo Jenkins el más famoso. En él podemos ejecutar todas estas tareas tras cada push. Recursos como http://jenkins-php.org/ te ayudarán a configurar este versátil servidor hecho en Java.
+
+La buena noticia es que cada vez hay más herramientas online que te permiten hacer estas tareas sin necesidad de configurar practicamente nada. Hoy veremos como lanzar tests y analizar la calidad de nuestro código sin utilizar un servidor de integración continua.
+
+"/>
+<meta name="twitter:site" content="@fiunchinho"/>
+
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="http://fiunchinho.github.io/blog" id="logo">
+          
+          <i class="logo" style="background-image: url('http://fiunchinho.github.io/blog/images/avatar.png')"></i>
+          
+          <span class="site-title">Jose Armesto&#39;s Blog</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="http://fiunchinho.github.io/">Home</a>
+          
+          
+
+          
+
+          
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="http://fiunchinho.github.io/blog/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="Search">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="q" value="site:http://fiunchinho.github.io/blog">
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="http://fiunchinho.github.io/">Home</a></td>
+          
+          
+
+          
+
+          
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="q" value="site:http://fiunchinho.github.io/blog">
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   		
+	    <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="http://fiunchinho.github.io/blog/images/avatar.png">
+      <h2 id="name">Jose Armesto</h2>
+      <h3 id="title">Soy Jose Armesto</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Barcelona</span>
+      
+          <a id="follow" href="https://twitter.com/fiunchinho">
+              Follow
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        22
+        <span>Posts</span>
+      </div>
+      <div class="article-info-block">
+        
+          15
+        
+        <span>
+            Tags
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/fiunchinho" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//medium.com/@fiunchinho" target="_blank" title="Medium"><i class="fa fa-medium"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//stackoverflow.com/users/563072/fiunchinho" target="_blank" title="Stack Overflow"><i class="fa fa-stack-overflow"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//twitter.com/fiunchinho" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+	    
+
+	    
+<section id="main">
+
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+
+            <header class="article-header">
+    <a href="http://fiunchinho.github.io/blog/inspeccion-continua-de-la-calidad-de-nuestro-codigo/">
+    <h1 class="article-title" itemprop="name">
+        Inspección continua de la calidad de nuestro código
+    </h1>
+    </a>
+    <div class="article-meta">
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2013-11-05 18:05:53 &#43;0000 UTC" itemprop="datePublished">11-08-2013</time>
+            &middot;
+            917
+            words
+            &middot;
+            5
+            minute read
+        </div>
+
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="categories/code">Code</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="tags/unit-testing">unit testing</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>Una de las formas que tenemos para poder mejorar el código de nuestro proyecto es someterlo a una inspección continua y constante. Lo primero que podemos hacer es lanzar nuestros tests tras cada push al repositorio, de forma que sabremos en todo momento si hay algo que no funciona bien.</p>
+
+<p>También podemos analizar la complejidad del código y comprobar si estamos incrementándola o disminuyéndola.</p>
+
+<p>Hasta ahora, todas estas tareas eran posibles solamente teniendo un servidor de integración continua configurado, siendo Jenkins el más famoso. En él podemos ejecutar todas estas tareas tras cada push. Recursos como <a href="http://jenkins-php.org/">http://jenkins-php.org/</a> te ayudarán a configurar este versátil servidor hecho en Java.</p>
+
+<p>La buena noticia es que cada vez hay más herramientas online que te permiten hacer estas tareas sin necesidad de configurar practicamente nada. Hoy veremos como lanzar tests y analizar la calidad de nuestro código sin utilizar un servidor de integración continua.</p>
+
+<p></p>
+
+<h2 id="ejecutando-nuestros-tests">Ejecutando nuestros tests</h2>
+
+<p>Estos dos últimos años han sido la explosión en popularidad de <a title="TravisCI" href="https://travis-ci.org/" target="_blank">TravisCI</a>. TravisCI es un servicio que te permitirá lanzar tu suite de tests tras cada push. ¿Cómo? Pues cada vez que se envía código al repositorio, TravisCI levantará una máquina virtual y clonará tu código en ella. Una vez todo esté allí, <strong>ejecutará los tests y te dirá si algo se ha roto</strong> o todo sigue correcto.</p>
+
+<p>También te permite ejecutar comandos antes de lanzar los tests, por si necesitas instalar dependencias de otras librerías o incluso programas en la máquina virtual.</p>
+
+<p>Para que todo esto funcione, necesitas tener un archivo de configuración en tu repositorio que le diga a TravisCI qué es lo que tiene que hacer. Este archivo se llama _.travis.yml_ y un ejemplo podría ser este</p>
+
+<pre><code data-lang="yaml">language: php
+php:
+    - 5.3
+    - 5.4
+    - 5.5
+before_install:
+    - curl -s http://getcomposer.org/installer | php
+    - php composer.phar --dev install</code></pre>
+
+<p>Con esta configuración le estamos diciendo a TravisCI que nuestro lenguaje es PHP, que queremos que lance los tests en 3 máquinas virtuales distintas, una con la versión 5.3 de PHP, otra con la 5.4 y otra con la 5.5. Además, antes de poder lanzar los tests, le decimos que instale las dependencias de nuestro proyecto mediante composer.</p>
+
+<p>El hecho de saber si algo se ha roto con un commit es de vital importancia, sobretodo en proyectos con muchos programadores distintos, como los proyectos Open Source. Para esto, cada vez que hay un cambio de estado (alguien rompe los tests y pasamos de estable a roto, o viceversa), TravisCI nos enviará un email para tenernos informados.</p>
+
+<p>Para que todo el mundo tenga visibilidad del estado actual, también pone a nuestra disposición una insignia que indica si los tests están en rojo o en verde. Podemos colocar esta insignia en el README.md de nuestro proyecto, y cualquiera que entre verá si hay algo roto.</p>
+
+<p><a href="http://blog.armesto.net/wp-content/uploads/2014/04/Selección_025.png"><img class="alignnone size-full wp-image-55" alt="PHPUnit badge" src="http://blog.armesto.net/wp-content/uploads/2014/04/Selección_025.png" width="801" height="112" srcset="http://blog.armesto.net/wp-content/uploads/2014/04/Selección_025.png 801w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_025-300x41.png 300w" sizes="(max-width: 801px) 100vw, 801px" /></a></p>
+
+<p>Por último, recuerda que por defecto TravisCI ejecutará <strong>PHPUnit</strong> para lanzar los tests, utilizando la configuración del fichero _phpunit.xml.dist_ para saber donde están los tests y cómo lanzarlos. Si quieres cambiar algo de lo que TravisCI hace por defecto, <a title="TravisCI Docs" href="http://about.travis-ci.org/docs/user/languages/php/" target="_blank">la documentación</a> está bastante bien.</p>
+
+<h2 id="analizando-la-calidad-del-código">Analizando la calidad del código</h2>
+
+<p>Existen <a title="PHP QA Tools" href="http://phpqatools.org/" target="_blank">un montón de herramientas de análisis estático de código PHP </a>que nos dan todo tipo de información, desde si hay mucho copy/paste, hasta si nuestro código es poco abstracto. Son herramientas que puedes lanzar cuando quieras desde la consola, pero que como veíamos al principio del post, sería interesante lanzar cada vez que se envía código al repositorio. Si no queremos utilizar nuestro servidor de integración continua propio, una alternativa que tenemos es <a title="Scrutinizer" href="https://scrutinizer-ci.com/" target="_blank">Scrutinizer</a>.</p>
+
+<p>Su funcionamiento es muy parecido al de TravisCI, pero en vez de lanzar tu suite de tests, lanzará todas las <a title="Herramientas de análisis estático de código" href="https://scrutinizer-ci.com/docs/tools/php/" target="_blank">herramientas de análisis estático de código</a> que hayas configurado. Para la configuración, tan solo debes modificar en la web de Scrutinizer el archivo de configuración, o tener un archivo _.scrutinizer.yml_ en tu repositorio. En la web puedes elegir una configuración global para todos tus proyectos, o tener una distinta para cada uno.</p>
+
+<p>El mío tiene esta pinta</p>
+
+<pre><code data-lang="yaml">filter:
+ excluded_paths: [vendor/*, app/*, web/*]
+
+tools:
+ php_cpd: true
+ php_pdepend:
+     excluded_dirs: [vendor]
+ php_mess_detector: true
+ php_analyzer: true
+ php_loc:
+     command: phploc
+     excluded_dirs: [vendor]
+     enabled: true</code></pre>
+
+<p>No tengo seleccionadas todas las herramientas, pero para hacer una prueba es suficiente con estas.</p>
+
+<p>Una vez elegida tu configuración, puedes lanzar el análisis directamente eligiendo “_Schedule Inspection_” en la parte superior derecha. De todas formas, salvo que lo desactives en las opciones, cada vez que código nuevo se envíe al repositorio, se realizará una inspección de tu código.</p>
+
+<h3 id="informes">Informes</h3>
+
+<p>Lo bueno es que después de ejecutarse, Scrutinizer genera unos informes muy bonitos con todo tipo de información útil.</p>
+
+<p><a href="http://blog.armesto.net/wp-content/uploads/2014/04/Selección_023.png"><img class="alignnone size-large wp-image-56" alt="Scrutinizer" src="http://blog.armesto.net/wp-content/uploads/2014/04/Selección_023-1024x651.png" width="620" height="394" srcset="http://blog.armesto.net/wp-content/uploads/2014/04/Selección_023-1024x651.png 1024w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_023-300x190.png 300w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_023.png 1099w" sizes="(max-width: 620px) 100vw, 620px" /></a></p>
+
+<p>Arriba de todo podemos ver <strong>la nota final de nuestro código</strong>, 9.18 en la imagen. Esta nota es calculada teniendo en cuenta el resultado de todas las inspecciones que tenemos configuradas. También nos ofrece un histórico con nuestra nota, o los incidentes (issues) de nuestro código que todavía tenemos pendientes por arreglar.</p>
+
+<p><a href="http://blog.armesto.net/wp-content/uploads/2014/04/Selección_024.png"><img class="alignnone size-large wp-image-58" alt="Scrutinizer" src="http://blog.armesto.net/wp-content/uploads/2014/04/Selección_024-1024x410.png" width="620" height="248" srcset="http://blog.armesto.net/wp-content/uploads/2014/04/Selección_024-1024x410.png 1024w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_024-300x120.png 300w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_024.png 1093w" sizes="(max-width: 620px) 100vw, 620px" /></a></p>
+
+<p>Por último, igual que TravisCI, nos ofrece la posibilidad de poner una insignia con nuestra nota en el README.md del repositorio, para que todo el mundo vea a simple vista la calidad del código.</p>
+
+<p><a href="http://blog.armesto.net/wp-content/uploads/2014/04/Selección_026.png"><img class="alignnone size-full wp-image-60" alt="Scrutinizr badge" src="http://blog.armesto.net/wp-content/uploads/2014/04/Selección_026.png" width="809" height="236" srcset="http://blog.armesto.net/wp-content/uploads/2014/04/Selección_026.png 809w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_026-300x87.png 300w" sizes="(max-width: 809px) 100vw, 809px" /></a></p>
+
+<h2 id="lo-tienes-fácil">Lo tienes fácil</h2>
+
+<p>Antigüamente tenías que pelearte con un servidor tipo Jenkins si querías tener funcionalidades de integración continua, pero cada vez salen más herramientas online a la luz que nos ayudan con la calidad de nuestro código. Todavía no tenemos todo lo que un Jenkins nos puede ofrecer, pero con estos dos simples servicios que hemos visto hoy, ya tendríamos mucho ganado.</p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://fiunchinho.github.io/blog/inspeccion-continua-de-la-calidad-de-nuestro-codigo/" data-id="c0930105fb43ec357bb8320e356c0d81" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="http://fiunchinho.github.io/blog/inspeccion-continua-de-la-calidad-de-nuestro-codigo//#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+
+        
+<nav id="article-nav">
+    
+    <a href="http://fiunchinho.github.io/blog/geolocalizacion-en-php-y-las-paginas-de-afiliados-locales/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">Geolocalización en PHP y las páginas de afiliados locales</div>
+    </a>
+    
+
+    
+    <a href="http://fiunchinho.github.io/blog/limitar-memoria-maxima-de-redis/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Newer
+      </strong>
+      <div class="article-nav-title">Limitar memoria máxima de Redis</div>
+    </a>
+    
+</nav>
+
+
+    </article>
+
+    
+    <section id="comments">
+        <div id="disqus_thread">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'fiunchinho';
+    var disqus_identifier = 'http:\/\/fiunchinho.github.io\/blog\/inspeccion-continua-de-la-calidad-de-nuestro-codigo\/';
+    var disqus_title = 'Inspección continua de la calidad de nuestro código';
+    var disqus_url = 'http:\/\/fiunchinho.github.io\/blog\/inspeccion-continua-de-la-calidad-de-nuestro-codigo\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </section>
+    
+</section>
+
+
+	    
+	    <aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Recents
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/codemotion-2016/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://2016.codemotion.es/img/l_black.png)" alt="Inspección continua de la calidad de nuestro código" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                        Opinion
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/codemotion-2016/" class="title">Codemotion 2016</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-11-30 20:48:31 &#43;0000 UTC" itemprop="datePublished">11-08-2016</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/auto-completado-en-zsh/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://ih1.redbubble.net/image.154489147.8220/sticker,375x360.png)" alt="Inspección continua de la calidad de nuestro código" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/linux">
+                        Linux
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/auto-completado-en-zsh/" class="title">Auto completado en zsh</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-07-16 17:49:15 &#43;0000 UTC" itemprop="datePublished">07-08-2016</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://www.emiliotorrens.com/wp-content/uploads/2014/03/apache-logo.png)" alt="Inspección continua de la calidad de nuestro código" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/code">
+                        Code
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/" class="title">Problemas desplegando código si usas Apache, symlinks y opcache</a></p>
+                    <p class="item-date">
+                        <time datetime="2015-05-01 12:14:32 &#43;0000 UTC" itemprop="datePublished">05-08-2015</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://images-na.ssl-images-amazon.com/images/I/51sZW87slRL._SX375_BO1,204,203,200_.jpg)" alt="Inspección continua de la calidad de nuestro código" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/code">
+                        Code
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/" class="title">Jugando con conceptos de DDD</a></p>
+                    <p class="item-date">
+                        <time datetime="2014-10-29 00:46:39 &#43;0000 UTC" itemprop="datePublished">10-08-2014</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://25.media.tumblr.com/45bb569edfcf14a03e9448397cd4ff27/tumblr_mh6v96548x1qhoi9qo1_r1_500.jpg)" alt="Inspección continua de la calidad de nuestro código" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                        Opinion
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/" class="title">Mis impresiones sobre el debate #isTDDDead</a></p>
+                    <p class="item-date">
+                        <time datetime="2014-05-23 20:35:44 &#43;0000 UTC" itemprop="datePublished">05-08-2014</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/code">
+                    code
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/linux">
+                    linux
+                </a>
+                <span class="category-list-count">7</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                    opinion
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tags
+    </h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/apache">
+                    apache
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/composer">
+                    composer
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/conferences">
+                    conferences
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/ddd">
+                    ddd
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/deployment">
+                    deployment
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/performance">
+                    performance
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/php">
+                    php
+                </a>
+                <span class="category-list-count">6</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/puppet">
+                    puppet
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/redis">
+                    redis
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/refactoring">
+                    refactoring
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/softonic">
+                    softonic
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/tdd">
+                    tdd
+                </a>
+                <span class="category-list-count">4</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/unit-testing">
+                    unit-testing
+                </a>
+                <span class="category-list-count">6</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/unix">
+                    unix
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/vagrant">
+                    vagrant
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tag cloud
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/apache" style="font-size: 12px;">apache</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/composer" style="font-size: 12px;">composer</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/conferences" style="font-size: 12px;">conferences</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/ddd" style="font-size: 12px;">ddd</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/deployment" style="font-size: 12px;">deployment</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/performance" style="font-size: 12px;">performance</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/php" style="font-size: 12px;">php</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/puppet" style="font-size: 12px;">puppet</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/redis" style="font-size: 12px;">redis</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/refactoring" style="font-size: 12px;">refactoring</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/softonic" style="font-size: 12px;">softonic</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/tdd" style="font-size: 12px;">tdd</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/unit-testing" style="font-size: 12px;">unit-testing</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/unix" style="font-size: 12px;">unix</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/vagrant" style="font-size: 12px;">vagrant</a>
+        
+    </div>
+</div>
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+	    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016
+      Powered by <a href="//gohugo.io">Hugo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>.
+    </div>
+  </div>
+</footer>
+
+
+<script src="http://fiunchinho.github.io/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://fiunchinho.github.io/blog/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,1441 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Post-rsses on Jose Armesto&#39;s Blog</title>
+    <link>http://fiunchinho.github.io/blog/post/index.xml</link>
+    <description>Recent content in Post-rsses on Jose Armesto&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es-es</language>
+    <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
+    <lastBuildDate>Wed, 30 Nov 2016 20:48:31 +0000</lastBuildDate>
+    <atom:link href="http://fiunchinho.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Codemotion 2016</title>
+      <link>http://fiunchinho.github.io/blog/codemotion-2016/</link>
+      <pubDate>Wed, 30 Nov 2016 20:48:31 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/codemotion-2016/</guid>
+      <description>&lt;p&gt;Ya sé que voy un poco tarde con el post hablando sobre cómo fue la Codemotion 2016, pero tenía ganas de compartir mi experiencia en la conferencia.&lt;/p&gt;
+
+&lt;p&gt;Vaya por delante que es dificilísimo organizar una conferencia a nivel nacional, y que hacerlo durante varios años seguidos, tiene mucho mérito. Pero también es importante compartir aquellas cosas que son mejorables para, entre todos, conseguir eventos de mejor calidad en nuestro país. Así que sin más dilación, compartiré con vosotros mi experiencia en la Codemotion 2016, tanto desde el punto de vista de asistente, como desde el punto de vista de ponente.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;como-asistente&#34;&gt;Como asistente&lt;/h2&gt;
+
+&lt;h3 id=&#34;número-de-asistentes&#34;&gt;Número de asistentes&lt;/h3&gt;
+
+&lt;p&gt;No vamos a andarnos por las ramas e iremos directos al que, para mi, es el principal problema de esta conferencia: el número de asistentes. Organizar una conferencia es difícil, pero organizar una de 1000 o 2000 asistentes es complicadísimo. A pesar de que me ya me habían avisado de años anteriores, el año pasado decidí asistir a la Codemotion por primera vez, y me encontré de lleno con el pastel. Colas larguísimas para asistir a charlas y talleres; gente de pie viendo las charlas; talleres prácticos de 100 personas&amp;#8230; &lt;strong&gt;Masificación&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Este año, la organización pidió a los asistentes que votasen las charlas para poder preveer un poco la asistencia de cada una, pero no creo que mucha gente haya votado. Además, salvo el aula magna de la universidad, el resto de aulas donde había charlas apenas podían acoger un 10% de la asistencia al evento, lo que hacía imposible acoger tanta gente. El hecho de tener muchos tracks en paralelo no da vía libre para recibir 2000 personas.&lt;/p&gt;
+
+&lt;p&gt;En mi caso, como iba con conocimiento de causa del año pasado, me quedé a la mayoría de las charlas del aula magna. Solo me atrevía a ir a otra aula cuando la charla era después de un parón, o después de comer. Haciendo esto solo tuve que ver una charla sentado en el suelo, y hacer cola durante 10-15 mins para la charla de &lt;a href=&#34;https://twitter.com/carlosble&#34;&gt;Carlos Blé&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;La solución propuesta sería hacer una conferencia de menos asistentes. Entiendo que tener el título de &amp;#8220;Conferencia más grande de España&amp;#8221;, y poder decir a patrocinadores que tantos miles de programadores asisten al evento es tentador, pero hacen la experiencia muchísimo peor para los que asisten.&lt;/p&gt;
+
+&lt;p&gt;Por ejemplo, &lt;a href=&#34;https://twitter.com/fiunchinho/status/799960255279013888&#34;&gt;hubo una falta de respeto generalizada hacia los ponentes y los asistentes&lt;/a&gt; interesados en la ronda de preguntas de cada charla. Al haber espacio tan limitado, la gente prefiere levantarse para coger sitio en la siguiente que esperarse a terminar la sesión de preguntas, haciendo que el ponente apenas pueda responder, y la gente no se entere bien de qué está ocurriendo. Una pena.&lt;/p&gt;
+
+&lt;h3 id=&#34;lugar-del-evento&#34;&gt;Lugar del evento&lt;/h3&gt;
+
+&lt;p&gt;El otro gran fallo del evento en mi opinión es el lugar del mismo. La universidad donde se celebra está demasiado lejos de&amp;#8230; bueno, de todo. La organización intentó mejorar esto poniendo un servicio gratuito de autobuses desde plaza de España, lo cual es un buen detalle, aunque insuficiente. El autobus era solo a ciertas horas, y los que venimos de fuera, muchas veces llegamos más tarde de lo habitual a Madrid, o tenemos que irnos antes de que termine el evento, así que no podemos utilizar esos autobuses.&lt;/p&gt;
+
+&lt;p&gt;El tema autobuses también es mejorable. No se especificaba en donde exactamente paraba el autobús, y los que somos de fuera agradeceríamos unas mejores indicaciones. Además, el segundo día fui a coger el autobus de las 9:30 para ir a la conferencia, y, o salió con mucha antelación, o &lt;strong&gt;ese día no hubo autobús&lt;/strong&gt;. Envié &lt;a href=&#34;https://twitter.com/fiunchinho/status/799893331136352256&#34;&gt;un tweet a la organización&lt;/a&gt; mientras esperábamos por el autobús yo y otras personas, pero &lt;strong&gt;nadie contestó&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Una mejora sería que alguien de la organización fuese siempre en los pocos autobuses que hay. Aunque sigo pensando que la mejor solución sería buscar un sitio más cercano. Preferiría pagar un poco más y no tener que ir a Mordor a ver las charlas.&lt;/p&gt;
+
+&lt;h3 id=&#34;comida&#34;&gt;Comida&lt;/h3&gt;
+
+&lt;p&gt;Creo que la comida fue algo muy positivo, con muchas opciones distintas. Como todo lo demás está influido por el número de asistentes, pero me pareció bien solucionado.&lt;/p&gt;
+
+&lt;p&gt;Eché en falta que el sábado no hubiese una fuente de café/comida, ya que la cafetería de la universidad estaba cerrada, y no hay nada en kilómetros a la redonda.&lt;/p&gt;
+
+&lt;h3 id=&#34;acreditación&#34;&gt;Acreditación&lt;/h3&gt;
+
+&lt;p&gt;Como el año pasado, nadie controla quién entra en la conferencia. Sobretodo porque el viernes compartimos recinto con los universitarios.&lt;/p&gt;
+
+&lt;h2 id=&#34;como-ponente&#34;&gt;Como ponente&lt;/h2&gt;
+
+&lt;p&gt;Antes de nada dar las gracias a las comunidades que votaron las charlas y me permitieron compartir cosas como ponente. Un honor y un placer.&lt;/p&gt;
+
+&lt;p&gt;También decir que nadie me obliga a dar una charla. Es algo que hago porque yo quiero.&lt;/p&gt;
+
+&lt;p&gt;Dicho lo cual, otras conferencias mucho más pequeñas y modestas pagan viaje, o estancia, o ambas para los pontentes, sobretodo si vienen de fuera. No digo que en esta se tenga que pagar todo, pero el taxi para llegar o irse de la conferencia, hubiese ayudado mucho.&lt;/p&gt;
+
+&lt;p&gt;Mi charla era la segunda del día, después de &lt;a href=&#34;https://twitter.com/kinisoftware&#34;&gt;@kinisoftware&lt;/a&gt;, así que estuve repasándola, y antes de que terminase la anterior, ya estaba en la sala para poder preparar todo con calma. Al rato de estar ya sobre el escenario, se acercó alguien con un pen drive para que le pases las diapositivas. El pen drive no funcionaba en mi mac, no sé por qué, así que como me sugirió el propio &lt;a href=&#34;https://twitter.com/kinisoftware&#34;&gt;@kinisoftware&lt;/a&gt; subí la presentación al Google Drive que la organización puso a disposición de los ponentes para subir las charlas. Cuando volvió la persona de las diapositivas le dije que ya estaba subida la presentación al Drive, y me dijo que &lt;strong&gt;no sabía de ningún Google Drive&lt;/strong&gt;. Supongo que no era de la organización, si no de la empresa que grababa las charlas.&lt;/p&gt;
+
+&lt;p&gt;Un poco descolocado, y como soy un tío con recursos, recordé que traía las slides en mi propio pen drive, así que le dije que se llevase el mío.&lt;/p&gt;
+
+&lt;p&gt;Y esa fue la última vez que vi a alguien no-asistente interesarse por la charla. Nadie vino a ayudarme a configurar nada. Al poco de empezar la charla tuve problemas de sonido con un vídeo, y &lt;strong&gt;absolutamente nadie ni de la organización ni de la gente del streaming se acercó a interesarse&lt;/strong&gt;. Superando las dificultades técnicas como podía, seguí con la charla hasta que llegando a la parte final, mi micrófono deja de funcionar. No veo que ocurra nada, y al poco vuelve a funcionar. Sigo hablando pero ya entiendo qué estaba pasando: alguien de la organización se acerca por fin, pero para decirme que &lt;strong&gt;el tiempo de la charla se había terminado&lt;/strong&gt;. En otras conferencias en las que he estado, te van avisando cuando quedan 10 o 5 minutos, para que sepas que el tiempo se acaba. Aquí el aviso parece que era cortar el micro cuando se acabase el tiempo.&lt;/p&gt;
+
+&lt;p&gt;Como pude, pasé las diapositivas rápidamente para al menos mencionarlas y terminar finalmente la charla. Una pena.&lt;/p&gt;
+
+&lt;p&gt;Al acabar tampoco volví a ver a nadie de la organización. Ah! Ni tampoco a mi pen drive (a pesar de ir a pedirlo 🙁&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusiones&#34;&gt;Conclusiones&lt;/h2&gt;
+
+&lt;p&gt;Fue un placer hablar con amigos y compañeros de profesión a los que solo veo en conferencias como &lt;a href=&#34;https://twitter.com/carlosble&#34;&gt;Carlos Blé&lt;/a&gt;, y desvirtualizar a ilustres como &lt;a href=&#34;https://twitter.com/flopezluis&#34;&gt;Félix López&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/agonzalezro&#34;&gt;Álex González&lt;/a&gt; o &lt;a href=&#34;https://twitter.com/kinisoftware&#34;&gt;Kini&lt;/a&gt;, entre otros.&lt;/p&gt;
+
+&lt;p&gt;Pero eso podría hacerlo en otras conferencias. Así que el año que viene me tomaré un descanso de la Codemotion, e invertiré ese tiempo y dinero en ver a esos &lt;em&gt;camaradas del metal&lt;/em&gt; en otro sarao.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Auto completado en zsh</title>
+      <link>http://fiunchinho.github.io/blog/auto-completado-en-zsh/</link>
+      <pubDate>Sat, 16 Jul 2016 17:49:15 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/auto-completado-en-zsh/</guid>
+      <description>&lt;p&gt;Hace tiempo escribí un post sobre &lt;a href=&#34;http://blog.armesto.net/sacale-el-maximo-partido-a-tu-terminal-con-zsh/&#34;&gt;cómo sacarle el máximo rendimiento a tu terminal utilizando zsh&lt;/a&gt;, en el que introducía &lt;a href=&#34;http://www.zsh.org/&#34;&gt;zsh&lt;/a&gt; y el framework &lt;a href=&#34;http://ohmyz.sh/&#34;&gt;oh-my-zsh&lt;/a&gt; para tener una experiencia más placentera usando el terminal.&lt;/p&gt;
+
+&lt;p&gt;Hoy veremos algunas funcionalidades extras que nos aporta esta herramienta y que nos puede ayudar a decidirnos a empezar a utilizarla.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;auto-completado&#34;&gt;Auto Completado&lt;/h2&gt;
+
+&lt;p&gt;Una de las cosas que comentamos &lt;a href=&#34;http://blog.armesto.net/sacale-el-maximo-partido-a-tu-terminal-con-zsh/&#34;&gt;en el artículo original&lt;/a&gt; era que el auto completado de comandos era bastante potente, pero podemos mejorarlo aun más. Añadiendo esto a nuestra configuración&lt;/p&gt;
+
+&lt;pre&gt;zstyle &#39;:completion:*&#39; verbose yes
+zstyle &#39;:completion:*&#39; group-name &#39;&#39;&lt;/pre&gt;
+
+&lt;p&gt;obtendremos la lista de posibles acciones agrupadas por tipo. Por ejemplo, escribiendo vi y dándole al tabulador&lt;/p&gt;
+
+&lt;pre&gt;$ vi
+ --- external command
+ VirtualBox  vi          view        vim         vimdiffvisudo
+ --- shell function
+ vi_mode_prompt_info     virtualenv_prompt_info
+ --- alias
+ vim
+ --- local directory
+ videos/&lt;/pre&gt;
+
+&lt;p&gt;Como podéis ver, en vez de salirme un listado enorme con todo, vemos las opciones agrupadas por tipo. Como dijimos anteriormente, no hace falta usar el tabulador para moverme por las opciones, si no que puedo utilizar los cursores del teclado para ir más rápido.&lt;/p&gt;
+
+&lt;p&gt;Y no solo vale con comandos, si no también con argumentos de los comandos:&lt;/p&gt;
+
+&lt;pre&gt;$ ping -
+ --- option
+ -L  -- suppress loopback of multicast packets
+ -Q  -- somewhat quiet
+ -R  -- record route
+ -a  -- audible for each packet
+ -d  -- set SO_DEBUG on the socket
+ -f  -- flood ping
+ -n  -- numeric output only
+ -q  -- quiet
+ -r  -- bypass normal routing tables
+ -v  -- verbose
+ -I  -P  -S  -T  -c  -i  -l  -m  -p  -s  -t&lt;/pre&gt;
+
+&lt;p&gt;O subcomandos:&lt;/p&gt;
+
+&lt;pre&gt;$ git
+ --- common commands
+ add       -- add file contents to the index
+ bisect    -- find by binary search the change that introduced
+ branch    -- list, create, or delete branches
+ checkout  -- checkout a branch or paths to the working tree
+ clone     -- clone a repository into a new directory
+ commit    -- record changes to the repository
+ diff      -- show changes between
+ fetch     -- download objects and refs from another repository
+ grep      -- print lines matching a pattern
+ init      -- create an empty Git repository
+ log       -- show commit logs
+ merge     -- join two or more development histories together
+ mv        -- move or rename a file, a directory, or a symlink
+ pull      -- fetch from and merge with another repository
+ push      -- update remote refs along with associated objects
+ rebase    -- forward-port commits to the updated upstream
+ reset     -- reset current HEAD to the specified state
+ rm        -- remove files from the working tree
+ show      -- show various types of objects
+ status    -- show the working tree status
+ tag       -- create, list, delete or verify a tag object signed&lt;/pre&gt;
+
+&lt;h2 id=&#34;sugerencias&#34;&gt;Sugerencias&lt;/h2&gt;
+
+&lt;p&gt;He visto muchas utilidades en Gthub que cuando escribimos un comando incorrectamente en la terminal, nos sugiere comandos válidos porque seguramente nos hemos equivocado en algún caracter. Esto que es bastante útil viene también con zsh. Podemos comprobar cómo funciona&lt;/p&gt;
+
+&lt;pre&gt;$ vom
+ zsh: correct &#39;vom&#39; to &#39;vim&#39; [nyae]? y&lt;/pre&gt;
+
+&lt;p&gt;Cuando detecta que el comando es incorrecto, nos ofrece alguna sugerencia y nos da cuatro posibles respuestas:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;n: no, quiero probar mi comando aunque no lo reconozca zsh&lt;/li&gt;
+&lt;li&gt;y: sí, quiero abrir la sugerencia de zsh&lt;/li&gt;
+&lt;li&gt;a: abortar, olvídate de mi comando y volvamos a la terminal&lt;/li&gt;
+&lt;li&gt;e, volver a la terminal para editar mi comando antes de ejecutarlo&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;sugerencias-en-auto-completado&#34;&gt;Sugerencias en auto completado&lt;/h3&gt;
+
+&lt;p&gt;Fíjate que incluso mezcla estas dos funcionalidades! Utilicemos el auto completado otra vez&lt;/p&gt;
+
+&lt;pre&gt;$ cat tost
+ corrections (errors: 1)
+ test.jmx            test.json
+ --- original
+ tost&lt;/pre&gt;
+
+&lt;p&gt;Al escribir &lt;strong&gt;&lt;em&gt;cat tost&lt;/em&gt;&lt;/strong&gt; y pulsar tabulador, me sugiere posibles correciones, ya que no hay ningún fichero que coincida con el nombre &amp;#8220;tost&amp;#8221;, pero sí con &amp;#8220;test&amp;#8221;.&lt;/p&gt;
+
+&lt;p&gt;Lo mismo con comandos&lt;/p&gt;
+
+&lt;pre&gt;$ vom
+ corrections (errors: 1)
+ comptry                             vim
+ compcall                            vimdiff
+ composer                            homebrew/
+ --- original
+ vom&lt;/pre&gt;
+
+&lt;h2 id=&#34;conclusión&#34;&gt;Conclusión&lt;/h2&gt;
+
+&lt;p&gt;Como véis, hay muchos motivos para utilizar zsh y que estar en la terminal sea un placer. ¿Conocéis algún otro truco que no esté aquí?&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Problemas desplegando código si usas Apache, symlinks y opcache</title>
+      <link>http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</link>
+      <pubDate>Fri, 01 May 2015 12:14:32 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</guid>
+      <description>&lt;p&gt;Muchas de las soluciones disponibles en el mercado para desplegar aplicaciones se basan en el uso de enlaces simbólicos (o symlinks) para activar la última versión de código en el servidor.&lt;/p&gt;
+
+&lt;p&gt;Simplificando mucho, podríamos decir que un flujo habitual a la hora de desplegar sería el siguiente:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ejecutamos comando para iniciar el proceso de despliegue de código nuevo.&lt;/li&gt;
+&lt;li&gt;Se descarga el código del repositorio y se construye la aplicación. Esto suele significar instalar dependencias, generar ficheros, etc.&lt;/li&gt;
+&lt;li&gt;Se mueve el resultado del paso anterior al servidor y se pone en una carpeta nueva.&lt;/li&gt;
+&lt;li&gt;La carpeta a la que apunta el &lt;em&gt;document root&lt;/em&gt; de nuestro servidor web es en realidad un enlace simbólico a otra carpeta que contiene código en la versión anterior. Por tanto solo nos queda cambiar ese enlace simbólico para que apunte a la nueva que acabamos de crear.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Como el cambio de enlace simbólico es practicamente instantáneo, conseguimos reducir la ventana de tiempo en la que el servidor está en un estado inconsistente, por ejemplo, porque todavía no se hayan terminado de copiar ficheros. Mientras se están subiendo la versión nueva, seguimos sirviendo la versión vieja, sin dejar de dar servicio. Y solo cuando la nueva está lista, hacemos el cambio de forma casi instantánea.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;problemas-con-este-enfoque&#34;&gt;Problemas con este enfoque&lt;/h2&gt;
+
+&lt;p&gt;Esta manera de desplegar, que parece sencilla y perfecta, tiene algunas complicaciones. Con la que la gente más suele pelearse es con el hecho de que a pesar de haber desplegado una versión nueva en el servidor, a veces siguen viendo la versión vieja, debido a la extensión &lt;a href=&#34;https://www.google.es/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=0CCUQFjAA&amp;url=http%3A%2F%2Fphp.net%2Fmanual%2Fes%2Fbook.opcache.php&amp;ei=HlFDVZfPI8T2Us6sgLAI&amp;usg=AFQjCNF9sKlRWdBbTEBKa1M2w25s5TBQGw&amp;sig2=6xMwOb3cZagbFnheUWkDTQ&amp;bvm=bv.92291466,d.d24&#34; target=&#34;_blank&#34;&gt;Opcache&lt;/a&gt; (antiguo APC) que guarda la compilación del código PHP interpretado en memoria. Por tanto, aunque la versión nueva ya está activa, PHP sigue tirando de esta caché para no tener que leer del disco y volver a compilar código PHP, así que se sirve el código de la versión vieja hasta que caduque esta caché (si es que lo tenemos configurado para que caduque), o hasta que reiniciemos el servidor dejando de dar servicio mientras dure el reinicio del servidor.&lt;/p&gt;
+
+&lt;p&gt;Antes de ver cómo solventarlo, vamos a ver un par de detalles interesantes.&lt;/p&gt;
+
+&lt;h2 id=&#34;te-presento-a-tu-nueva-amiga-realpath-cache&#34;&gt;Te presento a tu nueva amiga realpath_cache&lt;/h2&gt;
+
+&lt;p&gt;Cada vez que utilizas una ruta del sistema de archivos, por ejemplo porque vas a hacer un require/include de ese archivo, o porque vas lees/escribir en esa ruta, &lt;strong&gt;el sistema tiene que resolver esa ruta&lt;/strong&gt;: saber donde es exactamente, si es un directorio o un archivo, etc.&lt;/p&gt;
+
+&lt;p&gt;Para mejorar su rendimiento y minimizar lecturas de disco, PHP utiliza una caché interna donde guarda información sobre el sistema de archivos. No estoy hablando de Opcache, sino de otra caché llamada &lt;a href=&#34;https://php.net/manual/es/ini.core.php#ini.realpath-cache-size&#34; target=&#34;_blank&#34;&gt;realpath_cache&lt;/a&gt;. Si intentas resolver la misma ruta dos veces seguidas, solo en la primera PHP le pedirá información al lentísimo sistema de archivos: la segunda se leerá directamente de la caché, mejorando mucho el rendimiento.&lt;/p&gt;
+
+&lt;p&gt;Esto es bueno, ¿no?&lt;/p&gt;
+
+&lt;p&gt;Sí, claro. El tema es que, como con todas las cachés del mundo, el problema viene a la hora de invalidar la caché y decirle que queremos utilizar contenido nuevo.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;There are only two hard things in Computer Science: cache invalidation and naming things.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Cuando desplegamos código nuevo, el contenido de la ruta de nuestro &lt;em&gt;Document Root&lt;/em&gt; cambia. Aunque en nuestro código siempre usemos la misma ruta para hacer algo, piensa por ejemplo la ruta relativa que usas para incluir el autoload, despues de cada deploy, &lt;strong&gt;esa ruta se resuelve a un lugar distinto en el disco&lt;/strong&gt;, porque el enlace simbólico apunta a otro sitio. Esto evitará que veamos la versión nueva del código desplegado, hasta que esta caché no caduque o hagamos algo al respecto.&lt;/p&gt;
+
+&lt;h2 id=&#34;cómo-funciona-apache&#34;&gt;Cómo funciona Apache&lt;/h2&gt;
+
+&lt;p&gt;A diferencia de Opcache, que se guarda en memoria compartida por todos los procesos, la realpath_cache es local para cada proceso del sistema. Este detalle es importante porque si utilizas Apache &lt;em&gt;prefork&lt;/em&gt; para servir tu aplicación, cuando inicias Apache, este crea varios procesos hijos, tantos como le hayas configurado. Cada proceso hijo creado servirá X número de peticiones en su vida (esto también es configurable), y una vez que ha cumplido su deber, Apache lo matará y lo reemplazará con otro proceso hijo, poco a poco renovando todos los procesos que sirven páginas.&lt;/p&gt;
+
+&lt;p&gt;Es decir, &lt;strong&gt;no podemos preveer exactamente cuando los procesos dejarán de existir&lt;/strong&gt;. Sumado a que la realpath_cache es local a cada proceso,&lt;strong&gt; la nueva versión que acabamos de desplegar se irá sirviendo aleatoriamente&lt;/strong&gt;, dependiendo de qué proceso de Apache te haya asignado el servidor.&lt;/p&gt;
+
+&lt;p&gt;Como dijimos antes, podríamos solventarlo haciendo un reinicio de Apache despues de cada despliegue, pero dejaríamos de servir páginas el tiempo que tardase en reiniciar.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Mal, mal, mal, verdadera mal, por no deci borchenoso&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;reiniciando-elegantemente&#34;&gt;Reiniciando elegantemente&lt;/h2&gt;
+
+&lt;p&gt;Pero tranquilo, no sufras, hay solución. Apache nos ofrece una variante al reinicio, llamada &lt;em&gt;graceful restart&lt;/em&gt;. Esta variante, en vez de matar al proceso de Apache y todos sus hijos para reiniciarlo, lo que hace es que el proceso padre revisa a los procesos hijos de forma que:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Si no están haciendo nada, los sustituye por un proceso nuevo.&lt;/li&gt;
+&lt;li&gt;Si está sirviendo una petición en este momento, cuando termine lo sustituye por un proceso nuevo.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Como dijimos que realpath_cache era local a cada proceso, cuando Apache levanta un nuevo proceso hijo &lt;strong&gt;la realpath_cache está vacía para ese proceso y las rutas se resolverán al código nuevo que acabamos de desplegar&lt;/strong&gt;. Todo esto sin dejar de dar servicio, porque siempre hay procesos sirviendo páginas.&lt;/p&gt;
+
+&lt;h2 id=&#34;pesao-que-yo-venía-aquí-a-solventar-el-problema-de-opcache&#34;&gt;&lt;em&gt;Pesao&lt;/em&gt;. Que yo venía aquí a solventar el problema de Opcache&lt;/h2&gt;
+
+&lt;p&gt;Cierto. Opcache no es más que un diccionario (piensa en un array PHP), en el que cada &lt;em&gt;key&lt;/em&gt; es la ruta del fichero compilado, y el &lt;em&gt;value&lt;/em&gt; es el resultado de esa compilación. Cuando se va a ejecutar un fichero PHP, se ve si la ruta de ese archivo ya es una de las _keys_ en el diccionario, si ya lo está significa que ya lo hemos compilado antes, y se utiliza directamente el &lt;em&gt;value&lt;/em&gt;. Si no, se compila y se guarda en el diccionario.&lt;/p&gt;
+
+&lt;p&gt;El &amp;#8216;&lt;em&gt;final plot twist&amp;#8217;&lt;/em&gt; de todo esto es que &lt;strong&gt;Opcache utiliza realpath_cache internamente para resolver la ruta de los ficheros&lt;/strong&gt;. Por tanto, si hacemos un &lt;em&gt;graceful restart&lt;/em&gt; después de cada despliegue, la ruta del archivo habrá cambiado, resuelve a una carpeta distinta, así que &lt;strong&gt;será como un fichero totalmente nuevo para Opcache y volverá a compilarlo, haciendo que sirvamos la versión nueva&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;alignnone&#34; src=&#34;https://s-media-cache-ak0.pinimg.com/originals/ce/9c/94/ce9c949d6c73dbfb889f6036bac022dd.jpg&#34; alt=&#34;Mind Blown&#34; width=&#34;480&#34; height=&#34;360&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusión&#34;&gt;Conclusión&lt;/h2&gt;
+
+&lt;p&gt;Lo que hemos visto hoy es tan solo uno de los posibles problemas a la hora de desplegar código. Otro problema, por ejemplo, sería el que se produce cuando iniciamos un despliegue, un visitante entra en la web, justo después se cambia el enlace simbólico y estamos sirviendo archivos estáticos como javascript o css. Es posible que algunos archivos hayan sido de la versión vieja, y otros de la versión nueva, llevando a posibles inconsistencias. &lt;a href=&#34;https://codeascraft.com/2013/07/01/atomic-deploys-at-etsy/&#34; target=&#34;_blank&#34;&gt;Hay módulos de apache que intentan solventar este tipo de problemas&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;El despliegue de código es un tema complicado y muy interesante. Últimamente está avanzando mucho con conceptos como servidores inmutables y los contenedores, pero eso ya es tema de otro post.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Jugando con conceptos de DDD</title>
+      <link>http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/</link>
+      <pubDate>Wed, 29 Oct 2014 00:46:39 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/</guid>
+      <description>&lt;p&gt;El pasado fin de semana se celebró en Barcelona una &lt;a title=&#34;Software Craftmanship Barcelona&#34; href=&#34;http://www.softwarecraftsmanshipbarcelona.org/&#34; target=&#34;_blank&#34;&gt;nueva edición de la Software Craftmanship&lt;/a&gt;, donde se hablaron de diversos temas relacionados con las buenas prácticas a la hora de crear software. Entre ellos, en mi opinión, hubo uno que pareció suscitar mayor interés en la gente y ocupó un papel protagonista en los dos días de conferencia: &lt;strong&gt;Domain Driven Design&lt;/strong&gt;. Es un tema en el que creo que muchos estamos todavía aprendiendo, intentando dar sentido a la inmensa cantidad de conceptos e información que aparecen tanto en &lt;a title=&#34;DDD - Eric Evans&#34; href=&#34;http://www.amazon.es/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215&#34; target=&#34;_blank&#34;&gt;el libro azul&lt;/a&gt; como en &lt;a title=&#34;DDD - Vaughn Vernon&#34; href=&#34;http://www.amazon.es/gp/product/0321834577/ref=pd_lpo_sbs_dp_ss_1?pf_rd_p=479290847&amp;pf_rd_s=lpo-top-stripe&amp;pf_rd_t=201&amp;pf_rd_i=0321125215&amp;pf_rd_m=A1AT7YVPFBWXBL&amp;pf_rd_r=1N6RWXVM4AFMHH9P0EGZ&#34; target=&#34;_blank&#34;&gt;el rojo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;En esta búsqueda de sentido, me surgió una duda que creo que no aparece resuelta directamente en ninguno de los dos libros, y que compartí con el resto de asistentes en una de las charlas sobre DDD. Quiero reproducirla otra vez aquí, para poder hablar un poco más sobre el tema. Creo que no hace falta mostrar código, pero realmente me gustaría vuestra opinión, así que si es necesario, decídmelo y añadiré código.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;creando-value-objects-a-partir-de-entidades&#34;&gt;Creando value objects a partir de entidades&lt;/h2&gt;
+
+&lt;p&gt;Mi duda viene a la hora de combinar dos de los objetos básicos de DDD: las &lt;strong&gt;entidades&lt;/strong&gt; y los &lt;strong&gt;value objects&lt;/strong&gt;. En todos los ejemplos que he visto, los value objects pueden ser simples objetos que no dependen de ningún otro, o que se construyan utilizando otros value objects. Por su parte, las entidades se construyen tradicionalmente sin dependencias, o utilizando algún value object. Mi pregunta es: &lt;strong&gt;¿hay algo que nos impida construir value objects que dependan de entidades, que reciban entidades en su constructor?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Cuando lancé esta pregunta durante la sesión de DDD Táctico que impartía &lt;a title=&#34;Christian Soronellas&#34; href=&#34;https://twitter.com/theUniC&#34; target=&#34;_blank&#34;&gt;Christian&lt;/a&gt;, la mayoría de gente me miró como si fuese un loco (solo &lt;a title=&#34;Carlos Ble&#34; href=&#34;https://twitter.com/carlosble/&#34; target=&#34;_blank&#34;&gt;Carlos&lt;/a&gt; parecía encontrar sentido a mis palabras), pero dejadme explicar por qué creo que construir value objects con entidades puede ser perfectamente válido.&lt;/p&gt;
+
+&lt;p&gt;Un value object es un objeto el cual su identidad viene dada por el valor que contiene. No tiene un identificador como tal, porque su propio valor lo identifica. Dos value objects que contienen el mismo valor, son iguales.&lt;/p&gt;
+
+&lt;p&gt;Un ejemplo de caso de uso para mi pregunta podría ser cuando intentamos modelar una aplicación para votar en unas elecciones. Una práctica que suelo utilizar es la de intentar modelar todo el dominio con value objects, y solo &amp;#8220;promocionar&amp;#8221; el objeto a entidad cuando es estrictamente necesario. En este caso, si tenemos ciudadanos que votan, y partidos políticos que pueden ser votados, veo lógico que esos sean entidades, ya que un ciudadano puede hasta cambiarse el nombre y seguir siendo el mismo ciudadano. &lt;strong&gt;Tiene una identidad que lo identifica&lt;/strong&gt; (valga la redundancia). Con el partido político pasa algo parecido: podría cambiar su logotipo, o hasta su nombre, y seguir siendo el mismo.&lt;/p&gt;
+
+&lt;p&gt;Pero para modelar los votos que la gente hace a los partidos, quise intentar hacerlo con un value object. Este value object debe contener qué ciudadano ha votado, a qué partido político, y quizá el momento exacto en el que ha votado. Si decíamos que tanto los ciudadanos como los partidos políticos son entidades&amp;#8230; &lt;strong&gt;este objeto &amp;#8220;voto&amp;#8221; tendría que construirse a partir de entidades&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;inmutabilidad-del-value-object&#34;&gt;Inmutabilidad del value object&lt;/h2&gt;
+
+&lt;p&gt;No recuerdo quién, argumentó que, por definición, los value objects son inmutables, y si un ciudadano se cambiase el nombre entonces el voto habría cambiado, perdiendo su inmutabilidad. Pero esto no es cierto. Precisamente, debido a que las entidades tienen identidad, la forma de decir si una entidad es o no igual a otra, es comparando los identificadores de esas entidades. Si un ciudadano se cambia el nombre, sigue siendo el mismo ciudadano. Por tanto, si un value object &lt;em&gt;Voto&lt;/em&gt; contiene una entidad &lt;em&gt;Ciudadano&lt;/em&gt;, y este ciudadano se cambia el nombre, &lt;strong&gt;el value object sigue sin haber mutado, ya que sigue conteniendo la misma entidad&lt;/strong&gt;: la identidad del ciudadano es la misma.&lt;/p&gt;
+
+&lt;p&gt;Si cambiase el ciudadano que ha votado, o el partido político al que ha votado, &lt;strong&gt;sería otro voto&lt;/strong&gt;. Es el valor del value object lo que le identifica. Es inmutable: yo no puedo coger la papeleta de un voto y tachar una cosa para poner otra.&lt;/p&gt;
+
+&lt;p&gt;Alguien podría preguntarme que por qué complicarme la vida y no hacer una entidad. Creo que modelar con value objects es más simple, manteniendo la inmutabilidad lo máximo posible. Estos votos podrían formar parte de una entidad de elecciones (o algo parecido), que sería lo que finalmente persistiría esos votos en base de datos. Cuantas menos entidades, más sencillo de programar y más sencillo de razonar. ¿Para qué añadir identidades a cosas que no las necesitan?&lt;/p&gt;
+
+&lt;p&gt;Ya sé que no es un ejemplo que aparezca en los libros, pero a mí es un diseño que a priori me cuadra. Solo lo he desarrollado en mi cabeza, así que no sé con qué problemas me podría encontrar. Como soy masoca, lo expongo aquí públicamente para que me lo crujáis.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;¿Qué os parece?&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Mis impresiones sobre el debate #isTDDDead</title>
+      <link>http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/</link>
+      <pubDate>Fri, 23 May 2014 20:35:44 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/</guid>
+      <description>&lt;p&gt;El &lt;a title=&#34;Yo no soy DHH. Long live TDD&#34; href=&#34;http://blog.armesto.net/yo-no-soy-dhh-long-live-tdd/&#34; target=&#34;_blank&#34;&gt;debate sobre si TDD está muerto&lt;/a&gt; o no sigue &lt;em&gt;vivito y coleando&lt;/em&gt;, y tras una guerra fría de artículos por ambas partes, ahora el intercambio de opiniones se ha pasado a un formato de &lt;a title=&#34;isTDDDead&#34; href=&#34;http://martinfowler.com/articles/is-tdd-dead/&#34; target=&#34;_blank&#34;&gt;vídeo debate&lt;/a&gt; donde Martin Fowler, Kent Beck y el mismísimo David Heinemeier Hansson hablan sobre el tema.&lt;/p&gt;
+
+&lt;p&gt;La verdad es que cuando anunciaron que Kent Beck iba a enfrentarse a David Heinemeier sobre el tema TDD, me alegré bastante por ver a gente tan buena en esto que hacemos debatiendo sobre distintas metodologías. &amp;#8220;&lt;em&gt;Seguro que aprendo de ambas partes&lt;/em&gt;&amp;#8220;, pensaba yo.&lt;/p&gt;
+
+&lt;p&gt;Ingenuo de mí.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Tres &lt;em&gt;hangouts&lt;/em&gt; despues, la idea general que para mí resume el debate es que DHH dice que TDD puede desencadenar en mal código. El problema fundamental que tiene su argumento es que esto no es exclusivo de TDD. Hacer TDD te puede llevar a un mal código de la misma manera que utilizar mal cualquier otra herramienta podría llevarnos por el mal camino.&lt;/p&gt;
+
+&lt;h2 id=&#34;tests-como-herramientas-de-diseño&#34;&gt;Tests como herramientas de diseño&lt;/h2&gt;
+
+&lt;p&gt;A veces parece que lo que no le gusta de TDD y de los tests unitarios, es que a diferencia de los tests de sistema que él prefiere, los unitarios son tests que no te ocultan los problemas que tiene tu código. &lt;strong&gt;No puedes crear un tests en aislamiento cuando tu clase tiene mil dependencias y no cumples cosas como la ley de Demeter o los principios SOLID&lt;/strong&gt;. Sin embargo, los tests de sistema no se quejarán en absoluto. No son nada exigentes en ese sentido. A cambio, ¿qué pierdes? Pierdes feedback instantáneo sobre cómo de bien (o mal) estás diseñando algo. Pierdes velocidad en los tests que pasan de segundos a minutos.&lt;/p&gt;
+
+&lt;p&gt;Eligiendo el camino de los tests de sistema puede dar la impresión de que vamos más rápido porque tenemos que pensar menos los tests, pero lo que realmente estamos haciendo es &lt;strong&gt;esconder el polvo debajo de la alfombra&lt;/strong&gt;. El problema es que llegará un día que la alfombra no será suficiente, y cuando nos queramos dar cuenta, &lt;strong&gt;las termitas han tomado el lugar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;arquitectura-hexagonal&#34;&gt;Arquitectura Hexagonal&lt;/h2&gt;
+
+&lt;p&gt;Otro argumento que me chocó de DHH, que menciona en el segundo &lt;em&gt;hangout&lt;/em&gt;, es ese que dice que TDD penaliza el diseño porque tiendes a cosas como la arquitectura hexagonal. Para empezar, no entiendo qué relación tiene una cosa con la otra. Puedes hacer una arquitectura hexagonal sin hacer TDD y viceversa.&lt;/p&gt;
+
+&lt;p&gt;Además, dice que elegimos utilizar arquitectura hexagonal porque nos ayuda a crear tests. Que el principal motivo de este tipo de arquitectura es el testing.&lt;/p&gt;
+
+&lt;p&gt;En &lt;a title=&#34;Arquitectura Hexagonal&#34; href=&#34;https://www.youtube.com/watch?v=vX5PBaXopmg&#34; target=&#34;_blank&#34;&gt;mi charla sobre arquitectura hexagonal&lt;/a&gt; (&lt;a title=&#34;Arquitectura Hexagonal&#34; href=&#34;https://speakerdeck.com/fiunchinho/hexagonal-architecture&#34; target=&#34;_blank&#34;&gt;slides&lt;/a&gt;), no se mencionan los tests hasta la slide número 55 (son 60). Y lo que digo es que la facilidad de hacer tests con este tipo de arquitecturas, es un buenísimo efecto secundario que tendremos. Pero nunca se vende que sea el principal motivo. Cierto es que en &lt;a title=&#34;Hexagonal Architecture&#34; href=&#34;http://alistair.cockburn.us/Hexagonal+architecture&#34; target=&#34;_blank&#34;&gt;el artículo original&lt;/a&gt; se hace más hincapié en los tests, pero para mí la principal ventaja es &lt;strong&gt;la independencia de herramientas&lt;/strong&gt;: frameworks, bases de datos, etc,. además de promocionar al dominio a un sitio más visible y acorde a la importancia que tiene.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusión&#34;&gt;Conclusión&lt;/h2&gt;
+
+&lt;p&gt;Me veré el último hangout, porque siempre se puede aprender algo de estas tres fieras, pero para mi, el debate no se ha llevado en ningún momento por cauces interesantes. Prefiero no pensarlo, pero ya van varias personas que mencionan que DHH solo pretendía hacer ruido. Espero que no fuese así.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>El problema con el code coverage</title>
+      <link>http://fiunchinho.github.io/blog/el-problema-con-el-code-coverage/</link>
+      <pubDate>Thu, 01 May 2014 13:27:28 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/el-problema-con-el-code-coverage/</guid>
+      <description>&lt;p&gt;Me he permitido el lujo de &lt;a title=&#34;Considered harmful&#34; href=&#34;http://en.wikipedia.org/wiki/Considered_harmful&#34; target=&#34;_blank&#34;&gt;parafrasear a los maestros&lt;/a&gt; en el título de este artículo para hablaros de un tema algo polémico, por lo menos en los círculos en los que lo he hablado. Se trata de la necesidad de una alta cobertura de código, o &lt;em&gt;code coverage&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;El tema me lo recordó una serie de tweets que intercambiamos el otro día algunos en Twitter, hablando sobre la importancia de tener una cobertura de código del 100%. En el fondo todos estábamos de acuerdo en que no es importante tener un 100%, aunque no es la opinión más habitual que leerás por internet o escucharás en empresas. Mi opinión es que exigir cierto porcentaje de cobertura de código no es que no aporte nada, &lt;strong&gt;sino que es algo perjudicial&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;blockquote class=&#34;twitter-tweet&#34; width=&#34;550&#34;&gt;
+  &lt;p&gt;
+    .&lt;a href=&#34;https://twitter.com/SergiGP&#34;&gt;@SergiGP&lt;/a&gt; &lt;a href=&#34;https://twitter.com/theUniC&#34;&gt;@theUniC&lt;/a&gt; Tener un porcentaje alto de code coverage es una consecuencia, no un objetivo. No hay que olvidarlo nunca.
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    &amp;mdash; Jose Armesto (@fiunchinho) &lt;a href=&#34;https://twitter.com/fiunchinho/statuses/459038699079344128&#34;&gt;April 23, 2014&lt;/a&gt;
+  &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h2 id=&#34;qué-es-la-cobertura-de-código&#34;&gt;¿Qué es la cobertura de código?&lt;/h2&gt;
+
+&lt;p&gt;La cobertura de código es una métrica que nos dice qué líneas de nuestro código ha sido ejecutado tras lanzar un test. De esta forma, yo puedo saber si hay partes de mi código que no están siendo testeadas. Este porcentaje se utiliza para medir la salud de un proyecto ya que si tiene un porcentaje bajo, podemos afirmar que hay muchas partes del código de las que no podemos estar seguros de si funcionan o no.&lt;/p&gt;
+
+&lt;p&gt;Una vez que sabemos qué es, la siguiente pregunta sale de forma natural.&lt;/p&gt;
+
+&lt;h2 id=&#34;cuanta-cobertura-de-código-es-necesaria&#34;&gt;¿Cuanta cobertura de código es &lt;em&gt;necesaria&lt;/em&gt;?&lt;/h2&gt;
+
+&lt;p&gt;Nótese el énfasis en la palabra &amp;#8220;necesaria&amp;#8221;. Y aquí es donde viene el problema. Muchos dirán que es una locura subir un código a producción que no llegue al 80% de cobertura. Otros te dirán incluso que 90%. Y siempre encontrarás al fanático que no programa ni el vídeo VHS y que dice que él no sube a producción nada que baje del 100%, porque es el porcentaje que obtiene al hacer siempre TDD.&lt;/p&gt;
+
+&lt;p&gt;Mi problema con todo esto es que los tests son una &lt;strong&gt;herramienta de confianza&lt;/strong&gt;. Además de que me ayudan a &lt;a title=&#34;Yo no soy DHH. Long live TDD&#34; href=&#34;http://blog.armesto.net/yo-no-soy-dhh-long-live-tdd/&#34; target=&#34;_blank&#34;&gt;conseguir un mejor diseño haciéndome pensar en el problema antes de pensar en la solución&lt;/a&gt;, me ayudan a detectar errores ejecutándolos después de cada refactorización. Esto hace que yo tenga toda la seguridad del mundo en refactorizar código: sé que siempre puedo lanzar los tests y ver si he roto algo. Es mi red de seguridad, mi chivato de errores. Entonces, ¿cuantos tests tengo que escribir? La respuesta es obvia: &lt;strong&gt;los tests necesarios para conseguir esa confianza&lt;/strong&gt;. Los necesarios para decir, si están en verde es que todo está bien.&lt;/p&gt;
+
+&lt;p&gt;¿Cómo se mide esa confianza en un porcentaje de code coverage equivalente? &lt;strong&gt;No se puede&lt;/strong&gt;. No se puede porque depende del código que estés haciendo. Si esa clase tiene un &lt;em&gt;getter&lt;/em&gt; que lo único que hace es devolver una propiedad y nada más, no escribiré un test para ese método. Si ese otro método es complejo y posiblemente cambiará, créeme que lo testearé concienzudamente. La mejor metáfora que he visto sobre esto es la publicada en 2007, respondiendo a esta misma pregunta &lt;a title=&#34;How much code coverage do you need?&#34; href=&#34;http://www.developertesting.com/archives/month200705/20070504-000425.html&#34; target=&#34;_blank&#34;&gt;How much test coverage do you need?&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div style=&#34;border-left: 5px solid #edece4&#34;&gt;
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;Early one morning, a programmer asked the great master:&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;“I am ready to write some unit tests. What code coverage should I aim for?”&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;The great master replied:&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;“Don’t worry about coverage, just write some good tests.”&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;The programmer smiled, bowed, and left.&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;&amp;#8230;&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;Later that day, a second programmer asked the same question.&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;The great master pointed at a pot of boiling water and said:&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;“How many grains of rice should put in that pot?”&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;The programmer, looking puzzled, replied:&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;“How can I possibly tell you? It depends on how many people you need to feed, how hungry they are, what other food you are serving, how much rice you have available, and so on.”&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;“Exactly,” said the great master.&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;The second programmer smiled, bowed, and left.&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;&amp;#8230;&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;Toward the end of the day, a third programmer came and asked the same question about code coverage.&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;“Eighty percent and no less!” Replied the master in a stern voice, pounding his fist on the table.&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;The third programmer smiled, bowed, and left.&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;&amp;#8230;&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;After this last reply, a young apprentice approached the great master:&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;“Great master, today I overheard you answer the same question about code coverage with three different answers. Why?”&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;The great master stood up from his chair:&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;“Come get some fresh tea with me and let’s talk about it.”&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;After they filled their cups with smoking hot green tea, the great master began to answer:&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;“The first programmer is new and just getting started with testing. Right now he has a lot of code and no tests. He has a long way to go; focusing on code coverage at this time would be depressing and quite useless. He’s better off just getting used to writing and running some tests. He can worry about coverage later.”&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;“The second programmer, on the other hand, is quite experience both at programming and testing. When I replied by asking her how many grains of rice I should put in a pot, I helped her realize that the amount of testing necessary depends on a number of factors, and she knows those factors better than I do – it’s her code after all. There is no single, simple, answer, and she’s smart enough to handle the truth and work with that.”&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;“I see,” said the young apprentice, “but if there is no single simple answer, then why did you answer the third programmer ‘Eighty percent and no less’?”&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;The great master laughed so hard and loud that his belly, evidence that he drank more than just green tea, flopped up and down.&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;“The third programmer wants only simple answers – even when there are no simple answers … and then does not follow them anyway.”&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;The young apprentice and the grizzled great master finished drinking their tea in contemplative silence.&lt;/em&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;problemática&#34;&gt;Problemática&lt;/h2&gt;
+
+&lt;p&gt;El problema de exigir un code coverage mínimo a los programadores, de proveer una respuesta simple a la pregunta, hace que el foco de los tests se centre en llegar a ese número mágico que nos hemos sacado de la manga, cuando el foco debería estar orientado a pensar qué tests son realmente importantes.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Una cobertura baja nos indica si un código está mal testeado, pero una alta no nos dice que un código esté bien testeado. De la misma forma que un test en rojo nos dice que hay un error, pero uno en verde no nos asegura la ausencia de errores.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;La motivación para exigir un code coverage mínimo creo que sale de &lt;a title=&#34;Ni hombres lobo ni balas de plata&#34; href=&#34;http://blog.armesto.net/ni-hombres-lobo-ni-balas-de-plata/&#34; target=&#34;_blank&#34;&gt;la necesidad de buscar respuesta a preguntas complejas&lt;/a&gt; del desarrollo de software. Centrándonos en llegar al mínimo de cobertura de código, puede hacer que un comportamiento del programa se nos escape e introduzcamos un bug en el sistema, porque estábamos demasiado ocupados escribiendo tests sin valor para pasar por las líneas que nos exigían.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusión&#34;&gt;Conclusión&lt;/h2&gt;
+
+&lt;p&gt;Escribir tests es lo mejor que puedes hacer, y soy un gran defensor de utilizar TDD, pero como dijo Kent Beck en su &lt;a title=&#34;Kent Beck on code coverage&#34; href=&#34;http://stackoverflow.com/a/153565/563072&#34; target=&#34;_blank&#34;&gt;famosísima respuesta de Stack Overflow&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Me pagan por escribir código que funciona, no tests.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Tener una alta de cobertura no es un objetivo a tener, sino que es una consecuencia de haber pensado bien en el problema que estamos solventando y en los comportamientos que son interesantes para testear. Los que no lo sean, no tenemos por qué testearlos.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Yo no soy DHH. Long live TDD</title>
+      <link>http://fiunchinho.github.io/blog/yo-no-soy-dhh-long-live-tdd/</link>
+      <pubDate>Thu, 24 Apr 2014 00:35:31 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/yo-no-soy-dhh-long-live-tdd/</guid>
+      <description>&lt;p&gt;DHH es un gran programador, creador de algo como &lt;a title=&#34;Rails&#34; href=&#34;http://rubyonrails.org/&#34; target=&#34;_blank&#34;&gt;Rails&lt;/a&gt;, framework que quedará en la historia de la programación web. Hoy, él, ha sido noticia por escribir &lt;a title=&#34;TDD is dead&#34; href=&#34;http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html&#34; target=&#34;_blank&#34;&gt;un post titulado &amp;#8220;TDD is dead&amp;#8221;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Quizá DHH está en lo cierto diciendo que TDD es algo que está muerto, que es momento de seguir hacia adelante y dejarlo atrás. Como cuando crecemos y dejamos de utilizar los &lt;a title=&#34;ruedines de bici&#34; href=&#34;http://1.bp.blogspot.com/_95Yb4E_y8Cs/S_HClbzs9YI/AAAAAAAADVs/iiwdG-vqq3Y/s1600/orbea-bicicleta-kids-atlantis-14.jpg&#34; target=&#34;_blank&#34;&gt;ruedines de la bicicleta&lt;/a&gt;: es algo para niños pequeños, pero de mayores ya no nos hacen falta. Quizá tiene razón.&lt;/p&gt;
+
+&lt;p&gt;Si eres lo suficientemente experto, entonces quizá ya no tiene sentido. Porque para mí TDD es eso: unos ruedines para programar que me ayudan a conseguir un mejor código. Si fuese capaz de escribir el mejor código posible a la primera, que siguiese los principios SOLID, que fuese auto explicativo, etc., entonces yo tampoco haría TDD.  &lt;strong&gt;¿Para qué molestarme?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Si me saliese a la primera, no necesitaría refactorizar muy frecuentemente y tener un unit testing que me avise cuando he roto algo. No me haría falta ese loop de feedback tan corto.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;no-todos-somos-dhh&#34;&gt;No todos somos DHH&lt;/h2&gt;
+
+&lt;p&gt;El problema es que poca gente tiene la capacidad de hacerlo así de bien siempre. Sobre todo porque normalmente programamos cosas que nunca antes hemos programado. Si estoy haciendo algo que ya hice con anterioridad, quizá no es tan importante seguir un TDD estricto. Ahí tomaré atajos.&lt;/p&gt;
+
+&lt;p&gt;Pero si lo que estoy haciendo es completamente nuevo y no sé por donde atacarlo, créeme que haré TDD sin dudarlo, &lt;strong&gt;siguiendo todos y cada uno de los pasos&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Como la mayoría de la gente no tiene esa capacidad que decía antes, la metedura de pata del post de DHH me parece mayúscula. Me lo parece porque no solo dice que TDD no es para él, sino que anima a la gente a no utilizarlo, y deja entrever que hará cambios en rails para animar a la gente a hacer menos unit testings y más tests de otro tipo.&lt;/p&gt;
+
+&lt;p&gt;Teniendo en cuenta su posición de lider en la comunidad, me parece una temeridad por su parte. Está invitando a la gente a que rompa algo tan establecido y aprobado como la &lt;a title=&#34;Testing Pyramid&#34; href=&#34;http://martinfowler.com/bliki/TestPyramid.html&#34; target=&#34;_blank&#34;&gt;pirámide de testing&lt;/a&gt;, basándose en que no han sido tests útiles para testear aplicaciones basadas en rails. Un vistazo rápido a las charlas de las conferencias de Ruby de los últimos años y vemos como hay un tema recurrente en todas ellas: &lt;a title=&#34;Deconstructing the framework&#34; href=&#34;https://www.youtube.com/watch?v=iUe6tacW3JE&#34; target=&#34;_blank&#34;&gt;cómo escapar de Rails&lt;/a&gt;. Bien sea por hacer &lt;a title=&#34;Fast tests&#34; href=&#34;https://www.youtube.com/watch?v=bNn6M2vqxHE&#34; target=&#34;_blank&#34;&gt;tests más rápidos&lt;/a&gt; y tener feedback antes; o porque los modelos de mi aplicación no &lt;a title=&#34;ActiveRecord&#34; href=&#34;https://www.youtube.com/watch?v=yuh9COzp5vo&#34; target=&#34;_blank&#34;&gt;estén entre mezclados con el sistema de persistencia&lt;/a&gt;; o porque quiero tener a&lt;a title=&#34;Hexagonal Rails&#34; href=&#34;https://www.youtube.com/watch?v=CGN4RFkhH2M&#34; target=&#34;_blank&#34;&gt;rquitecturas que me permitan intercambiar componentes fácilmente&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Siempre lo que se busca es escapar de Rails, minimizar la dependencia con el framework. Los unit testings son costosos de hacer cuando el framework está en el medio. Por eso no le han sido útiles: porque su framework no permitía que lo fuesen. La solución, obviamente, no es dejar de hacerlos, sino arreglar el framework.&lt;/p&gt;
+
+&lt;blockquote class=&#34;twitter-tweet&#34; width=&#34;550&#34;&gt;
+  &lt;p&gt;
+    Sit-ups are dead. They don’t work when I eat all this sugar and take on all this severe stress. Long live gastric bypass surgery.
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    &amp;mdash; ☕ J. B. Rainsberger (@jbrains) &lt;a href=&#34;https://twitter.com/jbrains/statuses/458983164502093824&#34;&gt;April 23, 2014&lt;/a&gt;
+  &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;el-dogma&#34;&gt;El Dogma&lt;/h2&gt;
+
+&lt;p&gt;De todas formas sí que comparto con él una cosa, y es el nivel de dogma que TDD ha alcanzado en los últimos años. Personas como Uncle Bob, cuando hablan de TDD, se ponen una sotana encima para predicar la palabra sagrada. Uncle Bob ha sido capaz de convertir la práctica de TDD en una religión.&lt;/p&gt;
+
+&lt;div style=&#34;width: 213px&#34; class=&#34;wp-caption alignleft&#34;&gt;
+  &lt;img alt=&#34;Uncle Bob, el predicador&#34; src=&#34;http://blogs.msdn.com/blogfiles/cdndevs/WindowsLiveWriter/CraftsmanshipandEthicsUncleBobsKeynote_E0E9/uncle_bob_martin_3.jpg&#34; width=&#34;203&#34; height=&#34;214&#34; /&gt;
+  
+  &lt;p class=&#34;wp-caption-text&#34;&gt;
+    Uncle Bob, el predicador de Texas
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Es una religión porque al igual que las religiones, el TDD de Uncle Bob promete la salvación eterna si cumples con los mandamientos (&lt;a title=&#34;3 rules of TDD&#34; href=&#34;http://butunclebob.com/ArticleS.UncleBob.TheThreeRulesOfTdd&#34; target=&#34;_blank&#34;&gt;3 en el caso del TDD&lt;/a&gt;). Pero no solo eso, sino que también asegura el castigo eterno para aquellos que no lo hagan. Eso es lo que hace cuando alude al poco profesionalismo de la gente que no lo practica. Está señalando a los herejes.&lt;/p&gt;
+
+&lt;p&gt;En mi opinión, &lt;strong&gt;hacer TDD es una herramienta más&lt;/strong&gt;. Una herramienta casi imprescindible para mi, pero una herramienta al fin y al cabo. A alguien que utilizase el bloc de notas para programar le recomendaría que probase Sublime o PHPStorm. Al igual que le recomendaría TDD si no lo utiliza. En ambos casos creo que esa persona será más productiva y hará mejor código. Por tanto será un programador más rentable. ¿Quiere decir esto que no se puede ser rentable si no se usa TDD? Claro que no, al igual que también puedes ser un crack en el bloc de notas.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Los defensores de TDD también debemos hacer auto-crítica y pensar en si la forma que elegimos para comunicar las bondades de TDD es la más correcta.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;conclusión&#34;&gt;&lt;strong&gt;Conclusión&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;Para mi su post de hoy ha sido una gran metedura de pata. Los unit testings aportan muchísimo valor a la hora de detectar errores, y el TDD es una de las mejores herramientas para que nuestro diseño sea mejor.&lt;/p&gt;
+
+&lt;p&gt;Yo no soy DHH. No he inventado Rails ni soy el CTO de &lt;a title=&#34;Basecamp&#34; href=&#34;https://basecamp.com/&#34; target=&#34;_blank&#34;&gt;una gran compañía&lt;/a&gt;. Yo seguiré utilizando TDD para que me ayude a hacer el mejor código posible.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Utilizando Puphpet también en producción</title>
+      <link>http://fiunchinho.github.io/blog/utilizando-puphpet-tambien-en-produccion/</link>
+      <pubDate>Sat, 19 Apr 2014 09:00:56 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/utilizando-puphpet-tambien-en-produccion/</guid>
+      <description>&lt;p&gt;Ya &lt;a title=&#34;Herramientas para el programador PHP moderno&#34; href=&#34;http://blog.armesto.net/herramientas-para-el-programador-php-moderno/&#34; target=&#34;_blank&#34;&gt;hablé en el pasado sobre Puphpet&lt;/a&gt;, una herramienta web que genera manifiestos de &lt;a title=&#34;Puppet&#34; href=&#34;http://puppetlabs.com/&#34; target=&#34;_blank&#34;&gt;Puppet&lt;/a&gt; y de &lt;a title=&#34;Vagrant&#34; href=&#34;http://www.vagrantup.com/&#34; target=&#34;_blank&#34;&gt;Vagrant&lt;/a&gt; de forma rápida y sencilla.&lt;/p&gt;
+
+&lt;p&gt;Llevo tiempo utilizándolo para configurar mis máquinas virtuales de desarrollo junto a Vagrant, pero siempre estaba un poco con la mosca detrás de la oreja por el hecho de no poder utilizarlo también en producción.&lt;/p&gt;
+
+&lt;p&gt;Así que el otro día me decidí a echar un ojo al código fuente de &lt;a title=&#34;Puphpet&#34; href=&#34;https://puphpet.com/&#34; target=&#34;_blank&#34;&gt;Puphpet&lt;/a&gt; y ver si podía utilizar solo la parte generada de &lt;a title=&#34;Puppet&#34; href=&#34;http://puppetlabs.com/&#34; target=&#34;_blank&#34;&gt;Puppet&lt;/a&gt;, y olvidarme de la parte de &lt;a title=&#34;Vagrant&#34; href=&#34;http://www.vagrantup.com/&#34; target=&#34;_blank&#34;&gt;Vagrant&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Resulta que para hacer su magia, &lt;a title=&#34;Puphpet&#34; href=&#34;https://puphpet.com/&#34; target=&#34;_blank&#34;&gt;Puphpet&lt;/a&gt; tan solo le dice a Vagrant que ejecute unos scripts de &lt;em&gt;bash&lt;/em&gt;. Así que pensé, &lt;strong&gt;¿qué pasa si los ejecuto yo manualmente en producción?&lt;/strong&gt; Los scripts solo se encargaban de instalar puppet, curl y alguna librería más, así que no debía de haber mucho problema. Después de hacer esto, tan solo le diría a puppet que leyese el manifiesto generado por Puphpet y listo. Mi plan sonaba bien, así que me propuse a intentarlo.&lt;/p&gt;
+
+&lt;p&gt;Para asegurarme de que nada fallaba, coloqué los archivos generados por &lt;a title=&#34;Puphpet&#34; href=&#34;https://puphpet.com/&#34; target=&#34;_blank&#34;&gt;Puphpet&lt;/a&gt; en el mismo sitio que cuando &lt;a title=&#34;Vagrant&#34; href=&#34;http://www.vagrantup.com/&#34; target=&#34;_blank&#34;&gt;Vagrant&lt;/a&gt; los utiliza, es decir &lt;em&gt;/vagrant&lt;/em&gt;. Entré en mi servidor de producción y subí los archivos de forma que quedaron así:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_035.png&#34;&gt;&lt;img class=&#34;alignnone size-full wp-image-78&#34; alt=&#34;Puphpet tree&#34; src=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_035.png&#34; width=&#34;365&#34; height=&#34;509&#34; srcset=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_035.png 365w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_035-215x300.png 215w&#34; sizes=&#34;(max-width: 365px) 100vw, 365px&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Una vez que tenía todo en su sitio, tan solo me quedaba ejecutar los scripts &lt;strong&gt;en el mismo orden&lt;/strong&gt; que &lt;a title=&#34;Vagrant&#34; href=&#34;http://www.vagrantup.com/&#34; target=&#34;_blank&#34;&gt;Vagrant&lt;/a&gt; lo hace. Acordaos de dar permisos de ejecución a esos ficheros. El orden es el siguiente:&lt;/p&gt;
+
+&lt;pre&gt;chmod +x /vagrant/puphpet/shell/*.sh
+sudo ./vagrant/puphpet/shell/initial-setup.sh /vagrant/puphpet
+sudo ./vagrant/puphpet/shell/update-puppet.sh
+sudo ./vagrant/puphpet/shell/r10k.sh&lt;/pre&gt;
+
+&lt;p&gt;Esto instalará todas las dependencias necesarias para que podamos empezar a utilizar &lt;a title=&#34;Puppet&#34; href=&#34;http://puppetlabs.com/&#34; target=&#34;_blank&#34;&gt;puppet&lt;/a&gt; en producción. Así que una vez finalizado, &lt;strong&gt;solo queda decirle a puppet que aplique los cambios del manifiesto&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;pre&gt;sudo puppet apply --debug --verbose --hiera_config /vagrant/puphpet/puppet/hiera.yaml --parser future /vagrant/puphpet/puppet/manifest.pp&lt;/pre&gt;
+
+&lt;p&gt;Este comando hará todo lo que hemos pedido en el manifiesto. Para asegurarnos de que todo sigue en orden en el servidor, podemos crear un cron que lo ejecute cada cierto tiempo, o tan solo ejecutarlo manualmente cuando añadimos o borramos algo al manifiesto.&lt;/p&gt;
+
+&lt;p&gt;Así que con esto tengo la misma configuración en mi máquina virtual de desarrollo que en mi máquina de producción. Y es una configuración que he ido seleccionando a través de una cómoda interfaz web gracias a &lt;a title=&#34;Puphpet&#34; href=&#34;https://puphpet.com/&#34; target=&#34;_blank&#34;&gt;Puphpet&lt;/a&gt;. Épico.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Sácale el máximo partido a tu terminal con zsh</title>
+      <link>http://fiunchinho.github.io/blog/sacale-el-maximo-partido-a-tu-terminal-con-zsh/</link>
+      <pubDate>Sat, 12 Apr 2014 13:42:17 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/sacale-el-maximo-partido-a-tu-terminal-con-zsh/</guid>
+      <description>&lt;p&gt;No quiero tirar de términos de moda y hablar de &lt;em&gt;DevOps&lt;/em&gt;, pero sí es cierto que, yo por lo menos, paso cada vez más tiempo delante de una terminal de UNIX. Estoy empezando a sentirme como en casa en algo que hace unos años me asustaba bastante.&lt;/p&gt;
+
+&lt;p&gt;Hoy vengo a hablaros de &lt;a title=&#34;zsh&#34; href=&#34;http://www.zsh.org/&#34; target=&#34;_blank&#34;&gt;zshell&lt;/a&gt;, una alternativa a &lt;em&gt;bash&lt;/em&gt;, el intérprete que viene por defecto en la mayoría de distribuciones. Algunos pensaréis&amp;#8230; &amp;#8220;¿&lt;em&gt;Cambiar el intérprete? ¡Eso suena muy difícil!&lt;/em&gt;&amp;#8220;, pero nada más lejos de la realidad! Otros diréis&amp;#8230; &amp;#8220;¿&lt;em&gt;Para qué iba yo a querer uno distinto? ¿Cual es el problema con bash?&lt;/em&gt;&amp;#8221; Problema ninguno! Pero con este post espero enseñaros todo lo que os estáis perdiendo por no utilizar zshell. Además, lo más importante es que no hay que aprender ningún comando nuevo: &lt;strong&gt;practicamente todo lo que usas en bash funcionará en zsh&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;instalación-de-zshell&#34;&gt;Instalación de zshell&lt;/h2&gt;
+
+&lt;p&gt;Instalarlo es muy simple en la mayoría de distribuciones, ya que hay un paquete ya listo para nosotros. No os preocupéis que por el hecho de instalarlo, no lo estamos activando todavía. Por ejemplo, en Ubuntu:&lt;/p&gt;
+
+&lt;pre&gt;sudo apt-get install zsh&lt;/pre&gt;
+
+&lt;p&gt;Una vez instalado tenemos que configurarlo. Una de las ventajas de zshell, es que está pensado para que puedas configurarlo de forma modular a través de plugins y templates. Para ayudarnos a gestionar la configuración, vamos a instalar otra cosa rápidamente: &lt;a title=&#34;oh-my-zsh&#34; href=&#34;http://ohmyz.sh/&#34; target=&#34;_blank&#34;&gt;oh-my-zsh&lt;/a&gt;. Es un framework hecho por la comunidad &lt;strong&gt;con un montón de plugins&lt;/strong&gt; que además de aportarnos funcionalidad extra, hará que sea fácil configurar zsh a nuestro antojo. Tranquilos, instalar esto tampoco activará zsh. Para instalar oh-my-zsh automáticamente solo ejecutamos:&lt;/p&gt;
+
+&lt;pre&gt;curl -L http://install.ohmyz.sh | sh&lt;/pre&gt;
+
+&lt;p&gt;Para los indecisos (espero que no quede ninguno al finalizar el post), podéis probar este intérprete sin ponerlo por defecto, y solo hacer el cambio cuando estéis 100% seguros. Para probarlo y ver de qué va esto, ejecutad en la consola:&lt;/p&gt;
+
+&lt;pre&gt;zsh&lt;/pre&gt;
+
+&lt;p&gt;Veréis que de repente vuestro &lt;em&gt;prompt&lt;/em&gt; ha cambiado. Tranquilos, es normal: zsh tiene configurado un prompt distinto al que bash tiene. Vamos a ver algunas de las ventajas más obvias de zsh. Recordad que siempre podéis volver a dejarlo todo como estaba escribiendo:&lt;/p&gt;
+
+&lt;pre&gt;bash&lt;/pre&gt;
+
+&lt;h2 id=&#34;ventajas-de-zsh&#34;&gt;Ventajas de zsh&lt;/h2&gt;
+
+&lt;h3 id=&#34;prompt&#34;&gt;Prompt&lt;/h3&gt;
+
+&lt;p&gt;Una de las cosas que más nos gusta a los frikis de la consola es configurar nuestro prompt para que aparezca información relevante más allá del _path_ actual en el que estamos. El que &lt;em&gt;zsh&lt;/em&gt; trae por defecto ya es bastante bueno, indicando información de la rama actual de git en la que estamos. Esto ya es configurable con &lt;em&gt;bash&lt;/em&gt;, pero al haber instalado &lt;em&gt;oh-my-zsh&lt;/em&gt; tenemos acceso a &lt;a title=&#34;zsh themes&#34; href=&#34;https://github.com/robbyrussell/oh-my-zsh/wiki/Themes&#34; target=&#34;_blank&#34;&gt;todos los themes de la comunidad&lt;/a&gt; donde podremos elegir &lt;strong&gt;verdaderas maravillas&lt;/strong&gt;. Para activar un theme, tan solo tenemos que modificar el archivo de configuración en &lt;em&gt;~/.zshrc&lt;/em&gt; y cambiar el que viene por defecto, por uno del listado. La línea a modificar es:&lt;/p&gt;
+
+&lt;pre&gt;ZSH_THEME=&#34;robbyrussell&#34;&lt;/pre&gt;
+
+&lt;p&gt;Si queremos hacerlo nosotros mismos, podemos configurar no solo el prompt normal, sino que &lt;strong&gt;nos permite configurar texto a la derecha del prompt&lt;/strong&gt;. Para que os hagáis una idea, el que yo utilizo actualmente muestra, además de lo habitual, la rama actual de git, si hay cambios por comittear pendientes, el &lt;em&gt;load&lt;/em&gt; de la máquina y la hora actual, estos dos últimos en la parte derecha del prompt. Luce así:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_031.png&#34;&gt;&lt;img class=&#34;alignnone size-large wp-image-67&#34; src=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_031-1024x47.png&#34; alt=&#34;zsh prompt&#34; width=&#34;620&#34; height=&#34;28&#34; srcset=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_031-1024x47.png 1024w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_031-300x14.png 300w&#34; sizes=&#34;(max-width: 620px) 100vw, 620px&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;navegación-entre-directorios&#34;&gt;Navegación entre directorios&lt;/h3&gt;
+
+&lt;p&gt;Probad a escribir &amp;#8216;cd &amp;#8216; y darle a tabulador para que os sugiera los posibles directorios. Dadle varias veces a tabulador y podréis ir eligiendo uno a uno. ¿Que no queréis ir uno a uno? ¡Sin problema! Utilizad las flechas del teclado para navegar entre las sugerencias.&lt;/p&gt;
+
+&lt;p&gt;Elegid uno de los directorios para entrar en él. Ahora probad a escribir &amp;#8216;..&amp;#8217;. Con eso iréis al directorio padre. Y si ponéis &amp;#8216;&amp;#8230;&amp;#8217; al superior. Y así sucesivamente. Útil, ¿no?&lt;/p&gt;
+
+&lt;p&gt;A veces es un poco engorroso recordar exactamente el nombre del directorio al que queremos acceder. Tranquilos, &lt;strong&gt;zsh es muy listo&lt;/strong&gt; y si intentáis entrar en un directorio pero poniendo solo parte de su nombre, zsh intentará averiguar a cual te refieres y, si lo consigue, entrará en él. &lt;strong&gt;Incluso aunque lo que hayas escrito no sea el principio del nombre del directorio&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Además, escribir &amp;#8220;cd&amp;#8221; para movernos es &lt;em&gt;poco eficiente&lt;/em&gt;. Si probáis a escribir tan solo el nombre de la carpeta, sin ponerle el &amp;#8220;cd&amp;#8221; delante, también entrará en el directorio.&lt;/p&gt;
+
+&lt;p&gt;Si llegados a esto todavía no os parece canela en rama, tranquilos, que hay más.&lt;/p&gt;
+
+&lt;h3 id=&#34;mejor-historial&#34;&gt;Mejor historial&lt;/h3&gt;
+
+&lt;p&gt;En la consola acabamos repitiendo los mismos comandos varias veces. Hasta ahora, yo utilizaba control+R para buscar en el historial, o si era un comando reciente, le daba a la flecha hacia arriba del cursor para ir hacia atrás en el historial. Esto está bien, pero zsh lo mejora haciendo que solo vaya recorriendo &lt;strong&gt;aquellos comandos que coinciden con lo que tienes actualmente escrito&lt;/strong&gt;. Es decir, si yo escribo &amp;#8220;vim&amp;#8221; y voy dándole hacia arriba, solo irá navegando por el historial de comandos que empezaban con &amp;#8220;vim&amp;#8221;.&lt;/p&gt;
+
+&lt;p&gt;Además, siempre podemos conseguir que zsh sea más eficiente, viendo qué comandos son los que más utilizamos y creando alias para ellos. Igual que en &lt;em&gt;bash&lt;/em&gt;, con la diferencia de que zsh nos proporciona un comando con información detallada sobre lo que más utilizamos:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_032.png&#34;&gt;&lt;img class=&#34;alignnone size-full wp-image-69&#34; src=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_032.png&#34; alt=&#34;zsh_stats&#34; width=&#34;493&#34; height=&#34;182&#34; srcset=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_032.png 493w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_032-300x110.png 300w&#34; sizes=&#34;(max-width: 493px) 100vw, 493px&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;plugins&#34;&gt;Plugins&lt;/h3&gt;
+
+&lt;p&gt;Todo esto es lo que nos ofrece zsh por defecto, pero lo bueno de oh-my-zsh es que &lt;strong&gt;nos ofrece un montón de plugins&lt;/strong&gt; que añaden alias a acciones de nuestro día a día para que la shell sea todavía más cómoda. Para añadir o quitar plugins, tan solo tenemos que editar el archivo de configuración de zsh situado en ~/.zshrc y modificar la línea de los plugins. Actualmente la mía está así:&lt;/p&gt;
+
+&lt;pre&gt;plugins=(git autojump colored-man colorize extract zsh-syntax-highlighting)&lt;/pre&gt;
+
+&lt;p&gt;Con estos plugins obtengo desde archivos del manual con texto coloreado, hasta un comando nuevo llamado &lt;strong&gt;&lt;em&gt;extract&lt;/em&gt;&lt;/strong&gt; que puedo utilizar para descomprimir cualquier tipo de archivo comprimido &lt;strong&gt;sin preocuparme de cómo se descomprime&lt;/strong&gt;: él decidirá qué es lo que debe utilizar: zip, gz, etc. Además, como habréis notado en los pantallazos anteriores, cuando estoy escribiendo un comando en la terminal, está coloreado en verde si la shell lo reconoce. Si estoy escribiendo un comando que no existe, zsh lo escribe en rojo.&lt;/p&gt;
+
+&lt;h4 id=&#34;autojump&#34;&gt;AutoJump&lt;/h4&gt;
+
+&lt;p&gt;Quiero hacer mención especial a uno de los plugins que tengo activados: &lt;strong&gt;autojump&lt;/strong&gt;. Si la navegación entre directorio ya es la más cómoda del mundo con zsh, autojump va todavía más allá y va guardando tus directorios más utilizados en tu día a día. De tal forma que tan solo tienes que escribir &amp;#8220;j&amp;#8221; seguido de una cadena que él intentará matchear contra tu historial de directorios, y entrará en aquel que más hayas visitado. Esta cadena puede ser desde una letra, hasta el nombre entero de la carpeta. En este ejemplo, escribiendo &amp;#8220;j w&amp;#8221;, él ya sabía que me estaba refiriendo a &lt;em&gt;/var/www&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_034.png&#34;&gt;&lt;img class=&#34;alignnone size-full wp-image-70&#34; src=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_034.png&#34; alt=&#34;Autojump&#34; width=&#34;373&#34; height=&#34;145&#34; srcset=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_034.png 373w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_034-300x116.png 300w&#34; sizes=&#34;(max-width: 373px) 100vw, 373px&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Para instalarlo tan solo ejecuta:&lt;/p&gt;
+
+&lt;pre&gt;sudo apt-get install autojump&lt;/pre&gt;
+
+&lt;h2 id=&#34;dejando-zsh-por-defecto-en-vez-de-bash&#34;&gt;Dejando zsh por defecto en vez de bash&lt;/h2&gt;
+
+&lt;p&gt;Si finalmente os he convencido, solo queda activar zsh para que sea siempre vuestra shell, en vez de bash. Para hacer esto, solo tenéis que ejecutar:&lt;/p&gt;
+
+&lt;pre&gt;chsh -s $(which zsh)&lt;/pre&gt;
+
+&lt;p&gt;Si por algún motivo que se me escapa quisierais volver a utilizar bash, solo tenéis que ejecutar:&lt;/p&gt;
+
+&lt;pre&gt;chsh -s $(which bash)&lt;/pre&gt;
+
+&lt;h2 id=&#34;conclusión&#34;&gt;Conclusión&lt;/h2&gt;
+
+&lt;p&gt;Hay &lt;a title=&#34;zsh features&#34; href=&#34;http://www.slideshare.net/jaguardesignstudio/why-zsh-is-cooler-than-your-shell-16194692&#34; target=&#34;_blank&#34;&gt;muchísimas más cosas&lt;/a&gt; que me dejo en el tintero. Como véis, &lt;strong&gt;zsh&lt;/strong&gt; aporta un montón de comodidades extras a &lt;em&gt;bash&lt;/em&gt;. Realmente, no hay nada que no podamos hacer a mano en bash, configurando alias y creando scripts, pero es mucho mejor apoyarnos en la sabiduría de toda una comunidad dedicada a esto.&lt;/p&gt;
+
+&lt;p&gt;¿Alguno no se ha convencido de cambiarse?&lt;/p&gt;
+
+&lt;h2 id=&#34;enlaces-de-interés&#34;&gt;Enlaces de interés&lt;/h2&gt;
+
+&lt;p&gt;&lt;a title=&#34;Problema con ciertos prompts que duplican el comando&#34; href=&#34;http://unix.stackexchange.com/questions/90772/first-characters-of-the-command-repeated-in-the-display-when-completing&#34; target=&#34;_blank&#34;&gt;Problema con ciertos prompts que duplican el comando&lt;/a&gt;. Asegúrate de que tu fichero .zshrc tiene estas dos líneas:&lt;/p&gt;
+
+&lt;pre&gt;export LANG=en_US.utf8
+export LC_ALL=en_US.utf8&lt;/pre&gt;
+
+&lt;p&gt;&lt;a title=&#34;Tutorial de zsh&#34; href=&#34;Getting started with ZSH on Ubuntu&#34; target=&#34;_blank&#34;&gt;Tutorial de zsh&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a title=&#34;oh-my-zsh&#34; href=&#34;http://ohmyz.sh/&#34; target=&#34;_blank&#34;&gt;Oh-My-zsh!&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a title=&#34;Plugins de oh-my-zsh&#34; href=&#34;https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins&#34; target=&#34;_blank&#34;&gt;Plugins de oh-my-zsh&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a title=&#34;autojump&#34; href=&#34;https://github.com/joelthelion/autojump&#34; target=&#34;_blank&#34;&gt;Autojump&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Sácale todo el partido a los tests haciendo que griten</title>
+      <link>http://fiunchinho.github.io/blog/sacale-todo-el-partido-a-los-tests-haciendo-que-griten/</link>
+      <pubDate>Sun, 26 Jan 2014 18:09:33 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/sacale-todo-el-partido-a-los-tests-haciendo-que-griten/</guid>
+      <description>&lt;p&gt;Si tuviese que decir en qué se basa una prueba unitaria, diría que las principales características que debe cumplir son (sin ningún orden en particular):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Que sea rápido y sin efectos secundarios.&lt;/li&gt;
+&lt;li&gt;Que sea realmente unitario.&lt;/li&gt;
+&lt;li&gt;Que sea auto explicativo.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Pero con el tiempo veo que la gente tiende a &lt;strong&gt;centrarse en las dos primeras de mi lista&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Se busca que sea rápido y sin efectos secundarios porque de esa forma podemos lanzarlos siempre que queramos, dándonos confianza. Si tuviésemos que esperar minutos en saber el resultado, o tuviésemos que andar limpiando una base de datos cada vez que quisiésemos lanzar pruebas, simplemente no lo haríamos tan frecuentemente como debiéramos.&lt;/p&gt;
+
+&lt;p&gt;También se prioriza que sean unitarios y aislados, para que cuando algo falle, tengamos la granularidad suficiente para identificar el problema en cuestión de segundos. Si tuviésemos una prueba que lo probase todo, el día que fallase, no sabríamos cual de las partes ha sido la culpable.&lt;/p&gt;
+
+&lt;p&gt;Y aunque considero que estas dos características son importantísimas, &lt;strong&gt;creo que se desprecia la última de mi lista&lt;/strong&gt;. Las pruebas deberían ser auto explicativas, en el sentido de que debería ser muy fácil saber qué se está probando en todo momento, y sobretodo, qué hace el componente que estamos probando.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;La mayoría del tiempo que programamos nos la pasamos leyendo código ya existente, intentando entender qué es lo que hace. Esto implica tener que leer las pruebas. Y no sé vosotros, pero yo me he encontrado con tests infumables.&lt;/p&gt;
+
+&lt;h2 id=&#34;como-mejorar-la-legibilidad-de-los-tests&#34;&gt;Como mejorar la legibilidad de los tests&lt;/h2&gt;
+
+&lt;p&gt;Voy a poner un ejemplo muy sencillo donde podemos aplicar una serie de mejoras. Quizá al ser tan simple se vea menos el efecto, pero aplicándolo a esos mastodontes que nos podemos encontrar en la vida real, creedme que mejoraremos mucho los tests.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;El refactoring de extraer método no sirve para ahorrar líneas de código, si no para que el método sea más fácil de leer.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;primera-aproximación-mocks-en-métodos-privados&#34;&gt;Primera aproximación: mocks en métodos privados&lt;/h3&gt;
+
+&lt;p&gt;En el siguiente ejemplo, tenemos una clase encargada de identificar usuarios. Tiene dos colaboradores: el repositorio de usuarios para encontrar usuarios, y un codificador de contraseñas.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;public function testShouldReturnAuthenticatedUserForValidCredentials()
+{
+    $email      = &#39;john@doe.com&#39;;
+    $encoded_pass   = &#39;encoded_pass&#39;;
+    $password           = &#39;decoded_pass&#39;;
+    $user       = new User( $email, $encoded_pass );
+    $user_repo  = $this-&amp;gt;getMock( &#39;UserRepository&#39; );
+    $user_repo
+    -&amp;gt;expect( $this-&amp;gt;any() )
+    -&amp;gt;method( &#39;findByEmail&#39; )
+    -&amp;gt;will( $this-&amp;gt;returnValue( $user ) );
+
+    $pass_encoder   = $this-&amp;gt;getMock( &#39;PasswordEncoder&#39; );
+    $pass_encoder
+    -&amp;gt;expect( $this-&amp;gt;once() )
+        -&amp;gt;method( &#39;hash&#39; )
+    -&amp;gt;with( $password )
+    -&amp;gt;will( $this-&amp;gt;returnValue( $encoded_pass ) );
+
+    $auth_service   = new AuthService( $user_repo, $pass_encoder );
+
+    $this-&amp;gt;assertEquals(
+    $user,
+    $auth_service-&amp;gt;authenticate( $email, $password ),
+    &#39;Must return the user when credentials are valid.&#39;
+    );
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A pesar de que apenas hay lógica que testear, y gracias en parte a lo incómodo de PHPUnit (tenéis que probar &lt;a title=&#34;PHPSpec&#34; href=&#34;http://www.phpspec.net/&#34; target=&#34;_blank&#34;&gt;PHPSpec&lt;/a&gt;, en serio), los tests empiezan a crecer, &lt;strong&gt;obligándonos a leer un montón de líneas cada vez que queramos entender qué hace esto&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Muchos programadores intentan solventar este problema extrayendo un método para, por ejemplo, la creación de mocks. Queda algo tal que así.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;public function testShouldReturnAuthenticatedUserForValidCredentials()
+{
+    $email      = &#39;john@doe.com&#39;;
+    $encoded_pass   = &#39;encoded_pass&#39;;
+    $password   = &#39;decoded_pass&#39;;
+    $user       = new User( $email, $encoded_pass );
+
+    $this-&amp;gt;createRepositoryMock( $email, $encoded_pass );
+    $this-&amp;gt;createEncoderMock( $password, $encoded_pass );
+
+    $auth_service   = new AuthService( $user_repo, $pass_encoder );
+
+    $this-&amp;gt;assertEquals(
+    $user,
+    $auth_service-&amp;gt;authenticate( $email, $password ),
+    &#39;Must return the user when credentials are valid.&#39;
+    );
+}
+
+private function createRepositoryMock( $email, $password )
+{
+    $user       = new User( $email, $password );
+    $user_repo  = $this-&amp;gt;getMock( &#39;UserRepository&#39; );
+    $user_repo
+    -&amp;gt;expect( $this-&amp;gt;any() )
+    -&amp;gt;method( &#39;findByEmail&#39; )
+    -&amp;gt;will( $this-&amp;gt;returnValue( $user ) );
+
+    return $user_repo;
+}
+
+private function createEncoderMock( $password, $encoded_pass )
+{
+    $pass_encoder   = $this-&amp;gt;getMock( &#39;PasswordEncoder&#39; );
+    $pass_encoder
+    -&amp;gt;expect( $this-&amp;gt;once() )
+    -&amp;gt;method( &#39;hash&#39; )
+    -&amp;gt;with( $password )
+    -&amp;gt;will( $this-&amp;gt;returnValue( $encoded_pass ) );
+
+    return $pass_encoder;
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Aunque a priori pueda parecer que esto ha mejorado la legibilidad de nuestros tests, nada más lejos de la realidad. Lo único que hemos hecho es reducir el número de líneas del test, pero sigo teniendo que leerme todo cada vez que necesite entenderlo.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;El refactoring de extraer método no sirve para ahorrar líneas, si no para que el método sea más fácil de leer.&lt;/strong&gt; El nombre _createRepositoryMock()_ no me dice absolutamente nada sobre por qué lo estamos haciendo.&lt;/p&gt;
+
+&lt;h3 id=&#34;un-enfoque-mejor&#34;&gt;Un enfoque mejor&lt;/h3&gt;
+
+&lt;p&gt;Si el objetivo es que se entienda mejor el código, ¿por qué no hace todo explícito? Vamos a hacer lo mismo, pero pensando en el por qué de las cosas.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;public function testShouldReturnAuthenticatedUserForValidCredentials()
+{
+    $email      = &#39;john@doe.com&#39;;
+    $encoded_pass   = &#39;encoded_pass&#39;;
+    $password   = &#39;decoded_pass&#39;;
+    $user       = $this-&amp;gt;createExistingUser( $email, $encoded_password );
+    $user_repo  = $this-&amp;gt;createUserRepoWhenUserExists( $user );
+    $pass_encoder   = $this-&amp;gt;createEncoderWhenEncoderMustEncodePassword( $password, $encoded_pass );
+
+    $auth_service   = new AuthService( $user_repo, $pass_encoder );
+
+    $this-&amp;gt;assertEquals(
+    $user,
+    $auth_service-&amp;gt;authenticate( $email, $password ),
+    &#39;Must return the valid user when credentials are valid.&#39;
+    );
+}
+
+private function createUserRepoWhenUserExists( $user )
+{
+    $user_repo = $this-&amp;gt;getMock( &#39;UserRepository&#39; );
+    $user_repo
+    -&amp;gt;expect( $this-&amp;gt;any() )
+    -&amp;gt;method( &#39;findByEmail&#39; )
+    -&amp;gt;will( $this-&amp;gt;returnValue( $user ) );
+
+    return $user_repo;
+}
+
+private function createExistingUser( $email, $password )
+{
+    return new User( $email, $password );
+}
+
+private function createEncoderWhenEncoderMustEncodePassword( $password, $encoded_pass )
+{
+    $pass_encoder = $this-&amp;gt;getMock( &#39;PasswordEncoder&#39; );
+    $pass_encoder
+    -&amp;gt;expect( $this-&amp;gt;once() )
+    -&amp;gt;method( &#39;hash&#39; )
+    -&amp;gt;with( $password )
+    -&amp;gt;will( $this-&amp;gt;returnValue( $encoded_pass ) );
+
+    return $pass_encoder;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Estos nombres no tienen por qué ser los mejores, pero la idea es esa: hacer explícito el motivo de todo, para que cuando volvamos a leer el código (o algún compañero nuestro), todo lo que está ocurriendo se entienda a la perfección.&lt;/p&gt;
+
+&lt;p&gt;Este primer enfoque es bastante básico, y si vemos que se complica, siempre podemos acudir a patrones de creación como el patrón builder o factories para los mocks.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Revelar la intención de nuestro código y el objetivo del test: lo más importante&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Haciendo que el objetivo de cada línea sea revelar con claridad la intención de nuestro código y qué caso concreto estamos testeando en ese momento, reduciremos muchísimo el tiempo necesario para entenderlo. &lt;strong&gt;Da igual que ocupe más líneas, o que tarde dos microsegundos más en ejecutarse&lt;/strong&gt;. Los objetivos de los tests son los que vimos al principio de este artículo, no son el rendimiento o tener menos líneas de código.&lt;/p&gt;
+
+&lt;h2 id=&#34;luchando-contra-la-duplicación&#34;&gt;Luchando contra la duplicación&lt;/h2&gt;
+
+&lt;p&gt;He visto desarrolladores que detectan que necesitarán un stub en todos los test cases, así que sacan la creación del stub al método de setUp, para ahorrar las líneas de configuración del stub.&lt;/p&gt;
+
+&lt;p&gt;Volvemos a lo mismo. Debemos preguntarnos si eso mejora la legibilidad del test. En mi opinión, normalmente no lo hace, porque _esconde_ una colaboración, que puede que pasemos por alto ya que está en el setUp y no en el test case.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;“Pero entonces tendremos duplicación!”&lt;/em&gt;, me dirán los lectores más atentos. Pero yo no digo que dupliquemos, sino que lo hagamos explícito. Si vemos que por hacerlo explícito vamos a duplicar código, saquemos la duplicación a un método privado que contenga la lógica que se duplica, y llamemos a este método privado desde el test case. El nombre de ese método privado nos dirá el motivo de por qué está ese código ahí.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusión&#34;&gt;Conclusión&lt;/h2&gt;
+
+&lt;p&gt;Nunca debemos olvidar que &lt;strong&gt;los tests son nuestra primera documentación&lt;/strong&gt;. Es la mejor forma de ver cómo funciona un componente, cómo se configura, y qué valores debo esperar que devuelva. Cuando tengo que modificar código ya existente, entender qué es lo que hace es vital. Si no hago que mis tests &lt;strong&gt;GRITEN&lt;/strong&gt; el comportamiento de mis clases, me estoy perdiendo otra de las grandes ventajas de los tests.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Administrar recursos frontend con Assetic (sin Symfony2)</title>
+      <link>http://fiunchinho.github.io/blog/administrar-recursos-frontend-con-assetic-sin-symfony2/</link>
+      <pubDate>Sun, 19 Jan 2014 18:12:29 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/administrar-recursos-frontend-con-assetic-sin-symfony2/</guid>
+      <description>&lt;p&gt;Buscando mejorar el rendimiento de nuestras aplicaciones web, muchas veces nos centramos en el backend sin prestar suficiente atención al frontend. Una de las mejoras que podemos aplicar en la parte frontal de nuestras webs para que vayan más rápidas es reducir el número de peticiones HTTP que son necesarias para cargar la web. Para ello podemos, por ejemplo, combinar varios archivos CSS o JS en uno solo para que, aunque tengamos que cargar muchos recursos, solo una petición HTTP sea necesaria.&lt;/p&gt;
+
+&lt;p&gt;Hacer esto a mano puede ser tedioso y llevar a problemas, por tanto una buena solución sería preguntarnos si alguien ya ha solucionado este problema antes. Como tantas otras veces la respuesta es que sí.&lt;/p&gt;
+
+&lt;p&gt;Hoy vengo a hablaros de &lt;a title=&#34;Assetic&#34; href=&#34;https://github.com/kriswallsmith/assetic&#34; target=&#34;_blank&#34;&gt;Assetic&lt;/a&gt;, una herramienta que nos permite administrar fácilmente los recursos de la web, como archivos CSS o Javascript, para combinarlos, minificarlos u optimizarlos.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;El problema de &lt;a title=&#34;Assetic&#34; href=&#34;https://github.com/kriswallsmith/assetic&#34; target=&#34;_blank&#34;&gt;Assetic&lt;/a&gt; es que, aunque encontrarás muchos ejemplos y artículos en internet, el 99% de ellos son utilizando &lt;a title=&#34;Symfony&#34; href=&#34;http://symfony.com/&#34; target=&#34;_blank&#34;&gt;Symfony2&lt;/a&gt;. Mi objetivo con este post es explicar assetic para que puedas utilizarlo en cualquier sitio, independientemente del framework elegido.&lt;/p&gt;
+
+&lt;h2 id=&#34;vocabulario-básico&#34;&gt;Vocabulario básico&lt;/h2&gt;
+
+&lt;p&gt;Vamos a definir un vocabulario básico que nos puede ayudar cuando busquemos ayuda en internet o intentemos entender el funcionamiento de assetic:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Asset&lt;/strong&gt;: Un recurso estático como un archivo CSS, un fichero Javascript o una imagen. Hay 2 clases que nos permitirán describir assets: &lt;em&gt;FileAsset&lt;/em&gt;, que es un archivo normal; y &lt;em&gt;GlobAsset&lt;/em&gt;, que representa un directorio que contiene varios archivos que queramos cargar.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Filter&lt;/strong&gt;: Un filtro que transforma de alguna forma el contenido del fichero, como por ejemplo minificándolo, o traduciendo de SASS a CSS. Hay muchos filtros distintos.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AssetManager&lt;/strong&gt;: Un administrador de los assets. Nos permitirá ponerle nombre, y crear grupos nombrando a otros assets declarados anteriormente. El asset al que le ponemos nombre puede ser un &lt;em&gt;FileAsset&lt;/em&gt;, _GlobAsset_ o &lt;em&gt;AssetCollection&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AssetCollection&lt;/strong&gt;: Un conjunto de assets, es decir, varios _FileAsset_ o &lt;em&gt;GlobAsset&lt;/em&gt;. &lt;strong&gt;Puede contener otras colecciones&lt;/strong&gt;. El constructor acepta dos arrays, uno con los diferentes assets que componen el &lt;em&gt;collection&lt;/em&gt;, y otro con el conjunto de _filters_ que aplicaremos.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;FilterManager&lt;/strong&gt;: Lo mismo que el _AssetManager_ pero para filtros.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AssetFactory&lt;/strong&gt;: Una clase que nos facilitará el trabajo de conectar todo lo que hemos visto hasta ahora, pasándole un _AssetManager_ y un &lt;em&gt;FilterManager&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Formulae&lt;/strong&gt;: Lo que define a un asset: fichero/s y/o filtro/s utilizados para crearlo.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dump&lt;/strong&gt;: Generar el recurso especificado, pasándole los filters elegidos. Podemos utilizarlo para mostrar el contenido por pantalla de forma dinámica o para guardarlo en un fichero y servirlo de forma estática.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;instalación-de-assetic&#34;&gt;Instalación de Assetic&lt;/h2&gt;
+
+&lt;p&gt;Podemos instalar assetic &lt;a title=&#34;Assetic&#34; href=&#34;https://packagist.org/packages/kriswallsmith/assetic&#34; target=&#34;_blank&#34;&gt;a través de composer&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;sirviendo-contenido-dinámicamente&#34;&gt;Sirviendo contenido dinámicamente&lt;/h2&gt;
+
+&lt;p&gt;Vamos a realizar un ejemplo básico en el que vamos a coger todos los ficheros javascript de nuestro proyecto y vamos a hacer que assetic los combine en uno solo y los sirva dinámicamente, es decir, el resultado de combinarlos no lo guardará en disco,&lt;strong&gt;sino que tendremos una URL en nuestra aplicación que generará el javascript combinado&lt;/strong&gt;. Esa URL es la que utilizaríamos en nuestro HTML para incluir el javascript.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;require_once __DIR__.&#39;/../vendor/autoload.php&#39;;
+
+use Assetic\Asset\AssetCollection;
+use Assetic\Asset\GlobAsset;
+
+$js = new AssetCollection(array(
+ new GlobAsset( &#39;/var/www/my_project/web/js/*&#39; ),
+));
+
+// Vamos a mostrar código Javascript, por tanto
+// debemos especificárselo al navegador con la cabecera correspondiente
+header( &#39;Content-type: text/javascript&#39; );
+
+// Mostramos el código Javascript
+echo $js-&amp;gt;dump();&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Es nuestra labor crear una página/controlador/sección con este código y una ruta de nuestra web apuntando hacia ahí&lt;/strong&gt;. Si la visitamos, veremos por pantalla todo el código Javascript correspondiente a todos los archivos que había en la carpeta _/var/www/my_project/web/js/_ combinado en un solo archivo. Por tanto, en nuestro HTML podríamos cambiar todos los archivos javascript incluídos y dejar solo este, &lt;strong&gt;reduciendo el número de peticiones HTTP y mejorando la velocidad y rendimiento de la web&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;No es obligatorio utilizar _AssetCollection_ para esto, ya que podríamos haber utilizado directamente un _FileAsset_ o &lt;em&gt;GlobAsset&lt;/em&gt;, pero normalmente vamos a tener más de un archivo.&lt;/p&gt;
+
+&lt;p&gt;Si no queremos coger todos los archivos de una carpeta, sino solo algunos, tendríamos que hacer lo siguiente&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;require_once __DIR__.&#39;/../vendor/autoload.php&#39;;
+
+use Assetic\Asset\AssetCollection;
+use Assetic\Asset\FileAsset;
+use Assetic\Asset\GlobAsset;
+
+$js = new AssetCollection(array(
+ new FileAsset( &#39;/var/www/my_project/web/js/main.js&#39; ),
+ new FileAsset( &#39;/var/www/my_project/web/js/jquery.min.js&#39; ),
+ new GlobAsset( &#39;/var/www/my_project/web/js/bootstrap/*&#39; )
+));
+// Vamos a mostrar código Javascript, por tanto
+// debemos especificárselo al navegador con la cabecera correspondiente
+header( &#39;Content-type: text/javascript&#39; );
+
+// Mostramos el código Javascript
+echo $js-&amp;gt;dump();&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Si os fijáis en el output del javascript combinado que genera este código, salvo que el JS estuviese minificado de antes, no estará minificado ahora. En el caso de haber tenido coffeescript, esto no nos lo hubiese compilado a javascript. Para hacer este tipo de tareas tenemos que utilizar los filtros.&lt;/p&gt;
+
+&lt;h2 id=&#34;usando-filtros&#34;&gt;Usando filtros&lt;/h2&gt;
+
+&lt;p&gt;Los filtros nos van a permitir transformar el contenido de los asset que habíamos definido. Para definirlos tenemos distintos métodos. Podemos definir un determinado asset con un filtro específico si solo queremos que se aplique a ese en particular. Pero también podemos asignar filtros a un AssetCollection y que lo aplique a todos. Dependerá de qué es lo que queremos hacer.&lt;/p&gt;
+
+&lt;p&gt;En el siguiente ejemplo vamos a ver los dos casos. Un filtro particular para compilar de código LESS a CSS, y el &lt;a title=&#34;YUI&#34; href=&#34;http://yuilibrary.com/&#34; target=&#34;_blank&#34;&gt;compresor YUI&lt;/a&gt; para que minifique todos los assets de la colección.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;require_once __DIR__.&#39;/../vendor/autoload.php&#39;;
+
+use Assetic\Asset\AssetCollection;
+use Assetic\Asset\FileAsset;
+use Assetic\Asset\GlobAsset;
+use Assetic\Filter\LessFilter;
+use Assetic\Filter\Yui;
+
+$css = new AssetCollection(array(
+    new FileAsset(&#39;/path/to/src/styles.less&#39;, array(new LessFilter())),
+    new GlobAsset(&#39;/path/to/css/*&#39;),
+), array(
+    new Yui\CssCompressorFilter(&#39;/path/to/yuicompressor.jar&#39;),
+));
+
+header( &#39;Content-type: text/css&#39; );
+// this will echo CSS compiled by LESS and compressed by YUI
+echo $css-&amp;gt;dump();&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Creando un controlador con el código anterior, y una ruta apuntando a él, podríamos ir a nuestro código HTML y cambiar todas las peticiones de CSS en una sola hacia dicha ruta.&lt;/p&gt;
+
+&lt;p&gt;&lt;a title=&#34;Assetic Filters&#34; href=&#34;https://github.com/kriswallsmith/assetic#filters&#34; target=&#34;_blank&#34;&gt;La cantidad de filtros disponibles es enorme&lt;/a&gt; y salvo que quieras realizar algo extraño, encontrarás uno que hace lo que buscas. Recuerda que es probable que para utilizar estos filtros, tengas que instalar la herramienta en cuestión. Por ejemplo, para utilizar YUI como en mi ejemplo, tendrías que instalar YUI (en Ubuntu):&lt;/p&gt;
+
+&lt;pre&gt;sudo apt-get install yui-compressor&lt;/pre&gt;
+
+&lt;p&gt;Y &lt;strong&gt;el lugar de instalación es el que debes poner en el constructor del filtro&lt;/strong&gt;, para que sepa donde está el _jar_ ejecutable.&lt;/p&gt;
+
+&lt;h2 id=&#34;organizando-mejor-los-recursos&#34;&gt;Organizando mejor los recursos&lt;/h2&gt;
+
+&lt;p&gt;Los ejemplos que hemos visto están bien, pero en un proyecto más grande tendrás muchos recursos css o js que quieras cargar y la cosa puede complicarse.&lt;/p&gt;
+
+&lt;p&gt;&lt;a title=&#34;Assetic&#34; href=&#34;https://github.com/kriswallsmith/assetic&#34; target=&#34;_blank&#34;&gt;Assetic&lt;/a&gt; intenta hacernos la vida más fácil a través del _AssetManager_ y el &lt;em&gt;FilterManager&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;assetmanager&#34;&gt;AssetManager&lt;/h3&gt;
+
+&lt;p&gt;El _AssetManager_ es… bueno, eso, un administrador de assets. Básicamente podemos ponerle un nombre a cada asset definido. ¿Por qué es esto importante? Pues porque luego podemos hacer referencia a un asset definido con anterioridad, y el_AssetManager_ se encargará de que assetic no haga todo el trabajo sobre el mismo recurso dos veces.&lt;/p&gt;
+
+&lt;p&gt;Por ejemplo, si queremos cargar jQuery y además, un plugin de jQuery que necesita, obviamente, de jQuery.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;
+use Assetic\Asset\AssetCollection;
+use Assetic\Asset\FileAsset;
+use Assetic\AssetManager;
+use Assetic\Asset\AssetReference;
+
+$jquery = new FileAsset( &#39;/path/to/jquery.min.js&#39; );
+
+$am = new AssetManager();
+$am-&amp;gt;set( &#39;jquery&#39;, $jquery );
+
+$plugin1 = new AssetCollection( array(
+    new AssetReference( $am, &#39;jquery&#39; ),
+    new FileAsset( &#39;/path/to/jquery.plugin.js&#39; )
+));
+
+$plugin2 = new AssetCollection( array(
+    new AssetReference( $am, &#39;jquery&#39; ),
+    new FileAsset( &#39;/path/to/another/jquery.plugin.js&#39; )
+));
+
+$js = new AssetCollection( array(
+    $jquery,
+    $plugin1,
+    $plugin2
+));
+header( &#39;Content-type: text/javascript&#39; );
+echo $js-&amp;gt;dump();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;En el código anterior, aunque utilicemos jQuery varias veces, Assetic solo lo tratará una vez. Con este mecanismo podríamos generar distintos paquetes dependiendo de la sección de la web en la que estemos, cargando solo el Javascript necesario para esa sección, y assetic solo haría el trabajo una vez, aunque repitiésemos ficheros.&lt;/p&gt;
+
+&lt;h3 id=&#34;filtermanager&#34;&gt;FilterManager&lt;/h3&gt;
+
+&lt;p&gt;El _FilterManager_ es algo muy parecido al &lt;em&gt;AssetManager&lt;/em&gt;, pero para filtros. Simplemente damos de alta los filtros que estarán disponibles a utilizar luego cuando creemos assets con el factory.&lt;/p&gt;
+
+&lt;p&gt;Igual que con el &lt;em&gt;AssetManager&lt;/em&gt;, si Assetic detecta que vamos a aplicar el mismo filtro al mismo archivo, dos veces, solo lo hará una. Un poco abajo se ve el código necesario para utilizar el &lt;em&gt;FilterManager&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;assetfactory&#34;&gt;AssetFactory&lt;/h3&gt;
+
+&lt;p&gt;Para que todo esto sea más fácil de utilizar y no tengamos que andar creando y conectando todos estos objetos a mano, &lt;a title=&#34;Assetic&#34; href=&#34;https://github.com/kriswallsmith/assetic&#34; target=&#34;_blank&#34;&gt;Assetic&lt;/a&gt; tiene una clase llamada AssetFactory para generar assets de forma sencilla.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;require_once __DIR__.&#39;/../vendor/autoload.php&#39;;
+
+use Assetic\Asset\AssetFactory;
+use Assetic\Asset\FilterManager;
+use Assetic\Filter\Yui\CssCompressorFilter;
+use Assetic\Filter\Yui\JsCompressorFilter;
+
+$fm = new FilterManager();
+$fm-&amp;gt;set(&#39;yui_css&#39;,new CssCompressorFilter(&#39;/path/yuicompressor.jar&#39;));
+$fm-&amp;gt;set(&#39;yui_js&#39;,new JsCompressorFilter(&#39;/path/yuicompressor.jar&#39;));
+
+$factory = new AssetFactory( &#39;/path/doc_root&#39; );
+$factory-&amp;gt;setAssetManager( new AssetManager() );
+$factory-&amp;gt;setFilterManager( $fm );
+
+$css = $factory-&amp;gt;createAsset(
+    array(
+        &#39;css/style.css&#39;,
+        &#39;css/bootstrap/*.css&#39;, // css in &#34;/path/doc_root/css/bootstrap&#34;
+), array(
+        &#39;yui_css&#39; // filter through the filter manager&#39;s &#34;yui_css&#34;
+));
+
+header( &#39;Content-type: text/css&#39; );
+echo $css-&amp;gt;dump(); &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;La factory funciona de forma parecida a una &lt;em&gt;AssetCollection&lt;/em&gt;, ya que le pasamos un array de assets y otro de filtros. Como se basa en un _AssetManager_ y en un &lt;em&gt;FilterManager&lt;/em&gt;, todas las propiedades de estos se aplican al utilizar la factory.&lt;/p&gt;
+
+&lt;p&gt;Con respecto al &lt;em&gt;FilterManager&lt;/em&gt;, fíjate que hemos creado dos filtros, aunque luego solo estamos utilizando uno en el factory, el filtro llamado “_yui_css_“.&lt;/p&gt;
+
+&lt;h2 id=&#34;mejorando-la-velocidad-guardando-en-disco&#34;&gt;Mejorando la velocidad: guardando en disco&lt;/h2&gt;
+
+&lt;p&gt;Hasta aquí todo bien. El único problema es que cada vez que se visita la ruta correspondiente a un asset y se ejecuta la llamada al método &lt;em&gt;dump()&lt;/em&gt;, tiene que leer el contenido del disco, juntarlo y aplicar los filtros elegidos. Esto hará que la web cargue más lenta, con lo cual nuestro objetivo inicial de mejorar el rendimiento se va al traste.&lt;/p&gt;
+
+&lt;p&gt;Pero no sufras: todo tiene solución. En vez de generarlo cada vez, podríamos generarlo solo una vez y guardarlo en disco para que en las siguientes peticiones se sirva estáticamente la versión generada.&lt;/p&gt;
+
+&lt;p&gt;Para ello, &lt;a title=&#34;Assetic&#34; href=&#34;https://github.com/kriswallsmith/assetic&#34; target=&#34;_blank&#34;&gt;Assetic&lt;/a&gt; nos proporciona un _AssetWriter_ para escribir en el disco aquello que generemos.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;require_once __DIR__.&#39;/../vendor/autoload.php&#39;;
+
+use Assetic\Asset\AssetFactory;
+use Assetic\Asset\FilterManager;
+
+$css = $factory-&amp;gt;createAsset(
+    array(
+        &#39;css/style.css&#39;,
+        &#39;css/bootstrap/*.css&#39;, // css in &#34;/path/doc_root/css/bootstrap&#34;
+), array(
+        &#39;yui_css&#39; // filter through the filter manager&#39;s &#34;yui_css&#34;
+));
+
+$writer = new AssetWriter( &#39;/path/doc_root/generated&#39; );
+$writer-&amp;gt;writeAsset( $css );&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Tan solo le pedimos al writer que escriba en disco los assets que queramos. Si tenemos varios assets dentro de un &lt;em&gt;AssetManager&lt;/em&gt;, también podemos pasarle un _AssetManager_ y que automáticamente escriba en disco todos los assets configurados en el manager. Lo normal suele ser escribirlos en una carpeta aparte de archivos “compilados” o “generados”, pero eso ya depende de como te quieras organizar.&lt;/p&gt;
+
+&lt;p&gt;De esta forma, no serviríamos css y js de forma dinámica como estábamos viendo hasta ahora, es decir, no tendríamos una ruta que generase “al vuelo” el contenido. Por el contrario, cargaríamos un archivo normal del disco, archivo que generamos mediante el último código visto. Este código podemos ponerlo en un script PHP de consola que ejecutaremos manualmente cada vez que queramos re-escribir en el disco nuestros recursos, como, por ejemplo, &lt;strong&gt;cuando hacemos deploy de nuestra aplicación&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;El nombre que el fichero tendrá en el disco es generado automáticamente por Assetic, utilizando el hash &lt;strong&gt;SHA1&lt;/strong&gt;, basándose en los assets, los filtros y las opciones elegidas, de tal forma que si esto varía, el SHA1 variará y el nombre del fichero sería distinto, por lo que &lt;strong&gt;tendríamos que volver a guardarlo en el disco&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Si no nos interesa este comportamiento, Assetic también nos deja elegir el nombre final del archivo, pasándoselo en un array de opciones al factory.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;require_once __DIR__.&#39;/../vendor/autoload.php&#39;;
+
+use Assetic\Asset\AssetFactory;
+use Assetic\Asset\FilterManager;
+
+$css = $factory-&amp;gt;createAsset(
+    array(
+        &#39;css/style.css&#39;,
+        &#39;css/bootstrap/*.css&#39;, // css in &#34;/path/doc_root/css/bootstrap&#34;
+), array(
+        &#39;yui_css&#39; // filter through the filter manager&#39;s &#34;yui_css&#34;
+), array(
+        &#39;output&#39; =&amp;gt; &#39;my_awesome_css.css&#39;
+));
+
+$writer = new AssetWriter( &#39;/path/doc_root/generated&#39; );
+$writer-&amp;gt;writeAsset( $css );&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;conclusión&#34;&gt;Conclusión&lt;/h2&gt;
+
+&lt;p&gt;Con esta introducción creo que queda más claro qué es qué dentro de &lt;a title=&#34;Assetic&#34; href=&#34;https://github.com/kriswallsmith/assetic&#34; target=&#34;_blank&#34;&gt;Assetic&lt;/a&gt;, y cómo podríamos empezar a utilizarlo en &lt;strong&gt;una aplicación que no utilice Symfony2&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;En el siguiente post sobre Assetic, veremos algunos conceptos más avanzados como su integración con &lt;a title=&#34;Twig&#34; href=&#34;http://twig.sensiolabs.org/&#34; target=&#34;_blank&#34;&gt;Twig&lt;/a&gt;, o cache busting.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Caminante no hay camino, se hace camino al andar</title>
+      <link>http://fiunchinho.github.io/blog/caminante-no-hay-camino-se-hace-camino-al-andar/</link>
+      <pubDate>Sun, 12 Jan 2014 17:54:18 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/caminante-no-hay-camino-se-hace-camino-al-andar/</guid>
+      <description>&lt;p&gt;Llevo 3 años enseñando buenas prácticas en el desarrollo de software entre &lt;a title=&#34;Softonic Internship&#34; href=&#34;http://careers.en.softonic.com/internship-program/&#34; target=&#34;_blank&#34;&gt;el internship de Softonic&lt;/a&gt; y las colaboraciones esporádicas con la universidad, y algo que he aprendido de todo esto es que &lt;strong&gt;es muy difícil&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Es difícil explicarle a alguien que la duplicación es mala si no ha sufrido las consecuencias en sus carnes. Es complicado decirle que no abuse de la herencia entre clases si no se ha visto incapaz de cambiar su código por culpa de esto.&lt;/p&gt;
+
+&lt;p&gt;Es decir, podemos enseñar buenas prácticas a estudiantes, decirles que hagan esto y aquello, o que eviten eso de allí, pero &lt;strong&gt;no lo interiorizarán de verdad hasta que no vean claras las consecuencias&lt;/strong&gt;. Podemos explicarles los beneficios, los pros y los contras de una decisión y lo memorizarán. Pero no lo entenderán del todo y lo dominarán hasta que no lo sufran y se digan a sí mismos: “mierda”.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Igual que un piloto o un soldado pueden aprender su oficio con los libros o simuladores, no se convertirán en seniors en su profesión hasta que no lo hagan de verdad.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Para muchos, mantener una pieza de software durante un par de meses será el tiempo más largo que hayan tenido que mantener algo&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;En &lt;a title=&#34;Softonic Internship&#34; href=&#34;http://careers.en.softonic.com/internship-program/&#34; target=&#34;_blank&#34;&gt;el internship de Softonic&lt;/a&gt; enseñamos desarrollo de software durante 3 meses a estudiantes que estén terminando la carrera. Es un curso intensivo donde se ven muchas cosas. Es poco tiempo, pero para intentar que vayan ganando horas de vuelo, disparos en el campo de batalla, desde el principio tienen que desarrollar su propio framework desde cero. Y ese es el framework que utilizarán hasta el final del curso. Cuando nuevas funcionalidades se vayan pidiendo, verán si ciertas decisiones que han tomado les han ayudado o perjudicado y cuan costoso es de modificar.&lt;/p&gt;
+
+&lt;p&gt;Para muchos, mantener una pieza de software durante un par de meses será el tiempo más largo que hayan tenido que mantener algo. &lt;strong&gt;Es en el mantenimiento donde se ponen de manifiesto los pros y los contras que se explican en la teoría del curso&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Si usásemos un framework open source existente o diésemos una solución igual para todos, se quedarían sin aprender esto. Y creo que es primordial en el camino para convertirse en un programador senior. Porque son los seniors los que tienen suficientes horas de vuelo como para, con el libro en la mano, saber cuando pueden saltarse las reglas para hacer mejor software.&lt;/p&gt;
+
+&lt;p&gt;Los libros, los vídeos y los cursos son recursos muy buenos para aprender a programar. Pero estos son solo la semilla para que luego podamos crecer. &lt;strong&gt;No sirve de nada si no salimos ahí fuera e intentamos solventar problemas reales&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;¿Quieres aprender a programar? Construye algo que dure en el tiempo, compártelo con los demás y utilízalo.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>¿Qué es el versionamiento semántico y por qué es importante?</title>
+      <link>http://fiunchinho.github.io/blog/que-es-el-versionamiento-semantico-y-por-que-es-importante/</link>
+      <pubDate>Sat, 23 Nov 2013 18:02:29 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/que-es-el-versionamiento-semantico-y-por-que-es-importante/</guid>
+      <description>&lt;p&gt;Cuando decides utilizar un código que no es tuyo como puede ser un framework o una librería, una de las cosas de las que tienes que preocuparte es de estar al día con las últimas versiones que vayan sacando. No solo porque quizá incluyan cosas que te puedan interesar, si no porque puede que la última versión del framework en el que acabas de basar toda tu aplicación no sea compatible con código de versiones anteriores.&lt;/p&gt;
+
+&lt;p&gt;Aquí nacen dos problemas del mundo del software. Uno, para el consumidor de ese código, que necesita una forma de saber si la última versión de una herramienta es un cambio absoluto del comportamiento o solo arregla unos fallos menores. Y dos, para el creador de código, que necesita de una manera de comunicar a sus usuarios la naturaleza y el alcance de la última versión que va a publicar.&lt;/p&gt;
+
+&lt;p&gt;Para esto se inventó lo que conocemos a día de hoy como &lt;a title=&#34;Semantic Versioning&#34; href=&#34;http://semver.org/&#34; target=&#34;_blank&#34;&gt;versionamiento semántico, o semantic versioning&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;distintos-tipos-de-versiones&#34;&gt;Distintos tipos de versiones&lt;/h2&gt;
+
+&lt;p&gt;El versionamiento semántico es un convenio o estándar a la hora de definir la versión de tu código, dependiendo de la naturaleza del cambio que estás introduciendo. De tal forma, se identifican 3 tipos de cambios:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Major&lt;/strong&gt;: Cambio drástico en el software. No es compatible con código hecho en versiones anteriores.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Minor&lt;/strong&gt;: Cambio que añade alguna característica nueva al software o modifica alguna ya existente, pero que sigue siendo compatible con código existente. También cuando marcamos algo como obsoleto.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Patch&lt;/strong&gt;: Cuando arreglamos un bug siendo el cambio retrocompatible.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;De esta forma, tenemos un lenguaje común entre desarrolladores y consumidores a la hora de hablar de versiones.&lt;/p&gt;
+
+&lt;h2 id=&#34;cómo-se-marca-una-versión-como-major-minor-o-patch&#34;&gt;¿Cómo se marca una versión como major, minor o patch?&lt;/h2&gt;
+
+&lt;p&gt;Cada vez que enviemos código al repositorio crearemos un nuevo tag siguiendo el convenio semántico, dependiendo de los cambios introducidos. El tag contendrá la información, separando las versiones de cada tipo por puntos, de la forma&lt;strong&gt;major&lt;/strong&gt;.&lt;strong&gt;minor&lt;/strong&gt;.&lt;strong&gt;patch&lt;/strong&gt;. Esta versión en concreto, el tag que lo representa, &lt;strong&gt;no puede ser cambiado jamás&lt;/strong&gt;, para que si alguien depende de esa versión en particular, pueda seguir haciéndolo sin problemas.&lt;/p&gt;
+
+&lt;p&gt;Si el framework o librería que yo utilizo sigue el versionamiento semántico a rajatabla, sé que &lt;strong&gt;puedo actualizar sin miedo&lt;/strong&gt; todos las versiones marcadas como patches o minor porque no romperán mi código. Yo podría actualizar de la versión 5.3.3 a la 5.3.4 o incluso 5.4.0, porque solo estarían incrementando las versiones minor y patch, que son compatibles con código existente.&lt;/p&gt;
+
+&lt;p&gt;Si por el contrario pasase de la versión 1.4 a la versión 2.0, &lt;strong&gt;tendría que tener cuidado&lt;/strong&gt; porque seguramente habría muchas cosas que dejarían de funcionar: ha cambiado la major.&lt;/p&gt;
+
+&lt;h2 id=&#34;identificadores-de-estabilidad&#34;&gt;Identificadores de estabilidad&lt;/h2&gt;
+
+&lt;p&gt;Además de poder definir los cambios en el código como major, minor o patch, se suelen añadir unos identificadores que ayudan a marcar versiones específicas que quieres diferenciar, &lt;strong&gt;indicando la estabilidad de esa versión&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Por ejemplo, tienes tu aplicación a la versión 1.4.6 pero decides empezar el desarrollo de la próxima gran versión, la 2. Entonces los primeros desarrollos en esa versión nueva irán a la 2.0.0, pero como todavía estás empezando y probando cosas, podrías ponerle un identificador que le dijese a la gente &lt;strong&gt;la estabilidad de esa versión&lt;/strong&gt;. Tu versión quedaría en algo como &lt;strong&gt;2.0.0-alpha,&lt;/strong&gt; por ejemplo, y la gente sabría que es una versión _alpha_ no muy estable.&lt;/p&gt;
+
+&lt;p&gt;Según fueses avanzando en el desarrollo, llegarías a una versión beta la cual marcarías por ejemplo como &lt;strong&gt;2.1.3-beta&lt;/strong&gt;. Así hasta que todo estuviese listo para publicarse, y marcases una versión como candidata para ser publicada como &lt;strong&gt;2.1.5-rc1&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Si dos versiones iguales tienen distinto identificador, da igual: &lt;strong&gt;se consideran iguales a todos los efectos&lt;/strong&gt;. Esto nos permite ir actualizando la estabilidad de una versión, pudiéndola pasar de _alpha_ a _beta_ o incluso a &lt;em&gt;release candidate&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;También por convenio, encontrarás otro identificador conocido como &lt;strong&gt;dev-master&lt;/strong&gt;. Este identificador apunta a la última revisión enviada al repositorio, que no tiene por qué ser la última estable. Si dependes en esta versión estarás al día con todos los últimos cambios, pero te arriesgas a recibir cambios no retrocompatibles.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusión&#34;&gt;Conclusión&lt;/h2&gt;
+
+&lt;p&gt;El &lt;a title=&#34;Semantic Versioning&#34; href=&#34;http://semver.org/lang/es/&#34; target=&#34;_blank&#34;&gt;versionamiento semántico&lt;/a&gt; es un estándar de facto y deberías conocerlo. Si estás en el mundillo PHP, &lt;a title=&#34;Composer&#34; href=&#34;http://getcomposer.org/&#34; target=&#34;_blank&#34;&gt;Composer&lt;/a&gt; se basa en él: las dependencias que especificas en el archivo _composer.json_ deberían tener en cuenta lo visto en este artículo.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Limitar memoria máxima de Redis</title>
+      <link>http://fiunchinho.github.io/blog/limitar-memoria-maxima-de-redis/</link>
+      <pubDate>Thu, 21 Nov 2013 17:59:32 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/limitar-memoria-maxima-de-redis/</guid>
+      <description>&lt;p&gt;Haciendo pruebas en uno de los proyectos que tengo, utilicé &lt;a title=&#34;Redis&#34; href=&#34;http://redis.io/&#34; target=&#34;_blank&#34;&gt;Redis&lt;/a&gt; como sistema de caché, en vez de utilizar &lt;a title=&#34;Memcached&#34; href=&#34;http://memcached.org/&#34; target=&#34;_blank&#34;&gt;Memcached&lt;/a&gt; que es el que normalmente uso. Por defecto, Memcached va llenando su memoria hasta que esta se llena, y es entonces cuando empieza a borrar valores existentes para hacer sitio a las nuevas. La estrategia elegida para borrar es eliminar aquellas keys de la cache que han sido menos utilizadas.&lt;/p&gt;
+
+&lt;p&gt;Cuando activé Redis para mi proyecto, el proceso _daemon_ del servidor empezó a ocupar más y más memoria hasta que ocupaba casi la totalidad de la RAM del servidor. Poco después, el propio sistema operativo decidió matar el proceso de redis para no morir en el intento.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Si no quería tener que conectarme todos los días a levantar manualmente el daemon de Redis debía encontrar una manera de que esto no ocurriese. Así que decidí que Redis se comportase igual que Memcached: decidir una &lt;strong&gt;memoria límite&lt;/strong&gt;, y que cuando esté llena, &lt;strong&gt;empiece a descartar las claves menos utilizadas&lt;/strong&gt;. Para ello abrí el archivo de configuración de Redis (en mi caso se encontraba bajo &lt;em&gt;/etc/redis/redis.conf&lt;/em&gt;), y me llevé una grata sorpresa ya que parecía casi un manual. Todas las opciones estaban muy bien explicadas, incluso con ejemplos.&lt;/p&gt;
+
+&lt;p&gt;Buscando la opción &lt;code&gt;maxmemory&lt;/code&gt;, me encontré con lo siguiente en el propio archivo de configuración&lt;/p&gt;
+
+&lt;pre&gt;# Don&#39;t use more memory than the specified amount of bytes.
+# When the memory limit is reached Redis will try to remove keys with an
+# EXPIRE set. It will try to start freeing keys that are going to expire
+# in little time and preserve keys with a longer time to live.
+# Redis will also try to remove objects from free lists if possible.
+#
+# If all this fails, Redis will start to reply with errors to commands
+# that will use more memory, like SET, LPUSH, and so on, and will continue
+# to reply to most read-only commands like GET.
+#
+# WARNING: maxmemory can be a good idea mainly if you want to use Redis as a
+# &#39;state&#39; server or cache, not as a real DB. When Redis is used as a real
+# database the memory usage will grow over the weeks, it will be obvious if
+# it is going to use too much memory in the long run, and you&#39;ll have the time
+# to upgrade. With maxmemory after the limit is reached you&#39;ll start to get
+# errors for write operations, and this may even lead to DB inconsistency.
+#
+# maxmemory &amp;lt;bytes&amp;gt;&lt;/pre&gt;
+
+&lt;p&gt;Así que solo tenía que decidir cuanta memoria quería designar como máximo para Redis. Como lo estaba utilizando de caché, y no como base de datos, no hacía falta que fuese demasiado. Así que decidí poner &lt;strong&gt;256Mb&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;maxmemory 268435456&lt;/pre&gt;
+
+&lt;p&gt;Lo siguiente, era decidir qué estrategia debía seguir Redis para descartar claves guardadas en memoria. Una línea más abajo de donde estaba en el fichero de configuración me encuentro esto&lt;/p&gt;
+
+&lt;pre&gt;# MAXMEMORY POLICY: how Redis will select what to remove when maxmemory
+# is reached? You can select among five behavior:
+# 
+# volatile-lru -&amp;gt; remove the key with an expire set using an LRU algorithm
+# allkeys-lru -&amp;gt; remove any key accordingly to the LRU algorithm
+# volatile-random -&amp;gt; remove a random key with an expire set
+# allkeys-&amp;gt;random -&amp;gt; remove a random key, any key
+# volatile-ttl -&amp;gt; remove the key with the nearest expire time (minor TTL)
+# noeviction -&amp;gt; don&#39;t expire at all, just return an error on write operations
+# 
+# Note: with all the kind of policies, Redis will return an error on write
+# operations, when there are not suitable keys for eviction.
+#
+# At the date of writing this commands are: set setnx setex append
+# incr decr rpush lpush rpushx lpushx linsert lset rpoplpush sadd
+# sinter sinterstore sunion sunionstore sdiff sdiffstore zadd zincrby
+# zunionstore zinterstore hset hsetnx hmset hincrby incrby decrby
+# getset mset msetnx exec sort
+#
+# The default is:
+#
+# maxmemory-policy volatile-lru&lt;/pre&gt;
+
+&lt;p&gt;Así que cualquiera de las 2 primeras estrategias podía valerme para lo que yo quería conseguir. Añadí la siguiente línea&lt;/p&gt;
+
+&lt;pre&gt;maxmemory-policy volatile-lru&lt;/pre&gt;
+
+&lt;p&gt;Y listo. Ahora Redis tenía un ímite de memoria, y cuando se llenase, iría borrando valores que hubiesen sido menos utilizados recientemente. Podemos comprobar que funciona correctamente, controlando cuánta memoria está utilizando Redis en un momento determinado. Para ello, tan solo tenemos que utilizar el siguiente comando&lt;/p&gt;
+
+&lt;pre&gt;redis-cli info | grep memory&lt;/pre&gt;
+
+&lt;p&gt;Y debería mostrarnos algo parecido a esto&lt;/p&gt;
+
+&lt;pre&gt;used_memory:268227192
+used_memory_human:255.80M
+used_memory_rss:293154816&lt;/pre&gt;
+
+&lt;p&gt;Ahí podemos ver que la memoria no supera el límite que elegimos. El sistema operativo ya no tendrá que volver a preocuparse.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Inspección continua de la calidad de nuestro código</title>
+      <link>http://fiunchinho.github.io/blog/inspeccion-continua-de-la-calidad-de-nuestro-codigo/</link>
+      <pubDate>Tue, 05 Nov 2013 18:05:53 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/inspeccion-continua-de-la-calidad-de-nuestro-codigo/</guid>
+      <description>&lt;p&gt;Una de las formas que tenemos para poder mejorar el código de nuestro proyecto es someterlo a una inspección continua y constante. Lo primero que podemos hacer es lanzar nuestros tests tras cada push al repositorio, de forma que sabremos en todo momento si hay algo que no funciona bien.&lt;/p&gt;
+
+&lt;p&gt;También podemos analizar la complejidad del código y comprobar si estamos incrementándola o disminuyéndola.&lt;/p&gt;
+
+&lt;p&gt;Hasta ahora, todas estas tareas eran posibles solamente teniendo un servidor de integración continua configurado, siendo Jenkins el más famoso. En él podemos ejecutar todas estas tareas tras cada push. Recursos como &lt;a href=&#34;http://jenkins-php.org/&#34;&gt;http://jenkins-php.org/&lt;/a&gt; te ayudarán a configurar este versátil servidor hecho en Java.&lt;/p&gt;
+
+&lt;p&gt;La buena noticia es que cada vez hay más herramientas online que te permiten hacer estas tareas sin necesidad de configurar practicamente nada. Hoy veremos como lanzar tests y analizar la calidad de nuestro código sin utilizar un servidor de integración continua.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;ejecutando-nuestros-tests&#34;&gt;Ejecutando nuestros tests&lt;/h2&gt;
+
+&lt;p&gt;Estos dos últimos años han sido la explosión en popularidad de &lt;a title=&#34;TravisCI&#34; href=&#34;https://travis-ci.org/&#34; target=&#34;_blank&#34;&gt;TravisCI&lt;/a&gt;. TravisCI es un servicio que te permitirá lanzar tu suite de tests tras cada push. ¿Cómo? Pues cada vez que se envía código al repositorio, TravisCI levantará una máquina virtual y clonará tu código en ella. Una vez todo esté allí, &lt;strong&gt;ejecutará los tests y te dirá si algo se ha roto&lt;/strong&gt; o todo sigue correcto.&lt;/p&gt;
+
+&lt;p&gt;También te permite ejecutar comandos antes de lanzar los tests, por si necesitas instalar dependencias de otras librerías o incluso programas en la máquina virtual.&lt;/p&gt;
+
+&lt;p&gt;Para que todo esto funcione, necesitas tener un archivo de configuración en tu repositorio que le diga a TravisCI qué es lo que tiene que hacer. Este archivo se llama _.travis.yml_ y un ejemplo podría ser este&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;yaml&#34;&gt;language: php
+php:
+    - 5.3
+    - 5.4
+    - 5.5
+before_install:
+    - curl -s http://getcomposer.org/installer | php
+    - php composer.phar --dev install&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Con esta configuración le estamos diciendo a TravisCI que nuestro lenguaje es PHP, que queremos que lance los tests en 3 máquinas virtuales distintas, una con la versión 5.3 de PHP, otra con la 5.4 y otra con la 5.5. Además, antes de poder lanzar los tests, le decimos que instale las dependencias de nuestro proyecto mediante composer.&lt;/p&gt;
+
+&lt;p&gt;El hecho de saber si algo se ha roto con un commit es de vital importancia, sobretodo en proyectos con muchos programadores distintos, como los proyectos Open Source. Para esto, cada vez que hay un cambio de estado (alguien rompe los tests y pasamos de estable a roto, o viceversa), TravisCI nos enviará un email para tenernos informados.&lt;/p&gt;
+
+&lt;p&gt;Para que todo el mundo tenga visibilidad del estado actual, también pone a nuestra disposición una insignia que indica si los tests están en rojo o en verde. Podemos colocar esta insignia en el README.md de nuestro proyecto, y cualquiera que entre verá si hay algo roto.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_025.png&#34;&gt;&lt;img class=&#34;alignnone size-full wp-image-55&#34; alt=&#34;PHPUnit badge&#34; src=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_025.png&#34; width=&#34;801&#34; height=&#34;112&#34; srcset=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_025.png 801w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_025-300x41.png 300w&#34; sizes=&#34;(max-width: 801px) 100vw, 801px&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Por último, recuerda que por defecto TravisCI ejecutará &lt;strong&gt;PHPUnit&lt;/strong&gt; para lanzar los tests, utilizando la configuración del fichero _phpunit.xml.dist_ para saber donde están los tests y cómo lanzarlos. Si quieres cambiar algo de lo que TravisCI hace por defecto, &lt;a title=&#34;TravisCI Docs&#34; href=&#34;http://about.travis-ci.org/docs/user/languages/php/&#34; target=&#34;_blank&#34;&gt;la documentación&lt;/a&gt; está bastante bien.&lt;/p&gt;
+
+&lt;h2 id=&#34;analizando-la-calidad-del-código&#34;&gt;Analizando la calidad del código&lt;/h2&gt;
+
+&lt;p&gt;Existen &lt;a title=&#34;PHP QA Tools&#34; href=&#34;http://phpqatools.org/&#34; target=&#34;_blank&#34;&gt;un montón de herramientas de análisis estático de código PHP &lt;/a&gt;que nos dan todo tipo de información, desde si hay mucho copy/paste, hasta si nuestro código es poco abstracto. Son herramientas que puedes lanzar cuando quieras desde la consola, pero que como veíamos al principio del post, sería interesante lanzar cada vez que se envía código al repositorio. Si no queremos utilizar nuestro servidor de integración continua propio, una alternativa que tenemos es &lt;a title=&#34;Scrutinizer&#34; href=&#34;https://scrutinizer-ci.com/&#34; target=&#34;_blank&#34;&gt;Scrutinizer&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Su funcionamiento es muy parecido al de TravisCI, pero en vez de lanzar tu suite de tests, lanzará todas las &lt;a title=&#34;Herramientas de análisis estático de código&#34; href=&#34;https://scrutinizer-ci.com/docs/tools/php/&#34; target=&#34;_blank&#34;&gt;herramientas de análisis estático de código&lt;/a&gt; que hayas configurado. Para la configuración, tan solo debes modificar en la web de Scrutinizer el archivo de configuración, o tener un archivo _.scrutinizer.yml_ en tu repositorio. En la web puedes elegir una configuración global para todos tus proyectos, o tener una distinta para cada uno.&lt;/p&gt;
+
+&lt;p&gt;El mío tiene esta pinta&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;yaml&#34;&gt;filter:
+ excluded_paths: [vendor/*, app/*, web/*]
+
+tools:
+ php_cpd: true
+ php_pdepend:
+     excluded_dirs: [vendor]
+ php_mess_detector: true
+ php_analyzer: true
+ php_loc:
+     command: phploc
+     excluded_dirs: [vendor]
+     enabled: true&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;No tengo seleccionadas todas las herramientas, pero para hacer una prueba es suficiente con estas.&lt;/p&gt;
+
+&lt;p&gt;Una vez elegida tu configuración, puedes lanzar el análisis directamente eligiendo “_Schedule Inspection_” en la parte superior derecha. De todas formas, salvo que lo desactives en las opciones, cada vez que código nuevo se envíe al repositorio, se realizará una inspección de tu código.&lt;/p&gt;
+
+&lt;h3 id=&#34;informes&#34;&gt;Informes&lt;/h3&gt;
+
+&lt;p&gt;Lo bueno es que después de ejecutarse, Scrutinizer genera unos informes muy bonitos con todo tipo de información útil.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_023.png&#34;&gt;&lt;img class=&#34;alignnone size-large wp-image-56&#34; alt=&#34;Scrutinizer&#34; src=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_023-1024x651.png&#34; width=&#34;620&#34; height=&#34;394&#34; srcset=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_023-1024x651.png 1024w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_023-300x190.png 300w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_023.png 1099w&#34; sizes=&#34;(max-width: 620px) 100vw, 620px&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Arriba de todo podemos ver &lt;strong&gt;la nota final de nuestro código&lt;/strong&gt;, 9.18 en la imagen. Esta nota es calculada teniendo en cuenta el resultado de todas las inspecciones que tenemos configuradas. También nos ofrece un histórico con nuestra nota, o los incidentes (issues) de nuestro código que todavía tenemos pendientes por arreglar.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_024.png&#34;&gt;&lt;img class=&#34;alignnone size-large wp-image-58&#34; alt=&#34;Scrutinizer&#34; src=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_024-1024x410.png&#34; width=&#34;620&#34; height=&#34;248&#34; srcset=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_024-1024x410.png 1024w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_024-300x120.png 300w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_024.png 1093w&#34; sizes=&#34;(max-width: 620px) 100vw, 620px&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Por último, igual que TravisCI, nos ofrece la posibilidad de poner una insignia con nuestra nota en el README.md del repositorio, para que todo el mundo vea a simple vista la calidad del código.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_026.png&#34;&gt;&lt;img class=&#34;alignnone size-full wp-image-60&#34; alt=&#34;Scrutinizr badge&#34; src=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_026.png&#34; width=&#34;809&#34; height=&#34;236&#34; srcset=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_026.png 809w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_026-300x87.png 300w&#34; sizes=&#34;(max-width: 809px) 100vw, 809px&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;lo-tienes-fácil&#34;&gt;Lo tienes fácil&lt;/h2&gt;
+
+&lt;p&gt;Antigüamente tenías que pelearte con un servidor tipo Jenkins si querías tener funcionalidades de integración continua, pero cada vez salen más herramientas online a la luz que nos ayudan con la calidad de nuestro código. Todavía no tenemos todo lo que un Jenkins nos puede ofrecer, pero con estos dos simples servicios que hemos visto hoy, ya tendríamos mucho ganado.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

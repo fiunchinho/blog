@@ -1,0 +1,940 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jose Armesto&#39;s Blog</title>
+    <link>http://fiunchinho.github.io/blog/categories/code/index.xml</link>
+    <description>Recent content on Jose Armesto&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es-es</language>
+    <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
+    <atom:link href="http://fiunchinho.github.io/blog/categories/code/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Problemas desplegando código si usas Apache, symlinks y opcache</title>
+      <link>http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</link>
+      <pubDate>Fri, 01 May 2015 12:14:32 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</guid>
+      <description>&lt;p&gt;Muchas de las soluciones disponibles en el mercado para desplegar aplicaciones se basan en el uso de enlaces simbólicos (o symlinks) para activar la última versión de código en el servidor.&lt;/p&gt;
+
+&lt;p&gt;Simplificando mucho, podríamos decir que un flujo habitual a la hora de desplegar sería el siguiente:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ejecutamos comando para iniciar el proceso de despliegue de código nuevo.&lt;/li&gt;
+&lt;li&gt;Se descarga el código del repositorio y se construye la aplicación. Esto suele significar instalar dependencias, generar ficheros, etc.&lt;/li&gt;
+&lt;li&gt;Se mueve el resultado del paso anterior al servidor y se pone en una carpeta nueva.&lt;/li&gt;
+&lt;li&gt;La carpeta a la que apunta el &lt;em&gt;document root&lt;/em&gt; de nuestro servidor web es en realidad un enlace simbólico a otra carpeta que contiene código en la versión anterior. Por tanto solo nos queda cambiar ese enlace simbólico para que apunte a la nueva que acabamos de crear.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Como el cambio de enlace simbólico es practicamente instantáneo, conseguimos reducir la ventana de tiempo en la que el servidor está en un estado inconsistente, por ejemplo, porque todavía no se hayan terminado de copiar ficheros. Mientras se están subiendo la versión nueva, seguimos sirviendo la versión vieja, sin dejar de dar servicio. Y solo cuando la nueva está lista, hacemos el cambio de forma casi instantánea.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;problemas-con-este-enfoque&#34;&gt;Problemas con este enfoque&lt;/h2&gt;
+
+&lt;p&gt;Esta manera de desplegar, que parece sencilla y perfecta, tiene algunas complicaciones. Con la que la gente más suele pelearse es con el hecho de que a pesar de haber desplegado una versión nueva en el servidor, a veces siguen viendo la versión vieja, debido a la extensión &lt;a href=&#34;https://www.google.es/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=0CCUQFjAA&amp;url=http%3A%2F%2Fphp.net%2Fmanual%2Fes%2Fbook.opcache.php&amp;ei=HlFDVZfPI8T2Us6sgLAI&amp;usg=AFQjCNF9sKlRWdBbTEBKa1M2w25s5TBQGw&amp;sig2=6xMwOb3cZagbFnheUWkDTQ&amp;bvm=bv.92291466,d.d24&#34; target=&#34;_blank&#34;&gt;Opcache&lt;/a&gt; (antiguo APC) que guarda la compilación del código PHP interpretado en memoria. Por tanto, aunque la versión nueva ya está activa, PHP sigue tirando de esta caché para no tener que leer del disco y volver a compilar código PHP, así que se sirve el código de la versión vieja hasta que caduque esta caché (si es que lo tenemos configurado para que caduque), o hasta que reiniciemos el servidor dejando de dar servicio mientras dure el reinicio del servidor.&lt;/p&gt;
+
+&lt;p&gt;Antes de ver cómo solventarlo, vamos a ver un par de detalles interesantes.&lt;/p&gt;
+
+&lt;h2 id=&#34;te-presento-a-tu-nueva-amiga-realpath-cache&#34;&gt;Te presento a tu nueva amiga realpath_cache&lt;/h2&gt;
+
+&lt;p&gt;Cada vez que utilizas una ruta del sistema de archivos, por ejemplo porque vas a hacer un require/include de ese archivo, o porque vas lees/escribir en esa ruta, &lt;strong&gt;el sistema tiene que resolver esa ruta&lt;/strong&gt;: saber donde es exactamente, si es un directorio o un archivo, etc.&lt;/p&gt;
+
+&lt;p&gt;Para mejorar su rendimiento y minimizar lecturas de disco, PHP utiliza una caché interna donde guarda información sobre el sistema de archivos. No estoy hablando de Opcache, sino de otra caché llamada &lt;a href=&#34;https://php.net/manual/es/ini.core.php#ini.realpath-cache-size&#34; target=&#34;_blank&#34;&gt;realpath_cache&lt;/a&gt;. Si intentas resolver la misma ruta dos veces seguidas, solo en la primera PHP le pedirá información al lentísimo sistema de archivos: la segunda se leerá directamente de la caché, mejorando mucho el rendimiento.&lt;/p&gt;
+
+&lt;p&gt;Esto es bueno, ¿no?&lt;/p&gt;
+
+&lt;p&gt;Sí, claro. El tema es que, como con todas las cachés del mundo, el problema viene a la hora de invalidar la caché y decirle que queremos utilizar contenido nuevo.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;There are only two hard things in Computer Science: cache invalidation and naming things.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Cuando desplegamos código nuevo, el contenido de la ruta de nuestro &lt;em&gt;Document Root&lt;/em&gt; cambia. Aunque en nuestro código siempre usemos la misma ruta para hacer algo, piensa por ejemplo la ruta relativa que usas para incluir el autoload, despues de cada deploy, &lt;strong&gt;esa ruta se resuelve a un lugar distinto en el disco&lt;/strong&gt;, porque el enlace simbólico apunta a otro sitio. Esto evitará que veamos la versión nueva del código desplegado, hasta que esta caché no caduque o hagamos algo al respecto.&lt;/p&gt;
+
+&lt;h2 id=&#34;cómo-funciona-apache&#34;&gt;Cómo funciona Apache&lt;/h2&gt;
+
+&lt;p&gt;A diferencia de Opcache, que se guarda en memoria compartida por todos los procesos, la realpath_cache es local para cada proceso del sistema. Este detalle es importante porque si utilizas Apache &lt;em&gt;prefork&lt;/em&gt; para servir tu aplicación, cuando inicias Apache, este crea varios procesos hijos, tantos como le hayas configurado. Cada proceso hijo creado servirá X número de peticiones en su vida (esto también es configurable), y una vez que ha cumplido su deber, Apache lo matará y lo reemplazará con otro proceso hijo, poco a poco renovando todos los procesos que sirven páginas.&lt;/p&gt;
+
+&lt;p&gt;Es decir, &lt;strong&gt;no podemos preveer exactamente cuando los procesos dejarán de existir&lt;/strong&gt;. Sumado a que la realpath_cache es local a cada proceso,&lt;strong&gt; la nueva versión que acabamos de desplegar se irá sirviendo aleatoriamente&lt;/strong&gt;, dependiendo de qué proceso de Apache te haya asignado el servidor.&lt;/p&gt;
+
+&lt;p&gt;Como dijimos antes, podríamos solventarlo haciendo un reinicio de Apache despues de cada despliegue, pero dejaríamos de servir páginas el tiempo que tardase en reiniciar.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Mal, mal, mal, verdadera mal, por no deci borchenoso&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;reiniciando-elegantemente&#34;&gt;Reiniciando elegantemente&lt;/h2&gt;
+
+&lt;p&gt;Pero tranquilo, no sufras, hay solución. Apache nos ofrece una variante al reinicio, llamada &lt;em&gt;graceful restart&lt;/em&gt;. Esta variante, en vez de matar al proceso de Apache y todos sus hijos para reiniciarlo, lo que hace es que el proceso padre revisa a los procesos hijos de forma que:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Si no están haciendo nada, los sustituye por un proceso nuevo.&lt;/li&gt;
+&lt;li&gt;Si está sirviendo una petición en este momento, cuando termine lo sustituye por un proceso nuevo.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Como dijimos que realpath_cache era local a cada proceso, cuando Apache levanta un nuevo proceso hijo &lt;strong&gt;la realpath_cache está vacía para ese proceso y las rutas se resolverán al código nuevo que acabamos de desplegar&lt;/strong&gt;. Todo esto sin dejar de dar servicio, porque siempre hay procesos sirviendo páginas.&lt;/p&gt;
+
+&lt;h2 id=&#34;pesao-que-yo-venía-aquí-a-solventar-el-problema-de-opcache&#34;&gt;&lt;em&gt;Pesao&lt;/em&gt;. Que yo venía aquí a solventar el problema de Opcache&lt;/h2&gt;
+
+&lt;p&gt;Cierto. Opcache no es más que un diccionario (piensa en un array PHP), en el que cada &lt;em&gt;key&lt;/em&gt; es la ruta del fichero compilado, y el &lt;em&gt;value&lt;/em&gt; es el resultado de esa compilación. Cuando se va a ejecutar un fichero PHP, se ve si la ruta de ese archivo ya es una de las _keys_ en el diccionario, si ya lo está significa que ya lo hemos compilado antes, y se utiliza directamente el &lt;em&gt;value&lt;/em&gt;. Si no, se compila y se guarda en el diccionario.&lt;/p&gt;
+
+&lt;p&gt;El &amp;#8216;&lt;em&gt;final plot twist&amp;#8217;&lt;/em&gt; de todo esto es que &lt;strong&gt;Opcache utiliza realpath_cache internamente para resolver la ruta de los ficheros&lt;/strong&gt;. Por tanto, si hacemos un &lt;em&gt;graceful restart&lt;/em&gt; después de cada despliegue, la ruta del archivo habrá cambiado, resuelve a una carpeta distinta, así que &lt;strong&gt;será como un fichero totalmente nuevo para Opcache y volverá a compilarlo, haciendo que sirvamos la versión nueva&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;alignnone&#34; src=&#34;https://s-media-cache-ak0.pinimg.com/originals/ce/9c/94/ce9c949d6c73dbfb889f6036bac022dd.jpg&#34; alt=&#34;Mind Blown&#34; width=&#34;480&#34; height=&#34;360&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusión&#34;&gt;Conclusión&lt;/h2&gt;
+
+&lt;p&gt;Lo que hemos visto hoy es tan solo uno de los posibles problemas a la hora de desplegar código. Otro problema, por ejemplo, sería el que se produce cuando iniciamos un despliegue, un visitante entra en la web, justo después se cambia el enlace simbólico y estamos sirviendo archivos estáticos como javascript o css. Es posible que algunos archivos hayan sido de la versión vieja, y otros de la versión nueva, llevando a posibles inconsistencias. &lt;a href=&#34;https://codeascraft.com/2013/07/01/atomic-deploys-at-etsy/&#34; target=&#34;_blank&#34;&gt;Hay módulos de apache que intentan solventar este tipo de problemas&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;El despliegue de código es un tema complicado y muy interesante. Últimamente está avanzando mucho con conceptos como servidores inmutables y los contenedores, pero eso ya es tema de otro post.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Jugando con conceptos de DDD</title>
+      <link>http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/</link>
+      <pubDate>Wed, 29 Oct 2014 00:46:39 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/</guid>
+      <description>&lt;p&gt;El pasado fin de semana se celebró en Barcelona una &lt;a title=&#34;Software Craftmanship Barcelona&#34; href=&#34;http://www.softwarecraftsmanshipbarcelona.org/&#34; target=&#34;_blank&#34;&gt;nueva edición de la Software Craftmanship&lt;/a&gt;, donde se hablaron de diversos temas relacionados con las buenas prácticas a la hora de crear software. Entre ellos, en mi opinión, hubo uno que pareció suscitar mayor interés en la gente y ocupó un papel protagonista en los dos días de conferencia: &lt;strong&gt;Domain Driven Design&lt;/strong&gt;. Es un tema en el que creo que muchos estamos todavía aprendiendo, intentando dar sentido a la inmensa cantidad de conceptos e información que aparecen tanto en &lt;a title=&#34;DDD - Eric Evans&#34; href=&#34;http://www.amazon.es/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215&#34; target=&#34;_blank&#34;&gt;el libro azul&lt;/a&gt; como en &lt;a title=&#34;DDD - Vaughn Vernon&#34; href=&#34;http://www.amazon.es/gp/product/0321834577/ref=pd_lpo_sbs_dp_ss_1?pf_rd_p=479290847&amp;pf_rd_s=lpo-top-stripe&amp;pf_rd_t=201&amp;pf_rd_i=0321125215&amp;pf_rd_m=A1AT7YVPFBWXBL&amp;pf_rd_r=1N6RWXVM4AFMHH9P0EGZ&#34; target=&#34;_blank&#34;&gt;el rojo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;En esta búsqueda de sentido, me surgió una duda que creo que no aparece resuelta directamente en ninguno de los dos libros, y que compartí con el resto de asistentes en una de las charlas sobre DDD. Quiero reproducirla otra vez aquí, para poder hablar un poco más sobre el tema. Creo que no hace falta mostrar código, pero realmente me gustaría vuestra opinión, así que si es necesario, decídmelo y añadiré código.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;creando-value-objects-a-partir-de-entidades&#34;&gt;Creando value objects a partir de entidades&lt;/h2&gt;
+
+&lt;p&gt;Mi duda viene a la hora de combinar dos de los objetos básicos de DDD: las &lt;strong&gt;entidades&lt;/strong&gt; y los &lt;strong&gt;value objects&lt;/strong&gt;. En todos los ejemplos que he visto, los value objects pueden ser simples objetos que no dependen de ningún otro, o que se construyan utilizando otros value objects. Por su parte, las entidades se construyen tradicionalmente sin dependencias, o utilizando algún value object. Mi pregunta es: &lt;strong&gt;¿hay algo que nos impida construir value objects que dependan de entidades, que reciban entidades en su constructor?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Cuando lancé esta pregunta durante la sesión de DDD Táctico que impartía &lt;a title=&#34;Christian Soronellas&#34; href=&#34;https://twitter.com/theUniC&#34; target=&#34;_blank&#34;&gt;Christian&lt;/a&gt;, la mayoría de gente me miró como si fuese un loco (solo &lt;a title=&#34;Carlos Ble&#34; href=&#34;https://twitter.com/carlosble/&#34; target=&#34;_blank&#34;&gt;Carlos&lt;/a&gt; parecía encontrar sentido a mis palabras), pero dejadme explicar por qué creo que construir value objects con entidades puede ser perfectamente válido.&lt;/p&gt;
+
+&lt;p&gt;Un value object es un objeto el cual su identidad viene dada por el valor que contiene. No tiene un identificador como tal, porque su propio valor lo identifica. Dos value objects que contienen el mismo valor, son iguales.&lt;/p&gt;
+
+&lt;p&gt;Un ejemplo de caso de uso para mi pregunta podría ser cuando intentamos modelar una aplicación para votar en unas elecciones. Una práctica que suelo utilizar es la de intentar modelar todo el dominio con value objects, y solo &amp;#8220;promocionar&amp;#8221; el objeto a entidad cuando es estrictamente necesario. En este caso, si tenemos ciudadanos que votan, y partidos políticos que pueden ser votados, veo lógico que esos sean entidades, ya que un ciudadano puede hasta cambiarse el nombre y seguir siendo el mismo ciudadano. &lt;strong&gt;Tiene una identidad que lo identifica&lt;/strong&gt; (valga la redundancia). Con el partido político pasa algo parecido: podría cambiar su logotipo, o hasta su nombre, y seguir siendo el mismo.&lt;/p&gt;
+
+&lt;p&gt;Pero para modelar los votos que la gente hace a los partidos, quise intentar hacerlo con un value object. Este value object debe contener qué ciudadano ha votado, a qué partido político, y quizá el momento exacto en el que ha votado. Si decíamos que tanto los ciudadanos como los partidos políticos son entidades&amp;#8230; &lt;strong&gt;este objeto &amp;#8220;voto&amp;#8221; tendría que construirse a partir de entidades&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;inmutabilidad-del-value-object&#34;&gt;Inmutabilidad del value object&lt;/h2&gt;
+
+&lt;p&gt;No recuerdo quién, argumentó que, por definición, los value objects son inmutables, y si un ciudadano se cambiase el nombre entonces el voto habría cambiado, perdiendo su inmutabilidad. Pero esto no es cierto. Precisamente, debido a que las entidades tienen identidad, la forma de decir si una entidad es o no igual a otra, es comparando los identificadores de esas entidades. Si un ciudadano se cambia el nombre, sigue siendo el mismo ciudadano. Por tanto, si un value object &lt;em&gt;Voto&lt;/em&gt; contiene una entidad &lt;em&gt;Ciudadano&lt;/em&gt;, y este ciudadano se cambia el nombre, &lt;strong&gt;el value object sigue sin haber mutado, ya que sigue conteniendo la misma entidad&lt;/strong&gt;: la identidad del ciudadano es la misma.&lt;/p&gt;
+
+&lt;p&gt;Si cambiase el ciudadano que ha votado, o el partido político al que ha votado, &lt;strong&gt;sería otro voto&lt;/strong&gt;. Es el valor del value object lo que le identifica. Es inmutable: yo no puedo coger la papeleta de un voto y tachar una cosa para poner otra.&lt;/p&gt;
+
+&lt;p&gt;Alguien podría preguntarme que por qué complicarme la vida y no hacer una entidad. Creo que modelar con value objects es más simple, manteniendo la inmutabilidad lo máximo posible. Estos votos podrían formar parte de una entidad de elecciones (o algo parecido), que sería lo que finalmente persistiría esos votos en base de datos. Cuantas menos entidades, más sencillo de programar y más sencillo de razonar. ¿Para qué añadir identidades a cosas que no las necesitan?&lt;/p&gt;
+
+&lt;p&gt;Ya sé que no es un ejemplo que aparezca en los libros, pero a mí es un diseño que a priori me cuadra. Solo lo he desarrollado en mi cabeza, así que no sé con qué problemas me podría encontrar. Como soy masoca, lo expongo aquí públicamente para que me lo crujáis.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;¿Qué os parece?&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Sácale todo el partido a los tests haciendo que griten</title>
+      <link>http://fiunchinho.github.io/blog/sacale-todo-el-partido-a-los-tests-haciendo-que-griten/</link>
+      <pubDate>Sun, 26 Jan 2014 18:09:33 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/sacale-todo-el-partido-a-los-tests-haciendo-que-griten/</guid>
+      <description>&lt;p&gt;Si tuviese que decir en qué se basa una prueba unitaria, diría que las principales características que debe cumplir son (sin ningún orden en particular):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Que sea rápido y sin efectos secundarios.&lt;/li&gt;
+&lt;li&gt;Que sea realmente unitario.&lt;/li&gt;
+&lt;li&gt;Que sea auto explicativo.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Pero con el tiempo veo que la gente tiende a &lt;strong&gt;centrarse en las dos primeras de mi lista&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Se busca que sea rápido y sin efectos secundarios porque de esa forma podemos lanzarlos siempre que queramos, dándonos confianza. Si tuviésemos que esperar minutos en saber el resultado, o tuviésemos que andar limpiando una base de datos cada vez que quisiésemos lanzar pruebas, simplemente no lo haríamos tan frecuentemente como debiéramos.&lt;/p&gt;
+
+&lt;p&gt;También se prioriza que sean unitarios y aislados, para que cuando algo falle, tengamos la granularidad suficiente para identificar el problema en cuestión de segundos. Si tuviésemos una prueba que lo probase todo, el día que fallase, no sabríamos cual de las partes ha sido la culpable.&lt;/p&gt;
+
+&lt;p&gt;Y aunque considero que estas dos características son importantísimas, &lt;strong&gt;creo que se desprecia la última de mi lista&lt;/strong&gt;. Las pruebas deberían ser auto explicativas, en el sentido de que debería ser muy fácil saber qué se está probando en todo momento, y sobretodo, qué hace el componente que estamos probando.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;La mayoría del tiempo que programamos nos la pasamos leyendo código ya existente, intentando entender qué es lo que hace. Esto implica tener que leer las pruebas. Y no sé vosotros, pero yo me he encontrado con tests infumables.&lt;/p&gt;
+
+&lt;h2 id=&#34;como-mejorar-la-legibilidad-de-los-tests&#34;&gt;Como mejorar la legibilidad de los tests&lt;/h2&gt;
+
+&lt;p&gt;Voy a poner un ejemplo muy sencillo donde podemos aplicar una serie de mejoras. Quizá al ser tan simple se vea menos el efecto, pero aplicándolo a esos mastodontes que nos podemos encontrar en la vida real, creedme que mejoraremos mucho los tests.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;El refactoring de extraer método no sirve para ahorrar líneas de código, si no para que el método sea más fácil de leer.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;primera-aproximación-mocks-en-métodos-privados&#34;&gt;Primera aproximación: mocks en métodos privados&lt;/h3&gt;
+
+&lt;p&gt;En el siguiente ejemplo, tenemos una clase encargada de identificar usuarios. Tiene dos colaboradores: el repositorio de usuarios para encontrar usuarios, y un codificador de contraseñas.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;public function testShouldReturnAuthenticatedUserForValidCredentials()
+{
+    $email      = &#39;john@doe.com&#39;;
+    $encoded_pass   = &#39;encoded_pass&#39;;
+    $password           = &#39;decoded_pass&#39;;
+    $user       = new User( $email, $encoded_pass );
+    $user_repo  = $this-&amp;gt;getMock( &#39;UserRepository&#39; );
+    $user_repo
+    -&amp;gt;expect( $this-&amp;gt;any() )
+    -&amp;gt;method( &#39;findByEmail&#39; )
+    -&amp;gt;will( $this-&amp;gt;returnValue( $user ) );
+
+    $pass_encoder   = $this-&amp;gt;getMock( &#39;PasswordEncoder&#39; );
+    $pass_encoder
+    -&amp;gt;expect( $this-&amp;gt;once() )
+        -&amp;gt;method( &#39;hash&#39; )
+    -&amp;gt;with( $password )
+    -&amp;gt;will( $this-&amp;gt;returnValue( $encoded_pass ) );
+
+    $auth_service   = new AuthService( $user_repo, $pass_encoder );
+
+    $this-&amp;gt;assertEquals(
+    $user,
+    $auth_service-&amp;gt;authenticate( $email, $password ),
+    &#39;Must return the user when credentials are valid.&#39;
+    );
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A pesar de que apenas hay lógica que testear, y gracias en parte a lo incómodo de PHPUnit (tenéis que probar &lt;a title=&#34;PHPSpec&#34; href=&#34;http://www.phpspec.net/&#34; target=&#34;_blank&#34;&gt;PHPSpec&lt;/a&gt;, en serio), los tests empiezan a crecer, &lt;strong&gt;obligándonos a leer un montón de líneas cada vez que queramos entender qué hace esto&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Muchos programadores intentan solventar este problema extrayendo un método para, por ejemplo, la creación de mocks. Queda algo tal que así.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;public function testShouldReturnAuthenticatedUserForValidCredentials()
+{
+    $email      = &#39;john@doe.com&#39;;
+    $encoded_pass   = &#39;encoded_pass&#39;;
+    $password   = &#39;decoded_pass&#39;;
+    $user       = new User( $email, $encoded_pass );
+
+    $this-&amp;gt;createRepositoryMock( $email, $encoded_pass );
+    $this-&amp;gt;createEncoderMock( $password, $encoded_pass );
+
+    $auth_service   = new AuthService( $user_repo, $pass_encoder );
+
+    $this-&amp;gt;assertEquals(
+    $user,
+    $auth_service-&amp;gt;authenticate( $email, $password ),
+    &#39;Must return the user when credentials are valid.&#39;
+    );
+}
+
+private function createRepositoryMock( $email, $password )
+{
+    $user       = new User( $email, $password );
+    $user_repo  = $this-&amp;gt;getMock( &#39;UserRepository&#39; );
+    $user_repo
+    -&amp;gt;expect( $this-&amp;gt;any() )
+    -&amp;gt;method( &#39;findByEmail&#39; )
+    -&amp;gt;will( $this-&amp;gt;returnValue( $user ) );
+
+    return $user_repo;
+}
+
+private function createEncoderMock( $password, $encoded_pass )
+{
+    $pass_encoder   = $this-&amp;gt;getMock( &#39;PasswordEncoder&#39; );
+    $pass_encoder
+    -&amp;gt;expect( $this-&amp;gt;once() )
+    -&amp;gt;method( &#39;hash&#39; )
+    -&amp;gt;with( $password )
+    -&amp;gt;will( $this-&amp;gt;returnValue( $encoded_pass ) );
+
+    return $pass_encoder;
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Aunque a priori pueda parecer que esto ha mejorado la legibilidad de nuestros tests, nada más lejos de la realidad. Lo único que hemos hecho es reducir el número de líneas del test, pero sigo teniendo que leerme todo cada vez que necesite entenderlo.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;El refactoring de extraer método no sirve para ahorrar líneas, si no para que el método sea más fácil de leer.&lt;/strong&gt; El nombre _createRepositoryMock()_ no me dice absolutamente nada sobre por qué lo estamos haciendo.&lt;/p&gt;
+
+&lt;h3 id=&#34;un-enfoque-mejor&#34;&gt;Un enfoque mejor&lt;/h3&gt;
+
+&lt;p&gt;Si el objetivo es que se entienda mejor el código, ¿por qué no hace todo explícito? Vamos a hacer lo mismo, pero pensando en el por qué de las cosas.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;public function testShouldReturnAuthenticatedUserForValidCredentials()
+{
+    $email      = &#39;john@doe.com&#39;;
+    $encoded_pass   = &#39;encoded_pass&#39;;
+    $password   = &#39;decoded_pass&#39;;
+    $user       = $this-&amp;gt;createExistingUser( $email, $encoded_password );
+    $user_repo  = $this-&amp;gt;createUserRepoWhenUserExists( $user );
+    $pass_encoder   = $this-&amp;gt;createEncoderWhenEncoderMustEncodePassword( $password, $encoded_pass );
+
+    $auth_service   = new AuthService( $user_repo, $pass_encoder );
+
+    $this-&amp;gt;assertEquals(
+    $user,
+    $auth_service-&amp;gt;authenticate( $email, $password ),
+    &#39;Must return the valid user when credentials are valid.&#39;
+    );
+}
+
+private function createUserRepoWhenUserExists( $user )
+{
+    $user_repo = $this-&amp;gt;getMock( &#39;UserRepository&#39; );
+    $user_repo
+    -&amp;gt;expect( $this-&amp;gt;any() )
+    -&amp;gt;method( &#39;findByEmail&#39; )
+    -&amp;gt;will( $this-&amp;gt;returnValue( $user ) );
+
+    return $user_repo;
+}
+
+private function createExistingUser( $email, $password )
+{
+    return new User( $email, $password );
+}
+
+private function createEncoderWhenEncoderMustEncodePassword( $password, $encoded_pass )
+{
+    $pass_encoder = $this-&amp;gt;getMock( &#39;PasswordEncoder&#39; );
+    $pass_encoder
+    -&amp;gt;expect( $this-&amp;gt;once() )
+    -&amp;gt;method( &#39;hash&#39; )
+    -&amp;gt;with( $password )
+    -&amp;gt;will( $this-&amp;gt;returnValue( $encoded_pass ) );
+
+    return $pass_encoder;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Estos nombres no tienen por qué ser los mejores, pero la idea es esa: hacer explícito el motivo de todo, para que cuando volvamos a leer el código (o algún compañero nuestro), todo lo que está ocurriendo se entienda a la perfección.&lt;/p&gt;
+
+&lt;p&gt;Este primer enfoque es bastante básico, y si vemos que se complica, siempre podemos acudir a patrones de creación como el patrón builder o factories para los mocks.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Revelar la intención de nuestro código y el objetivo del test: lo más importante&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Haciendo que el objetivo de cada línea sea revelar con claridad la intención de nuestro código y qué caso concreto estamos testeando en ese momento, reduciremos muchísimo el tiempo necesario para entenderlo. &lt;strong&gt;Da igual que ocupe más líneas, o que tarde dos microsegundos más en ejecutarse&lt;/strong&gt;. Los objetivos de los tests son los que vimos al principio de este artículo, no son el rendimiento o tener menos líneas de código.&lt;/p&gt;
+
+&lt;h2 id=&#34;luchando-contra-la-duplicación&#34;&gt;Luchando contra la duplicación&lt;/h2&gt;
+
+&lt;p&gt;He visto desarrolladores que detectan que necesitarán un stub en todos los test cases, así que sacan la creación del stub al método de setUp, para ahorrar las líneas de configuración del stub.&lt;/p&gt;
+
+&lt;p&gt;Volvemos a lo mismo. Debemos preguntarnos si eso mejora la legibilidad del test. En mi opinión, normalmente no lo hace, porque _esconde_ una colaboración, que puede que pasemos por alto ya que está en el setUp y no en el test case.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;“Pero entonces tendremos duplicación!”&lt;/em&gt;, me dirán los lectores más atentos. Pero yo no digo que dupliquemos, sino que lo hagamos explícito. Si vemos que por hacerlo explícito vamos a duplicar código, saquemos la duplicación a un método privado que contenga la lógica que se duplica, y llamemos a este método privado desde el test case. El nombre de ese método privado nos dirá el motivo de por qué está ese código ahí.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusión&#34;&gt;Conclusión&lt;/h2&gt;
+
+&lt;p&gt;Nunca debemos olvidar que &lt;strong&gt;los tests son nuestra primera documentación&lt;/strong&gt;. Es la mejor forma de ver cómo funciona un componente, cómo se configura, y qué valores debo esperar que devuelva. Cuando tengo que modificar código ya existente, entender qué es lo que hace es vital. Si no hago que mis tests &lt;strong&gt;GRITEN&lt;/strong&gt; el comportamiento de mis clases, me estoy perdiendo otra de las grandes ventajas de los tests.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Administrar recursos frontend con Assetic (sin Symfony2)</title>
+      <link>http://fiunchinho.github.io/blog/administrar-recursos-frontend-con-assetic-sin-symfony2/</link>
+      <pubDate>Sun, 19 Jan 2014 18:12:29 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/administrar-recursos-frontend-con-assetic-sin-symfony2/</guid>
+      <description>&lt;p&gt;Buscando mejorar el rendimiento de nuestras aplicaciones web, muchas veces nos centramos en el backend sin prestar suficiente atención al frontend. Una de las mejoras que podemos aplicar en la parte frontal de nuestras webs para que vayan más rápidas es reducir el número de peticiones HTTP que son necesarias para cargar la web. Para ello podemos, por ejemplo, combinar varios archivos CSS o JS en uno solo para que, aunque tengamos que cargar muchos recursos, solo una petición HTTP sea necesaria.&lt;/p&gt;
+
+&lt;p&gt;Hacer esto a mano puede ser tedioso y llevar a problemas, por tanto una buena solución sería preguntarnos si alguien ya ha solucionado este problema antes. Como tantas otras veces la respuesta es que sí.&lt;/p&gt;
+
+&lt;p&gt;Hoy vengo a hablaros de &lt;a title=&#34;Assetic&#34; href=&#34;https://github.com/kriswallsmith/assetic&#34; target=&#34;_blank&#34;&gt;Assetic&lt;/a&gt;, una herramienta que nos permite administrar fácilmente los recursos de la web, como archivos CSS o Javascript, para combinarlos, minificarlos u optimizarlos.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;El problema de &lt;a title=&#34;Assetic&#34; href=&#34;https://github.com/kriswallsmith/assetic&#34; target=&#34;_blank&#34;&gt;Assetic&lt;/a&gt; es que, aunque encontrarás muchos ejemplos y artículos en internet, el 99% de ellos son utilizando &lt;a title=&#34;Symfony&#34; href=&#34;http://symfony.com/&#34; target=&#34;_blank&#34;&gt;Symfony2&lt;/a&gt;. Mi objetivo con este post es explicar assetic para que puedas utilizarlo en cualquier sitio, independientemente del framework elegido.&lt;/p&gt;
+
+&lt;h2 id=&#34;vocabulario-básico&#34;&gt;Vocabulario básico&lt;/h2&gt;
+
+&lt;p&gt;Vamos a definir un vocabulario básico que nos puede ayudar cuando busquemos ayuda en internet o intentemos entender el funcionamiento de assetic:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Asset&lt;/strong&gt;: Un recurso estático como un archivo CSS, un fichero Javascript o una imagen. Hay 2 clases que nos permitirán describir assets: &lt;em&gt;FileAsset&lt;/em&gt;, que es un archivo normal; y &lt;em&gt;GlobAsset&lt;/em&gt;, que representa un directorio que contiene varios archivos que queramos cargar.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Filter&lt;/strong&gt;: Un filtro que transforma de alguna forma el contenido del fichero, como por ejemplo minificándolo, o traduciendo de SASS a CSS. Hay muchos filtros distintos.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AssetManager&lt;/strong&gt;: Un administrador de los assets. Nos permitirá ponerle nombre, y crear grupos nombrando a otros assets declarados anteriormente. El asset al que le ponemos nombre puede ser un &lt;em&gt;FileAsset&lt;/em&gt;, _GlobAsset_ o &lt;em&gt;AssetCollection&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AssetCollection&lt;/strong&gt;: Un conjunto de assets, es decir, varios _FileAsset_ o &lt;em&gt;GlobAsset&lt;/em&gt;. &lt;strong&gt;Puede contener otras colecciones&lt;/strong&gt;. El constructor acepta dos arrays, uno con los diferentes assets que componen el &lt;em&gt;collection&lt;/em&gt;, y otro con el conjunto de _filters_ que aplicaremos.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;FilterManager&lt;/strong&gt;: Lo mismo que el _AssetManager_ pero para filtros.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AssetFactory&lt;/strong&gt;: Una clase que nos facilitará el trabajo de conectar todo lo que hemos visto hasta ahora, pasándole un _AssetManager_ y un &lt;em&gt;FilterManager&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Formulae&lt;/strong&gt;: Lo que define a un asset: fichero/s y/o filtro/s utilizados para crearlo.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dump&lt;/strong&gt;: Generar el recurso especificado, pasándole los filters elegidos. Podemos utilizarlo para mostrar el contenido por pantalla de forma dinámica o para guardarlo en un fichero y servirlo de forma estática.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;instalación-de-assetic&#34;&gt;Instalación de Assetic&lt;/h2&gt;
+
+&lt;p&gt;Podemos instalar assetic &lt;a title=&#34;Assetic&#34; href=&#34;https://packagist.org/packages/kriswallsmith/assetic&#34; target=&#34;_blank&#34;&gt;a través de composer&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;sirviendo-contenido-dinámicamente&#34;&gt;Sirviendo contenido dinámicamente&lt;/h2&gt;
+
+&lt;p&gt;Vamos a realizar un ejemplo básico en el que vamos a coger todos los ficheros javascript de nuestro proyecto y vamos a hacer que assetic los combine en uno solo y los sirva dinámicamente, es decir, el resultado de combinarlos no lo guardará en disco,&lt;strong&gt;sino que tendremos una URL en nuestra aplicación que generará el javascript combinado&lt;/strong&gt;. Esa URL es la que utilizaríamos en nuestro HTML para incluir el javascript.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;require_once __DIR__.&#39;/../vendor/autoload.php&#39;;
+
+use Assetic\Asset\AssetCollection;
+use Assetic\Asset\GlobAsset;
+
+$js = new AssetCollection(array(
+ new GlobAsset( &#39;/var/www/my_project/web/js/*&#39; ),
+));
+
+// Vamos a mostrar código Javascript, por tanto
+// debemos especificárselo al navegador con la cabecera correspondiente
+header( &#39;Content-type: text/javascript&#39; );
+
+// Mostramos el código Javascript
+echo $js-&amp;gt;dump();&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Es nuestra labor crear una página/controlador/sección con este código y una ruta de nuestra web apuntando hacia ahí&lt;/strong&gt;. Si la visitamos, veremos por pantalla todo el código Javascript correspondiente a todos los archivos que había en la carpeta _/var/www/my_project/web/js/_ combinado en un solo archivo. Por tanto, en nuestro HTML podríamos cambiar todos los archivos javascript incluídos y dejar solo este, &lt;strong&gt;reduciendo el número de peticiones HTTP y mejorando la velocidad y rendimiento de la web&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;No es obligatorio utilizar _AssetCollection_ para esto, ya que podríamos haber utilizado directamente un _FileAsset_ o &lt;em&gt;GlobAsset&lt;/em&gt;, pero normalmente vamos a tener más de un archivo.&lt;/p&gt;
+
+&lt;p&gt;Si no queremos coger todos los archivos de una carpeta, sino solo algunos, tendríamos que hacer lo siguiente&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;require_once __DIR__.&#39;/../vendor/autoload.php&#39;;
+
+use Assetic\Asset\AssetCollection;
+use Assetic\Asset\FileAsset;
+use Assetic\Asset\GlobAsset;
+
+$js = new AssetCollection(array(
+ new FileAsset( &#39;/var/www/my_project/web/js/main.js&#39; ),
+ new FileAsset( &#39;/var/www/my_project/web/js/jquery.min.js&#39; ),
+ new GlobAsset( &#39;/var/www/my_project/web/js/bootstrap/*&#39; )
+));
+// Vamos a mostrar código Javascript, por tanto
+// debemos especificárselo al navegador con la cabecera correspondiente
+header( &#39;Content-type: text/javascript&#39; );
+
+// Mostramos el código Javascript
+echo $js-&amp;gt;dump();&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Si os fijáis en el output del javascript combinado que genera este código, salvo que el JS estuviese minificado de antes, no estará minificado ahora. En el caso de haber tenido coffeescript, esto no nos lo hubiese compilado a javascript. Para hacer este tipo de tareas tenemos que utilizar los filtros.&lt;/p&gt;
+
+&lt;h2 id=&#34;usando-filtros&#34;&gt;Usando filtros&lt;/h2&gt;
+
+&lt;p&gt;Los filtros nos van a permitir transformar el contenido de los asset que habíamos definido. Para definirlos tenemos distintos métodos. Podemos definir un determinado asset con un filtro específico si solo queremos que se aplique a ese en particular. Pero también podemos asignar filtros a un AssetCollection y que lo aplique a todos. Dependerá de qué es lo que queremos hacer.&lt;/p&gt;
+
+&lt;p&gt;En el siguiente ejemplo vamos a ver los dos casos. Un filtro particular para compilar de código LESS a CSS, y el &lt;a title=&#34;YUI&#34; href=&#34;http://yuilibrary.com/&#34; target=&#34;_blank&#34;&gt;compresor YUI&lt;/a&gt; para que minifique todos los assets de la colección.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;require_once __DIR__.&#39;/../vendor/autoload.php&#39;;
+
+use Assetic\Asset\AssetCollection;
+use Assetic\Asset\FileAsset;
+use Assetic\Asset\GlobAsset;
+use Assetic\Filter\LessFilter;
+use Assetic\Filter\Yui;
+
+$css = new AssetCollection(array(
+    new FileAsset(&#39;/path/to/src/styles.less&#39;, array(new LessFilter())),
+    new GlobAsset(&#39;/path/to/css/*&#39;),
+), array(
+    new Yui\CssCompressorFilter(&#39;/path/to/yuicompressor.jar&#39;),
+));
+
+header( &#39;Content-type: text/css&#39; );
+// this will echo CSS compiled by LESS and compressed by YUI
+echo $css-&amp;gt;dump();&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Creando un controlador con el código anterior, y una ruta apuntando a él, podríamos ir a nuestro código HTML y cambiar todas las peticiones de CSS en una sola hacia dicha ruta.&lt;/p&gt;
+
+&lt;p&gt;&lt;a title=&#34;Assetic Filters&#34; href=&#34;https://github.com/kriswallsmith/assetic#filters&#34; target=&#34;_blank&#34;&gt;La cantidad de filtros disponibles es enorme&lt;/a&gt; y salvo que quieras realizar algo extraño, encontrarás uno que hace lo que buscas. Recuerda que es probable que para utilizar estos filtros, tengas que instalar la herramienta en cuestión. Por ejemplo, para utilizar YUI como en mi ejemplo, tendrías que instalar YUI (en Ubuntu):&lt;/p&gt;
+
+&lt;pre&gt;sudo apt-get install yui-compressor&lt;/pre&gt;
+
+&lt;p&gt;Y &lt;strong&gt;el lugar de instalación es el que debes poner en el constructor del filtro&lt;/strong&gt;, para que sepa donde está el _jar_ ejecutable.&lt;/p&gt;
+
+&lt;h2 id=&#34;organizando-mejor-los-recursos&#34;&gt;Organizando mejor los recursos&lt;/h2&gt;
+
+&lt;p&gt;Los ejemplos que hemos visto están bien, pero en un proyecto más grande tendrás muchos recursos css o js que quieras cargar y la cosa puede complicarse.&lt;/p&gt;
+
+&lt;p&gt;&lt;a title=&#34;Assetic&#34; href=&#34;https://github.com/kriswallsmith/assetic&#34; target=&#34;_blank&#34;&gt;Assetic&lt;/a&gt; intenta hacernos la vida más fácil a través del _AssetManager_ y el &lt;em&gt;FilterManager&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;assetmanager&#34;&gt;AssetManager&lt;/h3&gt;
+
+&lt;p&gt;El _AssetManager_ es… bueno, eso, un administrador de assets. Básicamente podemos ponerle un nombre a cada asset definido. ¿Por qué es esto importante? Pues porque luego podemos hacer referencia a un asset definido con anterioridad, y el_AssetManager_ se encargará de que assetic no haga todo el trabajo sobre el mismo recurso dos veces.&lt;/p&gt;
+
+&lt;p&gt;Por ejemplo, si queremos cargar jQuery y además, un plugin de jQuery que necesita, obviamente, de jQuery.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;
+use Assetic\Asset\AssetCollection;
+use Assetic\Asset\FileAsset;
+use Assetic\AssetManager;
+use Assetic\Asset\AssetReference;
+
+$jquery = new FileAsset( &#39;/path/to/jquery.min.js&#39; );
+
+$am = new AssetManager();
+$am-&amp;gt;set( &#39;jquery&#39;, $jquery );
+
+$plugin1 = new AssetCollection( array(
+    new AssetReference( $am, &#39;jquery&#39; ),
+    new FileAsset( &#39;/path/to/jquery.plugin.js&#39; )
+));
+
+$plugin2 = new AssetCollection( array(
+    new AssetReference( $am, &#39;jquery&#39; ),
+    new FileAsset( &#39;/path/to/another/jquery.plugin.js&#39; )
+));
+
+$js = new AssetCollection( array(
+    $jquery,
+    $plugin1,
+    $plugin2
+));
+header( &#39;Content-type: text/javascript&#39; );
+echo $js-&amp;gt;dump();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;En el código anterior, aunque utilicemos jQuery varias veces, Assetic solo lo tratará una vez. Con este mecanismo podríamos generar distintos paquetes dependiendo de la sección de la web en la que estemos, cargando solo el Javascript necesario para esa sección, y assetic solo haría el trabajo una vez, aunque repitiésemos ficheros.&lt;/p&gt;
+
+&lt;h3 id=&#34;filtermanager&#34;&gt;FilterManager&lt;/h3&gt;
+
+&lt;p&gt;El _FilterManager_ es algo muy parecido al &lt;em&gt;AssetManager&lt;/em&gt;, pero para filtros. Simplemente damos de alta los filtros que estarán disponibles a utilizar luego cuando creemos assets con el factory.&lt;/p&gt;
+
+&lt;p&gt;Igual que con el &lt;em&gt;AssetManager&lt;/em&gt;, si Assetic detecta que vamos a aplicar el mismo filtro al mismo archivo, dos veces, solo lo hará una. Un poco abajo se ve el código necesario para utilizar el &lt;em&gt;FilterManager&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;assetfactory&#34;&gt;AssetFactory&lt;/h3&gt;
+
+&lt;p&gt;Para que todo esto sea más fácil de utilizar y no tengamos que andar creando y conectando todos estos objetos a mano, &lt;a title=&#34;Assetic&#34; href=&#34;https://github.com/kriswallsmith/assetic&#34; target=&#34;_blank&#34;&gt;Assetic&lt;/a&gt; tiene una clase llamada AssetFactory para generar assets de forma sencilla.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;require_once __DIR__.&#39;/../vendor/autoload.php&#39;;
+
+use Assetic\Asset\AssetFactory;
+use Assetic\Asset\FilterManager;
+use Assetic\Filter\Yui\CssCompressorFilter;
+use Assetic\Filter\Yui\JsCompressorFilter;
+
+$fm = new FilterManager();
+$fm-&amp;gt;set(&#39;yui_css&#39;,new CssCompressorFilter(&#39;/path/yuicompressor.jar&#39;));
+$fm-&amp;gt;set(&#39;yui_js&#39;,new JsCompressorFilter(&#39;/path/yuicompressor.jar&#39;));
+
+$factory = new AssetFactory( &#39;/path/doc_root&#39; );
+$factory-&amp;gt;setAssetManager( new AssetManager() );
+$factory-&amp;gt;setFilterManager( $fm );
+
+$css = $factory-&amp;gt;createAsset(
+    array(
+        &#39;css/style.css&#39;,
+        &#39;css/bootstrap/*.css&#39;, // css in &#34;/path/doc_root/css/bootstrap&#34;
+), array(
+        &#39;yui_css&#39; // filter through the filter manager&#39;s &#34;yui_css&#34;
+));
+
+header( &#39;Content-type: text/css&#39; );
+echo $css-&amp;gt;dump(); &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;La factory funciona de forma parecida a una &lt;em&gt;AssetCollection&lt;/em&gt;, ya que le pasamos un array de assets y otro de filtros. Como se basa en un _AssetManager_ y en un &lt;em&gt;FilterManager&lt;/em&gt;, todas las propiedades de estos se aplican al utilizar la factory.&lt;/p&gt;
+
+&lt;p&gt;Con respecto al &lt;em&gt;FilterManager&lt;/em&gt;, fíjate que hemos creado dos filtros, aunque luego solo estamos utilizando uno en el factory, el filtro llamado “_yui_css_“.&lt;/p&gt;
+
+&lt;h2 id=&#34;mejorando-la-velocidad-guardando-en-disco&#34;&gt;Mejorando la velocidad: guardando en disco&lt;/h2&gt;
+
+&lt;p&gt;Hasta aquí todo bien. El único problema es que cada vez que se visita la ruta correspondiente a un asset y se ejecuta la llamada al método &lt;em&gt;dump()&lt;/em&gt;, tiene que leer el contenido del disco, juntarlo y aplicar los filtros elegidos. Esto hará que la web cargue más lenta, con lo cual nuestro objetivo inicial de mejorar el rendimiento se va al traste.&lt;/p&gt;
+
+&lt;p&gt;Pero no sufras: todo tiene solución. En vez de generarlo cada vez, podríamos generarlo solo una vez y guardarlo en disco para que en las siguientes peticiones se sirva estáticamente la versión generada.&lt;/p&gt;
+
+&lt;p&gt;Para ello, &lt;a title=&#34;Assetic&#34; href=&#34;https://github.com/kriswallsmith/assetic&#34; target=&#34;_blank&#34;&gt;Assetic&lt;/a&gt; nos proporciona un _AssetWriter_ para escribir en el disco aquello que generemos.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;require_once __DIR__.&#39;/../vendor/autoload.php&#39;;
+
+use Assetic\Asset\AssetFactory;
+use Assetic\Asset\FilterManager;
+
+$css = $factory-&amp;gt;createAsset(
+    array(
+        &#39;css/style.css&#39;,
+        &#39;css/bootstrap/*.css&#39;, // css in &#34;/path/doc_root/css/bootstrap&#34;
+), array(
+        &#39;yui_css&#39; // filter through the filter manager&#39;s &#34;yui_css&#34;
+));
+
+$writer = new AssetWriter( &#39;/path/doc_root/generated&#39; );
+$writer-&amp;gt;writeAsset( $css );&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Tan solo le pedimos al writer que escriba en disco los assets que queramos. Si tenemos varios assets dentro de un &lt;em&gt;AssetManager&lt;/em&gt;, también podemos pasarle un _AssetManager_ y que automáticamente escriba en disco todos los assets configurados en el manager. Lo normal suele ser escribirlos en una carpeta aparte de archivos “compilados” o “generados”, pero eso ya depende de como te quieras organizar.&lt;/p&gt;
+
+&lt;p&gt;De esta forma, no serviríamos css y js de forma dinámica como estábamos viendo hasta ahora, es decir, no tendríamos una ruta que generase “al vuelo” el contenido. Por el contrario, cargaríamos un archivo normal del disco, archivo que generamos mediante el último código visto. Este código podemos ponerlo en un script PHP de consola que ejecutaremos manualmente cada vez que queramos re-escribir en el disco nuestros recursos, como, por ejemplo, &lt;strong&gt;cuando hacemos deploy de nuestra aplicación&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;El nombre que el fichero tendrá en el disco es generado automáticamente por Assetic, utilizando el hash &lt;strong&gt;SHA1&lt;/strong&gt;, basándose en los assets, los filtros y las opciones elegidas, de tal forma que si esto varía, el SHA1 variará y el nombre del fichero sería distinto, por lo que &lt;strong&gt;tendríamos que volver a guardarlo en el disco&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Si no nos interesa este comportamiento, Assetic también nos deja elegir el nombre final del archivo, pasándoselo en un array de opciones al factory.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;require_once __DIR__.&#39;/../vendor/autoload.php&#39;;
+
+use Assetic\Asset\AssetFactory;
+use Assetic\Asset\FilterManager;
+
+$css = $factory-&amp;gt;createAsset(
+    array(
+        &#39;css/style.css&#39;,
+        &#39;css/bootstrap/*.css&#39;, // css in &#34;/path/doc_root/css/bootstrap&#34;
+), array(
+        &#39;yui_css&#39; // filter through the filter manager&#39;s &#34;yui_css&#34;
+), array(
+        &#39;output&#39; =&amp;gt; &#39;my_awesome_css.css&#39;
+));
+
+$writer = new AssetWriter( &#39;/path/doc_root/generated&#39; );
+$writer-&amp;gt;writeAsset( $css );&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;conclusión&#34;&gt;Conclusión&lt;/h2&gt;
+
+&lt;p&gt;Con esta introducción creo que queda más claro qué es qué dentro de &lt;a title=&#34;Assetic&#34; href=&#34;https://github.com/kriswallsmith/assetic&#34; target=&#34;_blank&#34;&gt;Assetic&lt;/a&gt;, y cómo podríamos empezar a utilizarlo en &lt;strong&gt;una aplicación que no utilice Symfony2&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;En el siguiente post sobre Assetic, veremos algunos conceptos más avanzados como su integración con &lt;a title=&#34;Twig&#34; href=&#34;http://twig.sensiolabs.org/&#34; target=&#34;_blank&#34;&gt;Twig&lt;/a&gt;, o cache busting.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Inspección continua de la calidad de nuestro código</title>
+      <link>http://fiunchinho.github.io/blog/inspeccion-continua-de-la-calidad-de-nuestro-codigo/</link>
+      <pubDate>Tue, 05 Nov 2013 18:05:53 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/inspeccion-continua-de-la-calidad-de-nuestro-codigo/</guid>
+      <description>&lt;p&gt;Una de las formas que tenemos para poder mejorar el código de nuestro proyecto es someterlo a una inspección continua y constante. Lo primero que podemos hacer es lanzar nuestros tests tras cada push al repositorio, de forma que sabremos en todo momento si hay algo que no funciona bien.&lt;/p&gt;
+
+&lt;p&gt;También podemos analizar la complejidad del código y comprobar si estamos incrementándola o disminuyéndola.&lt;/p&gt;
+
+&lt;p&gt;Hasta ahora, todas estas tareas eran posibles solamente teniendo un servidor de integración continua configurado, siendo Jenkins el más famoso. En él podemos ejecutar todas estas tareas tras cada push. Recursos como &lt;a href=&#34;http://jenkins-php.org/&#34;&gt;http://jenkins-php.org/&lt;/a&gt; te ayudarán a configurar este versátil servidor hecho en Java.&lt;/p&gt;
+
+&lt;p&gt;La buena noticia es que cada vez hay más herramientas online que te permiten hacer estas tareas sin necesidad de configurar practicamente nada. Hoy veremos como lanzar tests y analizar la calidad de nuestro código sin utilizar un servidor de integración continua.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;ejecutando-nuestros-tests&#34;&gt;Ejecutando nuestros tests&lt;/h2&gt;
+
+&lt;p&gt;Estos dos últimos años han sido la explosión en popularidad de &lt;a title=&#34;TravisCI&#34; href=&#34;https://travis-ci.org/&#34; target=&#34;_blank&#34;&gt;TravisCI&lt;/a&gt;. TravisCI es un servicio que te permitirá lanzar tu suite de tests tras cada push. ¿Cómo? Pues cada vez que se envía código al repositorio, TravisCI levantará una máquina virtual y clonará tu código en ella. Una vez todo esté allí, &lt;strong&gt;ejecutará los tests y te dirá si algo se ha roto&lt;/strong&gt; o todo sigue correcto.&lt;/p&gt;
+
+&lt;p&gt;También te permite ejecutar comandos antes de lanzar los tests, por si necesitas instalar dependencias de otras librerías o incluso programas en la máquina virtual.&lt;/p&gt;
+
+&lt;p&gt;Para que todo esto funcione, necesitas tener un archivo de configuración en tu repositorio que le diga a TravisCI qué es lo que tiene que hacer. Este archivo se llama _.travis.yml_ y un ejemplo podría ser este&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;yaml&#34;&gt;language: php
+php:
+    - 5.3
+    - 5.4
+    - 5.5
+before_install:
+    - curl -s http://getcomposer.org/installer | php
+    - php composer.phar --dev install&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Con esta configuración le estamos diciendo a TravisCI que nuestro lenguaje es PHP, que queremos que lance los tests en 3 máquinas virtuales distintas, una con la versión 5.3 de PHP, otra con la 5.4 y otra con la 5.5. Además, antes de poder lanzar los tests, le decimos que instale las dependencias de nuestro proyecto mediante composer.&lt;/p&gt;
+
+&lt;p&gt;El hecho de saber si algo se ha roto con un commit es de vital importancia, sobretodo en proyectos con muchos programadores distintos, como los proyectos Open Source. Para esto, cada vez que hay un cambio de estado (alguien rompe los tests y pasamos de estable a roto, o viceversa), TravisCI nos enviará un email para tenernos informados.&lt;/p&gt;
+
+&lt;p&gt;Para que todo el mundo tenga visibilidad del estado actual, también pone a nuestra disposición una insignia que indica si los tests están en rojo o en verde. Podemos colocar esta insignia en el README.md de nuestro proyecto, y cualquiera que entre verá si hay algo roto.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_025.png&#34;&gt;&lt;img class=&#34;alignnone size-full wp-image-55&#34; alt=&#34;PHPUnit badge&#34; src=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_025.png&#34; width=&#34;801&#34; height=&#34;112&#34; srcset=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_025.png 801w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_025-300x41.png 300w&#34; sizes=&#34;(max-width: 801px) 100vw, 801px&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Por último, recuerda que por defecto TravisCI ejecutará &lt;strong&gt;PHPUnit&lt;/strong&gt; para lanzar los tests, utilizando la configuración del fichero _phpunit.xml.dist_ para saber donde están los tests y cómo lanzarlos. Si quieres cambiar algo de lo que TravisCI hace por defecto, &lt;a title=&#34;TravisCI Docs&#34; href=&#34;http://about.travis-ci.org/docs/user/languages/php/&#34; target=&#34;_blank&#34;&gt;la documentación&lt;/a&gt; está bastante bien.&lt;/p&gt;
+
+&lt;h2 id=&#34;analizando-la-calidad-del-código&#34;&gt;Analizando la calidad del código&lt;/h2&gt;
+
+&lt;p&gt;Existen &lt;a title=&#34;PHP QA Tools&#34; href=&#34;http://phpqatools.org/&#34; target=&#34;_blank&#34;&gt;un montón de herramientas de análisis estático de código PHP &lt;/a&gt;que nos dan todo tipo de información, desde si hay mucho copy/paste, hasta si nuestro código es poco abstracto. Son herramientas que puedes lanzar cuando quieras desde la consola, pero que como veíamos al principio del post, sería interesante lanzar cada vez que se envía código al repositorio. Si no queremos utilizar nuestro servidor de integración continua propio, una alternativa que tenemos es &lt;a title=&#34;Scrutinizer&#34; href=&#34;https://scrutinizer-ci.com/&#34; target=&#34;_blank&#34;&gt;Scrutinizer&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Su funcionamiento es muy parecido al de TravisCI, pero en vez de lanzar tu suite de tests, lanzará todas las &lt;a title=&#34;Herramientas de análisis estático de código&#34; href=&#34;https://scrutinizer-ci.com/docs/tools/php/&#34; target=&#34;_blank&#34;&gt;herramientas de análisis estático de código&lt;/a&gt; que hayas configurado. Para la configuración, tan solo debes modificar en la web de Scrutinizer el archivo de configuración, o tener un archivo _.scrutinizer.yml_ en tu repositorio. En la web puedes elegir una configuración global para todos tus proyectos, o tener una distinta para cada uno.&lt;/p&gt;
+
+&lt;p&gt;El mío tiene esta pinta&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;yaml&#34;&gt;filter:
+ excluded_paths: [vendor/*, app/*, web/*]
+
+tools:
+ php_cpd: true
+ php_pdepend:
+     excluded_dirs: [vendor]
+ php_mess_detector: true
+ php_analyzer: true
+ php_loc:
+     command: phploc
+     excluded_dirs: [vendor]
+     enabled: true&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;No tengo seleccionadas todas las herramientas, pero para hacer una prueba es suficiente con estas.&lt;/p&gt;
+
+&lt;p&gt;Una vez elegida tu configuración, puedes lanzar el análisis directamente eligiendo “_Schedule Inspection_” en la parte superior derecha. De todas formas, salvo que lo desactives en las opciones, cada vez que código nuevo se envíe al repositorio, se realizará una inspección de tu código.&lt;/p&gt;
+
+&lt;h3 id=&#34;informes&#34;&gt;Informes&lt;/h3&gt;
+
+&lt;p&gt;Lo bueno es que después de ejecutarse, Scrutinizer genera unos informes muy bonitos con todo tipo de información útil.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_023.png&#34;&gt;&lt;img class=&#34;alignnone size-large wp-image-56&#34; alt=&#34;Scrutinizer&#34; src=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_023-1024x651.png&#34; width=&#34;620&#34; height=&#34;394&#34; srcset=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_023-1024x651.png 1024w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_023-300x190.png 300w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_023.png 1099w&#34; sizes=&#34;(max-width: 620px) 100vw, 620px&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Arriba de todo podemos ver &lt;strong&gt;la nota final de nuestro código&lt;/strong&gt;, 9.18 en la imagen. Esta nota es calculada teniendo en cuenta el resultado de todas las inspecciones que tenemos configuradas. También nos ofrece un histórico con nuestra nota, o los incidentes (issues) de nuestro código que todavía tenemos pendientes por arreglar.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_024.png&#34;&gt;&lt;img class=&#34;alignnone size-large wp-image-58&#34; alt=&#34;Scrutinizer&#34; src=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_024-1024x410.png&#34; width=&#34;620&#34; height=&#34;248&#34; srcset=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_024-1024x410.png 1024w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_024-300x120.png 300w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_024.png 1093w&#34; sizes=&#34;(max-width: 620px) 100vw, 620px&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Por último, igual que TravisCI, nos ofrece la posibilidad de poner una insignia con nuestra nota en el README.md del repositorio, para que todo el mundo vea a simple vista la calidad del código.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_026.png&#34;&gt;&lt;img class=&#34;alignnone size-full wp-image-60&#34; alt=&#34;Scrutinizr badge&#34; src=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_026.png&#34; width=&#34;809&#34; height=&#34;236&#34; srcset=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_026.png 809w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_026-300x87.png 300w&#34; sizes=&#34;(max-width: 809px) 100vw, 809px&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;lo-tienes-fácil&#34;&gt;Lo tienes fácil&lt;/h2&gt;
+
+&lt;p&gt;Antigüamente tenías que pelearte con un servidor tipo Jenkins si querías tener funcionalidades de integración continua, pero cada vez salen más herramientas online a la luz que nos ayudan con la calidad de nuestro código. Todavía no tenemos todo lo que un Jenkins nos puede ofrecer, pero con estos dos simples servicios que hemos visto hoy, ya tendríamos mucho ganado.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Geolocalización en PHP y las páginas de afiliados locales</title>
+      <link>http://fiunchinho.github.io/blog/geolocalizacion-en-php-y-las-paginas-de-afiliados-locales/</link>
+      <pubDate>Sat, 02 Nov 2013 18:11:01 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/geolocalizacion-en-php-y-las-paginas-de-afiliados-locales/</guid>
+      <description>&lt;p&gt;Una de las webs de las que soy responsable contiene artículos sobre productos electrónicos: análisis, comparativas, novedades, etc. Utilizando el sistema de afiliados de Amazon y, si tus análisis convencen a los usuarios para rascarse el bolsillo, puedes sacar un porcentaje de la venta.&lt;/p&gt;
+
+&lt;p&gt;El problema con Amazon es que tiene &lt;strong&gt;una tienda distinta para cada país&lt;/strong&gt;. Es decir, Amazon para España no es el mismo que para Francia o Estados Unidos. El catálogo es distinto, sus usuarios diferentes y hasta el programa de afiliados funciona de manera distinta. De hecho, para participar en el programa de afiliados tienes que darte de alta por separado en cada uno de los países que quieras participar.&lt;/p&gt;
+
+&lt;p&gt;Mientras hacíamos esto, mi compañero y yo nos dimos cuenta de un detalle. Si un usuario desde México lee nuestro análisis y quiere comprarse el producto, seguramente lo quiera comprar en la tienda de Estados Unidos, no en la Española. Sin embargo, tener que poner en todos nuestros artículos varias versiones de enlaces del tipo “_si vienes desde México entra aquí, si vienes desde España entra allí_“, no nos parecía una opción viable. Así que, ¿cómo podíamos solventar esto?&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;intentando-traducir-los-enlaces-al-vuelo&#34;&gt;Intentando traducir los enlaces “al vuelo”&lt;/h2&gt;
+
+&lt;p&gt;Al principio pensé en crear un script en Javascript que al terminar de cargar la página cambiase todos los enlaces de la página, _traduciéndolos_ a la tienda del país local del visitante. Pero como decía antes, los catálogos no son iguales y los enlaces de Amazon no se pueden traducir tan fácilmente. Hay un plugin de WordPress que hace esto, pero parece que &lt;strong&gt;falla más que una escopeta de feria&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;sistema-de-enlaces-propio&#34;&gt;Sistema de enlaces propio&lt;/h2&gt;
+
+&lt;p&gt;Así que finalmente opté por crear mi propio sistema de enlaces geolocalizados. ¿Qué es esto? Pues básicamente se trata de no utilizar los enlaces de tu sistema de afiliados, sino de utilizar unos enlaces propios que yo mismo genero y que &lt;strong&gt;redirigirán a la tienda local dependiendo del país del visitante&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Para ello, a partir de ahora en mis artículos no utilizaré el link de Amazon sino unos enlaces bajo mi propio dominio, como por ejemplo&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a title=&#34;www.example.com/products/ipad&#34; href=&#34;www.example.com/products/ipad&#34; target=&#34;_blank&#34;&gt;www.example.com/products/ipad&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a title=&#34;www.example.com/products/ipad-mini&#34; href=&#34;www.example.com/products/ipad-mini&#34; target=&#34;_blank&#34;&gt;www.example.com/products/ipad-mini&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a title=&#34;www.example.com/products/nexus10&#34; href=&#34;www.example.com/products/nexus10&#34; target=&#34;_blank&#34;&gt;www.example.com/products/nexus10&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a title=&#34;www.example.com/products/nexus7&#34; href=&#34;www.example.com/products/nexus7&#34; target=&#34;_blank&#34;&gt;www.example.com/products/nexus7&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cuando un usuario visite esos enlaces, mi sistema hará dos cosas&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Detectar el país del visitante&lt;/li&gt;
+&lt;li&gt;Basándonos en el país y el producto visitado, redirigir al usuario a la tienda correcta&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;detectando-el-país-del-visitante&#34;&gt;Detectando el país del visitante&lt;/h3&gt;
+
+&lt;p&gt;Para geolocalizar al usuario he utilizado la librería &lt;a title=&#34;Geocoder&#34; href=&#34;http://geocoder-php.org/&#34; target=&#34;_blank&#34;&gt;Geocoder&lt;/a&gt; que está lista para utilizar en los principales frameworks como Symfony o Laravel, así como un port a Javascript.&lt;/p&gt;
+
+&lt;p&gt;Es una librería muy completa ya que te permite configurar completamente el mecanismo que se utilizará para geolocalizar. Aunque &lt;a title=&#34;Geocoder&#34; href=&#34;http://geocoder-php.org/Geocoder/&#34; target=&#34;_blank&#34;&gt;la documentación&lt;/a&gt; no es perfecta, da mucha información sobre todas las posibilidades que ofrece.&lt;/p&gt;
+
+&lt;p&gt;Lo más básico que necesitas saber si quieres usarla, es que necesitas un proveedor de geolocalización y un adaptador para hablar con ese proveedor. &lt;strong&gt;Hay muchísimos proveedores&lt;/strong&gt;. Desde FreeGeoIP, hasta Google Maps, pasando por GeoIP. Para utilizar estos proveedores necesitas un adaptador que lo ejecute, que puede ser desde un simple curl hasta librerías como Buzz o Guzzle.&lt;/p&gt;
+
+&lt;p&gt;En mi caso, quería lo más sencillo posible, así que opté por utilizar FreeGeoIP a través de curl. Para eso utilicé este código&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$adapter     = new Geocoder\HttpAdapter\CurlHttpAdapter();
+$provider    = new Geocoder\Provider\FreeGeoIpProvider( $adapter );
+$geocoder    = new Geocoder\Geocoder();
+$geocoder-&amp;gt;registerProvider( $provider );
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Con esto ya tenemos un objeto que dados unos datos del usuario, nos puede dar información sobre la posición de éste&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;$result = $geocoder-&amp;gt;geocode(&#39;88.188.221.14&#39;);
+// Result is:
+// &#34;latitude&#34;       =&amp;gt; string(9) &#34;47.901428&#34;
+// &#34;longitude&#34;      =&amp;gt; string(8) &#34;1.904960&#34;
+// &#34;bounds&#34;         =&amp;gt; array(4) {
+//     &#34;south&#34; =&amp;gt; string(9) &#34;47.813320&#34;
+//     &#34;west&#34;  =&amp;gt; string(8) &#34;1.809770&#34;
+//     &#34;north&#34; =&amp;gt; string(9) &#34;47.960220&#34;
+//     &#34;east&#34;  =&amp;gt; string(8) &#34;1.993860&#34;
+// }
+// &#34;country&#34;        =&amp;gt; string(6) &#34;France&#34;
+// &#34;countryCode&#34;    =&amp;gt; string(2) &#34;FR&#34;
+// &#34;timezone&#34;       =&amp;gt; string(6) &#34;Europe/Paris&#34;&lt;/code&gt;&lt;/pre&gt;
+  
+  &lt;h3&gt;
+    Redirigiendo a la tienda local
+  &lt;/h3&gt;
+  
+  &lt;p&gt;
+    Ahora que podemos saber el país del visitante, tan solo tenemos que coger de un diccionario cual es el enlace que nos interesa. Además del país del usuario, el otro dato que usaremos en nuestro diccionario, es el producto en cuestión. Esto podemos obtenerlo a través de la URL de nuestro sistema de enlaces.
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    Utilizando los enlaces de ejemplo que puse más arriba, si el usuario entrase desde España en &lt;a title=&#34;www.example.com/products/ipad-mini&#34; href=&#34;www.example.com/products/ipad-mini&#34; target=&#34;_blank&#34;&gt;www.example.com/products/ipad-mini&lt;/a&gt;, yo le redireccionaré a la página del iPad Mini de la tienda española.
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    Para trabajar con la URL de forma segura, así como para conseguir la IP del usuario de forma fácil, he decidido utilizar el componente HttpFoundation de Symfony. Esta librería también me permite realizar cómodamente la redirección 302 a la tienda local.
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    La gestión del diccionario puedes hacerla con un simple array en el mismo archivo PHP, o mediante algún archivo de configuración como YAML o XML. Si el catálogo de productos fuese muy extenso, habría que realizar un backend para poder administrarlo, pero de momento es pequeño y manejable.
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    Para conseguir que todas las peticiones a esos enlaces se procesen a través del script que estamos creando, tendrás que cambiar tu virtual host. En Apache sería añadir algo parecido a esto
+  &lt;/p&gt;
+  
+  &lt;pre&gt;&lt;code&gt;&amp;lt;Directory /var/www/project/products/&amp;gt;
+        &amp;lt;IfModule mod_rewrite.c&amp;gt;
+            RewriteEngine On
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteCond %{REQUEST_FILENAME} !-d
+            RewriteRule . /products/index.php [L]
+        &amp;lt;/IfModule&amp;gt;
+&amp;lt;/Directory&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+  
+  &lt;h2&gt;
+    Conclusión
+  &lt;/h2&gt;
+  
+  &lt;p&gt;
+    Con este mecanismo, tengo totalmente centralizado el sistema de enlaces de mi programa de afiliados. Además del beneficio que yo buscaba de poder utilizar la tienda local del usuario, en vez de siempre la misma, hay otro bastante interesante. Si yo quisiera cambiar de tienda, y en vez de utilizar Amazon utilizar otro proveedor, no tendría que cambiar todos mis artículos y anuncios, tan solo el diccionario del sistema de enlaces.
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    Nosotros en nuestra web tenemos la política de enlazar a la tienda con el precio más barato para el usuario, sin importar que esa tienda no nos de un porcentaje por la venta. Con este mecanismo, todo se ha vuelto mucho más fácil, porque si hay cambios en los precios &lt;strong&gt;tan solo tenemos que cambiar una línea en el diccionario&lt;/strong&gt;.
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    Podéis ver el código de todo este sistema en &lt;a title=&#34;Github fiunchinho&#34; href=&#34;https://github.com/fiunchinho/affiliation&#34; target=&#34;_blank&#34;&gt;mi cuenta de Github&lt;/a&gt;.
+  &lt;/p&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Herramientas para el programador PHP moderno</title>
+      <link>http://fiunchinho.github.io/blog/herramientas-para-el-programador-php-moderno/</link>
+      <pubDate>Fri, 18 Oct 2013 23:47:55 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/herramientas-para-el-programador-php-moderno/</guid>
+      <description>&lt;div&gt;
+  &lt;p&gt;
+    &lt;span style=&#34;font-size: 14px; line-height: 1.5em;&#34;&gt;La comunidad de PHP ha evolucionado muchísimo en los últimos años, no pareciéndose en nada a las versiones anteriores. No solo ha cambiado mucho, si no que cada vez cambia más frecuentemente. Y cuando hablo de comunidad, me refiero tanto al lenguaje, como a las personas que lo utilizan, así como a las herramientas que nacen alrededor.&lt;/span&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+  &lt;p&gt;
+    Hoy vengo a hablaros precisamente de herramientas. No puede ser que programes PHP con las mismas herramientas que utilizabas hace 3 años. Haber actualizado tu IDE a la última versión es un comienzo, pero no es suficiente. Estás perdiendo la posibilidad de trabajar más cómodamente y ser más productivo, pudiéndote centrar en lo que realmente importa: crear cosas.
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    De entre todas las herramientas que han nacido en los últimos años, voy a hacer hincapié en las que para mí son las más útiles, y ya no podría vivir sin ellas.
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    Estas herramientas son:
+  &lt;/p&gt;
+  
+  &lt;h2&gt;
+    Boris
+  &lt;/h2&gt;
+  
+  &lt;p&gt;
+    Cuando empecé a aprender Python, una de las cosas que más me sorprendió fue que para dar los primeros pasos con el lenguaje, no había que crear nuevos ficheros y ejecutarlos. Sencillamente ibas a un intérprete por línea de comandos y programabas directamente allí. Adiós complicaciones de cómo ejecutar lo que acabas de escribir en otro fichero, o de como incluir el fichero A en el fichero B. Todo eso fuera para poder centrarte en lo que realmente quieres: aprender el lenguaje.
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    Este intérprete se conoce comúnmente como un &lt;a title=&#34;REPL&#34; href=&#34;http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop&#34; target=&#34;_blank&#34;&gt;REPL: Read-Eval-Print-Loop &lt;/a&gt;. PHP trae por defecto con un &lt;a title=&#34;PHP Interactive Mode&#34; href=&#34;http://www.php.net/manual/en/features.commandline.interactive.php&#34; target=&#34;_blank&#34;&gt;modo interactivo &lt;/a&gt;para poder lanzar comandos, que puedes utilizar así
+  &lt;/p&gt;
+  
+  &lt;pre&gt;php -aInteractive shellphp &amp;gt; 1 + 3;php &amp;gt; var_dump( 1 + 3 );int(4)php &amp;gt; function plusTwo( $number ){php {php { return $number + 2;php { }php &amp;gt; echo plusTwo( 3 );5php &amp;gt;&lt;/pre&gt;
+  
+  &lt;p&gt;
+    pero es bastante limitado. No printa automáticamente el resultado de las expresiones ejecutadas, por tanto tienes que manualmente hacer &lt;em&gt;echo’s&lt;/em&gt; o&lt;em&gt;var_dumps&lt;/em&gt;. Además, si se produce un fatal error, el modo interactivo terminará y perderás el estado actual. Esto no ocurriría con &lt;a title=&#34;Boris&#34; href=&#34;https://github.com/d11wtq/boris&#34; target=&#34;_blank&#34;&gt;Boris &lt;/a&gt;. Os dejo el gif con la demo de &lt;a title=&#34;Boris&#34; href=&#34;https://github.com/d11wtq/boris&#34; target=&#34;_blank&#34;&gt;Boris &lt;/a&gt;, porque una imagen vale más que mil palabras (sobretodo si es animada):
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    &amp;nbsp;
+  &lt;/p&gt;
+  
+  &lt;div&gt;
+    &lt;div&gt;
+      &lt;img alt=&#34;Boris Demo&#34; src=&#34;https://mail.google.com/mail/u/0/?ui=2&amp;ik=10c6244d6d&amp;view=att&amp;th=14540c648bdc9adb&amp;attid=0.2&amp;disp=emb&amp;zw&amp;atsh=1&#34; width=&#34;684&#34; height=&#34;476&#34; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+
+&lt;p&gt;&lt;p&gt;
+    &amp;nbsp;
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;h2&gt;
+    LadyBug
+  &lt;/h2&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    Calidad que sale desde nuestro país. &lt;a title=&#34;Raúl Fraile&#34; href=&#34;https://twitter.com/raulfraile&#34; target=&#34;_blank&#34;&gt;Raúl Fraile &lt;/a&gt;se ha currado un sustituto para el &lt;em&gt;var_dump()&lt;/em&gt; nativo de &lt;strong&gt;PHP&lt;/strong&gt; que te dejará ojiplático. Se llama &lt;a title=&#34;LadyBug&#34; href=&#34;https://github.com/raulfraile/ladybug&#34; target=&#34;_blank&#34;&gt;LadyBug &lt;/a&gt;y después de verlo te preguntarás cómo has sido capaz de interpretar el output del &lt;em&gt;var_dump&lt;/em&gt; de &lt;strong&gt;PHP&lt;/strong&gt; sin quedarte ciego. Para utilizarlo solo tienes que instalarlo via Composer, y utilizar la función &lt;em&gt;ladybug_dump()&lt;/em&gt; en vez de &lt;em&gt;var_dump()&lt;/em&gt; cuando quieras mostrar el valor de algo por pantalla. En su &lt;a title=&#34;LadyBug&#34; href=&#34;https://github.com/raulfraile/ladybug&#34; target=&#34;_blank&#34;&gt;página de Github &lt;/a&gt;hay bastantes ejemplos de cual sería el output por pantalla, pero quiero poner uno aquí mismo:
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    &amp;nbsp;
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;div&gt;
+    &lt;div&gt;
+      &lt;img alt=&#34;LadyBug&#34; src=&#34;https://mail.google.com/mail/u/0/?ui=2&amp;ik=10c6244d6d&amp;view=att&amp;th=14540c648bdc9adb&amp;attid=0.1&amp;disp=emb&amp;zw&amp;atsh=1&#34; width=&#34;710&#34; height=&#34;585&#34; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    &amp;nbsp;
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    Eso es el output cuando quieres pintar un objeto por pantalla y ver qué contiene. Fíjate que además de ponerte el contenido de las propiedades del objeto, como hace &lt;em&gt;var_dump()&lt;/em&gt;, te muestra información de la clase del objeto, como donde está definida, constantes de clase e incluso los métodos y &lt;strong&gt;su visibilidad mediante unos iconos&lt;/strong&gt;. Todo esto está genial, pero queda a la sombra de lo que me hubiese ahorrado horas de búsqueda en mis años iniciales con &lt;strong&gt;PHP&lt;/strong&gt;: te dice en qué línea has llamado a la función &lt;em&gt;ladybug_dump()&lt;/em&gt;. ¿Quién no se ha pasado un buen rato buscando dónde habías puesto el &lt;em&gt;var_dump()&lt;/em&gt;? ¿Nadie? ¿Solo yo? Ok, vale.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;h2&gt;
+    Composer
+  &lt;/h2&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    Si todavía no lo conoces es que has vivido debajo de una piedra los últimos 2 años. No me extenderé mucho: solo utilízalo. En serio. &lt;a title=&#34;Composer&#34; href=&#34;http://getcomposer.org/&#34; target=&#34;_blank&#34;&gt;Aquí tienes la documentación &lt;/a&gt;.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;h2&gt;
+    Bonus track: Vagrant y Puphet
+  &lt;/h2&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    &lt;a title=&#34;Vagrant&#34; href=&#34;http://vagrantup.com/&#34; target=&#34;_blank&#34;&gt;Vagrant &lt;/a&gt;no es una herramienta para &lt;strong&gt;PHP&lt;/strong&gt; específicamente, pero en el mundo de muchos gigas de RAM en el que vivimos, trabajar con máquinas virtuales locales se está convirtiendo en un standard. El hecho de que con un simple archivo de configuración puedas tener el mismo entorno que tu compañero, es increíble.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    Hace 2 años que hice el curso sobre &lt;a title=&#34;Puppet&#34; href=&#34;http://puppetlabs.com/&#34; target=&#34;_blank&#34;&gt;Puppet &lt;/a&gt;, y aunque no considero que haya sido perder el tiempo ni mucho menos, gracias a herramientas como &lt;a title=&#34;Puphet&#34; href=&#34;https://puphpet.com/&#34; target=&#34;_blank&#34;&gt;Puphet &lt;/a&gt;, cada vez es menos necesario saber las entrañas de muchas cosas. &lt;a title=&#34;Puphet&#34; href=&#34;https://puphpet.com/&#34; target=&#34;_blank&#34;&gt;Puphet &lt;/a&gt; es una abstracción de &lt;a title=&#34;Puppet&#34; href=&#34;http://puppetlabs.com/&#34; target=&#34;_blank&#34;&gt;Puppet &lt;/a&gt; orientada a entornos &lt;strong&gt;PHP&lt;/strong&gt;, de tal forma que como si un catálogo se tratase, vas eligiendo las tecnologías y configuraciones que quieres que tenga tu entorno de desarrollo. Con un par de clicks puedes elegir todo lo que necesites. Esto generará un archivo de configuración que será leído por &lt;a title=&#34;Vagrant&#34; href=&#34;http://vagrantup.com/&#34; target=&#34;_blank&#34;&gt;Vagrant &lt;/a&gt;para moldear tu máquina virtual. Así de simple. Olvídate de como se instalan y configuran un montón de cosas: un par de clicks y listo. Si quieres cosas más avanzadas, tendrás que saber cómo funcionan, pero para el desarrollador &lt;strong&gt;PHP&lt;/strong&gt; medio, esto es más que suficiente.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;h2&gt;
+    Conclusión
+  &lt;/h2&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    Además de estas herramientas, no olvides utilizar un IDE que te sea cómodo, y si no has probado &lt;a title=&#34;PHPStorm&#34; href=&#34;http://www.jetbrains.com/phpstorm/&#34; target=&#34;_blank&#34;&gt;PHPStorm &lt;/a&gt;, te lo recomiendo.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    Así que ya sabes: utiliza Puphet y asegúrate de crear una máquina virtual que contenga composer, ladybug y boris, y fabrícate el entorno de desarrollo perfecto. No puedes programar igual que lo hacías hace 3 o 5 años. Esto va demasiado rápido como para permitírtelo.
+  &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p&gt;
+    Y tú, ¿usas alguna herramienta interesante?
+  &lt;/p&gt;
+&lt;/div&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Detectando tests dependientes con PHPUnit</title>
+      <link>http://fiunchinho.github.io/blog/detectando-tests-dependientes-con-phpunit/</link>
+      <pubDate>Thu, 03 Oct 2013 18:07:55 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/detectando-tests-dependientes-con-phpunit/</guid>
+      <description>&lt;p&gt;A día de hoy, &lt;a title=&#34;PHPUnit&#34; href=&#34;https://github.com/sebastianbergmann/phpunit/&#34; target=&#34;_blank&#34;&gt;PHPUnit&lt;/a&gt; es el standard _de facto_ para escribir pruebas unitarias en PHP. En estas pruebas unitarias, intentamos que los tests sean &lt;strong&gt;totalmente aislados&lt;/strong&gt;, es decir, que no tengan efectos secundarios, que no se conecten a servicios como API’s o bases de datos, y que no dependan unos de otros.&lt;/p&gt;
+
+&lt;p&gt;Sin embargo, cuando estamos escribiendo tests de integración para comprobar que ciertas clases se comunican correctamente entre ellas, o con otros servicios (base de datos, API’s, etc), los tests dejan de ser aislados, porque esa conexión es precisamente lo que queremos probar. Además, puede que tengan efectos secundarios porque, siguiendo con el ejemplo de la base de datos, vamos a comprobar si se han escrito datos correctos o si se han actualizado como deberían.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Lo que sí vamos a querer mantener, salvo que realmente nos haga falta lo contrario, es que los tests &lt;strong&gt;no sean dependientes entre sí&lt;/strong&gt;. Es decir, que el orden en el que se ejecutan sea importante. No queremos que para que el &lt;code&gt;testB()&lt;/code&gt; pase en verde, deba ejecutarse siempre después del &lt;code&gt;testA()&lt;/code&gt;, y si esto no ocurre el test falle. Esto podría pasar por ejemplo cuando en el &lt;code&gt;testB()&lt;/code&gt; leemos de base de datos algo que estamos insertando en el &lt;code&gt;testA()&lt;/code&gt;. Si los cambiamos de orden, el &lt;code&gt;testB()&lt;/code&gt; no encontrará los registros, y el test fallará irremediablemente.&lt;/p&gt;
+
+&lt;p&gt;Si conseguimos que los tests no compartan estados y que sean independientes, evitaremos que cuando alguien cambie el orden de los tests estos empiecen a fallar de forma aleatoria. En la vida real, sin embargo, estamos resolviendo problemas complejos y  podríamos meter la pata. El problema es que cuando la cantidad de código que tienes empieza a ser muy grande, se hace complicado saber si alguien ha metido la pata en algún test y lo ha hecho dependiente de otro.&lt;/p&gt;
+
+&lt;p&gt;Para solucionar esto, &lt;a title=&#34;phpunit-randomizer&#34; href=&#34;https://github.com/fiunchinho/phpunit-randomizer&#34; target=&#34;_blank&#34;&gt;he creado una librería&lt;/a&gt; que podéis utilizar para lanzar los tests de PHPUnit de &lt;strong&gt;forma aleatoria&lt;/strong&gt;. Es decir, los test cases dentro de una clase de test se ejecutarán en un orden aleatorio, y si alguno dependía de la acción de otro, fallará y se pondrá de manifiesto que tiene que arreglarse.&lt;/p&gt;
+
+&lt;p&gt;PHPUnit ya ofrece una opción para que cada test case se lance en un proceso de php independiente, llamada &lt;em&gt;process-isolation&lt;/em&gt;, pero esto provoca que los tests tarden mucho en ejecutarse, y cuando el número es elevado, el tiempo de espera se hace demasiado.&lt;/p&gt;
+
+&lt;p&gt;La idea con mi librería es &lt;strong&gt;no tener que modificar código de PHPUnit&lt;/strong&gt; para que podamos seguir actualizando el framework sin miedo a perder cambios. Por tanto todo son clases nuevas y hasta un ejecutable nuevo, que nos evita tocar nada de PHPUnit.&lt;/p&gt;
+
+&lt;p&gt;PHPUnit nos ofrece una serie de &lt;a title=&#34;Extending PHPUnit&#34; href=&#34;http://phpunit.de/manual/3.7/en/extending-phpunit.html&#34; target=&#34;_blank&#34;&gt;mecanismos para añadir o cambiar funcionalidad existente del framework&lt;/a&gt;, pero realmente &lt;strong&gt;son una mierda &lt;/strong&gt;(por lo menos en su versión actual 3.7). Nos permite extender clases para sobrescribir comportamiento, pero no da un mecanismo fácil (por configuración, por ejemplo) para decirle que utilice las nuevas clases que acabamos de crear. Debido a esto, la solución final implica que haya que utilizar un nuevo ejecutable incluído en mi librería llamado &lt;code&gt;phpunit-randomizer&lt;/code&gt;, en vez del &lt;code&gt;phpunit&lt;/code&gt; que viene por defecto con el framework.&lt;/p&gt;
+
+&lt;p&gt;Podéis coger la librería &lt;a title=&#34;PHPUnitRandomizer&#34; href=&#34;https://github.com/fiunchinho/phpunit-randomizer&#34; target=&#34;_blank&#34;&gt;PHPUnitRandomizer en github&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

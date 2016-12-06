@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="es-es">
+<head>
+    <title>Herramientas para el programador PHP moderno &middot; Jose Armesto&#39;s Blog</title>
+    <meta name="generator" content="Hugo 0.17" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Jose Armesto">
+    
+      <meta name="description" content="Software como estilo de vida">
+    
+    
+    <link rel="canonical" href="http://fiunchinho.github.io/blog/herramientas-para-el-programador-php-moderno/"/>
+    <link rel="icon" href="http://fiunchinho.github.io/blog/favicon.ico">
+    <link rel="apple-touch-icon" href="http://fiunchinho.github.io/blog/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/style.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/css/monokai.css">
+    <link rel="stylesheet" href="http://fiunchinho.github.io/blog/fancybox/jquery.fancybox.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="Herramientas para el programador PHP moderno" />
+<meta property="og:description" content="
+  
+    La comunidad de PHP ha evolucionado muchísimo en los últimos años, no pareciéndose en nada a las versiones anteriores. No solo ha cambiado mucho, si no que cada vez cambia más frecuentemente. Y cuando hablo de comunidad, me refiero tanto al lenguaje, como a las personas que lo utilizan, así como a las herramientas que nacen alrededor.
+  
+
+
+
+  
+    Hoy vengo a hablaros precisamente de herramientas. No puede ser que programes PHP con las mismas herramientas que utilizabas hace 3 años. Haber actualizado tu IDE a la última versión es un comienzo, pero no es suficiente. Estás perdiendo la posibilidad de trabajar más cómodamente y ser más productivo, pudiéndote centrar en lo que realmente importa: crear cosas.
+  
+  
+  
+    
+  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fiunchinho.github.io/blog/herramientas-para-el-programador-php-moderno/" />
+
+
+<meta property="og:updated_time" content="2013-10-18T23:47:55&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content="Herramientas para el programador PHP moderno">
+<meta itemprop="description" content="
+  
+    La comunidad de PHP ha evolucionado muchísimo en los últimos años, no pareciéndose en nada a las versiones anteriores. No solo ha cambiado mucho, si no que cada vez cambia más frecuentemente. Y cuando hablo de comunidad, me refiero tanto al lenguaje, como a las personas que lo utilizan, así como a las herramientas que nacen alrededor.
+  
+
+
+
+  
+    Hoy vengo a hablaros precisamente de herramientas. No puede ser que programes PHP con las mismas herramientas que utilizabas hace 3 años. Haber actualizado tu IDE a la última versión es un comienzo, pero no es suficiente. Estás perdiendo la posibilidad de trabajar más cómodamente y ser más productivo, pudiéndote centrar en lo que realmente importa: crear cosas.
+  
+  
+  
+    
+  ">
+
+
+<meta itemprop="dateModified" content="2013-10-18T23:47:55&#43;00:00" />
+<meta itemprop="wordCount" content="869">
+
+
+
+<meta itemprop="keywords" content="code,linux,opinion,apache,composer,conferences,ddd,deployment,performance,php,puppet,redis,refactoring,softonic,tdd,unit-testing,unix,vagrant," />
+
+    
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="Herramientas para el programador PHP moderno"/>
+<meta name="twitter:description" content="
+  
+    La comunidad de PHP ha evolucionado muchísimo en los últimos años, no pareciéndose en nada a las versiones anteriores. No solo ha cambiado mucho, si no que cada vez cambia más frecuentemente. Y cuando hablo de comunidad, me refiero tanto al lenguaje, como a las personas que lo utilizan, así como a las herramientas que nacen alrededor.
+  
+
+
+
+  
+    Hoy vengo a hablaros precisamente de herramientas. No puede ser que programes PHP con las mismas herramientas que utilizabas hace 3 años. Haber actualizado tu IDE a la última versión es un comienzo, pero no es suficiente. Estás perdiendo la posibilidad de trabajar más cómodamente y ser más productivo, pudiéndote centrar en lo que realmente importa: crear cosas.
+  
+  
+  
+    
+  "/>
+<meta name="twitter:site" content="@fiunchinho"/>
+
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="http://fiunchinho.github.io/blog" id="logo">
+          
+          <i class="logo" style="background-image: url('http://fiunchinho.github.io/blog/images/avatar.png')"></i>
+          
+          <span class="site-title">Jose Armesto&#39;s Blog</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="http://fiunchinho.github.io/">Home</a>
+          
+          
+
+          
+
+          
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="http://fiunchinho.github.io/blog/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="Search">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="q" value="site:http://fiunchinho.github.io/blog">
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="http://fiunchinho.github.io/">Home</a></td>
+          
+          
+
+          
+
+          
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="q" value="site:http://fiunchinho.github.io/blog">
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   		
+	    <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="http://fiunchinho.github.io/blog/images/avatar.png">
+      <h2 id="name">Jose Armesto</h2>
+      <h3 id="title">Soy Jose Armesto</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Barcelona</span>
+      
+          <a id="follow" href="https://twitter.com/fiunchinho">
+              Follow
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        22
+        <span>Posts</span>
+      </div>
+      <div class="article-info-block">
+        
+          15
+        
+        <span>
+            Tags
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/fiunchinho" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//medium.com/@fiunchinho" target="_blank" title="Medium"><i class="fa fa-medium"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//stackoverflow.com/users/563072/fiunchinho" target="_blank" title="Stack Overflow"><i class="fa fa-stack-overflow"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//twitter.com/fiunchinho" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+	    
+
+	    
+<section id="main">
+
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+
+            <header class="article-header">
+    <a href="http://fiunchinho.github.io/blog/herramientas-para-el-programador-php-moderno/">
+    <h1 class="article-title" itemprop="name">
+        Herramientas para el programador PHP moderno
+    </h1>
+    </a>
+    <div class="article-meta">
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2013-10-18 23:47:55 &#43;0000 UTC" itemprop="datePublished">10-08-2013</time>
+            &middot;
+            869
+            words
+            &middot;
+            5
+            minute read
+        </div>
+
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="categories/code">Code</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="tags/composer">composer</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="tags/php">php</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="tags/vagrant">vagrant</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <div>
+  <p>
+    <span style="font-size: 14px; line-height: 1.5em;">La comunidad de PHP ha evolucionado muchísimo en los últimos años, no pareciéndose en nada a las versiones anteriores. No solo ha cambiado mucho, si no que cada vez cambia más frecuentemente. Y cuando hablo de comunidad, me refiero tanto al lenguaje, como a las personas que lo utilizan, así como a las herramientas que nacen alrededor.</span>
+  </p>
+</div>
+
+<div>
+  <p>
+    Hoy vengo a hablaros precisamente de herramientas. No puede ser que programes PHP con las mismas herramientas que utilizabas hace 3 años. Haber actualizado tu IDE a la última versión es un comienzo, pero no es suficiente. Estás perdiendo la posibilidad de trabajar más cómodamente y ser más productivo, pudiéndote centrar en lo que realmente importa: crear cosas.
+  </p>
+  
+  <p>
+    
+  </p>
+  
+  <p>
+    De entre todas las herramientas que han nacido en los últimos años, voy a hacer hincapié en las que para mí son las más útiles, y ya no podría vivir sin ellas.
+  </p>
+  
+  <p>
+    Estas herramientas son:
+  </p>
+  
+  <h2>
+    Boris
+  </h2>
+  
+  <p>
+    Cuando empecé a aprender Python, una de las cosas que más me sorprendió fue que para dar los primeros pasos con el lenguaje, no había que crear nuevos ficheros y ejecutarlos. Sencillamente ibas a un intérprete por línea de comandos y programabas directamente allí. Adiós complicaciones de cómo ejecutar lo que acabas de escribir en otro fichero, o de como incluir el fichero A en el fichero B. Todo eso fuera para poder centrarte en lo que realmente quieres: aprender el lenguaje.
+  </p>
+  
+  <p>
+    Este intérprete se conoce comúnmente como un <a title="REPL" href="http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop" target="_blank">REPL: Read-Eval-Print-Loop </a>. PHP trae por defecto con un <a title="PHP Interactive Mode" href="http://www.php.net/manual/en/features.commandline.interactive.php" target="_blank">modo interactivo </a>para poder lanzar comandos, que puedes utilizar así
+  </p>
+  
+  <pre>php -aInteractive shellphp &gt; 1 + 3;php &gt; var_dump( 1 + 3 );int(4)php &gt; function plusTwo( $number ){php {php { return $number + 2;php { }php &gt; echo plusTwo( 3 );5php &gt;</pre>
+  
+  <p>
+    pero es bastante limitado. No printa automáticamente el resultado de las expresiones ejecutadas, por tanto tienes que manualmente hacer <em>echo’s</em> o<em>var_dumps</em>. Además, si se produce un fatal error, el modo interactivo terminará y perderás el estado actual. Esto no ocurriría con <a title="Boris" href="https://github.com/d11wtq/boris" target="_blank">Boris </a>. Os dejo el gif con la demo de <a title="Boris" href="https://github.com/d11wtq/boris" target="_blank">Boris </a>, porque una imagen vale más que mil palabras (sobretodo si es animada):
+  </p>
+  
+  <p>
+    &nbsp;
+  </p>
+  
+  <div>
+    <div>
+      <img alt="Boris Demo" src="https://mail.google.com/mail/u/0/?ui=2&ik=10c6244d6d&view=att&th=14540c648bdc9adb&attid=0.2&disp=emb&zw&atsh=1" width="684" height="476" />
+    </div>
+  </div>
+  
+
+<p><p>
+    &nbsp;
+  </p></p>
+
+<p><h2>
+    LadyBug
+  </h2></p>
+
+<p><p>
+    Calidad que sale desde nuestro país. <a title="Raúl Fraile" href="https://twitter.com/raulfraile" target="_blank">Raúl Fraile </a>se ha currado un sustituto para el <em>var_dump()</em> nativo de <strong>PHP</strong> que te dejará ojiplático. Se llama <a title="LadyBug" href="https://github.com/raulfraile/ladybug" target="_blank">LadyBug </a>y después de verlo te preguntarás cómo has sido capaz de interpretar el output del <em>var_dump</em> de <strong>PHP</strong> sin quedarte ciego. Para utilizarlo solo tienes que instalarlo via Composer, y utilizar la función <em>ladybug_dump()</em> en vez de <em>var_dump()</em> cuando quieras mostrar el valor de algo por pantalla. En su <a title="LadyBug" href="https://github.com/raulfraile/ladybug" target="_blank">página de Github </a>hay bastantes ejemplos de cual sería el output por pantalla, pero quiero poner uno aquí mismo:
+  </p></p>
+
+<p><p>
+    &nbsp;
+  </p></p>
+
+<p><div>
+    <div>
+      <img alt="LadyBug" src="https://mail.google.com/mail/u/0/?ui=2&ik=10c6244d6d&view=att&th=14540c648bdc9adb&attid=0.1&disp=emb&zw&atsh=1" width="710" height="585" />
+    </div>
+  </div></p>
+
+<p><p>
+    &nbsp;
+  </p></p>
+
+<p><p>
+    Eso es el output cuando quieres pintar un objeto por pantalla y ver qué contiene. Fíjate que además de ponerte el contenido de las propiedades del objeto, como hace <em>var_dump()</em>, te muestra información de la clase del objeto, como donde está definida, constantes de clase e incluso los métodos y <strong>su visibilidad mediante unos iconos</strong>. Todo esto está genial, pero queda a la sombra de lo que me hubiese ahorrado horas de búsqueda en mis años iniciales con <strong>PHP</strong>: te dice en qué línea has llamado a la función <em>ladybug_dump()</em>. ¿Quién no se ha pasado un buen rato buscando dónde habías puesto el <em>var_dump()</em>? ¿Nadie? ¿Solo yo? Ok, vale.
+  </p></p>
+
+<p><h2>
+    Composer
+  </h2></p>
+
+<p><p>
+    Si todavía no lo conoces es que has vivido debajo de una piedra los últimos 2 años. No me extenderé mucho: solo utilízalo. En serio. <a title="Composer" href="http://getcomposer.org/" target="_blank">Aquí tienes la documentación </a>.
+  </p></p>
+
+<p><h2>
+    Bonus track: Vagrant y Puphet
+  </h2></p>
+
+<p><p>
+    <a title="Vagrant" href="http://vagrantup.com/" target="_blank">Vagrant </a>no es una herramienta para <strong>PHP</strong> específicamente, pero en el mundo de muchos gigas de RAM en el que vivimos, trabajar con máquinas virtuales locales se está convirtiendo en un standard. El hecho de que con un simple archivo de configuración puedas tener el mismo entorno que tu compañero, es increíble.
+  </p></p>
+
+<p><p>
+    Hace 2 años que hice el curso sobre <a title="Puppet" href="http://puppetlabs.com/" target="_blank">Puppet </a>, y aunque no considero que haya sido perder el tiempo ni mucho menos, gracias a herramientas como <a title="Puphet" href="https://puphpet.com/" target="_blank">Puphet </a>, cada vez es menos necesario saber las entrañas de muchas cosas. <a title="Puphet" href="https://puphpet.com/" target="_blank">Puphet </a> es una abstracción de <a title="Puppet" href="http://puppetlabs.com/" target="_blank">Puppet </a> orientada a entornos <strong>PHP</strong>, de tal forma que como si un catálogo se tratase, vas eligiendo las tecnologías y configuraciones que quieres que tenga tu entorno de desarrollo. Con un par de clicks puedes elegir todo lo que necesites. Esto generará un archivo de configuración que será leído por <a title="Vagrant" href="http://vagrantup.com/" target="_blank">Vagrant </a>para moldear tu máquina virtual. Así de simple. Olvídate de como se instalan y configuran un montón de cosas: un par de clicks y listo. Si quieres cosas más avanzadas, tendrás que saber cómo funcionan, pero para el desarrollador <strong>PHP</strong> medio, esto es más que suficiente.
+  </p></p>
+
+<p><h2>
+    Conclusión
+  </h2></p>
+
+<p><p>
+    Además de estas herramientas, no olvides utilizar un IDE que te sea cómodo, y si no has probado <a title="PHPStorm" href="http://www.jetbrains.com/phpstorm/" target="_blank">PHPStorm </a>, te lo recomiendo.
+  </p></p>
+
+<p><p>
+    Así que ya sabes: utiliza Puphet y asegúrate de crear una máquina virtual que contenga composer, ladybug y boris, y fabrícate el entorno de desarrollo perfecto. No puedes programar igual que lo hacías hace 3 o 5 años. Esto va demasiado rápido como para permitírtelo.
+  </p></p>
+
+<p><p>
+    Y tú, ¿usas alguna herramienta interesante?
+  </p>
+</div></p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://fiunchinho.github.io/blog/herramientas-para-el-programador-php-moderno/" data-id="a5d6bdc7f4401c07f079bd3823c8e070" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="http://fiunchinho.github.io/blog/herramientas-para-el-programador-php-moderno//#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+
+        
+<nav id="article-nav">
+    
+    <a href="http://fiunchinho.github.io/blog/sin-refactoring-no-es-tdd/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">Sin refactoring no es TDD</div>
+    </a>
+    
+
+    
+    <a href="http://fiunchinho.github.io/blog/ni-hombres-lobo-ni-balas-de-plata/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Newer
+      </strong>
+      <div class="article-nav-title">Ni hombres lobo ni balas de plata</div>
+    </a>
+    
+</nav>
+
+
+    </article>
+
+    
+    <section id="comments">
+        <div id="disqus_thread">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'fiunchinho';
+    var disqus_identifier = 'http:\/\/fiunchinho.github.io\/blog\/herramientas-para-el-programador-php-moderno\/';
+    var disqus_title = 'Herramientas para el programador PHP moderno';
+    var disqus_url = 'http:\/\/fiunchinho.github.io\/blog\/herramientas-para-el-programador-php-moderno\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </section>
+    
+</section>
+
+
+	    
+	    <aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Recents
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/codemotion-2016/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://2016.codemotion.es/img/l_black.png)" alt="Herramientas para el programador PHP moderno" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                        Opinion
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/codemotion-2016/" class="title">Codemotion 2016</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-11-30 20:48:31 &#43;0000 UTC" itemprop="datePublished">11-08-2016</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/auto-completado-en-zsh/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://ih1.redbubble.net/image.154489147.8220/sticker,375x360.png)" alt="Herramientas para el programador PHP moderno" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/linux">
+                        Linux
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/auto-completado-en-zsh/" class="title">Auto completado en zsh</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-07-16 17:49:15 &#43;0000 UTC" itemprop="datePublished">07-08-2016</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://www.emiliotorrens.com/wp-content/uploads/2014/03/apache-logo.png)" alt="Herramientas para el programador PHP moderno" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/code">
+                        Code
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/" class="title">Problemas desplegando código si usas Apache, symlinks y opcache</a></p>
+                    <p class="item-date">
+                        <time datetime="2015-05-01 12:14:32 &#43;0000 UTC" itemprop="datePublished">05-08-2015</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://images-na.ssl-images-amazon.com/images/I/51sZW87slRL._SX375_BO1,204,203,200_.jpg)" alt="Herramientas para el programador PHP moderno" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/code">
+                        Code
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/jugando-con-conceptos-de-ddd/" class="title">Jugando con conceptos de DDD</a></p>
+                    <p class="item-date">
+                        <time datetime="2014-10-29 00:46:39 &#43;0000 UTC" itemprop="datePublished">10-08-2014</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://25.media.tumblr.com/45bb569edfcf14a03e9448397cd4ff27/tumblr_mh6v96548x1qhoi9qo1_r1_500.jpg)" alt="Herramientas para el programador PHP moderno" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                        Opinion
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/" class="title">Mis impresiones sobre el debate #isTDDDead</a></p>
+                    <p class="item-date">
+                        <time datetime="2014-05-23 20:35:44 &#43;0000 UTC" itemprop="datePublished">05-08-2014</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/code">
+                    code
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/linux">
+                    linux
+                </a>
+                <span class="category-list-count">7</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/categories/opinion">
+                    opinion
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tags
+    </h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/apache">
+                    apache
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/composer">
+                    composer
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/conferences">
+                    conferences
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/ddd">
+                    ddd
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/deployment">
+                    deployment
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/performance">
+                    performance
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/php">
+                    php
+                </a>
+                <span class="category-list-count">6</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/puppet">
+                    puppet
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/redis">
+                    redis
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/refactoring">
+                    refactoring
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/softonic">
+                    softonic
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/tdd">
+                    tdd
+                </a>
+                <span class="category-list-count">4</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/unit-testing">
+                    unit-testing
+                </a>
+                <span class="category-list-count">6</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/unix">
+                    unix
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="http://fiunchinho.github.io/blog/tags/vagrant">
+                    vagrant
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tag cloud
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/apache" style="font-size: 12px;">apache</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/composer" style="font-size: 12px;">composer</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/conferences" style="font-size: 12px;">conferences</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/ddd" style="font-size: 12px;">ddd</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/deployment" style="font-size: 12px;">deployment</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/performance" style="font-size: 12px;">performance</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/php" style="font-size: 12px;">php</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/puppet" style="font-size: 12px;">puppet</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/redis" style="font-size: 12px;">redis</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/refactoring" style="font-size: 12px;">refactoring</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/softonic" style="font-size: 12px;">softonic</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/tdd" style="font-size: 12px;">tdd</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/unit-testing" style="font-size: 12px;">unit-testing</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/unix" style="font-size: 12px;">unix</a>
+        
+        
+        <a href="http://fiunchinho.github.io/blog/tags/vagrant" style="font-size: 12px;">vagrant</a>
+        
+    </div>
+</div>
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+	    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016
+      Powered by <a href="//gohugo.io">Hugo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>.
+    </div>
+  </div>
+</footer>
+
+
+<script src="http://fiunchinho.github.io/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://fiunchinho.github.io/blog/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+</body>
+</html>

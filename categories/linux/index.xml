@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jose Armesto&#39;s Blog</title>
+    <link>http://fiunchinho.github.io/blog/categories/linux/index.xml</link>
+    <description>Recent content on Jose Armesto&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es-es</language>
+    <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
+    <atom:link href="http://fiunchinho.github.io/blog/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Auto completado en zsh</title>
+      <link>http://fiunchinho.github.io/blog/auto-completado-en-zsh/</link>
+      <pubDate>Sat, 16 Jul 2016 17:49:15 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/auto-completado-en-zsh/</guid>
+      <description>&lt;p&gt;Hace tiempo escribí un post sobre &lt;a href=&#34;http://blog.armesto.net/sacale-el-maximo-partido-a-tu-terminal-con-zsh/&#34;&gt;cómo sacarle el máximo rendimiento a tu terminal utilizando zsh&lt;/a&gt;, en el que introducía &lt;a href=&#34;http://www.zsh.org/&#34;&gt;zsh&lt;/a&gt; y el framework &lt;a href=&#34;http://ohmyz.sh/&#34;&gt;oh-my-zsh&lt;/a&gt; para tener una experiencia más placentera usando el terminal.&lt;/p&gt;
+
+&lt;p&gt;Hoy veremos algunas funcionalidades extras que nos aporta esta herramienta y que nos puede ayudar a decidirnos a empezar a utilizarla.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;auto-completado&#34;&gt;Auto Completado&lt;/h2&gt;
+
+&lt;p&gt;Una de las cosas que comentamos &lt;a href=&#34;http://blog.armesto.net/sacale-el-maximo-partido-a-tu-terminal-con-zsh/&#34;&gt;en el artículo original&lt;/a&gt; era que el auto completado de comandos era bastante potente, pero podemos mejorarlo aun más. Añadiendo esto a nuestra configuración&lt;/p&gt;
+
+&lt;pre&gt;zstyle &#39;:completion:*&#39; verbose yes
+zstyle &#39;:completion:*&#39; group-name &#39;&#39;&lt;/pre&gt;
+
+&lt;p&gt;obtendremos la lista de posibles acciones agrupadas por tipo. Por ejemplo, escribiendo vi y dándole al tabulador&lt;/p&gt;
+
+&lt;pre&gt;$ vi
+ --- external command
+ VirtualBox  vi          view        vim         vimdiffvisudo
+ --- shell function
+ vi_mode_prompt_info     virtualenv_prompt_info
+ --- alias
+ vim
+ --- local directory
+ videos/&lt;/pre&gt;
+
+&lt;p&gt;Como podéis ver, en vez de salirme un listado enorme con todo, vemos las opciones agrupadas por tipo. Como dijimos anteriormente, no hace falta usar el tabulador para moverme por las opciones, si no que puedo utilizar los cursores del teclado para ir más rápido.&lt;/p&gt;
+
+&lt;p&gt;Y no solo vale con comandos, si no también con argumentos de los comandos:&lt;/p&gt;
+
+&lt;pre&gt;$ ping -
+ --- option
+ -L  -- suppress loopback of multicast packets
+ -Q  -- somewhat quiet
+ -R  -- record route
+ -a  -- audible for each packet
+ -d  -- set SO_DEBUG on the socket
+ -f  -- flood ping
+ -n  -- numeric output only
+ -q  -- quiet
+ -r  -- bypass normal routing tables
+ -v  -- verbose
+ -I  -P  -S  -T  -c  -i  -l  -m  -p  -s  -t&lt;/pre&gt;
+
+&lt;p&gt;O subcomandos:&lt;/p&gt;
+
+&lt;pre&gt;$ git
+ --- common commands
+ add       -- add file contents to the index
+ bisect    -- find by binary search the change that introduced
+ branch    -- list, create, or delete branches
+ checkout  -- checkout a branch or paths to the working tree
+ clone     -- clone a repository into a new directory
+ commit    -- record changes to the repository
+ diff      -- show changes between
+ fetch     -- download objects and refs from another repository
+ grep      -- print lines matching a pattern
+ init      -- create an empty Git repository
+ log       -- show commit logs
+ merge     -- join two or more development histories together
+ mv        -- move or rename a file, a directory, or a symlink
+ pull      -- fetch from and merge with another repository
+ push      -- update remote refs along with associated objects
+ rebase    -- forward-port commits to the updated upstream
+ reset     -- reset current HEAD to the specified state
+ rm        -- remove files from the working tree
+ show      -- show various types of objects
+ status    -- show the working tree status
+ tag       -- create, list, delete or verify a tag object signed&lt;/pre&gt;
+
+&lt;h2 id=&#34;sugerencias&#34;&gt;Sugerencias&lt;/h2&gt;
+
+&lt;p&gt;He visto muchas utilidades en Gthub que cuando escribimos un comando incorrectamente en la terminal, nos sugiere comandos válidos porque seguramente nos hemos equivocado en algún caracter. Esto que es bastante útil viene también con zsh. Podemos comprobar cómo funciona&lt;/p&gt;
+
+&lt;pre&gt;$ vom
+ zsh: correct &#39;vom&#39; to &#39;vim&#39; [nyae]? y&lt;/pre&gt;
+
+&lt;p&gt;Cuando detecta que el comando es incorrecto, nos ofrece alguna sugerencia y nos da cuatro posibles respuestas:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;n: no, quiero probar mi comando aunque no lo reconozca zsh&lt;/li&gt;
+&lt;li&gt;y: sí, quiero abrir la sugerencia de zsh&lt;/li&gt;
+&lt;li&gt;a: abortar, olvídate de mi comando y volvamos a la terminal&lt;/li&gt;
+&lt;li&gt;e, volver a la terminal para editar mi comando antes de ejecutarlo&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;sugerencias-en-auto-completado&#34;&gt;Sugerencias en auto completado&lt;/h3&gt;
+
+&lt;p&gt;Fíjate que incluso mezcla estas dos funcionalidades! Utilicemos el auto completado otra vez&lt;/p&gt;
+
+&lt;pre&gt;$ cat tost
+ corrections (errors: 1)
+ test.jmx            test.json
+ --- original
+ tost&lt;/pre&gt;
+
+&lt;p&gt;Al escribir &lt;strong&gt;&lt;em&gt;cat tost&lt;/em&gt;&lt;/strong&gt; y pulsar tabulador, me sugiere posibles correciones, ya que no hay ningún fichero que coincida con el nombre &amp;#8220;tost&amp;#8221;, pero sí con &amp;#8220;test&amp;#8221;.&lt;/p&gt;
+
+&lt;p&gt;Lo mismo con comandos&lt;/p&gt;
+
+&lt;pre&gt;$ vom
+ corrections (errors: 1)
+ comptry                             vim
+ compcall                            vimdiff
+ composer                            homebrew/
+ --- original
+ vom&lt;/pre&gt;
+
+&lt;h2 id=&#34;conclusión&#34;&gt;Conclusión&lt;/h2&gt;
+
+&lt;p&gt;Como véis, hay muchos motivos para utilizar zsh y que estar en la terminal sea un placer. ¿Conocéis algún otro truco que no esté aquí?&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Problemas desplegando código si usas Apache, symlinks y opcache</title>
+      <link>http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</link>
+      <pubDate>Fri, 01 May 2015 12:14:32 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</guid>
+      <description>&lt;p&gt;Muchas de las soluciones disponibles en el mercado para desplegar aplicaciones se basan en el uso de enlaces simbólicos (o symlinks) para activar la última versión de código en el servidor.&lt;/p&gt;
+
+&lt;p&gt;Simplificando mucho, podríamos decir que un flujo habitual a la hora de desplegar sería el siguiente:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ejecutamos comando para iniciar el proceso de despliegue de código nuevo.&lt;/li&gt;
+&lt;li&gt;Se descarga el código del repositorio y se construye la aplicación. Esto suele significar instalar dependencias, generar ficheros, etc.&lt;/li&gt;
+&lt;li&gt;Se mueve el resultado del paso anterior al servidor y se pone en una carpeta nueva.&lt;/li&gt;
+&lt;li&gt;La carpeta a la que apunta el &lt;em&gt;document root&lt;/em&gt; de nuestro servidor web es en realidad un enlace simbólico a otra carpeta que contiene código en la versión anterior. Por tanto solo nos queda cambiar ese enlace simbólico para que apunte a la nueva que acabamos de crear.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Como el cambio de enlace simbólico es practicamente instantáneo, conseguimos reducir la ventana de tiempo en la que el servidor está en un estado inconsistente, por ejemplo, porque todavía no se hayan terminado de copiar ficheros. Mientras se están subiendo la versión nueva, seguimos sirviendo la versión vieja, sin dejar de dar servicio. Y solo cuando la nueva está lista, hacemos el cambio de forma casi instantánea.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;problemas-con-este-enfoque&#34;&gt;Problemas con este enfoque&lt;/h2&gt;
+
+&lt;p&gt;Esta manera de desplegar, que parece sencilla y perfecta, tiene algunas complicaciones. Con la que la gente más suele pelearse es con el hecho de que a pesar de haber desplegado una versión nueva en el servidor, a veces siguen viendo la versión vieja, debido a la extensión &lt;a href=&#34;https://www.google.es/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=0CCUQFjAA&amp;url=http%3A%2F%2Fphp.net%2Fmanual%2Fes%2Fbook.opcache.php&amp;ei=HlFDVZfPI8T2Us6sgLAI&amp;usg=AFQjCNF9sKlRWdBbTEBKa1M2w25s5TBQGw&amp;sig2=6xMwOb3cZagbFnheUWkDTQ&amp;bvm=bv.92291466,d.d24&#34; target=&#34;_blank&#34;&gt;Opcache&lt;/a&gt; (antiguo APC) que guarda la compilación del código PHP interpretado en memoria. Por tanto, aunque la versión nueva ya está activa, PHP sigue tirando de esta caché para no tener que leer del disco y volver a compilar código PHP, así que se sirve el código de la versión vieja hasta que caduque esta caché (si es que lo tenemos configurado para que caduque), o hasta que reiniciemos el servidor dejando de dar servicio mientras dure el reinicio del servidor.&lt;/p&gt;
+
+&lt;p&gt;Antes de ver cómo solventarlo, vamos a ver un par de detalles interesantes.&lt;/p&gt;
+
+&lt;h2 id=&#34;te-presento-a-tu-nueva-amiga-realpath-cache&#34;&gt;Te presento a tu nueva amiga realpath_cache&lt;/h2&gt;
+
+&lt;p&gt;Cada vez que utilizas una ruta del sistema de archivos, por ejemplo porque vas a hacer un require/include de ese archivo, o porque vas lees/escribir en esa ruta, &lt;strong&gt;el sistema tiene que resolver esa ruta&lt;/strong&gt;: saber donde es exactamente, si es un directorio o un archivo, etc.&lt;/p&gt;
+
+&lt;p&gt;Para mejorar su rendimiento y minimizar lecturas de disco, PHP utiliza una caché interna donde guarda información sobre el sistema de archivos. No estoy hablando de Opcache, sino de otra caché llamada &lt;a href=&#34;https://php.net/manual/es/ini.core.php#ini.realpath-cache-size&#34; target=&#34;_blank&#34;&gt;realpath_cache&lt;/a&gt;. Si intentas resolver la misma ruta dos veces seguidas, solo en la primera PHP le pedirá información al lentísimo sistema de archivos: la segunda se leerá directamente de la caché, mejorando mucho el rendimiento.&lt;/p&gt;
+
+&lt;p&gt;Esto es bueno, ¿no?&lt;/p&gt;
+
+&lt;p&gt;Sí, claro. El tema es que, como con todas las cachés del mundo, el problema viene a la hora de invalidar la caché y decirle que queremos utilizar contenido nuevo.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;There are only two hard things in Computer Science: cache invalidation and naming things.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Cuando desplegamos código nuevo, el contenido de la ruta de nuestro &lt;em&gt;Document Root&lt;/em&gt; cambia. Aunque en nuestro código siempre usemos la misma ruta para hacer algo, piensa por ejemplo la ruta relativa que usas para incluir el autoload, despues de cada deploy, &lt;strong&gt;esa ruta se resuelve a un lugar distinto en el disco&lt;/strong&gt;, porque el enlace simbólico apunta a otro sitio. Esto evitará que veamos la versión nueva del código desplegado, hasta que esta caché no caduque o hagamos algo al respecto.&lt;/p&gt;
+
+&lt;h2 id=&#34;cómo-funciona-apache&#34;&gt;Cómo funciona Apache&lt;/h2&gt;
+
+&lt;p&gt;A diferencia de Opcache, que se guarda en memoria compartida por todos los procesos, la realpath_cache es local para cada proceso del sistema. Este detalle es importante porque si utilizas Apache &lt;em&gt;prefork&lt;/em&gt; para servir tu aplicación, cuando inicias Apache, este crea varios procesos hijos, tantos como le hayas configurado. Cada proceso hijo creado servirá X número de peticiones en su vida (esto también es configurable), y una vez que ha cumplido su deber, Apache lo matará y lo reemplazará con otro proceso hijo, poco a poco renovando todos los procesos que sirven páginas.&lt;/p&gt;
+
+&lt;p&gt;Es decir, &lt;strong&gt;no podemos preveer exactamente cuando los procesos dejarán de existir&lt;/strong&gt;. Sumado a que la realpath_cache es local a cada proceso,&lt;strong&gt; la nueva versión que acabamos de desplegar se irá sirviendo aleatoriamente&lt;/strong&gt;, dependiendo de qué proceso de Apache te haya asignado el servidor.&lt;/p&gt;
+
+&lt;p&gt;Como dijimos antes, podríamos solventarlo haciendo un reinicio de Apache despues de cada despliegue, pero dejaríamos de servir páginas el tiempo que tardase en reiniciar.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Mal, mal, mal, verdadera mal, por no deci borchenoso&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;reiniciando-elegantemente&#34;&gt;Reiniciando elegantemente&lt;/h2&gt;
+
+&lt;p&gt;Pero tranquilo, no sufras, hay solución. Apache nos ofrece una variante al reinicio, llamada &lt;em&gt;graceful restart&lt;/em&gt;. Esta variante, en vez de matar al proceso de Apache y todos sus hijos para reiniciarlo, lo que hace es que el proceso padre revisa a los procesos hijos de forma que:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Si no están haciendo nada, los sustituye por un proceso nuevo.&lt;/li&gt;
+&lt;li&gt;Si está sirviendo una petición en este momento, cuando termine lo sustituye por un proceso nuevo.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Como dijimos que realpath_cache era local a cada proceso, cuando Apache levanta un nuevo proceso hijo &lt;strong&gt;la realpath_cache está vacía para ese proceso y las rutas se resolverán al código nuevo que acabamos de desplegar&lt;/strong&gt;. Todo esto sin dejar de dar servicio, porque siempre hay procesos sirviendo páginas.&lt;/p&gt;
+
+&lt;h2 id=&#34;pesao-que-yo-venía-aquí-a-solventar-el-problema-de-opcache&#34;&gt;&lt;em&gt;Pesao&lt;/em&gt;. Que yo venía aquí a solventar el problema de Opcache&lt;/h2&gt;
+
+&lt;p&gt;Cierto. Opcache no es más que un diccionario (piensa en un array PHP), en el que cada &lt;em&gt;key&lt;/em&gt; es la ruta del fichero compilado, y el &lt;em&gt;value&lt;/em&gt; es el resultado de esa compilación. Cuando se va a ejecutar un fichero PHP, se ve si la ruta de ese archivo ya es una de las _keys_ en el diccionario, si ya lo está significa que ya lo hemos compilado antes, y se utiliza directamente el &lt;em&gt;value&lt;/em&gt;. Si no, se compila y se guarda en el diccionario.&lt;/p&gt;
+
+&lt;p&gt;El &amp;#8216;&lt;em&gt;final plot twist&amp;#8217;&lt;/em&gt; de todo esto es que &lt;strong&gt;Opcache utiliza realpath_cache internamente para resolver la ruta de los ficheros&lt;/strong&gt;. Por tanto, si hacemos un &lt;em&gt;graceful restart&lt;/em&gt; después de cada despliegue, la ruta del archivo habrá cambiado, resuelve a una carpeta distinta, así que &lt;strong&gt;será como un fichero totalmente nuevo para Opcache y volverá a compilarlo, haciendo que sirvamos la versión nueva&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;alignnone&#34; src=&#34;https://s-media-cache-ak0.pinimg.com/originals/ce/9c/94/ce9c949d6c73dbfb889f6036bac022dd.jpg&#34; alt=&#34;Mind Blown&#34; width=&#34;480&#34; height=&#34;360&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusión&#34;&gt;Conclusión&lt;/h2&gt;
+
+&lt;p&gt;Lo que hemos visto hoy es tan solo uno de los posibles problemas a la hora de desplegar código. Otro problema, por ejemplo, sería el que se produce cuando iniciamos un despliegue, un visitante entra en la web, justo después se cambia el enlace simbólico y estamos sirviendo archivos estáticos como javascript o css. Es posible que algunos archivos hayan sido de la versión vieja, y otros de la versión nueva, llevando a posibles inconsistencias. &lt;a href=&#34;https://codeascraft.com/2013/07/01/atomic-deploys-at-etsy/&#34; target=&#34;_blank&#34;&gt;Hay módulos de apache que intentan solventar este tipo de problemas&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;El despliegue de código es un tema complicado y muy interesante. Últimamente está avanzando mucho con conceptos como servidores inmutables y los contenedores, pero eso ya es tema de otro post.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Utilizando Puphpet también en producción</title>
+      <link>http://fiunchinho.github.io/blog/utilizando-puphpet-tambien-en-produccion/</link>
+      <pubDate>Sat, 19 Apr 2014 09:00:56 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/utilizando-puphpet-tambien-en-produccion/</guid>
+      <description>&lt;p&gt;Ya &lt;a title=&#34;Herramientas para el programador PHP moderno&#34; href=&#34;http://blog.armesto.net/herramientas-para-el-programador-php-moderno/&#34; target=&#34;_blank&#34;&gt;hablé en el pasado sobre Puphpet&lt;/a&gt;, una herramienta web que genera manifiestos de &lt;a title=&#34;Puppet&#34; href=&#34;http://puppetlabs.com/&#34; target=&#34;_blank&#34;&gt;Puppet&lt;/a&gt; y de &lt;a title=&#34;Vagrant&#34; href=&#34;http://www.vagrantup.com/&#34; target=&#34;_blank&#34;&gt;Vagrant&lt;/a&gt; de forma rápida y sencilla.&lt;/p&gt;
+
+&lt;p&gt;Llevo tiempo utilizándolo para configurar mis máquinas virtuales de desarrollo junto a Vagrant, pero siempre estaba un poco con la mosca detrás de la oreja por el hecho de no poder utilizarlo también en producción.&lt;/p&gt;
+
+&lt;p&gt;Así que el otro día me decidí a echar un ojo al código fuente de &lt;a title=&#34;Puphpet&#34; href=&#34;https://puphpet.com/&#34; target=&#34;_blank&#34;&gt;Puphpet&lt;/a&gt; y ver si podía utilizar solo la parte generada de &lt;a title=&#34;Puppet&#34; href=&#34;http://puppetlabs.com/&#34; target=&#34;_blank&#34;&gt;Puppet&lt;/a&gt;, y olvidarme de la parte de &lt;a title=&#34;Vagrant&#34; href=&#34;http://www.vagrantup.com/&#34; target=&#34;_blank&#34;&gt;Vagrant&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Resulta que para hacer su magia, &lt;a title=&#34;Puphpet&#34; href=&#34;https://puphpet.com/&#34; target=&#34;_blank&#34;&gt;Puphpet&lt;/a&gt; tan solo le dice a Vagrant que ejecute unos scripts de &lt;em&gt;bash&lt;/em&gt;. Así que pensé, &lt;strong&gt;¿qué pasa si los ejecuto yo manualmente en producción?&lt;/strong&gt; Los scripts solo se encargaban de instalar puppet, curl y alguna librería más, así que no debía de haber mucho problema. Después de hacer esto, tan solo le diría a puppet que leyese el manifiesto generado por Puphpet y listo. Mi plan sonaba bien, así que me propuse a intentarlo.&lt;/p&gt;
+
+&lt;p&gt;Para asegurarme de que nada fallaba, coloqué los archivos generados por &lt;a title=&#34;Puphpet&#34; href=&#34;https://puphpet.com/&#34; target=&#34;_blank&#34;&gt;Puphpet&lt;/a&gt; en el mismo sitio que cuando &lt;a title=&#34;Vagrant&#34; href=&#34;http://www.vagrantup.com/&#34; target=&#34;_blank&#34;&gt;Vagrant&lt;/a&gt; los utiliza, es decir &lt;em&gt;/vagrant&lt;/em&gt;. Entré en mi servidor de producción y subí los archivos de forma que quedaron así:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_035.png&#34;&gt;&lt;img class=&#34;alignnone size-full wp-image-78&#34; alt=&#34;Puphpet tree&#34; src=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_035.png&#34; width=&#34;365&#34; height=&#34;509&#34; srcset=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_035.png 365w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_035-215x300.png 215w&#34; sizes=&#34;(max-width: 365px) 100vw, 365px&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Una vez que tenía todo en su sitio, tan solo me quedaba ejecutar los scripts &lt;strong&gt;en el mismo orden&lt;/strong&gt; que &lt;a title=&#34;Vagrant&#34; href=&#34;http://www.vagrantup.com/&#34; target=&#34;_blank&#34;&gt;Vagrant&lt;/a&gt; lo hace. Acordaos de dar permisos de ejecución a esos ficheros. El orden es el siguiente:&lt;/p&gt;
+
+&lt;pre&gt;chmod +x /vagrant/puphpet/shell/*.sh
+sudo ./vagrant/puphpet/shell/initial-setup.sh /vagrant/puphpet
+sudo ./vagrant/puphpet/shell/update-puppet.sh
+sudo ./vagrant/puphpet/shell/r10k.sh&lt;/pre&gt;
+
+&lt;p&gt;Esto instalará todas las dependencias necesarias para que podamos empezar a utilizar &lt;a title=&#34;Puppet&#34; href=&#34;http://puppetlabs.com/&#34; target=&#34;_blank&#34;&gt;puppet&lt;/a&gt; en producción. Así que una vez finalizado, &lt;strong&gt;solo queda decirle a puppet que aplique los cambios del manifiesto&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;pre&gt;sudo puppet apply --debug --verbose --hiera_config /vagrant/puphpet/puppet/hiera.yaml --parser future /vagrant/puphpet/puppet/manifest.pp&lt;/pre&gt;
+
+&lt;p&gt;Este comando hará todo lo que hemos pedido en el manifiesto. Para asegurarnos de que todo sigue en orden en el servidor, podemos crear un cron que lo ejecute cada cierto tiempo, o tan solo ejecutarlo manualmente cuando añadimos o borramos algo al manifiesto.&lt;/p&gt;
+
+&lt;p&gt;Así que con esto tengo la misma configuración en mi máquina virtual de desarrollo que en mi máquina de producción. Y es una configuración que he ido seleccionando a través de una cómoda interfaz web gracias a &lt;a title=&#34;Puphpet&#34; href=&#34;https://puphpet.com/&#34; target=&#34;_blank&#34;&gt;Puphpet&lt;/a&gt;. Épico.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Sácale el máximo partido a tu terminal con zsh</title>
+      <link>http://fiunchinho.github.io/blog/sacale-el-maximo-partido-a-tu-terminal-con-zsh/</link>
+      <pubDate>Sat, 12 Apr 2014 13:42:17 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/sacale-el-maximo-partido-a-tu-terminal-con-zsh/</guid>
+      <description>&lt;p&gt;No quiero tirar de términos de moda y hablar de &lt;em&gt;DevOps&lt;/em&gt;, pero sí es cierto que, yo por lo menos, paso cada vez más tiempo delante de una terminal de UNIX. Estoy empezando a sentirme como en casa en algo que hace unos años me asustaba bastante.&lt;/p&gt;
+
+&lt;p&gt;Hoy vengo a hablaros de &lt;a title=&#34;zsh&#34; href=&#34;http://www.zsh.org/&#34; target=&#34;_blank&#34;&gt;zshell&lt;/a&gt;, una alternativa a &lt;em&gt;bash&lt;/em&gt;, el intérprete que viene por defecto en la mayoría de distribuciones. Algunos pensaréis&amp;#8230; &amp;#8220;¿&lt;em&gt;Cambiar el intérprete? ¡Eso suena muy difícil!&lt;/em&gt;&amp;#8220;, pero nada más lejos de la realidad! Otros diréis&amp;#8230; &amp;#8220;¿&lt;em&gt;Para qué iba yo a querer uno distinto? ¿Cual es el problema con bash?&lt;/em&gt;&amp;#8221; Problema ninguno! Pero con este post espero enseñaros todo lo que os estáis perdiendo por no utilizar zshell. Además, lo más importante es que no hay que aprender ningún comando nuevo: &lt;strong&gt;practicamente todo lo que usas en bash funcionará en zsh&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;instalación-de-zshell&#34;&gt;Instalación de zshell&lt;/h2&gt;
+
+&lt;p&gt;Instalarlo es muy simple en la mayoría de distribuciones, ya que hay un paquete ya listo para nosotros. No os preocupéis que por el hecho de instalarlo, no lo estamos activando todavía. Por ejemplo, en Ubuntu:&lt;/p&gt;
+
+&lt;pre&gt;sudo apt-get install zsh&lt;/pre&gt;
+
+&lt;p&gt;Una vez instalado tenemos que configurarlo. Una de las ventajas de zshell, es que está pensado para que puedas configurarlo de forma modular a través de plugins y templates. Para ayudarnos a gestionar la configuración, vamos a instalar otra cosa rápidamente: &lt;a title=&#34;oh-my-zsh&#34; href=&#34;http://ohmyz.sh/&#34; target=&#34;_blank&#34;&gt;oh-my-zsh&lt;/a&gt;. Es un framework hecho por la comunidad &lt;strong&gt;con un montón de plugins&lt;/strong&gt; que además de aportarnos funcionalidad extra, hará que sea fácil configurar zsh a nuestro antojo. Tranquilos, instalar esto tampoco activará zsh. Para instalar oh-my-zsh automáticamente solo ejecutamos:&lt;/p&gt;
+
+&lt;pre&gt;curl -L http://install.ohmyz.sh | sh&lt;/pre&gt;
+
+&lt;p&gt;Para los indecisos (espero que no quede ninguno al finalizar el post), podéis probar este intérprete sin ponerlo por defecto, y solo hacer el cambio cuando estéis 100% seguros. Para probarlo y ver de qué va esto, ejecutad en la consola:&lt;/p&gt;
+
+&lt;pre&gt;zsh&lt;/pre&gt;
+
+&lt;p&gt;Veréis que de repente vuestro &lt;em&gt;prompt&lt;/em&gt; ha cambiado. Tranquilos, es normal: zsh tiene configurado un prompt distinto al que bash tiene. Vamos a ver algunas de las ventajas más obvias de zsh. Recordad que siempre podéis volver a dejarlo todo como estaba escribiendo:&lt;/p&gt;
+
+&lt;pre&gt;bash&lt;/pre&gt;
+
+&lt;h2 id=&#34;ventajas-de-zsh&#34;&gt;Ventajas de zsh&lt;/h2&gt;
+
+&lt;h3 id=&#34;prompt&#34;&gt;Prompt&lt;/h3&gt;
+
+&lt;p&gt;Una de las cosas que más nos gusta a los frikis de la consola es configurar nuestro prompt para que aparezca información relevante más allá del _path_ actual en el que estamos. El que &lt;em&gt;zsh&lt;/em&gt; trae por defecto ya es bastante bueno, indicando información de la rama actual de git en la que estamos. Esto ya es configurable con &lt;em&gt;bash&lt;/em&gt;, pero al haber instalado &lt;em&gt;oh-my-zsh&lt;/em&gt; tenemos acceso a &lt;a title=&#34;zsh themes&#34; href=&#34;https://github.com/robbyrussell/oh-my-zsh/wiki/Themes&#34; target=&#34;_blank&#34;&gt;todos los themes de la comunidad&lt;/a&gt; donde podremos elegir &lt;strong&gt;verdaderas maravillas&lt;/strong&gt;. Para activar un theme, tan solo tenemos que modificar el archivo de configuración en &lt;em&gt;~/.zshrc&lt;/em&gt; y cambiar el que viene por defecto, por uno del listado. La línea a modificar es:&lt;/p&gt;
+
+&lt;pre&gt;ZSH_THEME=&#34;robbyrussell&#34;&lt;/pre&gt;
+
+&lt;p&gt;Si queremos hacerlo nosotros mismos, podemos configurar no solo el prompt normal, sino que &lt;strong&gt;nos permite configurar texto a la derecha del prompt&lt;/strong&gt;. Para que os hagáis una idea, el que yo utilizo actualmente muestra, además de lo habitual, la rama actual de git, si hay cambios por comittear pendientes, el &lt;em&gt;load&lt;/em&gt; de la máquina y la hora actual, estos dos últimos en la parte derecha del prompt. Luce así:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_031.png&#34;&gt;&lt;img class=&#34;alignnone size-large wp-image-67&#34; src=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_031-1024x47.png&#34; alt=&#34;zsh prompt&#34; width=&#34;620&#34; height=&#34;28&#34; srcset=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_031-1024x47.png 1024w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_031-300x14.png 300w&#34; sizes=&#34;(max-width: 620px) 100vw, 620px&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;navegación-entre-directorios&#34;&gt;Navegación entre directorios&lt;/h3&gt;
+
+&lt;p&gt;Probad a escribir &amp;#8216;cd &amp;#8216; y darle a tabulador para que os sugiera los posibles directorios. Dadle varias veces a tabulador y podréis ir eligiendo uno a uno. ¿Que no queréis ir uno a uno? ¡Sin problema! Utilizad las flechas del teclado para navegar entre las sugerencias.&lt;/p&gt;
+
+&lt;p&gt;Elegid uno de los directorios para entrar en él. Ahora probad a escribir &amp;#8216;..&amp;#8217;. Con eso iréis al directorio padre. Y si ponéis &amp;#8216;&amp;#8230;&amp;#8217; al superior. Y así sucesivamente. Útil, ¿no?&lt;/p&gt;
+
+&lt;p&gt;A veces es un poco engorroso recordar exactamente el nombre del directorio al que queremos acceder. Tranquilos, &lt;strong&gt;zsh es muy listo&lt;/strong&gt; y si intentáis entrar en un directorio pero poniendo solo parte de su nombre, zsh intentará averiguar a cual te refieres y, si lo consigue, entrará en él. &lt;strong&gt;Incluso aunque lo que hayas escrito no sea el principio del nombre del directorio&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Además, escribir &amp;#8220;cd&amp;#8221; para movernos es &lt;em&gt;poco eficiente&lt;/em&gt;. Si probáis a escribir tan solo el nombre de la carpeta, sin ponerle el &amp;#8220;cd&amp;#8221; delante, también entrará en el directorio.&lt;/p&gt;
+
+&lt;p&gt;Si llegados a esto todavía no os parece canela en rama, tranquilos, que hay más.&lt;/p&gt;
+
+&lt;h3 id=&#34;mejor-historial&#34;&gt;Mejor historial&lt;/h3&gt;
+
+&lt;p&gt;En la consola acabamos repitiendo los mismos comandos varias veces. Hasta ahora, yo utilizaba control+R para buscar en el historial, o si era un comando reciente, le daba a la flecha hacia arriba del cursor para ir hacia atrás en el historial. Esto está bien, pero zsh lo mejora haciendo que solo vaya recorriendo &lt;strong&gt;aquellos comandos que coinciden con lo que tienes actualmente escrito&lt;/strong&gt;. Es decir, si yo escribo &amp;#8220;vim&amp;#8221; y voy dándole hacia arriba, solo irá navegando por el historial de comandos que empezaban con &amp;#8220;vim&amp;#8221;.&lt;/p&gt;
+
+&lt;p&gt;Además, siempre podemos conseguir que zsh sea más eficiente, viendo qué comandos son los que más utilizamos y creando alias para ellos. Igual que en &lt;em&gt;bash&lt;/em&gt;, con la diferencia de que zsh nos proporciona un comando con información detallada sobre lo que más utilizamos:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_032.png&#34;&gt;&lt;img class=&#34;alignnone size-full wp-image-69&#34; src=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_032.png&#34; alt=&#34;zsh_stats&#34; width=&#34;493&#34; height=&#34;182&#34; srcset=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_032.png 493w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_032-300x110.png 300w&#34; sizes=&#34;(max-width: 493px) 100vw, 493px&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;plugins&#34;&gt;Plugins&lt;/h3&gt;
+
+&lt;p&gt;Todo esto es lo que nos ofrece zsh por defecto, pero lo bueno de oh-my-zsh es que &lt;strong&gt;nos ofrece un montón de plugins&lt;/strong&gt; que añaden alias a acciones de nuestro día a día para que la shell sea todavía más cómoda. Para añadir o quitar plugins, tan solo tenemos que editar el archivo de configuración de zsh situado en ~/.zshrc y modificar la línea de los plugins. Actualmente la mía está así:&lt;/p&gt;
+
+&lt;pre&gt;plugins=(git autojump colored-man colorize extract zsh-syntax-highlighting)&lt;/pre&gt;
+
+&lt;p&gt;Con estos plugins obtengo desde archivos del manual con texto coloreado, hasta un comando nuevo llamado &lt;strong&gt;&lt;em&gt;extract&lt;/em&gt;&lt;/strong&gt; que puedo utilizar para descomprimir cualquier tipo de archivo comprimido &lt;strong&gt;sin preocuparme de cómo se descomprime&lt;/strong&gt;: él decidirá qué es lo que debe utilizar: zip, gz, etc. Además, como habréis notado en los pantallazos anteriores, cuando estoy escribiendo un comando en la terminal, está coloreado en verde si la shell lo reconoce. Si estoy escribiendo un comando que no existe, zsh lo escribe en rojo.&lt;/p&gt;
+
+&lt;h4 id=&#34;autojump&#34;&gt;AutoJump&lt;/h4&gt;
+
+&lt;p&gt;Quiero hacer mención especial a uno de los plugins que tengo activados: &lt;strong&gt;autojump&lt;/strong&gt;. Si la navegación entre directorio ya es la más cómoda del mundo con zsh, autojump va todavía más allá y va guardando tus directorios más utilizados en tu día a día. De tal forma que tan solo tienes que escribir &amp;#8220;j&amp;#8221; seguido de una cadena que él intentará matchear contra tu historial de directorios, y entrará en aquel que más hayas visitado. Esta cadena puede ser desde una letra, hasta el nombre entero de la carpeta. En este ejemplo, escribiendo &amp;#8220;j w&amp;#8221;, él ya sabía que me estaba refiriendo a &lt;em&gt;/var/www&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_034.png&#34;&gt;&lt;img class=&#34;alignnone size-full wp-image-70&#34; src=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_034.png&#34; alt=&#34;Autojump&#34; width=&#34;373&#34; height=&#34;145&#34; srcset=&#34;http://blog.armesto.net/wp-content/uploads/2014/04/Selección_034.png 373w, http://blog.armesto.net/wp-content/uploads/2014/04/Selección_034-300x116.png 300w&#34; sizes=&#34;(max-width: 373px) 100vw, 373px&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Para instalarlo tan solo ejecuta:&lt;/p&gt;
+
+&lt;pre&gt;sudo apt-get install autojump&lt;/pre&gt;
+
+&lt;h2 id=&#34;dejando-zsh-por-defecto-en-vez-de-bash&#34;&gt;Dejando zsh por defecto en vez de bash&lt;/h2&gt;
+
+&lt;p&gt;Si finalmente os he convencido, solo queda activar zsh para que sea siempre vuestra shell, en vez de bash. Para hacer esto, solo tenéis que ejecutar:&lt;/p&gt;
+
+&lt;pre&gt;chsh -s $(which zsh)&lt;/pre&gt;
+
+&lt;p&gt;Si por algún motivo que se me escapa quisierais volver a utilizar bash, solo tenéis que ejecutar:&lt;/p&gt;
+
+&lt;pre&gt;chsh -s $(which bash)&lt;/pre&gt;
+
+&lt;h2 id=&#34;conclusión&#34;&gt;Conclusión&lt;/h2&gt;
+
+&lt;p&gt;Hay &lt;a title=&#34;zsh features&#34; href=&#34;http://www.slideshare.net/jaguardesignstudio/why-zsh-is-cooler-than-your-shell-16194692&#34; target=&#34;_blank&#34;&gt;muchísimas más cosas&lt;/a&gt; que me dejo en el tintero. Como véis, &lt;strong&gt;zsh&lt;/strong&gt; aporta un montón de comodidades extras a &lt;em&gt;bash&lt;/em&gt;. Realmente, no hay nada que no podamos hacer a mano en bash, configurando alias y creando scripts, pero es mucho mejor apoyarnos en la sabiduría de toda una comunidad dedicada a esto.&lt;/p&gt;
+
+&lt;p&gt;¿Alguno no se ha convencido de cambiarse?&lt;/p&gt;
+
+&lt;h2 id=&#34;enlaces-de-interés&#34;&gt;Enlaces de interés&lt;/h2&gt;
+
+&lt;p&gt;&lt;a title=&#34;Problema con ciertos prompts que duplican el comando&#34; href=&#34;http://unix.stackexchange.com/questions/90772/first-characters-of-the-command-repeated-in-the-display-when-completing&#34; target=&#34;_blank&#34;&gt;Problema con ciertos prompts que duplican el comando&lt;/a&gt;. Asegúrate de que tu fichero .zshrc tiene estas dos líneas:&lt;/p&gt;
+
+&lt;pre&gt;export LANG=en_US.utf8
+export LC_ALL=en_US.utf8&lt;/pre&gt;
+
+&lt;p&gt;&lt;a title=&#34;Tutorial de zsh&#34; href=&#34;Getting started with ZSH on Ubuntu&#34; target=&#34;_blank&#34;&gt;Tutorial de zsh&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a title=&#34;oh-my-zsh&#34; href=&#34;http://ohmyz.sh/&#34; target=&#34;_blank&#34;&gt;Oh-My-zsh!&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a title=&#34;Plugins de oh-my-zsh&#34; href=&#34;https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins&#34; target=&#34;_blank&#34;&gt;Plugins de oh-my-zsh&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a title=&#34;autojump&#34; href=&#34;https://github.com/joelthelion/autojump&#34; target=&#34;_blank&#34;&gt;Autojump&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Limitar memoria máxima de Redis</title>
+      <link>http://fiunchinho.github.io/blog/limitar-memoria-maxima-de-redis/</link>
+      <pubDate>Thu, 21 Nov 2013 17:59:32 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/limitar-memoria-maxima-de-redis/</guid>
+      <description>&lt;p&gt;Haciendo pruebas en uno de los proyectos que tengo, utilicé &lt;a title=&#34;Redis&#34; href=&#34;http://redis.io/&#34; target=&#34;_blank&#34;&gt;Redis&lt;/a&gt; como sistema de caché, en vez de utilizar &lt;a title=&#34;Memcached&#34; href=&#34;http://memcached.org/&#34; target=&#34;_blank&#34;&gt;Memcached&lt;/a&gt; que es el que normalmente uso. Por defecto, Memcached va llenando su memoria hasta que esta se llena, y es entonces cuando empieza a borrar valores existentes para hacer sitio a las nuevas. La estrategia elegida para borrar es eliminar aquellas keys de la cache que han sido menos utilizadas.&lt;/p&gt;
+
+&lt;p&gt;Cuando activé Redis para mi proyecto, el proceso _daemon_ del servidor empezó a ocupar más y más memoria hasta que ocupaba casi la totalidad de la RAM del servidor. Poco después, el propio sistema operativo decidió matar el proceso de redis para no morir en el intento.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Si no quería tener que conectarme todos los días a levantar manualmente el daemon de Redis debía encontrar una manera de que esto no ocurriese. Así que decidí que Redis se comportase igual que Memcached: decidir una &lt;strong&gt;memoria límite&lt;/strong&gt;, y que cuando esté llena, &lt;strong&gt;empiece a descartar las claves menos utilizadas&lt;/strong&gt;. Para ello abrí el archivo de configuración de Redis (en mi caso se encontraba bajo &lt;em&gt;/etc/redis/redis.conf&lt;/em&gt;), y me llevé una grata sorpresa ya que parecía casi un manual. Todas las opciones estaban muy bien explicadas, incluso con ejemplos.&lt;/p&gt;
+
+&lt;p&gt;Buscando la opción &lt;code&gt;maxmemory&lt;/code&gt;, me encontré con lo siguiente en el propio archivo de configuración&lt;/p&gt;
+
+&lt;pre&gt;# Don&#39;t use more memory than the specified amount of bytes.
+# When the memory limit is reached Redis will try to remove keys with an
+# EXPIRE set. It will try to start freeing keys that are going to expire
+# in little time and preserve keys with a longer time to live.
+# Redis will also try to remove objects from free lists if possible.
+#
+# If all this fails, Redis will start to reply with errors to commands
+# that will use more memory, like SET, LPUSH, and so on, and will continue
+# to reply to most read-only commands like GET.
+#
+# WARNING: maxmemory can be a good idea mainly if you want to use Redis as a
+# &#39;state&#39; server or cache, not as a real DB. When Redis is used as a real
+# database the memory usage will grow over the weeks, it will be obvious if
+# it is going to use too much memory in the long run, and you&#39;ll have the time
+# to upgrade. With maxmemory after the limit is reached you&#39;ll start to get
+# errors for write operations, and this may even lead to DB inconsistency.
+#
+# maxmemory &amp;lt;bytes&amp;gt;&lt;/pre&gt;
+
+&lt;p&gt;Así que solo tenía que decidir cuanta memoria quería designar como máximo para Redis. Como lo estaba utilizando de caché, y no como base de datos, no hacía falta que fuese demasiado. Así que decidí poner &lt;strong&gt;256Mb&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;maxmemory 268435456&lt;/pre&gt;
+
+&lt;p&gt;Lo siguiente, era decidir qué estrategia debía seguir Redis para descartar claves guardadas en memoria. Una línea más abajo de donde estaba en el fichero de configuración me encuentro esto&lt;/p&gt;
+
+&lt;pre&gt;# MAXMEMORY POLICY: how Redis will select what to remove when maxmemory
+# is reached? You can select among five behavior:
+# 
+# volatile-lru -&amp;gt; remove the key with an expire set using an LRU algorithm
+# allkeys-lru -&amp;gt; remove any key accordingly to the LRU algorithm
+# volatile-random -&amp;gt; remove a random key with an expire set
+# allkeys-&amp;gt;random -&amp;gt; remove a random key, any key
+# volatile-ttl -&amp;gt; remove the key with the nearest expire time (minor TTL)
+# noeviction -&amp;gt; don&#39;t expire at all, just return an error on write operations
+# 
+# Note: with all the kind of policies, Redis will return an error on write
+# operations, when there are not suitable keys for eviction.
+#
+# At the date of writing this commands are: set setnx setex append
+# incr decr rpush lpush rpushx lpushx linsert lset rpoplpush sadd
+# sinter sinterstore sunion sunionstore sdiff sdiffstore zadd zincrby
+# zunionstore zinterstore hset hsetnx hmset hincrby incrby decrby
+# getset mset msetnx exec sort
+#
+# The default is:
+#
+# maxmemory-policy volatile-lru&lt;/pre&gt;
+
+&lt;p&gt;Así que cualquiera de las 2 primeras estrategias podía valerme para lo que yo quería conseguir. Añadí la siguiente línea&lt;/p&gt;
+
+&lt;pre&gt;maxmemory-policy volatile-lru&lt;/pre&gt;
+
+&lt;p&gt;Y listo. Ahora Redis tenía un ímite de memoria, y cuando se llenase, iría borrando valores que hubiesen sido menos utilizados recientemente. Podemos comprobar que funciona correctamente, controlando cuánta memoria está utilizando Redis en un momento determinado. Para ello, tan solo tenemos que utilizar el siguiente comando&lt;/p&gt;
+
+&lt;pre&gt;redis-cli info | grep memory&lt;/pre&gt;
+
+&lt;p&gt;Y debería mostrarnos algo parecido a esto&lt;/p&gt;
+
+&lt;pre&gt;used_memory:268227192
+used_memory_human:255.80M
+used_memory_rss:293154816&lt;/pre&gt;
+
+&lt;p&gt;Ahí podemos ver que la memoria no supera el límite que elegimos. El sistema operativo ya no tendrá que volver a preocuparse.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>¿Donde pongo mis scripts?</title>
+      <link>http://fiunchinho.github.io/blog/donde-pongo-mis-scripts/</link>
+      <pubDate>Fri, 27 Sep 2013 18:00:27 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/donde-pongo-mis-scripts/</guid>
+      <description>&lt;p&gt;Vale, te has creado un _script_ en &lt;a title=&#34;Unix&#34; href=&#34;http://www.unix.org/&#34; target=&#34;_blank&#34;&gt;Unix&lt;/a&gt; para automatizar una tarea, pero después de programar durante horas, ahora viene lo más difícil de todo… donde lo pones?&lt;/p&gt;
+
+&lt;p&gt;Podrías ponerlo en la carpeta &lt;strong&gt;/bin&lt;/strong&gt;… o en &lt;strong&gt;/usr/bin&lt;/strong&gt;… incluso en &lt;strong&gt;/home/../bin&lt;/strong&gt;. Para qué tantas carpetas de binarios?&lt;/p&gt;
+
+&lt;p&gt;Vamos a intentar explicar para qué sirve cada una.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;jerarquía&#34;&gt;Jerarquía&lt;/h2&gt;
+
+&lt;p&gt;Los directorios en Unix siguen una jerarquía que, aunque no lo parezca, intenta tener un sentido. Los más importantes son:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;/boot&lt;/strong&gt;: Cosas necesarias para el arranque.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;/lib&lt;/strong&gt;: Librerías del sistema.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;/etc&lt;/strong&gt;: Configuraciones del sistema.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;/proc&lt;/strong&gt;: Información sobre los procesos que están ejecutándose.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;/dev&lt;/strong&gt;: Aquí encontramos archivos representando dispositivos conectados, como los discos duros o dispositivos usb.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;/var&lt;/strong&gt;: Archivos variables, como los logs.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;/tmp&lt;/strong&gt;: Directorio temporal. La información que hay aquí se perderá cuando reiniciemos.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;/bin&lt;/strong&gt;: Ejecutables indispensables que se usan antes de que se monte la carpeta &lt;em&gt;/usr&lt;/em&gt;, o cuando se inicia en modo “_single-user_“. Aquí hay programas como _cat_ o &lt;em&gt;ls&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;/sbin&lt;/strong&gt;: Lo mismo que antes, pero con ejecutables para administradores del sistema. Un usuario normal no tiene permisos para ejecutar estos binarios.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;/usr&lt;/strong&gt;: Contiene ejecutables (bin), librerías (lib) o documentación (doc).
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;/usr/bin&lt;/strong&gt;: Lo mismo que /bin, pero para ejecutables de propósito general.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;/usr/sbin&lt;/strong&gt;: Igual que /usr/bin, pero para administradores del sistema.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;/usr/local&lt;/strong&gt;: Contiene programas que no son administrados por paquetes del sistema o el gestor de paquetes&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;/home&lt;/strong&gt;: Todo lo relacionado con los usuarios que utilizarán el sistema
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;/home/bin&lt;/strong&gt;: Ejecutables creados por el usuario, para tareas que no son del sistema&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cuando crees un programa propio para _parsear&lt;em&gt; un csv con información, ponlo en tu &lt;strong&gt;/home&lt;/strong&gt;, y cuando instales algún programa, ponlo en&lt;strong&gt; /usr/local/bin&lt;/strong&gt;. Recuerda también que tanto &lt;strong&gt;/bin&lt;/strong&gt;, como &lt;strong&gt;/usr/bin&lt;/strong&gt; y &lt;strong&gt;/usr/local/bin&lt;/strong&gt; están incluídos en el **&lt;/em&gt;$PATH&lt;em&gt;&lt;strong&gt; del sistema, así que cuando quieras ejecutarlos no hace falta que pongas su ruta completa. Esto no es así para tu &lt;/strong&gt;/home**, que deberás o bien añadirlo al &lt;/em&gt;&lt;strong&gt;$PATH&lt;/strong&gt;_, o crear un _symlink_ de tu programa a &lt;strong&gt;/usr/local/bin&lt;/strong&gt; por ejemplo.&lt;/p&gt;
+
+&lt;pre&gt;# ln -s /home/fiunchinho/my_program /usr/local/bin/&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>Evitar borrar todo tu disco con rm -rf</title>
+      <link>http://fiunchinho.github.io/blog/evitar-borrar-todo-tu-disco-con-rm-rf/</link>
+      <pubDate>Fri, 20 Sep 2013 18:01:09 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/evitar-borrar-todo-tu-disco-con-rm-rf/</guid>
+      <description>&lt;p&gt;A quién no le ha pasado, verdad? Quieres borrar el contenido de una carpeta con el comando &lt;a title=&#34;Comando rm&#34; href=&#34;http://linux.about.com/od/commands/l/blcmdl1_rm.htm&#34; target=&#34;_blank&#34;&gt;&lt;em&gt;rm&lt;/em&gt;&lt;/a&gt;, pero sin querer pones el asterisco donde no debías y &lt;strong&gt;&lt;em&gt;ZASCA! &lt;/em&gt;&lt;/strong&gt;: todo tu disco duro se ha borrado por completo.&lt;/p&gt;
+
+&lt;p&gt;A veces no es tan dramático. A veces solo te equivocas en el directorio que querías borrar. Estabas un nivel más arriba o más abajo del que pensabas y adiós proyecto en el que llevabas toda la tarde trabajando y del que todavía no habías hecho &lt;em&gt;commit&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;posible-solución&#34;&gt;Posible solución&lt;/h2&gt;
+
+&lt;p&gt;Una posible solución sería utilizar la opción _-i&lt;em&gt; del comando rm, creando un alias en tu &lt;/em&gt;/.bashrc_ para que siempre que ejecutemos _rm_ sea con ese _flag_ activado. Esto hace que nos pida confirmación siempre que lo usamos, para tener un “_double check_” antes de liarla parda.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;alias rm=&#39;rm -i&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;El problema que le veo a esto, es que muchas veces estamos borrando solo un fichero, y es un poco incómodo tener que andar confirmando siempre.&lt;/p&gt;
+
+&lt;p&gt;Además, da una falsa sensación de seguridad. Cuando te pida confirmación, tanto tú como yo sabemos que en ese momento no te vas a dar cuenta del error que estás a punto de cometer.&lt;/p&gt;
+
+&lt;h2 id=&#34;mejor-todavía&#34;&gt;Mejor todavía&lt;/h2&gt;
+
+&lt;p&gt;Hay una solución mejor. Otro _flag&lt;em&gt; que trae este comando es el &lt;/em&gt;-I_. Como su definición indica, nos pedirá confirmación solo cuando estemos a punto de borrar más de 3 ficheros. Si borramos menos de eso, no nos pedirá confirmación.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;alias rm=&#39;rm -I&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Está claro que tarde o temprano acabaremos liándola, pero con esta opción quizá podamos retrasar ese día unos añitos más.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

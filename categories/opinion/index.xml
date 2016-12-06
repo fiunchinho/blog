@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jose Armesto&#39;s Blog</title>
+    <link>http://fiunchinho.github.io/blog/categories/opinion/index.xml</link>
+    <description>Recent content on Jose Armesto&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es-es</language>
+    <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
+    <atom:link href="http://fiunchinho.github.io/blog/categories/opinion/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Codemotion 2016</title>
+      <link>http://fiunchinho.github.io/blog/codemotion-2016/</link>
+      <pubDate>Wed, 30 Nov 2016 20:48:31 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/codemotion-2016/</guid>
+      <description>&lt;p&gt;Ya sé que voy un poco tarde con el post hablando sobre cómo fue la Codemotion 2016, pero tenía ganas de compartir mi experiencia en la conferencia.&lt;/p&gt;
+
+&lt;p&gt;Vaya por delante que es dificilísimo organizar una conferencia a nivel nacional, y que hacerlo durante varios años seguidos, tiene mucho mérito. Pero también es importante compartir aquellas cosas que son mejorables para, entre todos, conseguir eventos de mejor calidad en nuestro país. Así que sin más dilación, compartiré con vosotros mi experiencia en la Codemotion 2016, tanto desde el punto de vista de asistente, como desde el punto de vista de ponente.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;como-asistente&#34;&gt;Como asistente&lt;/h2&gt;
+
+&lt;h3 id=&#34;número-de-asistentes&#34;&gt;Número de asistentes&lt;/h3&gt;
+
+&lt;p&gt;No vamos a andarnos por las ramas e iremos directos al que, para mi, es el principal problema de esta conferencia: el número de asistentes. Organizar una conferencia es difícil, pero organizar una de 1000 o 2000 asistentes es complicadísimo. A pesar de que me ya me habían avisado de años anteriores, el año pasado decidí asistir a la Codemotion por primera vez, y me encontré de lleno con el pastel. Colas larguísimas para asistir a charlas y talleres; gente de pie viendo las charlas; talleres prácticos de 100 personas&amp;#8230; &lt;strong&gt;Masificación&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Este año, la organización pidió a los asistentes que votasen las charlas para poder preveer un poco la asistencia de cada una, pero no creo que mucha gente haya votado. Además, salvo el aula magna de la universidad, el resto de aulas donde había charlas apenas podían acoger un 10% de la asistencia al evento, lo que hacía imposible acoger tanta gente. El hecho de tener muchos tracks en paralelo no da vía libre para recibir 2000 personas.&lt;/p&gt;
+
+&lt;p&gt;En mi caso, como iba con conocimiento de causa del año pasado, me quedé a la mayoría de las charlas del aula magna. Solo me atrevía a ir a otra aula cuando la charla era después de un parón, o después de comer. Haciendo esto solo tuve que ver una charla sentado en el suelo, y hacer cola durante 10-15 mins para la charla de &lt;a href=&#34;https://twitter.com/carlosble&#34;&gt;Carlos Blé&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;La solución propuesta sería hacer una conferencia de menos asistentes. Entiendo que tener el título de &amp;#8220;Conferencia más grande de España&amp;#8221;, y poder decir a patrocinadores que tantos miles de programadores asisten al evento es tentador, pero hacen la experiencia muchísimo peor para los que asisten.&lt;/p&gt;
+
+&lt;p&gt;Por ejemplo, &lt;a href=&#34;https://twitter.com/fiunchinho/status/799960255279013888&#34;&gt;hubo una falta de respeto generalizada hacia los ponentes y los asistentes&lt;/a&gt; interesados en la ronda de preguntas de cada charla. Al haber espacio tan limitado, la gente prefiere levantarse para coger sitio en la siguiente que esperarse a terminar la sesión de preguntas, haciendo que el ponente apenas pueda responder, y la gente no se entere bien de qué está ocurriendo. Una pena.&lt;/p&gt;
+
+&lt;h3 id=&#34;lugar-del-evento&#34;&gt;Lugar del evento&lt;/h3&gt;
+
+&lt;p&gt;El otro gran fallo del evento en mi opinión es el lugar del mismo. La universidad donde se celebra está demasiado lejos de&amp;#8230; bueno, de todo. La organización intentó mejorar esto poniendo un servicio gratuito de autobuses desde plaza de España, lo cual es un buen detalle, aunque insuficiente. El autobus era solo a ciertas horas, y los que venimos de fuera, muchas veces llegamos más tarde de lo habitual a Madrid, o tenemos que irnos antes de que termine el evento, así que no podemos utilizar esos autobuses.&lt;/p&gt;
+
+&lt;p&gt;El tema autobuses también es mejorable. No se especificaba en donde exactamente paraba el autobús, y los que somos de fuera agradeceríamos unas mejores indicaciones. Además, el segundo día fui a coger el autobus de las 9:30 para ir a la conferencia, y, o salió con mucha antelación, o &lt;strong&gt;ese día no hubo autobús&lt;/strong&gt;. Envié &lt;a href=&#34;https://twitter.com/fiunchinho/status/799893331136352256&#34;&gt;un tweet a la organización&lt;/a&gt; mientras esperábamos por el autobús yo y otras personas, pero &lt;strong&gt;nadie contestó&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Una mejora sería que alguien de la organización fuese siempre en los pocos autobuses que hay. Aunque sigo pensando que la mejor solución sería buscar un sitio más cercano. Preferiría pagar un poco más y no tener que ir a Mordor a ver las charlas.&lt;/p&gt;
+
+&lt;h3 id=&#34;comida&#34;&gt;Comida&lt;/h3&gt;
+
+&lt;p&gt;Creo que la comida fue algo muy positivo, con muchas opciones distintas. Como todo lo demás está influido por el número de asistentes, pero me pareció bien solucionado.&lt;/p&gt;
+
+&lt;p&gt;Eché en falta que el sábado no hubiese una fuente de café/comida, ya que la cafetería de la universidad estaba cerrada, y no hay nada en kilómetros a la redonda.&lt;/p&gt;
+
+&lt;h3 id=&#34;acreditación&#34;&gt;Acreditación&lt;/h3&gt;
+
+&lt;p&gt;Como el año pasado, nadie controla quién entra en la conferencia. Sobretodo porque el viernes compartimos recinto con los universitarios.&lt;/p&gt;
+
+&lt;h2 id=&#34;como-ponente&#34;&gt;Como ponente&lt;/h2&gt;
+
+&lt;p&gt;Antes de nada dar las gracias a las comunidades que votaron las charlas y me permitieron compartir cosas como ponente. Un honor y un placer.&lt;/p&gt;
+
+&lt;p&gt;También decir que nadie me obliga a dar una charla. Es algo que hago porque yo quiero.&lt;/p&gt;
+
+&lt;p&gt;Dicho lo cual, otras conferencias mucho más pequeñas y modestas pagan viaje, o estancia, o ambas para los pontentes, sobretodo si vienen de fuera. No digo que en esta se tenga que pagar todo, pero el taxi para llegar o irse de la conferencia, hubiese ayudado mucho.&lt;/p&gt;
+
+&lt;p&gt;Mi charla era la segunda del día, después de &lt;a href=&#34;https://twitter.com/kinisoftware&#34;&gt;@kinisoftware&lt;/a&gt;, así que estuve repasándola, y antes de que terminase la anterior, ya estaba en la sala para poder preparar todo con calma. Al rato de estar ya sobre el escenario, se acercó alguien con un pen drive para que le pases las diapositivas. El pen drive no funcionaba en mi mac, no sé por qué, así que como me sugirió el propio &lt;a href=&#34;https://twitter.com/kinisoftware&#34;&gt;@kinisoftware&lt;/a&gt; subí la presentación al Google Drive que la organización puso a disposición de los ponentes para subir las charlas. Cuando volvió la persona de las diapositivas le dije que ya estaba subida la presentación al Drive, y me dijo que &lt;strong&gt;no sabía de ningún Google Drive&lt;/strong&gt;. Supongo que no era de la organización, si no de la empresa que grababa las charlas.&lt;/p&gt;
+
+&lt;p&gt;Un poco descolocado, y como soy un tío con recursos, recordé que traía las slides en mi propio pen drive, así que le dije que se llevase el mío.&lt;/p&gt;
+
+&lt;p&gt;Y esa fue la última vez que vi a alguien no-asistente interesarse por la charla. Nadie vino a ayudarme a configurar nada. Al poco de empezar la charla tuve problemas de sonido con un vídeo, y &lt;strong&gt;absolutamente nadie ni de la organización ni de la gente del streaming se acercó a interesarse&lt;/strong&gt;. Superando las dificultades técnicas como podía, seguí con la charla hasta que llegando a la parte final, mi micrófono deja de funcionar. No veo que ocurra nada, y al poco vuelve a funcionar. Sigo hablando pero ya entiendo qué estaba pasando: alguien de la organización se acerca por fin, pero para decirme que &lt;strong&gt;el tiempo de la charla se había terminado&lt;/strong&gt;. En otras conferencias en las que he estado, te van avisando cuando quedan 10 o 5 minutos, para que sepas que el tiempo se acaba. Aquí el aviso parece que era cortar el micro cuando se acabase el tiempo.&lt;/p&gt;
+
+&lt;p&gt;Como pude, pasé las diapositivas rápidamente para al menos mencionarlas y terminar finalmente la charla. Una pena.&lt;/p&gt;
+
+&lt;p&gt;Al acabar tampoco volví a ver a nadie de la organización. Ah! Ni tampoco a mi pen drive (a pesar de ir a pedirlo 🙁&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusiones&#34;&gt;Conclusiones&lt;/h2&gt;
+
+&lt;p&gt;Fue un placer hablar con amigos y compañeros de profesión a los que solo veo en conferencias como &lt;a href=&#34;https://twitter.com/carlosble&#34;&gt;Carlos Blé&lt;/a&gt;, y desvirtualizar a ilustres como &lt;a href=&#34;https://twitter.com/flopezluis&#34;&gt;Félix López&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/agonzalezro&#34;&gt;Álex González&lt;/a&gt; o &lt;a href=&#34;https://twitter.com/kinisoftware&#34;&gt;Kini&lt;/a&gt;, entre otros.&lt;/p&gt;
+
+&lt;p&gt;Pero eso podría hacerlo en otras conferencias. Así que el año que viene me tomaré un descanso de la Codemotion, e invertiré ese tiempo y dinero en ver a esos &lt;em&gt;camaradas del metal&lt;/em&gt; en otro sarao.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Mis impresiones sobre el debate #isTDDDead</title>
+      <link>http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/</link>
+      <pubDate>Fri, 23 May 2014 20:35:44 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/</guid>
+      <description>&lt;p&gt;El &lt;a title=&#34;Yo no soy DHH. Long live TDD&#34; href=&#34;http://blog.armesto.net/yo-no-soy-dhh-long-live-tdd/&#34; target=&#34;_blank&#34;&gt;debate sobre si TDD está muerto&lt;/a&gt; o no sigue &lt;em&gt;vivito y coleando&lt;/em&gt;, y tras una guerra fría de artículos por ambas partes, ahora el intercambio de opiniones se ha pasado a un formato de &lt;a title=&#34;isTDDDead&#34; href=&#34;http://martinfowler.com/articles/is-tdd-dead/&#34; target=&#34;_blank&#34;&gt;vídeo debate&lt;/a&gt; donde Martin Fowler, Kent Beck y el mismísimo David Heinemeier Hansson hablan sobre el tema.&lt;/p&gt;
+
+&lt;p&gt;La verdad es que cuando anunciaron que Kent Beck iba a enfrentarse a David Heinemeier sobre el tema TDD, me alegré bastante por ver a gente tan buena en esto que hacemos debatiendo sobre distintas metodologías. &amp;#8220;&lt;em&gt;Seguro que aprendo de ambas partes&lt;/em&gt;&amp;#8220;, pensaba yo.&lt;/p&gt;
+
+&lt;p&gt;Ingenuo de mí.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Tres &lt;em&gt;hangouts&lt;/em&gt; despues, la idea general que para mí resume el debate es que DHH dice que TDD puede desencadenar en mal código. El problema fundamental que tiene su argumento es que esto no es exclusivo de TDD. Hacer TDD te puede llevar a un mal código de la misma manera que utilizar mal cualquier otra herramienta podría llevarnos por el mal camino.&lt;/p&gt;
+
+&lt;h2 id=&#34;tests-como-herramientas-de-diseño&#34;&gt;Tests como herramientas de diseño&lt;/h2&gt;
+
+&lt;p&gt;A veces parece que lo que no le gusta de TDD y de los tests unitarios, es que a diferencia de los tests de sistema que él prefiere, los unitarios son tests que no te ocultan los problemas que tiene tu código. &lt;strong&gt;No puedes crear un tests en aislamiento cuando tu clase tiene mil dependencias y no cumples cosas como la ley de Demeter o los principios SOLID&lt;/strong&gt;. Sin embargo, los tests de sistema no se quejarán en absoluto. No son nada exigentes en ese sentido. A cambio, ¿qué pierdes? Pierdes feedback instantáneo sobre cómo de bien (o mal) estás diseñando algo. Pierdes velocidad en los tests que pasan de segundos a minutos.&lt;/p&gt;
+
+&lt;p&gt;Eligiendo el camino de los tests de sistema puede dar la impresión de que vamos más rápido porque tenemos que pensar menos los tests, pero lo que realmente estamos haciendo es &lt;strong&gt;esconder el polvo debajo de la alfombra&lt;/strong&gt;. El problema es que llegará un día que la alfombra no será suficiente, y cuando nos queramos dar cuenta, &lt;strong&gt;las termitas han tomado el lugar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;arquitectura-hexagonal&#34;&gt;Arquitectura Hexagonal&lt;/h2&gt;
+
+&lt;p&gt;Otro argumento que me chocó de DHH, que menciona en el segundo &lt;em&gt;hangout&lt;/em&gt;, es ese que dice que TDD penaliza el diseño porque tiendes a cosas como la arquitectura hexagonal. Para empezar, no entiendo qué relación tiene una cosa con la otra. Puedes hacer una arquitectura hexagonal sin hacer TDD y viceversa.&lt;/p&gt;
+
+&lt;p&gt;Además, dice que elegimos utilizar arquitectura hexagonal porque nos ayuda a crear tests. Que el principal motivo de este tipo de arquitectura es el testing.&lt;/p&gt;
+
+&lt;p&gt;En &lt;a title=&#34;Arquitectura Hexagonal&#34; href=&#34;https://www.youtube.com/watch?v=vX5PBaXopmg&#34; target=&#34;_blank&#34;&gt;mi charla sobre arquitectura hexagonal&lt;/a&gt; (&lt;a title=&#34;Arquitectura Hexagonal&#34; href=&#34;https://speakerdeck.com/fiunchinho/hexagonal-architecture&#34; target=&#34;_blank&#34;&gt;slides&lt;/a&gt;), no se mencionan los tests hasta la slide número 55 (son 60). Y lo que digo es que la facilidad de hacer tests con este tipo de arquitecturas, es un buenísimo efecto secundario que tendremos. Pero nunca se vende que sea el principal motivo. Cierto es que en &lt;a title=&#34;Hexagonal Architecture&#34; href=&#34;http://alistair.cockburn.us/Hexagonal+architecture&#34; target=&#34;_blank&#34;&gt;el artículo original&lt;/a&gt; se hace más hincapié en los tests, pero para mí la principal ventaja es &lt;strong&gt;la independencia de herramientas&lt;/strong&gt;: frameworks, bases de datos, etc,. además de promocionar al dominio a un sitio más visible y acorde a la importancia que tiene.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusión&#34;&gt;Conclusión&lt;/h2&gt;
+
+&lt;p&gt;Me veré el último hangout, porque siempre se puede aprender algo de estas tres fieras, pero para mi, el debate no se ha llevado en ningún momento por cauces interesantes. Prefiero no pensarlo, pero ya van varias personas que mencionan que DHH solo pretendía hacer ruido. Espero que no fuese así.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>El problema con el code coverage</title>
+      <link>http://fiunchinho.github.io/blog/el-problema-con-el-code-coverage/</link>
+      <pubDate>Thu, 01 May 2014 13:27:28 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/el-problema-con-el-code-coverage/</guid>
+      <description>&lt;p&gt;Me he permitido el lujo de &lt;a title=&#34;Considered harmful&#34; href=&#34;http://en.wikipedia.org/wiki/Considered_harmful&#34; target=&#34;_blank&#34;&gt;parafrasear a los maestros&lt;/a&gt; en el título de este artículo para hablaros de un tema algo polémico, por lo menos en los círculos en los que lo he hablado. Se trata de la necesidad de una alta cobertura de código, o &lt;em&gt;code coverage&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;El tema me lo recordó una serie de tweets que intercambiamos el otro día algunos en Twitter, hablando sobre la importancia de tener una cobertura de código del 100%. En el fondo todos estábamos de acuerdo en que no es importante tener un 100%, aunque no es la opinión más habitual que leerás por internet o escucharás en empresas. Mi opinión es que exigir cierto porcentaje de cobertura de código no es que no aporte nada, &lt;strong&gt;sino que es algo perjudicial&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;blockquote class=&#34;twitter-tweet&#34; width=&#34;550&#34;&gt;
+  &lt;p&gt;
+    .&lt;a href=&#34;https://twitter.com/SergiGP&#34;&gt;@SergiGP&lt;/a&gt; &lt;a href=&#34;https://twitter.com/theUniC&#34;&gt;@theUniC&lt;/a&gt; Tener un porcentaje alto de code coverage es una consecuencia, no un objetivo. No hay que olvidarlo nunca.
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    &amp;mdash; Jose Armesto (@fiunchinho) &lt;a href=&#34;https://twitter.com/fiunchinho/statuses/459038699079344128&#34;&gt;April 23, 2014&lt;/a&gt;
+  &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h2 id=&#34;qué-es-la-cobertura-de-código&#34;&gt;¿Qué es la cobertura de código?&lt;/h2&gt;
+
+&lt;p&gt;La cobertura de código es una métrica que nos dice qué líneas de nuestro código ha sido ejecutado tras lanzar un test. De esta forma, yo puedo saber si hay partes de mi código que no están siendo testeadas. Este porcentaje se utiliza para medir la salud de un proyecto ya que si tiene un porcentaje bajo, podemos afirmar que hay muchas partes del código de las que no podemos estar seguros de si funcionan o no.&lt;/p&gt;
+
+&lt;p&gt;Una vez que sabemos qué es, la siguiente pregunta sale de forma natural.&lt;/p&gt;
+
+&lt;h2 id=&#34;cuanta-cobertura-de-código-es-necesaria&#34;&gt;¿Cuanta cobertura de código es &lt;em&gt;necesaria&lt;/em&gt;?&lt;/h2&gt;
+
+&lt;p&gt;Nótese el énfasis en la palabra &amp;#8220;necesaria&amp;#8221;. Y aquí es donde viene el problema. Muchos dirán que es una locura subir un código a producción que no llegue al 80% de cobertura. Otros te dirán incluso que 90%. Y siempre encontrarás al fanático que no programa ni el vídeo VHS y que dice que él no sube a producción nada que baje del 100%, porque es el porcentaje que obtiene al hacer siempre TDD.&lt;/p&gt;
+
+&lt;p&gt;Mi problema con todo esto es que los tests son una &lt;strong&gt;herramienta de confianza&lt;/strong&gt;. Además de que me ayudan a &lt;a title=&#34;Yo no soy DHH. Long live TDD&#34; href=&#34;http://blog.armesto.net/yo-no-soy-dhh-long-live-tdd/&#34; target=&#34;_blank&#34;&gt;conseguir un mejor diseño haciéndome pensar en el problema antes de pensar en la solución&lt;/a&gt;, me ayudan a detectar errores ejecutándolos después de cada refactorización. Esto hace que yo tenga toda la seguridad del mundo en refactorizar código: sé que siempre puedo lanzar los tests y ver si he roto algo. Es mi red de seguridad, mi chivato de errores. Entonces, ¿cuantos tests tengo que escribir? La respuesta es obvia: &lt;strong&gt;los tests necesarios para conseguir esa confianza&lt;/strong&gt;. Los necesarios para decir, si están en verde es que todo está bien.&lt;/p&gt;
+
+&lt;p&gt;¿Cómo se mide esa confianza en un porcentaje de code coverage equivalente? &lt;strong&gt;No se puede&lt;/strong&gt;. No se puede porque depende del código que estés haciendo. Si esa clase tiene un &lt;em&gt;getter&lt;/em&gt; que lo único que hace es devolver una propiedad y nada más, no escribiré un test para ese método. Si ese otro método es complejo y posiblemente cambiará, créeme que lo testearé concienzudamente. La mejor metáfora que he visto sobre esto es la publicada en 2007, respondiendo a esta misma pregunta &lt;a title=&#34;How much code coverage do you need?&#34; href=&#34;http://www.developertesting.com/archives/month200705/20070504-000425.html&#34; target=&#34;_blank&#34;&gt;How much test coverage do you need?&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div style=&#34;border-left: 5px solid #edece4&#34;&gt;
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;Early one morning, a programmer asked the great master:&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;“I am ready to write some unit tests. What code coverage should I aim for?”&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;The great master replied:&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;“Don’t worry about coverage, just write some good tests.”&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;The programmer smiled, bowed, and left.&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;&amp;#8230;&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;Later that day, a second programmer asked the same question.&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;The great master pointed at a pot of boiling water and said:&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;“How many grains of rice should put in that pot?”&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;The programmer, looking puzzled, replied:&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;“How can I possibly tell you? It depends on how many people you need to feed, how hungry they are, what other food you are serving, how much rice you have available, and so on.”&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;“Exactly,” said the great master.&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;The second programmer smiled, bowed, and left.&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;&amp;#8230;&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;Toward the end of the day, a third programmer came and asked the same question about code coverage.&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;“Eighty percent and no less!” Replied the master in a stern voice, pounding his fist on the table.&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;The third programmer smiled, bowed, and left.&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;&amp;#8230;&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;After this last reply, a young apprentice approached the great master:&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;“Great master, today I overheard you answer the same question about code coverage with three different answers. Why?”&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;The great master stood up from his chair:&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;“Come get some fresh tea with me and let’s talk about it.”&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;After they filled their cups with smoking hot green tea, the great master began to answer:&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;“The first programmer is new and just getting started with testing. Right now he has a lot of code and no tests. He has a long way to go; focusing on code coverage at this time would be depressing and quite useless. He’s better off just getting used to writing and running some tests. He can worry about coverage later.”&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;“The second programmer, on the other hand, is quite experience both at programming and testing. When I replied by asking her how many grains of rice I should put in a pot, I helped her realize that the amount of testing necessary depends on a number of factors, and she knows those factors better than I do – it’s her code after all. There is no single, simple, answer, and she’s smart enough to handle the truth and work with that.”&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;“I see,” said the young apprentice, “but if there is no single simple answer, then why did you answer the third programmer ‘Eighty percent and no less’?”&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;The great master laughed so hard and loud that his belly, evidence that he drank more than just green tea, flopped up and down.&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;“The third programmer wants only simple answers – even when there are no simple answers … and then does not follow them anyway.”&lt;/em&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&#34;padding-left: 30px;&#34;&gt;
+    &lt;em&gt;The young apprentice and the grizzled great master finished drinking their tea in contemplative silence.&lt;/em&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;problemática&#34;&gt;Problemática&lt;/h2&gt;
+
+&lt;p&gt;El problema de exigir un code coverage mínimo a los programadores, de proveer una respuesta simple a la pregunta, hace que el foco de los tests se centre en llegar a ese número mágico que nos hemos sacado de la manga, cuando el foco debería estar orientado a pensar qué tests son realmente importantes.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Una cobertura baja nos indica si un código está mal testeado, pero una alta no nos dice que un código esté bien testeado. De la misma forma que un test en rojo nos dice que hay un error, pero uno en verde no nos asegura la ausencia de errores.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;La motivación para exigir un code coverage mínimo creo que sale de &lt;a title=&#34;Ni hombres lobo ni balas de plata&#34; href=&#34;http://blog.armesto.net/ni-hombres-lobo-ni-balas-de-plata/&#34; target=&#34;_blank&#34;&gt;la necesidad de buscar respuesta a preguntas complejas&lt;/a&gt; del desarrollo de software. Centrándonos en llegar al mínimo de cobertura de código, puede hacer que un comportamiento del programa se nos escape e introduzcamos un bug en el sistema, porque estábamos demasiado ocupados escribiendo tests sin valor para pasar por las líneas que nos exigían.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusión&#34;&gt;Conclusión&lt;/h2&gt;
+
+&lt;p&gt;Escribir tests es lo mejor que puedes hacer, y soy un gran defensor de utilizar TDD, pero como dijo Kent Beck en su &lt;a title=&#34;Kent Beck on code coverage&#34; href=&#34;http://stackoverflow.com/a/153565/563072&#34; target=&#34;_blank&#34;&gt;famosísima respuesta de Stack Overflow&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Me pagan por escribir código que funciona, no tests.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Tener una alta de cobertura no es un objetivo a tener, sino que es una consecuencia de haber pensado bien en el problema que estamos solventando y en los comportamientos que son interesantes para testear. Los que no lo sean, no tenemos por qué testearlos.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Yo no soy DHH. Long live TDD</title>
+      <link>http://fiunchinho.github.io/blog/yo-no-soy-dhh-long-live-tdd/</link>
+      <pubDate>Thu, 24 Apr 2014 00:35:31 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/yo-no-soy-dhh-long-live-tdd/</guid>
+      <description>&lt;p&gt;DHH es un gran programador, creador de algo como &lt;a title=&#34;Rails&#34; href=&#34;http://rubyonrails.org/&#34; target=&#34;_blank&#34;&gt;Rails&lt;/a&gt;, framework que quedará en la historia de la programación web. Hoy, él, ha sido noticia por escribir &lt;a title=&#34;TDD is dead&#34; href=&#34;http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html&#34; target=&#34;_blank&#34;&gt;un post titulado &amp;#8220;TDD is dead&amp;#8221;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Quizá DHH está en lo cierto diciendo que TDD es algo que está muerto, que es momento de seguir hacia adelante y dejarlo atrás. Como cuando crecemos y dejamos de utilizar los &lt;a title=&#34;ruedines de bici&#34; href=&#34;http://1.bp.blogspot.com/_95Yb4E_y8Cs/S_HClbzs9YI/AAAAAAAADVs/iiwdG-vqq3Y/s1600/orbea-bicicleta-kids-atlantis-14.jpg&#34; target=&#34;_blank&#34;&gt;ruedines de la bicicleta&lt;/a&gt;: es algo para niños pequeños, pero de mayores ya no nos hacen falta. Quizá tiene razón.&lt;/p&gt;
+
+&lt;p&gt;Si eres lo suficientemente experto, entonces quizá ya no tiene sentido. Porque para mí TDD es eso: unos ruedines para programar que me ayudan a conseguir un mejor código. Si fuese capaz de escribir el mejor código posible a la primera, que siguiese los principios SOLID, que fuese auto explicativo, etc., entonces yo tampoco haría TDD.  &lt;strong&gt;¿Para qué molestarme?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Si me saliese a la primera, no necesitaría refactorizar muy frecuentemente y tener un unit testing que me avise cuando he roto algo. No me haría falta ese loop de feedback tan corto.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;no-todos-somos-dhh&#34;&gt;No todos somos DHH&lt;/h2&gt;
+
+&lt;p&gt;El problema es que poca gente tiene la capacidad de hacerlo así de bien siempre. Sobre todo porque normalmente programamos cosas que nunca antes hemos programado. Si estoy haciendo algo que ya hice con anterioridad, quizá no es tan importante seguir un TDD estricto. Ahí tomaré atajos.&lt;/p&gt;
+
+&lt;p&gt;Pero si lo que estoy haciendo es completamente nuevo y no sé por donde atacarlo, créeme que haré TDD sin dudarlo, &lt;strong&gt;siguiendo todos y cada uno de los pasos&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Como la mayoría de la gente no tiene esa capacidad que decía antes, la metedura de pata del post de DHH me parece mayúscula. Me lo parece porque no solo dice que TDD no es para él, sino que anima a la gente a no utilizarlo, y deja entrever que hará cambios en rails para animar a la gente a hacer menos unit testings y más tests de otro tipo.&lt;/p&gt;
+
+&lt;p&gt;Teniendo en cuenta su posición de lider en la comunidad, me parece una temeridad por su parte. Está invitando a la gente a que rompa algo tan establecido y aprobado como la &lt;a title=&#34;Testing Pyramid&#34; href=&#34;http://martinfowler.com/bliki/TestPyramid.html&#34; target=&#34;_blank&#34;&gt;pirámide de testing&lt;/a&gt;, basándose en que no han sido tests útiles para testear aplicaciones basadas en rails. Un vistazo rápido a las charlas de las conferencias de Ruby de los últimos años y vemos como hay un tema recurrente en todas ellas: &lt;a title=&#34;Deconstructing the framework&#34; href=&#34;https://www.youtube.com/watch?v=iUe6tacW3JE&#34; target=&#34;_blank&#34;&gt;cómo escapar de Rails&lt;/a&gt;. Bien sea por hacer &lt;a title=&#34;Fast tests&#34; href=&#34;https://www.youtube.com/watch?v=bNn6M2vqxHE&#34; target=&#34;_blank&#34;&gt;tests más rápidos&lt;/a&gt; y tener feedback antes; o porque los modelos de mi aplicación no &lt;a title=&#34;ActiveRecord&#34; href=&#34;https://www.youtube.com/watch?v=yuh9COzp5vo&#34; target=&#34;_blank&#34;&gt;estén entre mezclados con el sistema de persistencia&lt;/a&gt;; o porque quiero tener a&lt;a title=&#34;Hexagonal Rails&#34; href=&#34;https://www.youtube.com/watch?v=CGN4RFkhH2M&#34; target=&#34;_blank&#34;&gt;rquitecturas que me permitan intercambiar componentes fácilmente&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Siempre lo que se busca es escapar de Rails, minimizar la dependencia con el framework. Los unit testings son costosos de hacer cuando el framework está en el medio. Por eso no le han sido útiles: porque su framework no permitía que lo fuesen. La solución, obviamente, no es dejar de hacerlos, sino arreglar el framework.&lt;/p&gt;
+
+&lt;blockquote class=&#34;twitter-tweet&#34; width=&#34;550&#34;&gt;
+  &lt;p&gt;
+    Sit-ups are dead. They don’t work when I eat all this sugar and take on all this severe stress. Long live gastric bypass surgery.
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    &amp;mdash; ☕ J. B. Rainsberger (@jbrains) &lt;a href=&#34;https://twitter.com/jbrains/statuses/458983164502093824&#34;&gt;April 23, 2014&lt;/a&gt;
+  &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;el-dogma&#34;&gt;El Dogma&lt;/h2&gt;
+
+&lt;p&gt;De todas formas sí que comparto con él una cosa, y es el nivel de dogma que TDD ha alcanzado en los últimos años. Personas como Uncle Bob, cuando hablan de TDD, se ponen una sotana encima para predicar la palabra sagrada. Uncle Bob ha sido capaz de convertir la práctica de TDD en una religión.&lt;/p&gt;
+
+&lt;div style=&#34;width: 213px&#34; class=&#34;wp-caption alignleft&#34;&gt;
+  &lt;img alt=&#34;Uncle Bob, el predicador&#34; src=&#34;http://blogs.msdn.com/blogfiles/cdndevs/WindowsLiveWriter/CraftsmanshipandEthicsUncleBobsKeynote_E0E9/uncle_bob_martin_3.jpg&#34; width=&#34;203&#34; height=&#34;214&#34; /&gt;
+  
+  &lt;p class=&#34;wp-caption-text&#34;&gt;
+    Uncle Bob, el predicador de Texas
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Es una religión porque al igual que las religiones, el TDD de Uncle Bob promete la salvación eterna si cumples con los mandamientos (&lt;a title=&#34;3 rules of TDD&#34; href=&#34;http://butunclebob.com/ArticleS.UncleBob.TheThreeRulesOfTdd&#34; target=&#34;_blank&#34;&gt;3 en el caso del TDD&lt;/a&gt;). Pero no solo eso, sino que también asegura el castigo eterno para aquellos que no lo hagan. Eso es lo que hace cuando alude al poco profesionalismo de la gente que no lo practica. Está señalando a los herejes.&lt;/p&gt;
+
+&lt;p&gt;En mi opinión, &lt;strong&gt;hacer TDD es una herramienta más&lt;/strong&gt;. Una herramienta casi imprescindible para mi, pero una herramienta al fin y al cabo. A alguien que utilizase el bloc de notas para programar le recomendaría que probase Sublime o PHPStorm. Al igual que le recomendaría TDD si no lo utiliza. En ambos casos creo que esa persona será más productiva y hará mejor código. Por tanto será un programador más rentable. ¿Quiere decir esto que no se puede ser rentable si no se usa TDD? Claro que no, al igual que también puedes ser un crack en el bloc de notas.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Los defensores de TDD también debemos hacer auto-crítica y pensar en si la forma que elegimos para comunicar las bondades de TDD es la más correcta.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;conclusión&#34;&gt;&lt;strong&gt;Conclusión&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;Para mi su post de hoy ha sido una gran metedura de pata. Los unit testings aportan muchísimo valor a la hora de detectar errores, y el TDD es una de las mejores herramientas para que nuestro diseño sea mejor.&lt;/p&gt;
+
+&lt;p&gt;Yo no soy DHH. No he inventado Rails ni soy el CTO de &lt;a title=&#34;Basecamp&#34; href=&#34;https://basecamp.com/&#34; target=&#34;_blank&#34;&gt;una gran compañía&lt;/a&gt;. Yo seguiré utilizando TDD para que me ayude a hacer el mejor código posible.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Caminante no hay camino, se hace camino al andar</title>
+      <link>http://fiunchinho.github.io/blog/caminante-no-hay-camino-se-hace-camino-al-andar/</link>
+      <pubDate>Sun, 12 Jan 2014 17:54:18 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/caminante-no-hay-camino-se-hace-camino-al-andar/</guid>
+      <description>&lt;p&gt;Llevo 3 años enseñando buenas prácticas en el desarrollo de software entre &lt;a title=&#34;Softonic Internship&#34; href=&#34;http://careers.en.softonic.com/internship-program/&#34; target=&#34;_blank&#34;&gt;el internship de Softonic&lt;/a&gt; y las colaboraciones esporádicas con la universidad, y algo que he aprendido de todo esto es que &lt;strong&gt;es muy difícil&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Es difícil explicarle a alguien que la duplicación es mala si no ha sufrido las consecuencias en sus carnes. Es complicado decirle que no abuse de la herencia entre clases si no se ha visto incapaz de cambiar su código por culpa de esto.&lt;/p&gt;
+
+&lt;p&gt;Es decir, podemos enseñar buenas prácticas a estudiantes, decirles que hagan esto y aquello, o que eviten eso de allí, pero &lt;strong&gt;no lo interiorizarán de verdad hasta que no vean claras las consecuencias&lt;/strong&gt;. Podemos explicarles los beneficios, los pros y los contras de una decisión y lo memorizarán. Pero no lo entenderán del todo y lo dominarán hasta que no lo sufran y se digan a sí mismos: “mierda”.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Igual que un piloto o un soldado pueden aprender su oficio con los libros o simuladores, no se convertirán en seniors en su profesión hasta que no lo hagan de verdad.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Para muchos, mantener una pieza de software durante un par de meses será el tiempo más largo que hayan tenido que mantener algo&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;En &lt;a title=&#34;Softonic Internship&#34; href=&#34;http://careers.en.softonic.com/internship-program/&#34; target=&#34;_blank&#34;&gt;el internship de Softonic&lt;/a&gt; enseñamos desarrollo de software durante 3 meses a estudiantes que estén terminando la carrera. Es un curso intensivo donde se ven muchas cosas. Es poco tiempo, pero para intentar que vayan ganando horas de vuelo, disparos en el campo de batalla, desde el principio tienen que desarrollar su propio framework desde cero. Y ese es el framework que utilizarán hasta el final del curso. Cuando nuevas funcionalidades se vayan pidiendo, verán si ciertas decisiones que han tomado les han ayudado o perjudicado y cuan costoso es de modificar.&lt;/p&gt;
+
+&lt;p&gt;Para muchos, mantener una pieza de software durante un par de meses será el tiempo más largo que hayan tenido que mantener algo. &lt;strong&gt;Es en el mantenimiento donde se ponen de manifiesto los pros y los contras que se explican en la teoría del curso&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Si usásemos un framework open source existente o diésemos una solución igual para todos, se quedarían sin aprender esto. Y creo que es primordial en el camino para convertirse en un programador senior. Porque son los seniors los que tienen suficientes horas de vuelo como para, con el libro en la mano, saber cuando pueden saltarse las reglas para hacer mejor software.&lt;/p&gt;
+
+&lt;p&gt;Los libros, los vídeos y los cursos son recursos muy buenos para aprender a programar. Pero estos son solo la semilla para que luego podamos crecer. &lt;strong&gt;No sirve de nada si no salimos ahí fuera e intentamos solventar problemas reales&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;¿Quieres aprender a programar? Construye algo que dure en el tiempo, compártelo con los demás y utilízalo.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>¿Qué es el versionamiento semántico y por qué es importante?</title>
+      <link>http://fiunchinho.github.io/blog/que-es-el-versionamiento-semantico-y-por-que-es-importante/</link>
+      <pubDate>Sat, 23 Nov 2013 18:02:29 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/que-es-el-versionamiento-semantico-y-por-que-es-importante/</guid>
+      <description>&lt;p&gt;Cuando decides utilizar un código que no es tuyo como puede ser un framework o una librería, una de las cosas de las que tienes que preocuparte es de estar al día con las últimas versiones que vayan sacando. No solo porque quizá incluyan cosas que te puedan interesar, si no porque puede que la última versión del framework en el que acabas de basar toda tu aplicación no sea compatible con código de versiones anteriores.&lt;/p&gt;
+
+&lt;p&gt;Aquí nacen dos problemas del mundo del software. Uno, para el consumidor de ese código, que necesita una forma de saber si la última versión de una herramienta es un cambio absoluto del comportamiento o solo arregla unos fallos menores. Y dos, para el creador de código, que necesita de una manera de comunicar a sus usuarios la naturaleza y el alcance de la última versión que va a publicar.&lt;/p&gt;
+
+&lt;p&gt;Para esto se inventó lo que conocemos a día de hoy como &lt;a title=&#34;Semantic Versioning&#34; href=&#34;http://semver.org/&#34; target=&#34;_blank&#34;&gt;versionamiento semántico, o semantic versioning&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;distintos-tipos-de-versiones&#34;&gt;Distintos tipos de versiones&lt;/h2&gt;
+
+&lt;p&gt;El versionamiento semántico es un convenio o estándar a la hora de definir la versión de tu código, dependiendo de la naturaleza del cambio que estás introduciendo. De tal forma, se identifican 3 tipos de cambios:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Major&lt;/strong&gt;: Cambio drástico en el software. No es compatible con código hecho en versiones anteriores.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Minor&lt;/strong&gt;: Cambio que añade alguna característica nueva al software o modifica alguna ya existente, pero que sigue siendo compatible con código existente. También cuando marcamos algo como obsoleto.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Patch&lt;/strong&gt;: Cuando arreglamos un bug siendo el cambio retrocompatible.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;De esta forma, tenemos un lenguaje común entre desarrolladores y consumidores a la hora de hablar de versiones.&lt;/p&gt;
+
+&lt;h2 id=&#34;cómo-se-marca-una-versión-como-major-minor-o-patch&#34;&gt;¿Cómo se marca una versión como major, minor o patch?&lt;/h2&gt;
+
+&lt;p&gt;Cada vez que enviemos código al repositorio crearemos un nuevo tag siguiendo el convenio semántico, dependiendo de los cambios introducidos. El tag contendrá la información, separando las versiones de cada tipo por puntos, de la forma&lt;strong&gt;major&lt;/strong&gt;.&lt;strong&gt;minor&lt;/strong&gt;.&lt;strong&gt;patch&lt;/strong&gt;. Esta versión en concreto, el tag que lo representa, &lt;strong&gt;no puede ser cambiado jamás&lt;/strong&gt;, para que si alguien depende de esa versión en particular, pueda seguir haciéndolo sin problemas.&lt;/p&gt;
+
+&lt;p&gt;Si el framework o librería que yo utilizo sigue el versionamiento semántico a rajatabla, sé que &lt;strong&gt;puedo actualizar sin miedo&lt;/strong&gt; todos las versiones marcadas como patches o minor porque no romperán mi código. Yo podría actualizar de la versión 5.3.3 a la 5.3.4 o incluso 5.4.0, porque solo estarían incrementando las versiones minor y patch, que son compatibles con código existente.&lt;/p&gt;
+
+&lt;p&gt;Si por el contrario pasase de la versión 1.4 a la versión 2.0, &lt;strong&gt;tendría que tener cuidado&lt;/strong&gt; porque seguramente habría muchas cosas que dejarían de funcionar: ha cambiado la major.&lt;/p&gt;
+
+&lt;h2 id=&#34;identificadores-de-estabilidad&#34;&gt;Identificadores de estabilidad&lt;/h2&gt;
+
+&lt;p&gt;Además de poder definir los cambios en el código como major, minor o patch, se suelen añadir unos identificadores que ayudan a marcar versiones específicas que quieres diferenciar, &lt;strong&gt;indicando la estabilidad de esa versión&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Por ejemplo, tienes tu aplicación a la versión 1.4.6 pero decides empezar el desarrollo de la próxima gran versión, la 2. Entonces los primeros desarrollos en esa versión nueva irán a la 2.0.0, pero como todavía estás empezando y probando cosas, podrías ponerle un identificador que le dijese a la gente &lt;strong&gt;la estabilidad de esa versión&lt;/strong&gt;. Tu versión quedaría en algo como &lt;strong&gt;2.0.0-alpha,&lt;/strong&gt; por ejemplo, y la gente sabría que es una versión _alpha_ no muy estable.&lt;/p&gt;
+
+&lt;p&gt;Según fueses avanzando en el desarrollo, llegarías a una versión beta la cual marcarías por ejemplo como &lt;strong&gt;2.1.3-beta&lt;/strong&gt;. Así hasta que todo estuviese listo para publicarse, y marcases una versión como candidata para ser publicada como &lt;strong&gt;2.1.5-rc1&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Si dos versiones iguales tienen distinto identificador, da igual: &lt;strong&gt;se consideran iguales a todos los efectos&lt;/strong&gt;. Esto nos permite ir actualizando la estabilidad de una versión, pudiéndola pasar de _alpha_ a _beta_ o incluso a &lt;em&gt;release candidate&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;También por convenio, encontrarás otro identificador conocido como &lt;strong&gt;dev-master&lt;/strong&gt;. Este identificador apunta a la última revisión enviada al repositorio, que no tiene por qué ser la última estable. Si dependes en esta versión estarás al día con todos los últimos cambios, pero te arriesgas a recibir cambios no retrocompatibles.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusión&#34;&gt;Conclusión&lt;/h2&gt;
+
+&lt;p&gt;El &lt;a title=&#34;Semantic Versioning&#34; href=&#34;http://semver.org/lang/es/&#34; target=&#34;_blank&#34;&gt;versionamiento semántico&lt;/a&gt; es un estándar de facto y deberías conocerlo. Si estás en el mundillo PHP, &lt;a title=&#34;Composer&#34; href=&#34;http://getcomposer.org/&#34; target=&#34;_blank&#34;&gt;Composer&lt;/a&gt; se basa en él: las dependencias que especificas en el archivo _composer.json_ deberían tener en cuenta lo visto en este artículo.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ni hombres lobo ni balas de plata</title>
+      <link>http://fiunchinho.github.io/blog/ni-hombres-lobo-ni-balas-de-plata/</link>
+      <pubDate>Sat, 26 Oct 2013 17:56:47 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/ni-hombres-lobo-ni-balas-de-plata/</guid>
+      <description>&lt;p&gt;Durante años, programadores de todos los lenguajes han buscando sin descanso la respuesta a todos sus problemas. Una metodología, un principio. Algo que termine de un plumazo con las complicaciones a la hora de programar. A esta respuesta se le llama comúnmente &lt;strong&gt;la bala de plata&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Muchas veces es costoso tener que decidir si este principio es mejor que ese otro; o si es mejor aplicar tal patrón de diseño en vez de otro distinto. Os suenan cosas como:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;&amp;#8211; Siempre tienes que tener 100% de code coverage.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;&amp;#8211; Nunca deberías utilizar un ORM.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;La buena noticia que quiero compartir hoy contigo es que no tienes por qué elegir. No tiene sentido hacerlo. ‘X’ no es mejor que ‘Y.’ Pero tampoco ‘Y’ es mejor que ‘X’.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;En la programación todas las decisiones son un &lt;strong&gt;&lt;em&gt;tradeoff&lt;/em&gt;&lt;/strong&gt;: hay pros y hay contras, y es tu responsabilidad conocerlas y decidir en consecuencia. No elegir algo porque alguien lo haya dicho, o peor aún, porque sí.&lt;/p&gt;
+
+&lt;p&gt;No esperes a que alguien te diga cómo se resuelve algo. Pregúntale qué ganas haciéndolo de esa forma, y a qué renuncias haciéndolo. Entiéndelo y entonces, solo entonces, decide.&lt;/p&gt;
+
+&lt;p&gt;Somos vagos por naturaleza. Por eso seguimos a gurús en Twitter que nos digan cuál es el mejor framework; evangelistas que nos confiesen cuál la mejor metodología; o peor aún, ninjas y jedis que nos enseñen a usar la fuerza.&lt;/p&gt;
+
+&lt;p&gt;Como buen gallego, para mí la respuesta a todo este tipo de preguntas es siempre la misma.&lt;/p&gt;
+
+&lt;p&gt;¿Debería utilizar siempre Domain Driven Design? Depende.&lt;/p&gt;
+
+&lt;p&gt;¿Debería testear métodos privados o protegidos en mis tests? Por regla general no, pero depende.&lt;/p&gt;
+
+&lt;p&gt;¿Debería hacer TDD siempre? Depende.&lt;/p&gt;
+
+&lt;p&gt;Es muy fácil generalizar. Es como el teórico del carnet de conducir: decir SIEMPRE o NUNCA &lt;strong&gt;es muy arriesgado&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Divulgadores como &lt;a title=&#34;Robert C. Martin&#34; href=&#34;https://twitter.com/unclebobmartin&#34; target=&#34;_blank&#34;&gt;Robert C. Martin&lt;/a&gt;, a través de su mensaje al más puro estilo predicador católico americano, consiguen que muchas veces tomemos su mensaje como leyes absolutas indiscutibles que deben aplicarse siempre. Como balas de plata.&lt;/p&gt;
+
+&lt;p&gt;En el caso de Robert C. Martin, es curioso como el mayor defensor del Test Driven Development ha tenido que escribir &lt;a title=&#34;The Pragmatics of TDD&#34; href=&#34;http://blog.8thlight.com/uncle-bob/2013/03/06/ThePragmaticsOfTDD.html&#34; target=&#34;_blank&#34;&gt;un post explicando los casos en los que no lo utiliza&lt;/a&gt;. Y no hay ningún problema con ello.&lt;/p&gt;
+
+&lt;p&gt;El problema es poner el piloto automático aplicando todo lo que se consideran buenas prácticas sin pararse a pensar si lo es para el problema concreto que tienes delante. Pero claro, &lt;strong&gt;nos es mucho más cómodo seguir unas reglas que otros nos dan, antes que pensar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Cosas tan aparentemente inocentes como el &lt;a title=&#34;Don&#39;t Repeat Yourself&#34; href=&#34;http://c2.com/cgi/wiki?DontRepeatYourself&#34; target=&#34;_blank&#34;&gt;DRY (Don’t Repeat Yourself)&lt;/a&gt;, pueden tener malas consecuencias si lo aplicas ciegamente.&lt;/p&gt;
+
+&lt;p&gt;Los únicos principios que pueden parecer infalibles son los principios SOLID, pero he llegado a encontrarme casos donde la “Dependency Inversion” había alcanzado un nivel de locura que no era normal. Como cuando aprendes un patrón de diseño nuevo e intentas aplicarlo PARA TODO.&lt;/p&gt;
+
+&lt;p&gt;En definitiva: por mucho que nos cueste, todavía tenemos que seguir pensando. Aprendamos qué beneficios y desventajas tiene cada práctica y decidamos. No busquemos balas de plata.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Sin refactoring no es TDD</title>
+      <link>http://fiunchinho.github.io/blog/sin-refactoring-no-es-tdd/</link>
+      <pubDate>Fri, 11 Oct 2013 17:57:56 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/sin-refactoring-no-es-tdd/</guid>
+      <description>&lt;p&gt;Parece evidente, ¿verdad? Cuando explicas &lt;a title=&#34;TDD&#34; href=&#34;http://c2.com/cgi/wiki?TestDrivenDevelopment&#34; target=&#34;_blank&#34;&gt;TDD (Test Driven Development)&lt;/a&gt;, explicas que tiene 3 fases: rojo, verde y refactoring. Sin embargo, parece que son las 2 primeras las que entran con mayor facilidad en la mente del programador.&lt;/p&gt;
+
+&lt;p&gt;Presentas la kata y allí van disparados a escribir su primer test para estar en rojo. Una vez allí, _baby step_ en el código con lo mínimo indispensable para pasar el test y ponernos en verde. Es entonces cuando deberíamos pensar en el refactoring, pero normalmente es difícil encontrar cosas a refactorizar en nuestro (poquito) código en las primeras iteraciones, así que pasamos a rojo otra vez escribiendo un nuevo test.&lt;/p&gt;
+
+&lt;p&gt;Este proceso se repite de forma rápida durante los primeros tests, y con la excusa de que con pocos tests es difícil encontrar duplicaciones o cosas a mejorar en el código que hace pasar estos tests, poco a poco entramos en el modo semárofo del rojo-verde.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Los más aventajados del lugar se aventuran a mejorar alguna cosilla cuando están en verde, pero suele ser algún cambio pequeño sin importancia, mientras la casuística de if’s y else’s sigue creciendo sin que nadie haga nada por evitarlo. Se olvidan los principios &lt;a title=&#34;SOLID&#34; href=&#34;http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod&#34; target=&#34;_blank&#34;&gt;SOLID&lt;/a&gt;, como si fuesen principios teóricos que poco o nada tienen que ver con la práctica. “La teoría no es lo mío, yo soy más práctico”: ¿os suena?&lt;/p&gt;
+
+&lt;p&gt;Como facilitador, solo te queda realizar las preguntas adecuadas:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;¿si quiero ampliar el funcionamiento con una &lt;strong&gt;nueva&lt;/strong&gt; regla de negocio, tendré que cambiar mi clase? ¿cómo de &lt;strong&gt;costoso&lt;/strong&gt; será el cambio?&lt;/li&gt;
+&lt;li&gt;¿está ese comportamiento bien &lt;strong&gt;encapsulado&lt;/strong&gt;? ¿hay suficiente &lt;strong&gt;abstracción&lt;/strong&gt;?&lt;/li&gt;
+&lt;li&gt;¿hace esta clase una y solo una cosa?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Es sobretodo con la primera pregunta con la que la gente se da cuenta de los problemas de su diseño actual, quizá porque es la pregunta más “práctica”, por así decirlo. En el fondo son los mismos principios, pero forzando a la gente a pensar en un caso práctico, por ejemplo dando tú mismo nuevas e imprevistas reglas de negocio, la gente entiende por qué es mejor seguir &lt;a title=&#34;SOLID&#34; href=&#34;http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod&#34; target=&#34;_blank&#34;&gt;SOLID&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Estas preguntas hay que realizarlas desde muy temprano. Si la gente va posponiendo el refactoring, cada vez es más difícil cambiar el diseño actual porque cada vez habrá más reglas de negocio en el código, y cada vez habrá más tests que quizá haya que retocar, si el refactoring más que un simple refactoring.&lt;/p&gt;
+
+&lt;p&gt;También se tiende a olvidar que en ese momento tenemos un conocimiento grande del dominio, y podemos plasmar las reglas del dominio de una forma que ahora entendemos, pero quizá no entendamos en el futuro. Justo ahora es el mejor momento para dar nombres que expresen la intención del código. Por ejemplo: introducir condiciones en métodos o variables con nombres expresivos.&lt;/p&gt;
+
+&lt;p&gt;Una de las grandes ventajas del TDD, es que el refactoring está dentro del ciclo de desarrollo. Si no lo hacemos frecuentemente, se pierde el efecto.&lt;/p&gt;
+
+&lt;p&gt;Sin refactoring no es TDD.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

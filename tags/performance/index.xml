@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jose Armesto&#39;s Blog</title>
+    <link>http://fiunchinho.github.io/blog/tags/performance/index.xml</link>
+    <description>Recent content on Jose Armesto&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es-es</language>
+    <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
+    <atom:link href="http://fiunchinho.github.io/blog/tags/performance/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Administrar recursos frontend con Assetic (sin Symfony2)</title>
+      <link>http://fiunchinho.github.io/blog/administrar-recursos-frontend-con-assetic-sin-symfony2/</link>
+      <pubDate>Sun, 19 Jan 2014 18:12:29 +0000</pubDate>
+      
+      <guid>http://fiunchinho.github.io/blog/administrar-recursos-frontend-con-assetic-sin-symfony2/</guid>
+      <description>&lt;p&gt;Buscando mejorar el rendimiento de nuestras aplicaciones web, muchas veces nos centramos en el backend sin prestar suficiente atención al frontend. Una de las mejoras que podemos aplicar en la parte frontal de nuestras webs para que vayan más rápidas es reducir el número de peticiones HTTP que son necesarias para cargar la web. Para ello podemos, por ejemplo, combinar varios archivos CSS o JS en uno solo para que, aunque tengamos que cargar muchos recursos, solo una petición HTTP sea necesaria.&lt;/p&gt;
+
+&lt;p&gt;Hacer esto a mano puede ser tedioso y llevar a problemas, por tanto una buena solución sería preguntarnos si alguien ya ha solucionado este problema antes. Como tantas otras veces la respuesta es que sí.&lt;/p&gt;
+
+&lt;p&gt;Hoy vengo a hablaros de &lt;a title=&#34;Assetic&#34; href=&#34;https://github.com/kriswallsmith/assetic&#34; target=&#34;_blank&#34;&gt;Assetic&lt;/a&gt;, una herramienta que nos permite administrar fácilmente los recursos de la web, como archivos CSS o Javascript, para combinarlos, minificarlos u optimizarlos.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;El problema de &lt;a title=&#34;Assetic&#34; href=&#34;https://github.com/kriswallsmith/assetic&#34; target=&#34;_blank&#34;&gt;Assetic&lt;/a&gt; es que, aunque encontrarás muchos ejemplos y artículos en internet, el 99% de ellos son utilizando &lt;a title=&#34;Symfony&#34; href=&#34;http://symfony.com/&#34; target=&#34;_blank&#34;&gt;Symfony2&lt;/a&gt;. Mi objetivo con este post es explicar assetic para que puedas utilizarlo en cualquier sitio, independientemente del framework elegido.&lt;/p&gt;
+
+&lt;h2 id=&#34;vocabulario-básico&#34;&gt;Vocabulario básico&lt;/h2&gt;
+
+&lt;p&gt;Vamos a definir un vocabulario básico que nos puede ayudar cuando busquemos ayuda en internet o intentemos entender el funcionamiento de assetic:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Asset&lt;/strong&gt;: Un recurso estático como un archivo CSS, un fichero Javascript o una imagen. Hay 2 clases que nos permitirán describir assets: &lt;em&gt;FileAsset&lt;/em&gt;, que es un archivo normal; y &lt;em&gt;GlobAsset&lt;/em&gt;, que representa un directorio que contiene varios archivos que queramos cargar.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Filter&lt;/strong&gt;: Un filtro que transforma de alguna forma el contenido del fichero, como por ejemplo minificándolo, o traduciendo de SASS a CSS. Hay muchos filtros distintos.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AssetManager&lt;/strong&gt;: Un administrador de los assets. Nos permitirá ponerle nombre, y crear grupos nombrando a otros assets declarados anteriormente. El asset al que le ponemos nombre puede ser un &lt;em&gt;FileAsset&lt;/em&gt;, _GlobAsset_ o &lt;em&gt;AssetCollection&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AssetCollection&lt;/strong&gt;: Un conjunto de assets, es decir, varios _FileAsset_ o &lt;em&gt;GlobAsset&lt;/em&gt;. &lt;strong&gt;Puede contener otras colecciones&lt;/strong&gt;. El constructor acepta dos arrays, uno con los diferentes assets que componen el &lt;em&gt;collection&lt;/em&gt;, y otro con el conjunto de _filters_ que aplicaremos.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;FilterManager&lt;/strong&gt;: Lo mismo que el _AssetManager_ pero para filtros.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AssetFactory&lt;/strong&gt;: Una clase que nos facilitará el trabajo de conectar todo lo que hemos visto hasta ahora, pasándole un _AssetManager_ y un &lt;em&gt;FilterManager&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Formulae&lt;/strong&gt;: Lo que define a un asset: fichero/s y/o filtro/s utilizados para crearlo.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dump&lt;/strong&gt;: Generar el recurso especificado, pasándole los filters elegidos. Podemos utilizarlo para mostrar el contenido por pantalla de forma dinámica o para guardarlo en un fichero y servirlo de forma estática.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;instalación-de-assetic&#34;&gt;Instalación de Assetic&lt;/h2&gt;
+
+&lt;p&gt;Podemos instalar assetic &lt;a title=&#34;Assetic&#34; href=&#34;https://packagist.org/packages/kriswallsmith/assetic&#34; target=&#34;_blank&#34;&gt;a través de composer&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;sirviendo-contenido-dinámicamente&#34;&gt;Sirviendo contenido dinámicamente&lt;/h2&gt;
+
+&lt;p&gt;Vamos a realizar un ejemplo básico en el que vamos a coger todos los ficheros javascript de nuestro proyecto y vamos a hacer que assetic los combine en uno solo y los sirva dinámicamente, es decir, el resultado de combinarlos no lo guardará en disco,&lt;strong&gt;sino que tendremos una URL en nuestra aplicación que generará el javascript combinado&lt;/strong&gt;. Esa URL es la que utilizaríamos en nuestro HTML para incluir el javascript.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;require_once __DIR__.&#39;/../vendor/autoload.php&#39;;
+
+use Assetic\Asset\AssetCollection;
+use Assetic\Asset\GlobAsset;
+
+$js = new AssetCollection(array(
+ new GlobAsset( &#39;/var/www/my_project/web/js/*&#39; ),
+));
+
+// Vamos a mostrar código Javascript, por tanto
+// debemos especificárselo al navegador con la cabecera correspondiente
+header( &#39;Content-type: text/javascript&#39; );
+
+// Mostramos el código Javascript
+echo $js-&amp;gt;dump();&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Es nuestra labor crear una página/controlador/sección con este código y una ruta de nuestra web apuntando hacia ahí&lt;/strong&gt;. Si la visitamos, veremos por pantalla todo el código Javascript correspondiente a todos los archivos que había en la carpeta _/var/www/my_project/web/js/_ combinado en un solo archivo. Por tanto, en nuestro HTML podríamos cambiar todos los archivos javascript incluídos y dejar solo este, &lt;strong&gt;reduciendo el número de peticiones HTTP y mejorando la velocidad y rendimiento de la web&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;No es obligatorio utilizar _AssetCollection_ para esto, ya que podríamos haber utilizado directamente un _FileAsset_ o &lt;em&gt;GlobAsset&lt;/em&gt;, pero normalmente vamos a tener más de un archivo.&lt;/p&gt;
+
+&lt;p&gt;Si no queremos coger todos los archivos de una carpeta, sino solo algunos, tendríamos que hacer lo siguiente&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;require_once __DIR__.&#39;/../vendor/autoload.php&#39;;
+
+use Assetic\Asset\AssetCollection;
+use Assetic\Asset\FileAsset;
+use Assetic\Asset\GlobAsset;
+
+$js = new AssetCollection(array(
+ new FileAsset( &#39;/var/www/my_project/web/js/main.js&#39; ),
+ new FileAsset( &#39;/var/www/my_project/web/js/jquery.min.js&#39; ),
+ new GlobAsset( &#39;/var/www/my_project/web/js/bootstrap/*&#39; )
+));
+// Vamos a mostrar código Javascript, por tanto
+// debemos especificárselo al navegador con la cabecera correspondiente
+header( &#39;Content-type: text/javascript&#39; );
+
+// Mostramos el código Javascript
+echo $js-&amp;gt;dump();&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Si os fijáis en el output del javascript combinado que genera este código, salvo que el JS estuviese minificado de antes, no estará minificado ahora. En el caso de haber tenido coffeescript, esto no nos lo hubiese compilado a javascript. Para hacer este tipo de tareas tenemos que utilizar los filtros.&lt;/p&gt;
+
+&lt;h2 id=&#34;usando-filtros&#34;&gt;Usando filtros&lt;/h2&gt;
+
+&lt;p&gt;Los filtros nos van a permitir transformar el contenido de los asset que habíamos definido. Para definirlos tenemos distintos métodos. Podemos definir un determinado asset con un filtro específico si solo queremos que se aplique a ese en particular. Pero también podemos asignar filtros a un AssetCollection y que lo aplique a todos. Dependerá de qué es lo que queremos hacer.&lt;/p&gt;
+
+&lt;p&gt;En el siguiente ejemplo vamos a ver los dos casos. Un filtro particular para compilar de código LESS a CSS, y el &lt;a title=&#34;YUI&#34; href=&#34;http://yuilibrary.com/&#34; target=&#34;_blank&#34;&gt;compresor YUI&lt;/a&gt; para que minifique todos los assets de la colección.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;require_once __DIR__.&#39;/../vendor/autoload.php&#39;;
+
+use Assetic\Asset\AssetCollection;
+use Assetic\Asset\FileAsset;
+use Assetic\Asset\GlobAsset;
+use Assetic\Filter\LessFilter;
+use Assetic\Filter\Yui;
+
+$css = new AssetCollection(array(
+    new FileAsset(&#39;/path/to/src/styles.less&#39;, array(new LessFilter())),
+    new GlobAsset(&#39;/path/to/css/*&#39;),
+), array(
+    new Yui\CssCompressorFilter(&#39;/path/to/yuicompressor.jar&#39;),
+));
+
+header( &#39;Content-type: text/css&#39; );
+// this will echo CSS compiled by LESS and compressed by YUI
+echo $css-&amp;gt;dump();&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Creando un controlador con el código anterior, y una ruta apuntando a él, podríamos ir a nuestro código HTML y cambiar todas las peticiones de CSS en una sola hacia dicha ruta.&lt;/p&gt;
+
+&lt;p&gt;&lt;a title=&#34;Assetic Filters&#34; href=&#34;https://github.com/kriswallsmith/assetic#filters&#34; target=&#34;_blank&#34;&gt;La cantidad de filtros disponibles es enorme&lt;/a&gt; y salvo que quieras realizar algo extraño, encontrarás uno que hace lo que buscas. Recuerda que es probable que para utilizar estos filtros, tengas que instalar la herramienta en cuestión. Por ejemplo, para utilizar YUI como en mi ejemplo, tendrías que instalar YUI (en Ubuntu):&lt;/p&gt;
+
+&lt;pre&gt;sudo apt-get install yui-compressor&lt;/pre&gt;
+
+&lt;p&gt;Y &lt;strong&gt;el lugar de instalación es el que debes poner en el constructor del filtro&lt;/strong&gt;, para que sepa donde está el _jar_ ejecutable.&lt;/p&gt;
+
+&lt;h2 id=&#34;organizando-mejor-los-recursos&#34;&gt;Organizando mejor los recursos&lt;/h2&gt;
+
+&lt;p&gt;Los ejemplos que hemos visto están bien, pero en un proyecto más grande tendrás muchos recursos css o js que quieras cargar y la cosa puede complicarse.&lt;/p&gt;
+
+&lt;p&gt;&lt;a title=&#34;Assetic&#34; href=&#34;https://github.com/kriswallsmith/assetic&#34; target=&#34;_blank&#34;&gt;Assetic&lt;/a&gt; intenta hacernos la vida más fácil a través del _AssetManager_ y el &lt;em&gt;FilterManager&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;assetmanager&#34;&gt;AssetManager&lt;/h3&gt;
+
+&lt;p&gt;El _AssetManager_ es… bueno, eso, un administrador de assets. Básicamente podemos ponerle un nombre a cada asset definido. ¿Por qué es esto importante? Pues porque luego podemos hacer referencia a un asset definido con anterioridad, y el_AssetManager_ se encargará de que assetic no haga todo el trabajo sobre el mismo recurso dos veces.&lt;/p&gt;
+
+&lt;p&gt;Por ejemplo, si queremos cargar jQuery y además, un plugin de jQuery que necesita, obviamente, de jQuery.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;
+use Assetic\Asset\AssetCollection;
+use Assetic\Asset\FileAsset;
+use Assetic\AssetManager;
+use Assetic\Asset\AssetReference;
+
+$jquery = new FileAsset( &#39;/path/to/jquery.min.js&#39; );
+
+$am = new AssetManager();
+$am-&amp;gt;set( &#39;jquery&#39;, $jquery );
+
+$plugin1 = new AssetCollection( array(
+    new AssetReference( $am, &#39;jquery&#39; ),
+    new FileAsset( &#39;/path/to/jquery.plugin.js&#39; )
+));
+
+$plugin2 = new AssetCollection( array(
+    new AssetReference( $am, &#39;jquery&#39; ),
+    new FileAsset( &#39;/path/to/another/jquery.plugin.js&#39; )
+));
+
+$js = new AssetCollection( array(
+    $jquery,
+    $plugin1,
+    $plugin2
+));
+header( &#39;Content-type: text/javascript&#39; );
+echo $js-&amp;gt;dump();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;En el código anterior, aunque utilicemos jQuery varias veces, Assetic solo lo tratará una vez. Con este mecanismo podríamos generar distintos paquetes dependiendo de la sección de la web en la que estemos, cargando solo el Javascript necesario para esa sección, y assetic solo haría el trabajo una vez, aunque repitiésemos ficheros.&lt;/p&gt;
+
+&lt;h3 id=&#34;filtermanager&#34;&gt;FilterManager&lt;/h3&gt;
+
+&lt;p&gt;El _FilterManager_ es algo muy parecido al &lt;em&gt;AssetManager&lt;/em&gt;, pero para filtros. Simplemente damos de alta los filtros que estarán disponibles a utilizar luego cuando creemos assets con el factory.&lt;/p&gt;
+
+&lt;p&gt;Igual que con el &lt;em&gt;AssetManager&lt;/em&gt;, si Assetic detecta que vamos a aplicar el mismo filtro al mismo archivo, dos veces, solo lo hará una. Un poco abajo se ve el código necesario para utilizar el &lt;em&gt;FilterManager&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;assetfactory&#34;&gt;AssetFactory&lt;/h3&gt;
+
+&lt;p&gt;Para que todo esto sea más fácil de utilizar y no tengamos que andar creando y conectando todos estos objetos a mano, &lt;a title=&#34;Assetic&#34; href=&#34;https://github.com/kriswallsmith/assetic&#34; target=&#34;_blank&#34;&gt;Assetic&lt;/a&gt; tiene una clase llamada AssetFactory para generar assets de forma sencilla.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;require_once __DIR__.&#39;/../vendor/autoload.php&#39;;
+
+use Assetic\Asset\AssetFactory;
+use Assetic\Asset\FilterManager;
+use Assetic\Filter\Yui\CssCompressorFilter;
+use Assetic\Filter\Yui\JsCompressorFilter;
+
+$fm = new FilterManager();
+$fm-&amp;gt;set(&#39;yui_css&#39;,new CssCompressorFilter(&#39;/path/yuicompressor.jar&#39;));
+$fm-&amp;gt;set(&#39;yui_js&#39;,new JsCompressorFilter(&#39;/path/yuicompressor.jar&#39;));
+
+$factory = new AssetFactory( &#39;/path/doc_root&#39; );
+$factory-&amp;gt;setAssetManager( new AssetManager() );
+$factory-&amp;gt;setFilterManager( $fm );
+
+$css = $factory-&amp;gt;createAsset(
+    array(
+        &#39;css/style.css&#39;,
+        &#39;css/bootstrap/*.css&#39;, // css in &#34;/path/doc_root/css/bootstrap&#34;
+), array(
+        &#39;yui_css&#39; // filter through the filter manager&#39;s &#34;yui_css&#34;
+));
+
+header( &#39;Content-type: text/css&#39; );
+echo $css-&amp;gt;dump(); &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;La factory funciona de forma parecida a una &lt;em&gt;AssetCollection&lt;/em&gt;, ya que le pasamos un array de assets y otro de filtros. Como se basa en un _AssetManager_ y en un &lt;em&gt;FilterManager&lt;/em&gt;, todas las propiedades de estos se aplican al utilizar la factory.&lt;/p&gt;
+
+&lt;p&gt;Con respecto al &lt;em&gt;FilterManager&lt;/em&gt;, fíjate que hemos creado dos filtros, aunque luego solo estamos utilizando uno en el factory, el filtro llamado “_yui_css_“.&lt;/p&gt;
+
+&lt;h2 id=&#34;mejorando-la-velocidad-guardando-en-disco&#34;&gt;Mejorando la velocidad: guardando en disco&lt;/h2&gt;
+
+&lt;p&gt;Hasta aquí todo bien. El único problema es que cada vez que se visita la ruta correspondiente a un asset y se ejecuta la llamada al método &lt;em&gt;dump()&lt;/em&gt;, tiene que leer el contenido del disco, juntarlo y aplicar los filtros elegidos. Esto hará que la web cargue más lenta, con lo cual nuestro objetivo inicial de mejorar el rendimiento se va al traste.&lt;/p&gt;
+
+&lt;p&gt;Pero no sufras: todo tiene solución. En vez de generarlo cada vez, podríamos generarlo solo una vez y guardarlo en disco para que en las siguientes peticiones se sirva estáticamente la versión generada.&lt;/p&gt;
+
+&lt;p&gt;Para ello, &lt;a title=&#34;Assetic&#34; href=&#34;https://github.com/kriswallsmith/assetic&#34; target=&#34;_blank&#34;&gt;Assetic&lt;/a&gt; nos proporciona un _AssetWriter_ para escribir en el disco aquello que generemos.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;require_once __DIR__.&#39;/../vendor/autoload.php&#39;;
+
+use Assetic\Asset\AssetFactory;
+use Assetic\Asset\FilterManager;
+
+$css = $factory-&amp;gt;createAsset(
+    array(
+        &#39;css/style.css&#39;,
+        &#39;css/bootstrap/*.css&#39;, // css in &#34;/path/doc_root/css/bootstrap&#34;
+), array(
+        &#39;yui_css&#39; // filter through the filter manager&#39;s &#34;yui_css&#34;
+));
+
+$writer = new AssetWriter( &#39;/path/doc_root/generated&#39; );
+$writer-&amp;gt;writeAsset( $css );&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Tan solo le pedimos al writer que escriba en disco los assets que queramos. Si tenemos varios assets dentro de un &lt;em&gt;AssetManager&lt;/em&gt;, también podemos pasarle un _AssetManager_ y que automáticamente escriba en disco todos los assets configurados en el manager. Lo normal suele ser escribirlos en una carpeta aparte de archivos “compilados” o “generados”, pero eso ya depende de como te quieras organizar.&lt;/p&gt;
+
+&lt;p&gt;De esta forma, no serviríamos css y js de forma dinámica como estábamos viendo hasta ahora, es decir, no tendríamos una ruta que generase “al vuelo” el contenido. Por el contrario, cargaríamos un archivo normal del disco, archivo que generamos mediante el último código visto. Este código podemos ponerlo en un script PHP de consola que ejecutaremos manualmente cada vez que queramos re-escribir en el disco nuestros recursos, como, por ejemplo, &lt;strong&gt;cuando hacemos deploy de nuestra aplicación&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;El nombre que el fichero tendrá en el disco es generado automáticamente por Assetic, utilizando el hash &lt;strong&gt;SHA1&lt;/strong&gt;, basándose en los assets, los filtros y las opciones elegidas, de tal forma que si esto varía, el SHA1 variará y el nombre del fichero sería distinto, por lo que &lt;strong&gt;tendríamos que volver a guardarlo en el disco&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Si no nos interesa este comportamiento, Assetic también nos deja elegir el nombre final del archivo, pasándoselo en un array de opciones al factory.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code data-lang=&#34;php&#34;&gt;require_once __DIR__.&#39;/../vendor/autoload.php&#39;;
+
+use Assetic\Asset\AssetFactory;
+use Assetic\Asset\FilterManager;
+
+$css = $factory-&amp;gt;createAsset(
+    array(
+        &#39;css/style.css&#39;,
+        &#39;css/bootstrap/*.css&#39;, // css in &#34;/path/doc_root/css/bootstrap&#34;
+), array(
+        &#39;yui_css&#39; // filter through the filter manager&#39;s &#34;yui_css&#34;
+), array(
+        &#39;output&#39; =&amp;gt; &#39;my_awesome_css.css&#39;
+));
+
+$writer = new AssetWriter( &#39;/path/doc_root/generated&#39; );
+$writer-&amp;gt;writeAsset( $css );&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;conclusión&#34;&gt;Conclusión&lt;/h2&gt;
+
+&lt;p&gt;Con esta introducción creo que queda más claro qué es qué dentro de &lt;a title=&#34;Assetic&#34; href=&#34;https://github.com/kriswallsmith/assetic&#34; target=&#34;_blank&#34;&gt;Assetic&lt;/a&gt;, y cómo podríamos empezar a utilizarlo en &lt;strong&gt;una aplicación que no utilice Symfony2&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;En el siguiente post sobre Assetic, veremos algunos conceptos más avanzados como su integración con &lt;a title=&#34;Twig&#34; href=&#34;http://twig.sensiolabs.org/&#34; target=&#34;_blank&#34;&gt;Twig&lt;/a&gt;, o cache busting.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
