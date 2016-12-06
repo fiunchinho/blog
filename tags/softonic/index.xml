@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jose Armesto&#39;s Blog</title>
-    <link>http://fiunchinho.github.io/blog/tags/softonic/index.xml</link>
+    <link>https://fiunchinho.github.io/blog/tags/softonic/index.xml</link>
     <description>Recent content on Jose Armesto&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-es</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <atom:link href="http://fiunchinho.github.io/blog/tags/softonic/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://fiunchinho.github.io/blog/tags/softonic/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Caminante no hay camino, se hace camino al andar</title>
-      <link>http://fiunchinho.github.io/blog/caminante-no-hay-camino-se-hace-camino-al-andar/</link>
+      <link>https://fiunchinho.github.io/blog/caminante-no-hay-camino-se-hace-camino-al-andar/</link>
       <pubDate>Sun, 12 Jan 2014 17:54:18 +0000</pubDate>
       
-      <guid>http://fiunchinho.github.io/blog/caminante-no-hay-camino-se-hace-camino-al-andar/</guid>
+      <guid>https://fiunchinho.github.io/blog/caminante-no-hay-camino-se-hace-camino-al-andar/</guid>
       <description>&lt;p&gt;Llevo 3 años enseñando buenas prácticas en el desarrollo de software entre &lt;a title=&#34;Softonic Internship&#34; href=&#34;http://careers.en.softonic.com/internship-program/&#34; target=&#34;_blank&#34;&gt;el internship de Softonic&lt;/a&gt; y las colaboraciones esporádicas con la universidad, y algo que he aprendido de todo esto es que &lt;strong&gt;es muy difícil&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;Es difícil explicarle a alguien que la duplicación es mala si no ha sufrido las consecuencias en sus carnes. Es complicado decirle que no abuse de la herencia entre clases si no se ha visto incapaz de cambiar su código por culpa de esto.&lt;/p&gt;

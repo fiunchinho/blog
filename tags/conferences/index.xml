@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jose Armesto&#39;s Blog</title>
-    <link>http://fiunchinho.github.io/blog/tags/conferences/index.xml</link>
+    <link>https://fiunchinho.github.io/blog/tags/conferences/index.xml</link>
     <description>Recent content on Jose Armesto&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-es</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <atom:link href="http://fiunchinho.github.io/blog/tags/conferences/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://fiunchinho.github.io/blog/tags/conferences/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Codemotion 2016</title>
-      <link>http://fiunchinho.github.io/blog/codemotion-2016/</link>
+      <link>https://fiunchinho.github.io/blog/codemotion-2016/</link>
       <pubDate>Wed, 30 Nov 2016 20:48:31 +0000</pubDate>
       
-      <guid>http://fiunchinho.github.io/blog/codemotion-2016/</guid>
+      <guid>https://fiunchinho.github.io/blog/codemotion-2016/</guid>
       <description>&lt;p&gt;Ya sé que voy un poco tarde con el post hablando sobre cómo fue la Codemotion 2016, pero tenía ganas de compartir mi experiencia en la conferencia.&lt;/p&gt;
 
 &lt;p&gt;Vaya por delante que es dificilísimo organizar una conferencia a nivel nacional, y que hacerlo durante varios años seguidos, tiene mucho mérito. Pero también es importante compartir aquellas cosas que son mejorables para, entre todos, conseguir eventos de mejor calidad en nuestro país. Así que sin más dilación, compartiré con vosotros mi experiencia en la Codemotion 2016, tanto desde el punto de vista de asistente, como desde el punto de vista de ponente.&lt;/p&gt;

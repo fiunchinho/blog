@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jose Armesto&#39;s Blog</title>
-    <link>http://fiunchinho.github.io/blog/categories/opinion/index.xml</link>
+    <link>https://fiunchinho.github.io/blog/categories/opinion/index.xml</link>
     <description>Recent content on Jose Armesto&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-es</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <atom:link href="http://fiunchinho.github.io/blog/categories/opinion/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://fiunchinho.github.io/blog/categories/opinion/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Codemotion 2016</title>
-      <link>http://fiunchinho.github.io/blog/codemotion-2016/</link>
+      <link>https://fiunchinho.github.io/blog/codemotion-2016/</link>
       <pubDate>Wed, 30 Nov 2016 20:48:31 +0000</pubDate>
       
-      <guid>http://fiunchinho.github.io/blog/codemotion-2016/</guid>
+      <guid>https://fiunchinho.github.io/blog/codemotion-2016/</guid>
       <description>&lt;p&gt;Ya sé que voy un poco tarde con el post hablando sobre cómo fue la Codemotion 2016, pero tenía ganas de compartir mi experiencia en la conferencia.&lt;/p&gt;
 
 &lt;p&gt;Vaya por delante que es dificilísimo organizar una conferencia a nivel nacional, y que hacerlo durante varios años seguidos, tiene mucho mérito. Pero también es importante compartir aquellas cosas que son mejorables para, entre todos, conseguir eventos de mejor calidad en nuestro país. Así que sin más dilación, compartiré con vosotros mi experiencia en la Codemotion 2016, tanto desde el punto de vista de asistente, como desde el punto de vista de ponente.&lt;/p&gt;
@@ -80,10 +80,10 @@
     
     <item>
       <title>Mis impresiones sobre el debate #isTDDDead</title>
-      <link>http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/</link>
+      <link>https://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/</link>
       <pubDate>Fri, 23 May 2014 20:35:44 +0000</pubDate>
       
-      <guid>http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/</guid>
+      <guid>https://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/</guid>
       <description>&lt;p&gt;El &lt;a title=&#34;Yo no soy DHH. Long live TDD&#34; href=&#34;http://blog.armesto.net/yo-no-soy-dhh-long-live-tdd/&#34; target=&#34;_blank&#34;&gt;debate sobre si TDD está muerto&lt;/a&gt; o no sigue &lt;em&gt;vivito y coleando&lt;/em&gt;, y tras una guerra fría de artículos por ambas partes, ahora el intercambio de opiniones se ha pasado a un formato de &lt;a title=&#34;isTDDDead&#34; href=&#34;http://martinfowler.com/articles/is-tdd-dead/&#34; target=&#34;_blank&#34;&gt;vídeo debate&lt;/a&gt; donde Martin Fowler, Kent Beck y el mismísimo David Heinemeier Hansson hablan sobre el tema.&lt;/p&gt;
 
 &lt;p&gt;La verdad es que cuando anunciaron que Kent Beck iba a enfrentarse a David Heinemeier sobre el tema TDD, me alegré bastante por ver a gente tan buena en esto que hacemos debatiendo sobre distintas metodologías. &amp;#8220;&lt;em&gt;Seguro que aprendo de ambas partes&lt;/em&gt;&amp;#8220;, pensaba yo.&lt;/p&gt;
@@ -115,10 +115,10 @@
     
     <item>
       <title>El problema con el code coverage</title>
-      <link>http://fiunchinho.github.io/blog/el-problema-con-el-code-coverage/</link>
+      <link>https://fiunchinho.github.io/blog/el-problema-con-el-code-coverage/</link>
       <pubDate>Thu, 01 May 2014 13:27:28 +0000</pubDate>
       
-      <guid>http://fiunchinho.github.io/blog/el-problema-con-el-code-coverage/</guid>
+      <guid>https://fiunchinho.github.io/blog/el-problema-con-el-code-coverage/</guid>
       <description>&lt;p&gt;Me he permitido el lujo de &lt;a title=&#34;Considered harmful&#34; href=&#34;http://en.wikipedia.org/wiki/Considered_harmful&#34; target=&#34;_blank&#34;&gt;parafrasear a los maestros&lt;/a&gt; en el título de este artículo para hablaros de un tema algo polémico, por lo menos en los círculos en los que lo he hablado. Se trata de la necesidad de una alta cobertura de código, o &lt;em&gt;code coverage&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;El tema me lo recordó una serie de tweets que intercambiamos el otro día algunos en Twitter, hablando sobre la importancia de tener una cobertura de código del 100%. En el fondo todos estábamos de acuerdo en que no es importante tener un 100%, aunque no es la opinión más habitual que leerás por internet o escucharás en empresas. Mi opinión es que exigir cierto porcentaje de cobertura de código no es que no aporte nada, &lt;strong&gt;sino que es algo perjudicial&lt;/strong&gt;.&lt;/p&gt;
@@ -292,10 +292,10 @@
     
     <item>
       <title>Yo no soy DHH. Long live TDD</title>
-      <link>http://fiunchinho.github.io/blog/yo-no-soy-dhh-long-live-tdd/</link>
+      <link>https://fiunchinho.github.io/blog/yo-no-soy-dhh-long-live-tdd/</link>
       <pubDate>Thu, 24 Apr 2014 00:35:31 +0000</pubDate>
       
-      <guid>http://fiunchinho.github.io/blog/yo-no-soy-dhh-long-live-tdd/</guid>
+      <guid>https://fiunchinho.github.io/blog/yo-no-soy-dhh-long-live-tdd/</guid>
       <description>&lt;p&gt;DHH es un gran programador, creador de algo como &lt;a title=&#34;Rails&#34; href=&#34;http://rubyonrails.org/&#34; target=&#34;_blank&#34;&gt;Rails&lt;/a&gt;, framework que quedará en la historia de la programación web. Hoy, él, ha sido noticia por escribir &lt;a title=&#34;TDD is dead&#34; href=&#34;http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html&#34; target=&#34;_blank&#34;&gt;un post titulado &amp;#8220;TDD is dead&amp;#8221;&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Quizá DHH está en lo cierto diciendo que TDD es algo que está muerto, que es momento de seguir hacia adelante y dejarlo atrás. Como cuando crecemos y dejamos de utilizar los &lt;a title=&#34;ruedines de bici&#34; href=&#34;http://1.bp.blogspot.com/_95Yb4E_y8Cs/S_HClbzs9YI/AAAAAAAADVs/iiwdG-vqq3Y/s1600/orbea-bicicleta-kids-atlantis-14.jpg&#34; target=&#34;_blank&#34;&gt;ruedines de la bicicleta&lt;/a&gt;: es algo para niños pequeños, pero de mayores ya no nos hacen falta. Quizá tiene razón.&lt;/p&gt;
@@ -357,10 +357,10 @@
     
     <item>
       <title>Caminante no hay camino, se hace camino al andar</title>
-      <link>http://fiunchinho.github.io/blog/caminante-no-hay-camino-se-hace-camino-al-andar/</link>
+      <link>https://fiunchinho.github.io/blog/caminante-no-hay-camino-se-hace-camino-al-andar/</link>
       <pubDate>Sun, 12 Jan 2014 17:54:18 +0000</pubDate>
       
-      <guid>http://fiunchinho.github.io/blog/caminante-no-hay-camino-se-hace-camino-al-andar/</guid>
+      <guid>https://fiunchinho.github.io/blog/caminante-no-hay-camino-se-hace-camino-al-andar/</guid>
       <description>&lt;p&gt;Llevo 3 años enseñando buenas prácticas en el desarrollo de software entre &lt;a title=&#34;Softonic Internship&#34; href=&#34;http://careers.en.softonic.com/internship-program/&#34; target=&#34;_blank&#34;&gt;el internship de Softonic&lt;/a&gt; y las colaboraciones esporádicas con la universidad, y algo que he aprendido de todo esto es que &lt;strong&gt;es muy difícil&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;Es difícil explicarle a alguien que la duplicación es mala si no ha sufrido las consecuencias en sus carnes. Es complicado decirle que no abuse de la herencia entre clases si no se ha visto incapaz de cambiar su código por culpa de esto.&lt;/p&gt;
@@ -388,10 +388,10 @@
     
     <item>
       <title>¿Qué es el versionamiento semántico y por qué es importante?</title>
-      <link>http://fiunchinho.github.io/blog/que-es-el-versionamiento-semantico-y-por-que-es-importante/</link>
+      <link>https://fiunchinho.github.io/blog/que-es-el-versionamiento-semantico-y-por-que-es-importante/</link>
       <pubDate>Sat, 23 Nov 2013 18:02:29 +0000</pubDate>
       
-      <guid>http://fiunchinho.github.io/blog/que-es-el-versionamiento-semantico-y-por-que-es-importante/</guid>
+      <guid>https://fiunchinho.github.io/blog/que-es-el-versionamiento-semantico-y-por-que-es-importante/</guid>
       <description>&lt;p&gt;Cuando decides utilizar un código que no es tuyo como puede ser un framework o una librería, una de las cosas de las que tienes que preocuparte es de estar al día con las últimas versiones que vayan sacando. No solo porque quizá incluyan cosas que te puedan interesar, si no porque puede que la última versión del framework en el que acabas de basar toda tu aplicación no sea compatible con código de versiones anteriores.&lt;/p&gt;
 
 &lt;p&gt;Aquí nacen dos problemas del mundo del software. Uno, para el consumidor de ese código, que necesita una forma de saber si la última versión de una herramienta es un cambio absoluto del comportamiento o solo arregla unos fallos menores. Y dos, para el creador de código, que necesita de una manera de comunicar a sus usuarios la naturaleza y el alcance de la última versión que va a publicar.&lt;/p&gt;
@@ -439,10 +439,10 @@
     
     <item>
       <title>Ni hombres lobo ni balas de plata</title>
-      <link>http://fiunchinho.github.io/blog/ni-hombres-lobo-ni-balas-de-plata/</link>
+      <link>https://fiunchinho.github.io/blog/ni-hombres-lobo-ni-balas-de-plata/</link>
       <pubDate>Sat, 26 Oct 2013 17:56:47 +0000</pubDate>
       
-      <guid>http://fiunchinho.github.io/blog/ni-hombres-lobo-ni-balas-de-plata/</guid>
+      <guid>https://fiunchinho.github.io/blog/ni-hombres-lobo-ni-balas-de-plata/</guid>
       <description>&lt;p&gt;Durante años, programadores de todos los lenguajes han buscando sin descanso la respuesta a todos sus problemas. Una metodología, un principio. Algo que termine de un plumazo con las complicaciones a la hora de programar. A esta respuesta se le llama comúnmente &lt;strong&gt;la bala de plata&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;Muchas veces es costoso tener que decidir si este principio es mejor que ese otro; o si es mejor aplicar tal patrón de diseño en vez de otro distinto. Os suenan cosas como:&lt;/p&gt;
@@ -486,10 +486,10 @@
     
     <item>
       <title>Sin refactoring no es TDD</title>
-      <link>http://fiunchinho.github.io/blog/sin-refactoring-no-es-tdd/</link>
+      <link>https://fiunchinho.github.io/blog/sin-refactoring-no-es-tdd/</link>
       <pubDate>Fri, 11 Oct 2013 17:57:56 +0000</pubDate>
       
-      <guid>http://fiunchinho.github.io/blog/sin-refactoring-no-es-tdd/</guid>
+      <guid>https://fiunchinho.github.io/blog/sin-refactoring-no-es-tdd/</guid>
       <description>&lt;p&gt;Parece evidente, ¿verdad? Cuando explicas &lt;a title=&#34;TDD&#34; href=&#34;http://c2.com/cgi/wiki?TestDrivenDevelopment&#34; target=&#34;_blank&#34;&gt;TDD (Test Driven Development)&lt;/a&gt;, explicas que tiene 3 fases: rojo, verde y refactoring. Sin embargo, parece que son las 2 primeras las que entran con mayor facilidad en la mente del programador.&lt;/p&gt;
 
 &lt;p&gt;Presentas la kata y allí van disparados a escribir su primer test para estar en rojo. Una vez allí, _baby step_ en el código con lo mínimo indispensable para pasar el test y ponernos en verde. Es entonces cuando deberíamos pensar en el refactoring, pero normalmente es difícil encontrar cosas a refactorizar en nuestro (poquito) código en las primeras iteraciones, así que pasamos a rojo otra vez escribiendo un nuevo test.&lt;/p&gt;

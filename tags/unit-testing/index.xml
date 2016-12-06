@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jose Armesto&#39;s Blog</title>
-    <link>http://fiunchinho.github.io/blog/tags/unit-testing/index.xml</link>
+    <link>https://fiunchinho.github.io/blog/tags/unit-testing/index.xml</link>
     <description>Recent content on Jose Armesto&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-es</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <atom:link href="http://fiunchinho.github.io/blog/tags/unit-testing/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://fiunchinho.github.io/blog/tags/unit-testing/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Mis impresiones sobre el debate #isTDDDead</title>
-      <link>http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/</link>
+      <link>https://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/</link>
       <pubDate>Fri, 23 May 2014 20:35:44 +0000</pubDate>
       
-      <guid>http://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/</guid>
+      <guid>https://fiunchinho.github.io/blog/mis-impresiones-sobre-el-debate-istdddead/</guid>
       <description>&lt;p&gt;El &lt;a title=&#34;Yo no soy DHH. Long live TDD&#34; href=&#34;http://blog.armesto.net/yo-no-soy-dhh-long-live-tdd/&#34; target=&#34;_blank&#34;&gt;debate sobre si TDD está muerto&lt;/a&gt; o no sigue &lt;em&gt;vivito y coleando&lt;/em&gt;, y tras una guerra fría de artículos por ambas partes, ahora el intercambio de opiniones se ha pasado a un formato de &lt;a title=&#34;isTDDDead&#34; href=&#34;http://martinfowler.com/articles/is-tdd-dead/&#34; target=&#34;_blank&#34;&gt;vídeo debate&lt;/a&gt; donde Martin Fowler, Kent Beck y el mismísimo David Heinemeier Hansson hablan sobre el tema.&lt;/p&gt;
 
 &lt;p&gt;La verdad es que cuando anunciaron que Kent Beck iba a enfrentarse a David Heinemeier sobre el tema TDD, me alegré bastante por ver a gente tan buena en esto que hacemos debatiendo sobre distintas metodologías. &amp;#8220;&lt;em&gt;Seguro que aprendo de ambas partes&lt;/em&gt;&amp;#8220;, pensaba yo.&lt;/p&gt;
@@ -46,10 +46,10 @@
     
     <item>
       <title>El problema con el code coverage</title>
-      <link>http://fiunchinho.github.io/blog/el-problema-con-el-code-coverage/</link>
+      <link>https://fiunchinho.github.io/blog/el-problema-con-el-code-coverage/</link>
       <pubDate>Thu, 01 May 2014 13:27:28 +0000</pubDate>
       
-      <guid>http://fiunchinho.github.io/blog/el-problema-con-el-code-coverage/</guid>
+      <guid>https://fiunchinho.github.io/blog/el-problema-con-el-code-coverage/</guid>
       <description>&lt;p&gt;Me he permitido el lujo de &lt;a title=&#34;Considered harmful&#34; href=&#34;http://en.wikipedia.org/wiki/Considered_harmful&#34; target=&#34;_blank&#34;&gt;parafrasear a los maestros&lt;/a&gt; en el título de este artículo para hablaros de un tema algo polémico, por lo menos en los círculos en los que lo he hablado. Se trata de la necesidad de una alta cobertura de código, o &lt;em&gt;code coverage&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;El tema me lo recordó una serie de tweets que intercambiamos el otro día algunos en Twitter, hablando sobre la importancia de tener una cobertura de código del 100%. En el fondo todos estábamos de acuerdo en que no es importante tener un 100%, aunque no es la opinión más habitual que leerás por internet o escucharás en empresas. Mi opinión es que exigir cierto porcentaje de cobertura de código no es que no aporte nada, &lt;strong&gt;sino que es algo perjudicial&lt;/strong&gt;.&lt;/p&gt;
@@ -223,10 +223,10 @@
     
     <item>
       <title>Yo no soy DHH. Long live TDD</title>
-      <link>http://fiunchinho.github.io/blog/yo-no-soy-dhh-long-live-tdd/</link>
+      <link>https://fiunchinho.github.io/blog/yo-no-soy-dhh-long-live-tdd/</link>
       <pubDate>Thu, 24 Apr 2014 00:35:31 +0000</pubDate>
       
-      <guid>http://fiunchinho.github.io/blog/yo-no-soy-dhh-long-live-tdd/</guid>
+      <guid>https://fiunchinho.github.io/blog/yo-no-soy-dhh-long-live-tdd/</guid>
       <description>&lt;p&gt;DHH es un gran programador, creador de algo como &lt;a title=&#34;Rails&#34; href=&#34;http://rubyonrails.org/&#34; target=&#34;_blank&#34;&gt;Rails&lt;/a&gt;, framework que quedará en la historia de la programación web. Hoy, él, ha sido noticia por escribir &lt;a title=&#34;TDD is dead&#34; href=&#34;http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html&#34; target=&#34;_blank&#34;&gt;un post titulado &amp;#8220;TDD is dead&amp;#8221;&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Quizá DHH está en lo cierto diciendo que TDD es algo que está muerto, que es momento de seguir hacia adelante y dejarlo atrás. Como cuando crecemos y dejamos de utilizar los &lt;a title=&#34;ruedines de bici&#34; href=&#34;http://1.bp.blogspot.com/_95Yb4E_y8Cs/S_HClbzs9YI/AAAAAAAADVs/iiwdG-vqq3Y/s1600/orbea-bicicleta-kids-atlantis-14.jpg&#34; target=&#34;_blank&#34;&gt;ruedines de la bicicleta&lt;/a&gt;: es algo para niños pequeños, pero de mayores ya no nos hacen falta. Quizá tiene razón.&lt;/p&gt;
@@ -288,10 +288,10 @@
     
     <item>
       <title>Sácale todo el partido a los tests haciendo que griten</title>
-      <link>http://fiunchinho.github.io/blog/sacale-todo-el-partido-a-los-tests-haciendo-que-griten/</link>
+      <link>https://fiunchinho.github.io/blog/sacale-todo-el-partido-a-los-tests-haciendo-que-griten/</link>
       <pubDate>Sun, 26 Jan 2014 18:09:33 +0000</pubDate>
       
-      <guid>http://fiunchinho.github.io/blog/sacale-todo-el-partido-a-los-tests-haciendo-que-griten/</guid>
+      <guid>https://fiunchinho.github.io/blog/sacale-todo-el-partido-a-los-tests-haciendo-que-griten/</guid>
       <description>&lt;p&gt;Si tuviese que decir en qué se basa una prueba unitaria, diría que las principales características que debe cumplir son (sin ningún orden en particular):&lt;/p&gt;
 
 &lt;ul&gt;
@@ -479,10 +479,10 @@ private function createEncoderWhenEncoderMustEncodePassword( $password, $encoded
     
     <item>
       <title>Inspección continua de la calidad de nuestro código</title>
-      <link>http://fiunchinho.github.io/blog/inspeccion-continua-de-la-calidad-de-nuestro-codigo/</link>
+      <link>https://fiunchinho.github.io/blog/inspeccion-continua-de-la-calidad-de-nuestro-codigo/</link>
       <pubDate>Tue, 05 Nov 2013 18:05:53 +0000</pubDate>
       
-      <guid>http://fiunchinho.github.io/blog/inspeccion-continua-de-la-calidad-de-nuestro-codigo/</guid>
+      <guid>https://fiunchinho.github.io/blog/inspeccion-continua-de-la-calidad-de-nuestro-codigo/</guid>
       <description>&lt;p&gt;Una de las formas que tenemos para poder mejorar el código de nuestro proyecto es someterlo a una inspección continua y constante. Lo primero que podemos hacer es lanzar nuestros tests tras cada push al repositorio, de forma que sabremos en todo momento si hay algo que no funciona bien.&lt;/p&gt;
 
 &lt;p&gt;También podemos analizar la complejidad del código y comprobar si estamos incrementándola o disminuyéndola.&lt;/p&gt;
@@ -567,10 +567,10 @@ tools:
     
     <item>
       <title>Detectando tests dependientes con PHPUnit</title>
-      <link>http://fiunchinho.github.io/blog/detectando-tests-dependientes-con-phpunit/</link>
+      <link>https://fiunchinho.github.io/blog/detectando-tests-dependientes-con-phpunit/</link>
       <pubDate>Thu, 03 Oct 2013 18:07:55 +0000</pubDate>
       
-      <guid>http://fiunchinho.github.io/blog/detectando-tests-dependientes-con-phpunit/</guid>
+      <guid>https://fiunchinho.github.io/blog/detectando-tests-dependientes-con-phpunit/</guid>
       <description>&lt;p&gt;A día de hoy, &lt;a title=&#34;PHPUnit&#34; href=&#34;https://github.com/sebastianbergmann/phpunit/&#34; target=&#34;_blank&#34;&gt;PHPUnit&lt;/a&gt; es el standard _de facto_ para escribir pruebas unitarias en PHP. En estas pruebas unitarias, intentamos que los tests sean &lt;strong&gt;totalmente aislados&lt;/strong&gt;, es decir, que no tengan efectos secundarios, que no se conecten a servicios como API’s o bases de datos, y que no dependan unos de otros.&lt;/p&gt;
 
 &lt;p&gt;Sin embargo, cuando estamos escribiendo tests de integración para comprobar que ciertas clases se comunican correctamente entre ellas, o con otros servicios (base de datos, API’s, etc), los tests dejan de ser aislados, porque esa conexión es precisamente lo que queremos probar. Además, puede que tengan efectos secundarios porque, siguiendo con el ejemplo de la base de datos, vamos a comprobar si se han escrito datos correctos o si se han actualizado como deberían.&lt;/p&gt;

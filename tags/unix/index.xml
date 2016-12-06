@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jose Armesto&#39;s Blog</title>
-    <link>http://fiunchinho.github.io/blog/tags/unix/index.xml</link>
+    <link>https://fiunchinho.github.io/blog/tags/unix/index.xml</link>
     <description>Recent content on Jose Armesto&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-es</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <atom:link href="http://fiunchinho.github.io/blog/tags/unix/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://fiunchinho.github.io/blog/tags/unix/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Evitar borrar todo tu disco con rm -rf</title>
-      <link>http://fiunchinho.github.io/blog/evitar-borrar-todo-tu-disco-con-rm-rf/</link>
+      <link>https://fiunchinho.github.io/blog/evitar-borrar-todo-tu-disco-con-rm-rf/</link>
       <pubDate>Fri, 20 Sep 2013 18:01:09 +0000</pubDate>
       
-      <guid>http://fiunchinho.github.io/blog/evitar-borrar-todo-tu-disco-con-rm-rf/</guid>
+      <guid>https://fiunchinho.github.io/blog/evitar-borrar-todo-tu-disco-con-rm-rf/</guid>
       <description>&lt;p&gt;A quién no le ha pasado, verdad? Quieres borrar el contenido de una carpeta con el comando &lt;a title=&#34;Comando rm&#34; href=&#34;http://linux.about.com/od/commands/l/blcmdl1_rm.htm&#34; target=&#34;_blank&#34;&gt;&lt;em&gt;rm&lt;/em&gt;&lt;/a&gt;, pero sin querer pones el asterisco donde no debías y &lt;strong&gt;&lt;em&gt;ZASCA! &lt;/em&gt;&lt;/strong&gt;: todo tu disco duro se ha borrado por completo.&lt;/p&gt;
 
 &lt;p&gt;A veces no es tan dramático. A veces solo te equivocas en el directorio que querías borrar. Estabas un nivel más arriba o más abajo del que pensabas y adiós proyecto en el que llevabas toda la tarde trabajando y del que todavía no habías hecho &lt;em&gt;commit&lt;/em&gt;.&lt;/p&gt;
