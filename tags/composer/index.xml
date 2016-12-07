@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jose Armesto&#39;s Blog</title>
-    <link>https://blog.armesto.net/tags/composer/index.xml</link>
+    <link>http://blog.armesto.net/tags/composer/index.xml</link>
     <description>Recent content on Jose Armesto&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-es</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <atom:link href="https://blog.armesto.net/tags/composer/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.armesto.net/tags/composer/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>¿Qué es el versionamiento semántico y por qué es importante?</title>
-      <link>https://blog.armesto.net/que-es-el-versionamiento-semantico-y-por-que-es-importante/</link>
+      <link>http://blog.armesto.net/que-es-el-versionamiento-semantico-y-por-que-es-importante/</link>
       <pubDate>Sat, 23 Nov 2013 18:02:29 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/que-es-el-versionamiento-semantico-y-por-que-es-importante/</guid>
+      <guid>http://blog.armesto.net/que-es-el-versionamiento-semantico-y-por-que-es-importante/</guid>
       <description>&lt;p&gt;Cuando decides utilizar un código que no es tuyo como puede ser un framework o una librería, una de las cosas de las que tienes que preocuparte es de estar al día con las últimas versiones que vayan sacando. No solo porque quizá incluyan cosas que te puedan interesar, si no porque puede que la última versión del framework en el que acabas de basar toda tu aplicación no sea compatible con código de versiones anteriores.&lt;/p&gt;
 
 &lt;p&gt;Aquí nacen dos problemas del mundo del software. Uno, para el consumidor de ese código, que necesita una forma de saber si la última versión de una herramienta es un cambio absoluto del comportamiento o solo arregla unos fallos menores. Y dos, para el creador de código, que necesita de una manera de comunicar a sus usuarios la naturaleza y el alcance de la última versión que va a publicar.&lt;/p&gt;
@@ -62,10 +62,10 @@
     
     <item>
       <title>Herramientas para el programador PHP moderno</title>
-      <link>https://blog.armesto.net/herramientas-para-el-programador-php-moderno/</link>
+      <link>http://blog.armesto.net/herramientas-para-el-programador-php-moderno/</link>
       <pubDate>Fri, 18 Oct 2013 23:47:55 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/herramientas-para-el-programador-php-moderno/</guid>
+      <guid>http://blog.armesto.net/herramientas-para-el-programador-php-moderno/</guid>
       <description>&lt;div&gt;
   &lt;p&gt;
     &lt;span style=&#34;font-size: 14px; line-height: 1.5em;&#34;&gt;La comunidad de PHP ha evolucionado muchísimo en los últimos años, no pareciéndose en nada a las versiones anteriores. No solo ha cambiado mucho, si no que cada vez cambia más frecuentemente. Y cuando hablo de comunidad, me refiero tanto al lenguaje, como a las personas que lo utilizan, así como a las herramientas que nacen alrededor.&lt;/span&gt;

@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jose Armesto&#39;s Blog</title>
-    <link>https://blog.armesto.net/tags/vagrant/index.xml</link>
+    <link>http://blog.armesto.net/tags/vagrant/index.xml</link>
     <description>Recent content on Jose Armesto&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-es</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <atom:link href="https://blog.armesto.net/tags/vagrant/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.armesto.net/tags/vagrant/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Utilizando Puphpet también en producción</title>
-      <link>https://blog.armesto.net/utilizando-puphpet-tambien-en-produccion/</link>
+      <link>http://blog.armesto.net/utilizando-puphpet-tambien-en-produccion/</link>
       <pubDate>Sat, 19 Apr 2014 09:00:56 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/utilizando-puphpet-tambien-en-produccion/</guid>
+      <guid>http://blog.armesto.net/utilizando-puphpet-tambien-en-produccion/</guid>
       <description>&lt;p&gt;Ya &lt;a title=&#34;Herramientas para el programador PHP moderno&#34; href=&#34;http://blog.armesto.net/herramientas-para-el-programador-php-moderno/&#34; target=&#34;_blank&#34;&gt;hablé en el pasado sobre Puphpet&lt;/a&gt;, una herramienta web que genera manifiestos de &lt;a title=&#34;Puppet&#34; href=&#34;http://puppetlabs.com/&#34; target=&#34;_blank&#34;&gt;Puppet&lt;/a&gt; y de &lt;a title=&#34;Vagrant&#34; href=&#34;http://www.vagrantup.com/&#34; target=&#34;_blank&#34;&gt;Vagrant&lt;/a&gt; de forma rápida y sencilla.&lt;/p&gt;
 
 &lt;p&gt;Llevo tiempo utilizándolo para configurar mis máquinas virtuales de desarrollo junto a Vagrant, pero siempre estaba un poco con la mosca detrás de la oreja por el hecho de no poder utilizarlo también en producción.&lt;/p&gt;
@@ -47,10 +47,10 @@ sudo ./vagrant/puphpet/shell/r10k.sh&lt;/pre&gt;
     
     <item>
       <title>Herramientas para el programador PHP moderno</title>
-      <link>https://blog.armesto.net/herramientas-para-el-programador-php-moderno/</link>
+      <link>http://blog.armesto.net/herramientas-para-el-programador-php-moderno/</link>
       <pubDate>Fri, 18 Oct 2013 23:47:55 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/herramientas-para-el-programador-php-moderno/</guid>
+      <guid>http://blog.armesto.net/herramientas-para-el-programador-php-moderno/</guid>
       <description>&lt;div&gt;
   &lt;p&gt;
     &lt;span style=&#34;font-size: 14px; line-height: 1.5em;&#34;&gt;La comunidad de PHP ha evolucionado muchísimo en los últimos años, no pareciéndose en nada a las versiones anteriores. No solo ha cambiado mucho, si no que cada vez cambia más frecuentemente. Y cuando hablo de comunidad, me refiero tanto al lenguaje, como a las personas que lo utilizan, así como a las herramientas que nacen alrededor.&lt;/span&gt;

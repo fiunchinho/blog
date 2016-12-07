@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jose Armesto&#39;s Blog</title>
-    <link>https://blog.armesto.net/categories/code/index.xml</link>
+    <link>http://blog.armesto.net/categories/code/index.xml</link>
     <description>Recent content on Jose Armesto&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-es</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <atom:link href="https://blog.armesto.net/categories/code/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.armesto.net/categories/code/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Problemas desplegando código si usas Apache, symlinks y opcache</title>
-      <link>https://blog.armesto.net/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</link>
+      <link>http://blog.armesto.net/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</link>
       <pubDate>Fri, 01 May 2015 12:14:32 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</guid>
+      <guid>http://blog.armesto.net/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</guid>
       <description>&lt;p&gt;Muchas de las soluciones disponibles en el mercado para desplegar aplicaciones se basan en el uso de enlaces simbólicos (o symlinks) para activar la última versión de código en el servidor.&lt;/p&gt;
 
 &lt;p&gt;Simplificando mucho, podríamos decir que un flujo habitual a la hora de desplegar sería el siguiente:&lt;/p&gt;
@@ -92,10 +92,10 @@
     
     <item>
       <title>Jugando con conceptos de DDD</title>
-      <link>https://blog.armesto.net/jugando-con-conceptos-de-ddd/</link>
+      <link>http://blog.armesto.net/jugando-con-conceptos-de-ddd/</link>
       <pubDate>Wed, 29 Oct 2014 00:46:39 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/jugando-con-conceptos-de-ddd/</guid>
+      <guid>http://blog.armesto.net/jugando-con-conceptos-de-ddd/</guid>
       <description>&lt;p&gt;El pasado fin de semana se celebró en Barcelona una &lt;a title=&#34;Software Craftmanship Barcelona&#34; href=&#34;http://www.softwarecraftsmanshipbarcelona.org/&#34; target=&#34;_blank&#34;&gt;nueva edición de la Software Craftmanship&lt;/a&gt;, donde se hablaron de diversos temas relacionados con las buenas prácticas a la hora de crear software. Entre ellos, en mi opinión, hubo uno que pareció suscitar mayor interés en la gente y ocupó un papel protagonista en los dos días de conferencia: &lt;strong&gt;Domain Driven Design&lt;/strong&gt;. Es un tema en el que creo que muchos estamos todavía aprendiendo, intentando dar sentido a la inmensa cantidad de conceptos e información que aparecen tanto en &lt;a title=&#34;DDD - Eric Evans&#34; href=&#34;http://www.amazon.es/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215&#34; target=&#34;_blank&#34;&gt;el libro azul&lt;/a&gt; como en &lt;a title=&#34;DDD - Vaughn Vernon&#34; href=&#34;http://www.amazon.es/gp/product/0321834577/ref=pd_lpo_sbs_dp_ss_1?pf_rd_p=479290847&amp;pf_rd_s=lpo-top-stripe&amp;pf_rd_t=201&amp;pf_rd_i=0321125215&amp;pf_rd_m=A1AT7YVPFBWXBL&amp;pf_rd_r=1N6RWXVM4AFMHH9P0EGZ&#34; target=&#34;_blank&#34;&gt;el rojo&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;En esta búsqueda de sentido, me surgió una duda que creo que no aparece resuelta directamente en ninguno de los dos libros, y que compartí con el resto de asistentes en una de las charlas sobre DDD. Quiero reproducirla otra vez aquí, para poder hablar un poco más sobre el tema. Creo que no hace falta mostrar código, pero realmente me gustaría vuestra opinión, así que si es necesario, decídmelo y añadiré código.&lt;/p&gt;
@@ -129,10 +129,10 @@
     
     <item>
       <title>Sácale todo el partido a los tests haciendo que griten</title>
-      <link>https://blog.armesto.net/sacale-todo-el-partido-a-los-tests-haciendo-que-griten/</link>
+      <link>http://blog.armesto.net/sacale-todo-el-partido-a-los-tests-haciendo-que-griten/</link>
       <pubDate>Sun, 26 Jan 2014 18:09:33 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/sacale-todo-el-partido-a-los-tests-haciendo-que-griten/</guid>
+      <guid>http://blog.armesto.net/sacale-todo-el-partido-a-los-tests-haciendo-que-griten/</guid>
       <description>&lt;p&gt;Si tuviese que decir en qué se basa una prueba unitaria, diría que las principales características que debe cumplir son (sin ningún orden en particular):&lt;/p&gt;
 
 &lt;ul&gt;
@@ -320,10 +320,10 @@ private function createEncoderWhenEncoderMustEncodePassword( $password, $encoded
     
     <item>
       <title>Administrar recursos frontend con Assetic (sin Symfony2)</title>
-      <link>https://blog.armesto.net/administrar-recursos-frontend-con-assetic-sin-symfony2/</link>
+      <link>http://blog.armesto.net/administrar-recursos-frontend-con-assetic-sin-symfony2/</link>
       <pubDate>Sun, 19 Jan 2014 18:12:29 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/administrar-recursos-frontend-con-assetic-sin-symfony2/</guid>
+      <guid>http://blog.armesto.net/administrar-recursos-frontend-con-assetic-sin-symfony2/</guid>
       <description>&lt;p&gt;Buscando mejorar el rendimiento de nuestras aplicaciones web, muchas veces nos centramos en el backend sin prestar suficiente atención al frontend. Una de las mejoras que podemos aplicar en la parte frontal de nuestras webs para que vayan más rápidas es reducir el número de peticiones HTTP que son necesarias para cargar la web. Para ello podemos, por ejemplo, combinar varios archivos CSS o JS en uno solo para que, aunque tengamos que cargar muchos recursos, solo una petición HTTP sea necesaria.&lt;/p&gt;
 
 &lt;p&gt;Hacer esto a mano puede ser tedioso y llevar a problemas, por tanto una buena solución sería preguntarnos si alguien ya ha solucionado este problema antes. Como tantas otras veces la respuesta es que sí.&lt;/p&gt;
@@ -575,10 +575,10 @@ $writer-&amp;gt;writeAsset( $css );&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Inspección continua de la calidad de nuestro código</title>
-      <link>https://blog.armesto.net/inspeccion-continua-de-la-calidad-de-nuestro-codigo/</link>
+      <link>http://blog.armesto.net/inspeccion-continua-de-la-calidad-de-nuestro-codigo/</link>
       <pubDate>Tue, 05 Nov 2013 18:05:53 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/inspeccion-continua-de-la-calidad-de-nuestro-codigo/</guid>
+      <guid>http://blog.armesto.net/inspeccion-continua-de-la-calidad-de-nuestro-codigo/</guid>
       <description>&lt;p&gt;Una de las formas que tenemos para poder mejorar el código de nuestro proyecto es someterlo a una inspección continua y constante. Lo primero que podemos hacer es lanzar nuestros tests tras cada push al repositorio, de forma que sabremos en todo momento si hay algo que no funciona bien.&lt;/p&gt;
 
 &lt;p&gt;También podemos analizar la complejidad del código y comprobar si estamos incrementándola o disminuyéndola.&lt;/p&gt;
@@ -663,10 +663,10 @@ tools:
     
     <item>
       <title>Geolocalización en PHP y las páginas de afiliados locales</title>
-      <link>https://blog.armesto.net/geolocalizacion-en-php-y-las-paginas-de-afiliados-locales/</link>
+      <link>http://blog.armesto.net/geolocalizacion-en-php-y-las-paginas-de-afiliados-locales/</link>
       <pubDate>Sat, 02 Nov 2013 18:11:01 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/geolocalizacion-en-php-y-las-paginas-de-afiliados-locales/</guid>
+      <guid>http://blog.armesto.net/geolocalizacion-en-php-y-las-paginas-de-afiliados-locales/</guid>
       <description>&lt;p&gt;Una de las webs de las que soy responsable contiene artículos sobre productos electrónicos: análisis, comparativas, novedades, etc. Utilizando el sistema de afiliados de Amazon y, si tus análisis convencen a los usuarios para rascarse el bolsillo, puedes sacar un porcentaje de la venta.&lt;/p&gt;
 
 &lt;p&gt;El problema con Amazon es que tiene &lt;strong&gt;una tienda distinta para cada país&lt;/strong&gt;. Es decir, Amazon para España no es el mismo que para Francia o Estados Unidos. El catálogo es distinto, sus usuarios diferentes y hasta el programa de afiliados funciona de manera distinta. De hecho, para participar en el programa de afiliados tienes que darte de alta por separado en cada uno de los países que quieras participar.&lt;/p&gt;
@@ -785,10 +785,10 @@ $geocoder-&amp;gt;registerProvider( $provider );
     
     <item>
       <title>Herramientas para el programador PHP moderno</title>
-      <link>https://blog.armesto.net/herramientas-para-el-programador-php-moderno/</link>
+      <link>http://blog.armesto.net/herramientas-para-el-programador-php-moderno/</link>
       <pubDate>Fri, 18 Oct 2013 23:47:55 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/herramientas-para-el-programador-php-moderno/</guid>
+      <guid>http://blog.armesto.net/herramientas-para-el-programador-php-moderno/</guid>
       <description>&lt;div&gt;
   &lt;p&gt;
     &lt;span style=&#34;font-size: 14px; line-height: 1.5em;&#34;&gt;La comunidad de PHP ha evolucionado muchísimo en los últimos años, no pareciéndose en nada a las versiones anteriores. No solo ha cambiado mucho, si no que cada vez cambia más frecuentemente. Y cuando hablo de comunidad, me refiero tanto al lenguaje, como a las personas que lo utilizan, así como a las herramientas que nacen alrededor.&lt;/span&gt;
@@ -911,10 +911,10 @@ $geocoder-&amp;gt;registerProvider( $provider );
     
     <item>
       <title>Detectando tests dependientes con PHPUnit</title>
-      <link>https://blog.armesto.net/detectando-tests-dependientes-con-phpunit/</link>
+      <link>http://blog.armesto.net/detectando-tests-dependientes-con-phpunit/</link>
       <pubDate>Thu, 03 Oct 2013 18:07:55 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/detectando-tests-dependientes-con-phpunit/</guid>
+      <guid>http://blog.armesto.net/detectando-tests-dependientes-con-phpunit/</guid>
       <description>&lt;p&gt;A día de hoy, &lt;a title=&#34;PHPUnit&#34; href=&#34;https://github.com/sebastianbergmann/phpunit/&#34; target=&#34;_blank&#34;&gt;PHPUnit&lt;/a&gt; es el standard _de facto_ para escribir pruebas unitarias en PHP. En estas pruebas unitarias, intentamos que los tests sean &lt;strong&gt;totalmente aislados&lt;/strong&gt;, es decir, que no tengan efectos secundarios, que no se conecten a servicios como API’s o bases de datos, y que no dependan unos de otros.&lt;/p&gt;
 
 &lt;p&gt;Sin embargo, cuando estamos escribiendo tests de integración para comprobar que ciertas clases se comunican correctamente entre ellas, o con otros servicios (base de datos, API’s, etc), los tests dejan de ser aislados, porque esa conexión es precisamente lo que queremos probar. Además, puede que tengan efectos secundarios porque, siguiendo con el ejemplo de la base de datos, vamos a comprobar si se han escrito datos correctos o si se han actualizado como deberían.&lt;/p&gt;

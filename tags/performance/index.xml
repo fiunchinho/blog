@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jose Armesto&#39;s Blog</title>
-    <link>https://blog.armesto.net/tags/performance/index.xml</link>
+    <link>http://blog.armesto.net/tags/performance/index.xml</link>
     <description>Recent content on Jose Armesto&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-es</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <atom:link href="https://blog.armesto.net/tags/performance/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.armesto.net/tags/performance/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Administrar recursos frontend con Assetic (sin Symfony2)</title>
-      <link>https://blog.armesto.net/administrar-recursos-frontend-con-assetic-sin-symfony2/</link>
+      <link>http://blog.armesto.net/administrar-recursos-frontend-con-assetic-sin-symfony2/</link>
       <pubDate>Sun, 19 Jan 2014 18:12:29 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/administrar-recursos-frontend-con-assetic-sin-symfony2/</guid>
+      <guid>http://blog.armesto.net/administrar-recursos-frontend-con-assetic-sin-symfony2/</guid>
       <description>&lt;p&gt;Buscando mejorar el rendimiento de nuestras aplicaciones web, muchas veces nos centramos en el backend sin prestar suficiente atención al frontend. Una de las mejoras que podemos aplicar en la parte frontal de nuestras webs para que vayan más rápidas es reducir el número de peticiones HTTP que son necesarias para cargar la web. Para ello podemos, por ejemplo, combinar varios archivos CSS o JS en uno solo para que, aunque tengamos que cargar muchos recursos, solo una petición HTTP sea necesaria.&lt;/p&gt;
 
 &lt;p&gt;Hacer esto a mano puede ser tedioso y llevar a problemas, por tanto una buena solución sería preguntarnos si alguien ya ha solucionado este problema antes. Como tantas otras veces la respuesta es que sí.&lt;/p&gt;

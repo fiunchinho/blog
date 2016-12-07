@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jose Armesto&#39;s Blog</title>
-    <link>https://blog.armesto.net/tags/tdd/index.xml</link>
+    <link>http://blog.armesto.net/tags/tdd/index.xml</link>
     <description>Recent content on Jose Armesto&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-es</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <atom:link href="https://blog.armesto.net/tags/tdd/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.armesto.net/tags/tdd/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Mis impresiones sobre el debate #isTDDDead</title>
-      <link>https://blog.armesto.net/mis-impresiones-sobre-el-debate-istdddead/</link>
+      <link>http://blog.armesto.net/mis-impresiones-sobre-el-debate-istdddead/</link>
       <pubDate>Fri, 23 May 2014 20:35:44 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/mis-impresiones-sobre-el-debate-istdddead/</guid>
+      <guid>http://blog.armesto.net/mis-impresiones-sobre-el-debate-istdddead/</guid>
       <description>&lt;p&gt;El &lt;a title=&#34;Yo no soy DHH. Long live TDD&#34; href=&#34;http://blog.armesto.net/yo-no-soy-dhh-long-live-tdd/&#34; target=&#34;_blank&#34;&gt;debate sobre si TDD está muerto&lt;/a&gt; o no sigue &lt;em&gt;vivito y coleando&lt;/em&gt;, y tras una guerra fría de artículos por ambas partes, ahora el intercambio de opiniones se ha pasado a un formato de &lt;a title=&#34;isTDDDead&#34; href=&#34;http://martinfowler.com/articles/is-tdd-dead/&#34; target=&#34;_blank&#34;&gt;vídeo debate&lt;/a&gt; donde Martin Fowler, Kent Beck y el mismísimo David Heinemeier Hansson hablan sobre el tema.&lt;/p&gt;
 
 &lt;p&gt;La verdad es que cuando anunciaron que Kent Beck iba a enfrentarse a David Heinemeier sobre el tema TDD, me alegré bastante por ver a gente tan buena en esto que hacemos debatiendo sobre distintas metodologías. &amp;#8220;&lt;em&gt;Seguro que aprendo de ambas partes&lt;/em&gt;&amp;#8220;, pensaba yo.&lt;/p&gt;
@@ -46,10 +46,10 @@
     
     <item>
       <title>El problema con el code coverage</title>
-      <link>https://blog.armesto.net/el-problema-con-el-code-coverage/</link>
+      <link>http://blog.armesto.net/el-problema-con-el-code-coverage/</link>
       <pubDate>Thu, 01 May 2014 13:27:28 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/el-problema-con-el-code-coverage/</guid>
+      <guid>http://blog.armesto.net/el-problema-con-el-code-coverage/</guid>
       <description>&lt;p&gt;Me he permitido el lujo de &lt;a title=&#34;Considered harmful&#34; href=&#34;http://en.wikipedia.org/wiki/Considered_harmful&#34; target=&#34;_blank&#34;&gt;parafrasear a los maestros&lt;/a&gt; en el título de este artículo para hablaros de un tema algo polémico, por lo menos en los círculos en los que lo he hablado. Se trata de la necesidad de una alta cobertura de código, o &lt;em&gt;code coverage&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;El tema me lo recordó una serie de tweets que intercambiamos el otro día algunos en Twitter, hablando sobre la importancia de tener una cobertura de código del 100%. En el fondo todos estábamos de acuerdo en que no es importante tener un 100%, aunque no es la opinión más habitual que leerás por internet o escucharás en empresas. Mi opinión es que exigir cierto porcentaje de cobertura de código no es que no aporte nada, &lt;strong&gt;sino que es algo perjudicial&lt;/strong&gt;.&lt;/p&gt;
@@ -223,10 +223,10 @@
     
     <item>
       <title>Yo no soy DHH. Long live TDD</title>
-      <link>https://blog.armesto.net/yo-no-soy-dhh-long-live-tdd/</link>
+      <link>http://blog.armesto.net/yo-no-soy-dhh-long-live-tdd/</link>
       <pubDate>Thu, 24 Apr 2014 00:35:31 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/yo-no-soy-dhh-long-live-tdd/</guid>
+      <guid>http://blog.armesto.net/yo-no-soy-dhh-long-live-tdd/</guid>
       <description>&lt;p&gt;DHH es un gran programador, creador de algo como &lt;a title=&#34;Rails&#34; href=&#34;http://rubyonrails.org/&#34; target=&#34;_blank&#34;&gt;Rails&lt;/a&gt;, framework que quedará en la historia de la programación web. Hoy, él, ha sido noticia por escribir &lt;a title=&#34;TDD is dead&#34; href=&#34;http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html&#34; target=&#34;_blank&#34;&gt;un post titulado &amp;#8220;TDD is dead&amp;#8221;&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Quizá DHH está en lo cierto diciendo que TDD es algo que está muerto, que es momento de seguir hacia adelante y dejarlo atrás. Como cuando crecemos y dejamos de utilizar los &lt;a title=&#34;ruedines de bici&#34; href=&#34;http://1.bp.blogspot.com/_95Yb4E_y8Cs/S_HClbzs9YI/AAAAAAAADVs/iiwdG-vqq3Y/s1600/orbea-bicicleta-kids-atlantis-14.jpg&#34; target=&#34;_blank&#34;&gt;ruedines de la bicicleta&lt;/a&gt;: es algo para niños pequeños, pero de mayores ya no nos hacen falta. Quizá tiene razón.&lt;/p&gt;
@@ -288,10 +288,10 @@
     
     <item>
       <title>Sin refactoring no es TDD</title>
-      <link>https://blog.armesto.net/sin-refactoring-no-es-tdd/</link>
+      <link>http://blog.armesto.net/sin-refactoring-no-es-tdd/</link>
       <pubDate>Fri, 11 Oct 2013 17:57:56 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/sin-refactoring-no-es-tdd/</guid>
+      <guid>http://blog.armesto.net/sin-refactoring-no-es-tdd/</guid>
       <description>&lt;p&gt;Parece evidente, ¿verdad? Cuando explicas &lt;a title=&#34;TDD&#34; href=&#34;http://c2.com/cgi/wiki?TestDrivenDevelopment&#34; target=&#34;_blank&#34;&gt;TDD (Test Driven Development)&lt;/a&gt;, explicas que tiene 3 fases: rojo, verde y refactoring. Sin embargo, parece que son las 2 primeras las que entran con mayor facilidad en la mente del programador.&lt;/p&gt;
 
 &lt;p&gt;Presentas la kata y allí van disparados a escribir su primer test para estar en rojo. Una vez allí, _baby step_ en el código con lo mínimo indispensable para pasar el test y ponernos en verde. Es entonces cuando deberíamos pensar en el refactoring, pero normalmente es difícil encontrar cosas a refactorizar en nuestro (poquito) código en las primeras iteraciones, así que pasamos a rojo otra vez escribiendo un nuevo test.&lt;/p&gt;

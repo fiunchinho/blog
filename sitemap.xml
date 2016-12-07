@@ -2,117 +2,117 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.armesto.net/</loc>
+    <loc>http://blog.armesto.net/</loc>
     <lastmod>2016-11-30T20:48:31+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.armesto.net/codemotion-2016/</loc>
+    <loc>http://blog.armesto.net/codemotion-2016/</loc>
     <lastmod>2016-11-30T20:48:31+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.armesto.net/auto-completado-en-zsh/</loc>
+    <loc>http://blog.armesto.net/auto-completado-en-zsh/</loc>
     <lastmod>2016-07-16T17:49:15+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.armesto.net/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</loc>
+    <loc>http://blog.armesto.net/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</loc>
     <lastmod>2015-05-01T12:14:32+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.armesto.net/jugando-con-conceptos-de-ddd/</loc>
+    <loc>http://blog.armesto.net/jugando-con-conceptos-de-ddd/</loc>
     <lastmod>2014-10-29T00:46:39+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.armesto.net/mis-impresiones-sobre-el-debate-istdddead/</loc>
+    <loc>http://blog.armesto.net/mis-impresiones-sobre-el-debate-istdddead/</loc>
     <lastmod>2014-05-23T20:35:44+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.armesto.net/el-problema-con-el-code-coverage/</loc>
+    <loc>http://blog.armesto.net/el-problema-con-el-code-coverage/</loc>
     <lastmod>2014-05-01T13:27:28+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.armesto.net/yo-no-soy-dhh-long-live-tdd/</loc>
+    <loc>http://blog.armesto.net/yo-no-soy-dhh-long-live-tdd/</loc>
     <lastmod>2014-04-24T00:35:31+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.armesto.net/utilizando-puphpet-tambien-en-produccion/</loc>
+    <loc>http://blog.armesto.net/utilizando-puphpet-tambien-en-produccion/</loc>
     <lastmod>2014-04-19T09:00:56+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.armesto.net/sacale-el-maximo-partido-a-tu-terminal-con-zsh/</loc>
+    <loc>http://blog.armesto.net/sacale-el-maximo-partido-a-tu-terminal-con-zsh/</loc>
     <lastmod>2014-04-12T13:42:17+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.armesto.net/sacale-todo-el-partido-a-los-tests-haciendo-que-griten/</loc>
+    <loc>http://blog.armesto.net/sacale-todo-el-partido-a-los-tests-haciendo-que-griten/</loc>
     <lastmod>2014-01-26T18:09:33+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.armesto.net/administrar-recursos-frontend-con-assetic-sin-symfony2/</loc>
+    <loc>http://blog.armesto.net/administrar-recursos-frontend-con-assetic-sin-symfony2/</loc>
     <lastmod>2014-01-19T18:12:29+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.armesto.net/caminante-no-hay-camino-se-hace-camino-al-andar/</loc>
+    <loc>http://blog.armesto.net/caminante-no-hay-camino-se-hace-camino-al-andar/</loc>
     <lastmod>2014-01-12T17:54:18+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.armesto.net/que-es-el-versionamiento-semantico-y-por-que-es-importante/</loc>
+    <loc>http://blog.armesto.net/que-es-el-versionamiento-semantico-y-por-que-es-importante/</loc>
     <lastmod>2013-11-23T18:02:29+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.armesto.net/limitar-memoria-maxima-de-redis/</loc>
+    <loc>http://blog.armesto.net/limitar-memoria-maxima-de-redis/</loc>
     <lastmod>2013-11-21T17:59:32+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.armesto.net/inspeccion-continua-de-la-calidad-de-nuestro-codigo/</loc>
+    <loc>http://blog.armesto.net/inspeccion-continua-de-la-calidad-de-nuestro-codigo/</loc>
     <lastmod>2013-11-05T18:05:53+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.armesto.net/geolocalizacion-en-php-y-las-paginas-de-afiliados-locales/</loc>
+    <loc>http://blog.armesto.net/geolocalizacion-en-php-y-las-paginas-de-afiliados-locales/</loc>
     <lastmod>2013-11-02T18:11:01+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.armesto.net/ni-hombres-lobo-ni-balas-de-plata/</loc>
+    <loc>http://blog.armesto.net/ni-hombres-lobo-ni-balas-de-plata/</loc>
     <lastmod>2013-10-26T17:56:47+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.armesto.net/herramientas-para-el-programador-php-moderno/</loc>
+    <loc>http://blog.armesto.net/herramientas-para-el-programador-php-moderno/</loc>
     <lastmod>2013-10-18T23:47:55+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.armesto.net/sin-refactoring-no-es-tdd/</loc>
+    <loc>http://blog.armesto.net/sin-refactoring-no-es-tdd/</loc>
     <lastmod>2013-10-11T17:57:56+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.armesto.net/detectando-tests-dependientes-con-phpunit/</loc>
+    <loc>http://blog.armesto.net/detectando-tests-dependientes-con-phpunit/</loc>
     <lastmod>2013-10-03T18:07:55+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.armesto.net/donde-pongo-mis-scripts/</loc>
+    <loc>http://blog.armesto.net/donde-pongo-mis-scripts/</loc>
     <lastmod>2013-09-27T18:00:27+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.armesto.net/evitar-borrar-todo-tu-disco-con-rm-rf/</loc>
+    <loc>http://blog.armesto.net/evitar-borrar-todo-tu-disco-con-rm-rf/</loc>
     <lastmod>2013-09-20T18:01:09+00:00</lastmod>
   </url>
   

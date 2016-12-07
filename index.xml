@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jose Armesto&#39;s Blog</title>
-    <link>https://blog.armesto.net/index.xml</link>
+    <link>http://blog.armesto.net/index.xml</link>
     <description>Recent content on Jose Armesto&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-es</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
     <lastBuildDate>Wed, 30 Nov 2016 20:48:31 +0000</lastBuildDate>
-    <atom:link href="https://blog.armesto.net/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.armesto.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Codemotion 2016</title>
-      <link>https://blog.armesto.net/codemotion-2016/</link>
+      <link>http://blog.armesto.net/codemotion-2016/</link>
       <pubDate>Wed, 30 Nov 2016 20:48:31 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/codemotion-2016/</guid>
+      <guid>http://blog.armesto.net/codemotion-2016/</guid>
       <description>&lt;p&gt;Ya sé que voy un poco tarde con el post hablando sobre cómo fue la Codemotion 2016, pero tenía ganas de compartir mi experiencia en la conferencia.&lt;/p&gt;
 
 &lt;p&gt;Vaya por delante que es dificilísimo organizar una conferencia a nivel nacional, y que hacerlo durante varios años seguidos, tiene mucho mérito. Pero también es importante compartir aquellas cosas que son mejorables para, entre todos, conseguir eventos de mejor calidad en nuestro país. Así que sin más dilación, compartiré con vosotros mi experiencia en la Codemotion 2016, tanto desde el punto de vista de asistente, como desde el punto de vista de ponente.&lt;/p&gt;
@@ -81,10 +81,10 @@
     
     <item>
       <title>Auto completado en zsh</title>
-      <link>https://blog.armesto.net/auto-completado-en-zsh/</link>
+      <link>http://blog.armesto.net/auto-completado-en-zsh/</link>
       <pubDate>Sat, 16 Jul 2016 17:49:15 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/auto-completado-en-zsh/</guid>
+      <guid>http://blog.armesto.net/auto-completado-en-zsh/</guid>
       <description>&lt;p&gt;Hace tiempo escribí un post sobre &lt;a href=&#34;http://blog.armesto.net/sacale-el-maximo-partido-a-tu-terminal-con-zsh/&#34;&gt;cómo sacarle el máximo rendimiento a tu terminal utilizando zsh&lt;/a&gt;, en el que introducía &lt;a href=&#34;http://www.zsh.org/&#34;&gt;zsh&lt;/a&gt; y el framework &lt;a href=&#34;http://ohmyz.sh/&#34;&gt;oh-my-zsh&lt;/a&gt; para tener una experiencia más placentera usando el terminal.&lt;/p&gt;
 
 &lt;p&gt;Hoy veremos algunas funcionalidades extras que nos aporta esta herramienta y que nos puede ayudar a decidirnos a empezar a utilizarla.&lt;/p&gt;
@@ -199,10 +199,10 @@ zstyle &#39;:completion:*&#39; group-name &#39;&#39;&lt;/pre&gt;
     
     <item>
       <title>Problemas desplegando código si usas Apache, symlinks y opcache</title>
-      <link>https://blog.armesto.net/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</link>
+      <link>http://blog.armesto.net/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</link>
       <pubDate>Fri, 01 May 2015 12:14:32 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</guid>
+      <guid>http://blog.armesto.net/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</guid>
       <description>&lt;p&gt;Muchas de las soluciones disponibles en el mercado para desplegar aplicaciones se basan en el uso de enlaces simbólicos (o symlinks) para activar la última versión de código en el servidor.&lt;/p&gt;
 
 &lt;p&gt;Simplificando mucho, podríamos decir que un flujo habitual a la hora de desplegar sería el siguiente:&lt;/p&gt;
@@ -280,10 +280,10 @@ zstyle &#39;:completion:*&#39; group-name &#39;&#39;&lt;/pre&gt;
     
     <item>
       <title>Jugando con conceptos de DDD</title>
-      <link>https://blog.armesto.net/jugando-con-conceptos-de-ddd/</link>
+      <link>http://blog.armesto.net/jugando-con-conceptos-de-ddd/</link>
       <pubDate>Wed, 29 Oct 2014 00:46:39 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/jugando-con-conceptos-de-ddd/</guid>
+      <guid>http://blog.armesto.net/jugando-con-conceptos-de-ddd/</guid>
       <description>&lt;p&gt;El pasado fin de semana se celebró en Barcelona una &lt;a title=&#34;Software Craftmanship Barcelona&#34; href=&#34;http://www.softwarecraftsmanshipbarcelona.org/&#34; target=&#34;_blank&#34;&gt;nueva edición de la Software Craftmanship&lt;/a&gt;, donde se hablaron de diversos temas relacionados con las buenas prácticas a la hora de crear software. Entre ellos, en mi opinión, hubo uno que pareció suscitar mayor interés en la gente y ocupó un papel protagonista en los dos días de conferencia: &lt;strong&gt;Domain Driven Design&lt;/strong&gt;. Es un tema en el que creo que muchos estamos todavía aprendiendo, intentando dar sentido a la inmensa cantidad de conceptos e información que aparecen tanto en &lt;a title=&#34;DDD - Eric Evans&#34; href=&#34;http://www.amazon.es/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215&#34; target=&#34;_blank&#34;&gt;el libro azul&lt;/a&gt; como en &lt;a title=&#34;DDD - Vaughn Vernon&#34; href=&#34;http://www.amazon.es/gp/product/0321834577/ref=pd_lpo_sbs_dp_ss_1?pf_rd_p=479290847&amp;pf_rd_s=lpo-top-stripe&amp;pf_rd_t=201&amp;pf_rd_i=0321125215&amp;pf_rd_m=A1AT7YVPFBWXBL&amp;pf_rd_r=1N6RWXVM4AFMHH9P0EGZ&#34; target=&#34;_blank&#34;&gt;el rojo&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;En esta búsqueda de sentido, me surgió una duda que creo que no aparece resuelta directamente en ninguno de los dos libros, y que compartí con el resto de asistentes en una de las charlas sobre DDD. Quiero reproducirla otra vez aquí, para poder hablar un poco más sobre el tema. Creo que no hace falta mostrar código, pero realmente me gustaría vuestra opinión, así que si es necesario, decídmelo y añadiré código.&lt;/p&gt;
@@ -317,10 +317,10 @@ zstyle &#39;:completion:*&#39; group-name &#39;&#39;&lt;/pre&gt;
     
     <item>
       <title>Mis impresiones sobre el debate #isTDDDead</title>
-      <link>https://blog.armesto.net/mis-impresiones-sobre-el-debate-istdddead/</link>
+      <link>http://blog.armesto.net/mis-impresiones-sobre-el-debate-istdddead/</link>
       <pubDate>Fri, 23 May 2014 20:35:44 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/mis-impresiones-sobre-el-debate-istdddead/</guid>
+      <guid>http://blog.armesto.net/mis-impresiones-sobre-el-debate-istdddead/</guid>
       <description>&lt;p&gt;El &lt;a title=&#34;Yo no soy DHH. Long live TDD&#34; href=&#34;http://blog.armesto.net/yo-no-soy-dhh-long-live-tdd/&#34; target=&#34;_blank&#34;&gt;debate sobre si TDD está muerto&lt;/a&gt; o no sigue &lt;em&gt;vivito y coleando&lt;/em&gt;, y tras una guerra fría de artículos por ambas partes, ahora el intercambio de opiniones se ha pasado a un formato de &lt;a title=&#34;isTDDDead&#34; href=&#34;http://martinfowler.com/articles/is-tdd-dead/&#34; target=&#34;_blank&#34;&gt;vídeo debate&lt;/a&gt; donde Martin Fowler, Kent Beck y el mismísimo David Heinemeier Hansson hablan sobre el tema.&lt;/p&gt;
 
 &lt;p&gt;La verdad es que cuando anunciaron que Kent Beck iba a enfrentarse a David Heinemeier sobre el tema TDD, me alegré bastante por ver a gente tan buena en esto que hacemos debatiendo sobre distintas metodologías. &amp;#8220;&lt;em&gt;Seguro que aprendo de ambas partes&lt;/em&gt;&amp;#8220;, pensaba yo.&lt;/p&gt;
@@ -352,10 +352,10 @@ zstyle &#39;:completion:*&#39; group-name &#39;&#39;&lt;/pre&gt;
     
     <item>
       <title>El problema con el code coverage</title>
-      <link>https://blog.armesto.net/el-problema-con-el-code-coverage/</link>
+      <link>http://blog.armesto.net/el-problema-con-el-code-coverage/</link>
       <pubDate>Thu, 01 May 2014 13:27:28 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/el-problema-con-el-code-coverage/</guid>
+      <guid>http://blog.armesto.net/el-problema-con-el-code-coverage/</guid>
       <description>&lt;p&gt;Me he permitido el lujo de &lt;a title=&#34;Considered harmful&#34; href=&#34;http://en.wikipedia.org/wiki/Considered_harmful&#34; target=&#34;_blank&#34;&gt;parafrasear a los maestros&lt;/a&gt; en el título de este artículo para hablaros de un tema algo polémico, por lo menos en los círculos en los que lo he hablado. Se trata de la necesidad de una alta cobertura de código, o &lt;em&gt;code coverage&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;El tema me lo recordó una serie de tweets que intercambiamos el otro día algunos en Twitter, hablando sobre la importancia de tener una cobertura de código del 100%. En el fondo todos estábamos de acuerdo en que no es importante tener un 100%, aunque no es la opinión más habitual que leerás por internet o escucharás en empresas. Mi opinión es que exigir cierto porcentaje de cobertura de código no es que no aporte nada, &lt;strong&gt;sino que es algo perjudicial&lt;/strong&gt;.&lt;/p&gt;
@@ -529,10 +529,10 @@ zstyle &#39;:completion:*&#39; group-name &#39;&#39;&lt;/pre&gt;
     
     <item>
       <title>Yo no soy DHH. Long live TDD</title>
-      <link>https://blog.armesto.net/yo-no-soy-dhh-long-live-tdd/</link>
+      <link>http://blog.armesto.net/yo-no-soy-dhh-long-live-tdd/</link>
       <pubDate>Thu, 24 Apr 2014 00:35:31 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/yo-no-soy-dhh-long-live-tdd/</guid>
+      <guid>http://blog.armesto.net/yo-no-soy-dhh-long-live-tdd/</guid>
       <description>&lt;p&gt;DHH es un gran programador, creador de algo como &lt;a title=&#34;Rails&#34; href=&#34;http://rubyonrails.org/&#34; target=&#34;_blank&#34;&gt;Rails&lt;/a&gt;, framework que quedará en la historia de la programación web. Hoy, él, ha sido noticia por escribir &lt;a title=&#34;TDD is dead&#34; href=&#34;http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html&#34; target=&#34;_blank&#34;&gt;un post titulado &amp;#8220;TDD is dead&amp;#8221;&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Quizá DHH está en lo cierto diciendo que TDD es algo que está muerto, que es momento de seguir hacia adelante y dejarlo atrás. Como cuando crecemos y dejamos de utilizar los &lt;a title=&#34;ruedines de bici&#34; href=&#34;http://1.bp.blogspot.com/_95Yb4E_y8Cs/S_HClbzs9YI/AAAAAAAADVs/iiwdG-vqq3Y/s1600/orbea-bicicleta-kids-atlantis-14.jpg&#34; target=&#34;_blank&#34;&gt;ruedines de la bicicleta&lt;/a&gt;: es algo para niños pequeños, pero de mayores ya no nos hacen falta. Quizá tiene razón.&lt;/p&gt;
@@ -594,10 +594,10 @@ zstyle &#39;:completion:*&#39; group-name &#39;&#39;&lt;/pre&gt;
     
     <item>
       <title>Utilizando Puphpet también en producción</title>
-      <link>https://blog.armesto.net/utilizando-puphpet-tambien-en-produccion/</link>
+      <link>http://blog.armesto.net/utilizando-puphpet-tambien-en-produccion/</link>
       <pubDate>Sat, 19 Apr 2014 09:00:56 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/utilizando-puphpet-tambien-en-produccion/</guid>
+      <guid>http://blog.armesto.net/utilizando-puphpet-tambien-en-produccion/</guid>
       <description>&lt;p&gt;Ya &lt;a title=&#34;Herramientas para el programador PHP moderno&#34; href=&#34;http://blog.armesto.net/herramientas-para-el-programador-php-moderno/&#34; target=&#34;_blank&#34;&gt;hablé en el pasado sobre Puphpet&lt;/a&gt;, una herramienta web que genera manifiestos de &lt;a title=&#34;Puppet&#34; href=&#34;http://puppetlabs.com/&#34; target=&#34;_blank&#34;&gt;Puppet&lt;/a&gt; y de &lt;a title=&#34;Vagrant&#34; href=&#34;http://www.vagrantup.com/&#34; target=&#34;_blank&#34;&gt;Vagrant&lt;/a&gt; de forma rápida y sencilla.&lt;/p&gt;
 
 &lt;p&gt;Llevo tiempo utilizándolo para configurar mis máquinas virtuales de desarrollo junto a Vagrant, pero siempre estaba un poco con la mosca detrás de la oreja por el hecho de no poder utilizarlo también en producción.&lt;/p&gt;
@@ -630,10 +630,10 @@ sudo ./vagrant/puphpet/shell/r10k.sh&lt;/pre&gt;
     
     <item>
       <title>Sácale el máximo partido a tu terminal con zsh</title>
-      <link>https://blog.armesto.net/sacale-el-maximo-partido-a-tu-terminal-con-zsh/</link>
+      <link>http://blog.armesto.net/sacale-el-maximo-partido-a-tu-terminal-con-zsh/</link>
       <pubDate>Sat, 12 Apr 2014 13:42:17 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/sacale-el-maximo-partido-a-tu-terminal-con-zsh/</guid>
+      <guid>http://blog.armesto.net/sacale-el-maximo-partido-a-tu-terminal-con-zsh/</guid>
       <description>&lt;p&gt;No quiero tirar de términos de moda y hablar de &lt;em&gt;DevOps&lt;/em&gt;, pero sí es cierto que, yo por lo menos, paso cada vez más tiempo delante de una terminal de UNIX. Estoy empezando a sentirme como en casa en algo que hace unos años me asustaba bastante.&lt;/p&gt;
 
 &lt;p&gt;Hoy vengo a hablaros de &lt;a title=&#34;zsh&#34; href=&#34;http://www.zsh.org/&#34; target=&#34;_blank&#34;&gt;zshell&lt;/a&gt;, una alternativa a &lt;em&gt;bash&lt;/em&gt;, el intérprete que viene por defecto en la mayoría de distribuciones. Algunos pensaréis&amp;#8230; &amp;#8220;¿&lt;em&gt;Cambiar el intérprete? ¡Eso suena muy difícil!&lt;/em&gt;&amp;#8220;, pero nada más lejos de la realidad! Otros diréis&amp;#8230; &amp;#8220;¿&lt;em&gt;Para qué iba yo a querer uno distinto? ¿Cual es el problema con bash?&lt;/em&gt;&amp;#8221; Problema ninguno! Pero con este post espero enseñaros todo lo que os estáis perdiendo por no utilizar zshell. Además, lo más importante es que no hay que aprender ningún comando nuevo: &lt;strong&gt;practicamente todo lo que usas en bash funcionará en zsh&lt;/strong&gt;.&lt;/p&gt;
@@ -742,10 +742,10 @@ export LC_ALL=en_US.utf8&lt;/pre&gt;
     
     <item>
       <title>Sácale todo el partido a los tests haciendo que griten</title>
-      <link>https://blog.armesto.net/sacale-todo-el-partido-a-los-tests-haciendo-que-griten/</link>
+      <link>http://blog.armesto.net/sacale-todo-el-partido-a-los-tests-haciendo-que-griten/</link>
       <pubDate>Sun, 26 Jan 2014 18:09:33 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/sacale-todo-el-partido-a-los-tests-haciendo-que-griten/</guid>
+      <guid>http://blog.armesto.net/sacale-todo-el-partido-a-los-tests-haciendo-que-griten/</guid>
       <description>&lt;p&gt;Si tuviese que decir en qué se basa una prueba unitaria, diría que las principales características que debe cumplir son (sin ningún orden en particular):&lt;/p&gt;
 
 &lt;ul&gt;
@@ -933,10 +933,10 @@ private function createEncoderWhenEncoderMustEncodePassword( $password, $encoded
     
     <item>
       <title>Administrar recursos frontend con Assetic (sin Symfony2)</title>
-      <link>https://blog.armesto.net/administrar-recursos-frontend-con-assetic-sin-symfony2/</link>
+      <link>http://blog.armesto.net/administrar-recursos-frontend-con-assetic-sin-symfony2/</link>
       <pubDate>Sun, 19 Jan 2014 18:12:29 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/administrar-recursos-frontend-con-assetic-sin-symfony2/</guid>
+      <guid>http://blog.armesto.net/administrar-recursos-frontend-con-assetic-sin-symfony2/</guid>
       <description>&lt;p&gt;Buscando mejorar el rendimiento de nuestras aplicaciones web, muchas veces nos centramos en el backend sin prestar suficiente atención al frontend. Una de las mejoras que podemos aplicar en la parte frontal de nuestras webs para que vayan más rápidas es reducir el número de peticiones HTTP que son necesarias para cargar la web. Para ello podemos, por ejemplo, combinar varios archivos CSS o JS en uno solo para que, aunque tengamos que cargar muchos recursos, solo una petición HTTP sea necesaria.&lt;/p&gt;
 
 &lt;p&gt;Hacer esto a mano puede ser tedioso y llevar a problemas, por tanto una buena solución sería preguntarnos si alguien ya ha solucionado este problema antes. Como tantas otras veces la respuesta es que sí.&lt;/p&gt;
@@ -1188,10 +1188,10 @@ $writer-&amp;gt;writeAsset( $css );&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Caminante no hay camino, se hace camino al andar</title>
-      <link>https://blog.armesto.net/caminante-no-hay-camino-se-hace-camino-al-andar/</link>
+      <link>http://blog.armesto.net/caminante-no-hay-camino-se-hace-camino-al-andar/</link>
       <pubDate>Sun, 12 Jan 2014 17:54:18 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/caminante-no-hay-camino-se-hace-camino-al-andar/</guid>
+      <guid>http://blog.armesto.net/caminante-no-hay-camino-se-hace-camino-al-andar/</guid>
       <description>&lt;p&gt;Llevo 3 años enseñando buenas prácticas en el desarrollo de software entre &lt;a title=&#34;Softonic Internship&#34; href=&#34;http://careers.en.softonic.com/internship-program/&#34; target=&#34;_blank&#34;&gt;el internship de Softonic&lt;/a&gt; y las colaboraciones esporádicas con la universidad, y algo que he aprendido de todo esto es que &lt;strong&gt;es muy difícil&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;Es difícil explicarle a alguien que la duplicación es mala si no ha sufrido las consecuencias en sus carnes. Es complicado decirle que no abuse de la herencia entre clases si no se ha visto incapaz de cambiar su código por culpa de esto.&lt;/p&gt;
@@ -1219,10 +1219,10 @@ $writer-&amp;gt;writeAsset( $css );&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>¿Qué es el versionamiento semántico y por qué es importante?</title>
-      <link>https://blog.armesto.net/que-es-el-versionamiento-semantico-y-por-que-es-importante/</link>
+      <link>http://blog.armesto.net/que-es-el-versionamiento-semantico-y-por-que-es-importante/</link>
       <pubDate>Sat, 23 Nov 2013 18:02:29 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/que-es-el-versionamiento-semantico-y-por-que-es-importante/</guid>
+      <guid>http://blog.armesto.net/que-es-el-versionamiento-semantico-y-por-que-es-importante/</guid>
       <description>&lt;p&gt;Cuando decides utilizar un código que no es tuyo como puede ser un framework o una librería, una de las cosas de las que tienes que preocuparte es de estar al día con las últimas versiones que vayan sacando. No solo porque quizá incluyan cosas que te puedan interesar, si no porque puede que la última versión del framework en el que acabas de basar toda tu aplicación no sea compatible con código de versiones anteriores.&lt;/p&gt;
 
 &lt;p&gt;Aquí nacen dos problemas del mundo del software. Uno, para el consumidor de ese código, que necesita una forma de saber si la última versión de una herramienta es un cambio absoluto del comportamiento o solo arregla unos fallos menores. Y dos, para el creador de código, que necesita de una manera de comunicar a sus usuarios la naturaleza y el alcance de la última versión que va a publicar.&lt;/p&gt;
@@ -1270,10 +1270,10 @@ $writer-&amp;gt;writeAsset( $css );&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Limitar memoria máxima de Redis</title>
-      <link>https://blog.armesto.net/limitar-memoria-maxima-de-redis/</link>
+      <link>http://blog.armesto.net/limitar-memoria-maxima-de-redis/</link>
       <pubDate>Thu, 21 Nov 2013 17:59:32 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/limitar-memoria-maxima-de-redis/</guid>
+      <guid>http://blog.armesto.net/limitar-memoria-maxima-de-redis/</guid>
       <description>&lt;p&gt;Haciendo pruebas en uno de los proyectos que tengo, utilicé &lt;a title=&#34;Redis&#34; href=&#34;http://redis.io/&#34; target=&#34;_blank&#34;&gt;Redis&lt;/a&gt; como sistema de caché, en vez de utilizar &lt;a title=&#34;Memcached&#34; href=&#34;http://memcached.org/&#34; target=&#34;_blank&#34;&gt;Memcached&lt;/a&gt; que es el que normalmente uso. Por defecto, Memcached va llenando su memoria hasta que esta se llena, y es entonces cuando empieza a borrar valores existentes para hacer sitio a las nuevas. La estrategia elegida para borrar es eliminar aquellas keys de la cache que han sido menos utilizadas.&lt;/p&gt;
 
 &lt;p&gt;Cuando activé Redis para mi proyecto, el proceso _daemon_ del servidor empezó a ocupar más y más memoria hasta que ocupaba casi la totalidad de la RAM del servidor. Poco después, el propio sistema operativo decidió matar el proceso de redis para no morir en el intento.&lt;/p&gt;
@@ -1351,10 +1351,10 @@ used_memory_rss:293154816&lt;/pre&gt;
     
     <item>
       <title>Inspección continua de la calidad de nuestro código</title>
-      <link>https://blog.armesto.net/inspeccion-continua-de-la-calidad-de-nuestro-codigo/</link>
+      <link>http://blog.armesto.net/inspeccion-continua-de-la-calidad-de-nuestro-codigo/</link>
       <pubDate>Tue, 05 Nov 2013 18:05:53 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/inspeccion-continua-de-la-calidad-de-nuestro-codigo/</guid>
+      <guid>http://blog.armesto.net/inspeccion-continua-de-la-calidad-de-nuestro-codigo/</guid>
       <description>&lt;p&gt;Una de las formas que tenemos para poder mejorar el código de nuestro proyecto es someterlo a una inspección continua y constante. Lo primero que podemos hacer es lanzar nuestros tests tras cada push al repositorio, de forma que sabremos en todo momento si hay algo que no funciona bien.&lt;/p&gt;
 
 &lt;p&gt;También podemos analizar la complejidad del código y comprobar si estamos incrementándola o disminuyéndola.&lt;/p&gt;

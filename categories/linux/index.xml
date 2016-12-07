@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jose Armesto&#39;s Blog</title>
-    <link>https://blog.armesto.net/categories/linux/index.xml</link>
+    <link>http://blog.armesto.net/categories/linux/index.xml</link>
     <description>Recent content on Jose Armesto&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-es</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <atom:link href="https://blog.armesto.net/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.armesto.net/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Auto completado en zsh</title>
-      <link>https://blog.armesto.net/auto-completado-en-zsh/</link>
+      <link>http://blog.armesto.net/auto-completado-en-zsh/</link>
       <pubDate>Sat, 16 Jul 2016 17:49:15 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/auto-completado-en-zsh/</guid>
+      <guid>http://blog.armesto.net/auto-completado-en-zsh/</guid>
       <description>&lt;p&gt;Hace tiempo escribí un post sobre &lt;a href=&#34;http://blog.armesto.net/sacale-el-maximo-partido-a-tu-terminal-con-zsh/&#34;&gt;cómo sacarle el máximo rendimiento a tu terminal utilizando zsh&lt;/a&gt;, en el que introducía &lt;a href=&#34;http://www.zsh.org/&#34;&gt;zsh&lt;/a&gt; y el framework &lt;a href=&#34;http://ohmyz.sh/&#34;&gt;oh-my-zsh&lt;/a&gt; para tener una experiencia más placentera usando el terminal.&lt;/p&gt;
 
 &lt;p&gt;Hoy veremos algunas funcionalidades extras que nos aporta esta herramienta y que nos puede ayudar a decidirnos a empezar a utilizarla.&lt;/p&gt;
@@ -129,10 +129,10 @@ zstyle &#39;:completion:*&#39; group-name &#39;&#39;&lt;/pre&gt;
     
     <item>
       <title>Problemas desplegando código si usas Apache, symlinks y opcache</title>
-      <link>https://blog.armesto.net/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</link>
+      <link>http://blog.armesto.net/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</link>
       <pubDate>Fri, 01 May 2015 12:14:32 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</guid>
+      <guid>http://blog.armesto.net/problemas-desplegando-codigo-si-usas-apache-symlinks-y-opcache/</guid>
       <description>&lt;p&gt;Muchas de las soluciones disponibles en el mercado para desplegar aplicaciones se basan en el uso de enlaces simbólicos (o symlinks) para activar la última versión de código en el servidor.&lt;/p&gt;
 
 &lt;p&gt;Simplificando mucho, podríamos decir que un flujo habitual a la hora de desplegar sería el siguiente:&lt;/p&gt;
@@ -210,10 +210,10 @@ zstyle &#39;:completion:*&#39; group-name &#39;&#39;&lt;/pre&gt;
     
     <item>
       <title>Utilizando Puphpet también en producción</title>
-      <link>https://blog.armesto.net/utilizando-puphpet-tambien-en-produccion/</link>
+      <link>http://blog.armesto.net/utilizando-puphpet-tambien-en-produccion/</link>
       <pubDate>Sat, 19 Apr 2014 09:00:56 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/utilizando-puphpet-tambien-en-produccion/</guid>
+      <guid>http://blog.armesto.net/utilizando-puphpet-tambien-en-produccion/</guid>
       <description>&lt;p&gt;Ya &lt;a title=&#34;Herramientas para el programador PHP moderno&#34; href=&#34;http://blog.armesto.net/herramientas-para-el-programador-php-moderno/&#34; target=&#34;_blank&#34;&gt;hablé en el pasado sobre Puphpet&lt;/a&gt;, una herramienta web que genera manifiestos de &lt;a title=&#34;Puppet&#34; href=&#34;http://puppetlabs.com/&#34; target=&#34;_blank&#34;&gt;Puppet&lt;/a&gt; y de &lt;a title=&#34;Vagrant&#34; href=&#34;http://www.vagrantup.com/&#34; target=&#34;_blank&#34;&gt;Vagrant&lt;/a&gt; de forma rápida y sencilla.&lt;/p&gt;
 
 &lt;p&gt;Llevo tiempo utilizándolo para configurar mis máquinas virtuales de desarrollo junto a Vagrant, pero siempre estaba un poco con la mosca detrás de la oreja por el hecho de no poder utilizarlo también en producción.&lt;/p&gt;
@@ -246,10 +246,10 @@ sudo ./vagrant/puphpet/shell/r10k.sh&lt;/pre&gt;
     
     <item>
       <title>Sácale el máximo partido a tu terminal con zsh</title>
-      <link>https://blog.armesto.net/sacale-el-maximo-partido-a-tu-terminal-con-zsh/</link>
+      <link>http://blog.armesto.net/sacale-el-maximo-partido-a-tu-terminal-con-zsh/</link>
       <pubDate>Sat, 12 Apr 2014 13:42:17 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/sacale-el-maximo-partido-a-tu-terminal-con-zsh/</guid>
+      <guid>http://blog.armesto.net/sacale-el-maximo-partido-a-tu-terminal-con-zsh/</guid>
       <description>&lt;p&gt;No quiero tirar de términos de moda y hablar de &lt;em&gt;DevOps&lt;/em&gt;, pero sí es cierto que, yo por lo menos, paso cada vez más tiempo delante de una terminal de UNIX. Estoy empezando a sentirme como en casa en algo que hace unos años me asustaba bastante.&lt;/p&gt;
 
 &lt;p&gt;Hoy vengo a hablaros de &lt;a title=&#34;zsh&#34; href=&#34;http://www.zsh.org/&#34; target=&#34;_blank&#34;&gt;zshell&lt;/a&gt;, una alternativa a &lt;em&gt;bash&lt;/em&gt;, el intérprete que viene por defecto en la mayoría de distribuciones. Algunos pensaréis&amp;#8230; &amp;#8220;¿&lt;em&gt;Cambiar el intérprete? ¡Eso suena muy difícil!&lt;/em&gt;&amp;#8220;, pero nada más lejos de la realidad! Otros diréis&amp;#8230; &amp;#8220;¿&lt;em&gt;Para qué iba yo a querer uno distinto? ¿Cual es el problema con bash?&lt;/em&gt;&amp;#8221; Problema ninguno! Pero con este post espero enseñaros todo lo que os estáis perdiendo por no utilizar zshell. Además, lo más importante es que no hay que aprender ningún comando nuevo: &lt;strong&gt;practicamente todo lo que usas en bash funcionará en zsh&lt;/strong&gt;.&lt;/p&gt;
@@ -358,10 +358,10 @@ export LC_ALL=en_US.utf8&lt;/pre&gt;
     
     <item>
       <title>Limitar memoria máxima de Redis</title>
-      <link>https://blog.armesto.net/limitar-memoria-maxima-de-redis/</link>
+      <link>http://blog.armesto.net/limitar-memoria-maxima-de-redis/</link>
       <pubDate>Thu, 21 Nov 2013 17:59:32 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/limitar-memoria-maxima-de-redis/</guid>
+      <guid>http://blog.armesto.net/limitar-memoria-maxima-de-redis/</guid>
       <description>&lt;p&gt;Haciendo pruebas en uno de los proyectos que tengo, utilicé &lt;a title=&#34;Redis&#34; href=&#34;http://redis.io/&#34; target=&#34;_blank&#34;&gt;Redis&lt;/a&gt; como sistema de caché, en vez de utilizar &lt;a title=&#34;Memcached&#34; href=&#34;http://memcached.org/&#34; target=&#34;_blank&#34;&gt;Memcached&lt;/a&gt; que es el que normalmente uso. Por defecto, Memcached va llenando su memoria hasta que esta se llena, y es entonces cuando empieza a borrar valores existentes para hacer sitio a las nuevas. La estrategia elegida para borrar es eliminar aquellas keys de la cache que han sido menos utilizadas.&lt;/p&gt;
 
 &lt;p&gt;Cuando activé Redis para mi proyecto, el proceso _daemon_ del servidor empezó a ocupar más y más memoria hasta que ocupaba casi la totalidad de la RAM del servidor. Poco después, el propio sistema operativo decidió matar el proceso de redis para no morir en el intento.&lt;/p&gt;
@@ -439,10 +439,10 @@ used_memory_rss:293154816&lt;/pre&gt;
     
     <item>
       <title>¿Donde pongo mis scripts?</title>
-      <link>https://blog.armesto.net/donde-pongo-mis-scripts/</link>
+      <link>http://blog.armesto.net/donde-pongo-mis-scripts/</link>
       <pubDate>Fri, 27 Sep 2013 18:00:27 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/donde-pongo-mis-scripts/</guid>
+      <guid>http://blog.armesto.net/donde-pongo-mis-scripts/</guid>
       <description>&lt;p&gt;Vale, te has creado un _script_ en &lt;a title=&#34;Unix&#34; href=&#34;http://www.unix.org/&#34; target=&#34;_blank&#34;&gt;Unix&lt;/a&gt; para automatizar una tarea, pero después de programar durante horas, ahora viene lo más difícil de todo… donde lo pones?&lt;/p&gt;
 
 &lt;p&gt;Podrías ponerlo en la carpeta &lt;strong&gt;/bin&lt;/strong&gt;… o en &lt;strong&gt;/usr/bin&lt;/strong&gt;… incluso en &lt;strong&gt;/home/../bin&lt;/strong&gt;. Para qué tantas carpetas de binarios?&lt;/p&gt;
@@ -486,10 +486,10 @@ used_memory_rss:293154816&lt;/pre&gt;
     
     <item>
       <title>Evitar borrar todo tu disco con rm -rf</title>
-      <link>https://blog.armesto.net/evitar-borrar-todo-tu-disco-con-rm-rf/</link>
+      <link>http://blog.armesto.net/evitar-borrar-todo-tu-disco-con-rm-rf/</link>
       <pubDate>Fri, 20 Sep 2013 18:01:09 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/evitar-borrar-todo-tu-disco-con-rm-rf/</guid>
+      <guid>http://blog.armesto.net/evitar-borrar-todo-tu-disco-con-rm-rf/</guid>
       <description>&lt;p&gt;A quién no le ha pasado, verdad? Quieres borrar el contenido de una carpeta con el comando &lt;a title=&#34;Comando rm&#34; href=&#34;http://linux.about.com/od/commands/l/blcmdl1_rm.htm&#34; target=&#34;_blank&#34;&gt;&lt;em&gt;rm&lt;/em&gt;&lt;/a&gt;, pero sin querer pones el asterisco donde no debías y &lt;strong&gt;&lt;em&gt;ZASCA! &lt;/em&gt;&lt;/strong&gt;: todo tu disco duro se ha borrado por completo.&lt;/p&gt;
 
 &lt;p&gt;A veces no es tan dramático. A veces solo te equivocas en el directorio que querías borrar. Estabas un nivel más arriba o más abajo del que pensabas y adiós proyecto en el que llevabas toda la tarde trabajando y del que todavía no habías hecho &lt;em&gt;commit&lt;/em&gt;.&lt;/p&gt;

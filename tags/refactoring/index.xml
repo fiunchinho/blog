@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jose Armesto&#39;s Blog</title>
-    <link>https://blog.armesto.net/tags/refactoring/index.xml</link>
+    <link>http://blog.armesto.net/tags/refactoring/index.xml</link>
     <description>Recent content on Jose Armesto&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-es</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <atom:link href="https://blog.armesto.net/tags/refactoring/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.armesto.net/tags/refactoring/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Sin refactoring no es TDD</title>
-      <link>https://blog.armesto.net/sin-refactoring-no-es-tdd/</link>
+      <link>http://blog.armesto.net/sin-refactoring-no-es-tdd/</link>
       <pubDate>Fri, 11 Oct 2013 17:57:56 +0000</pubDate>
       
-      <guid>https://blog.armesto.net/sin-refactoring-no-es-tdd/</guid>
+      <guid>http://blog.armesto.net/sin-refactoring-no-es-tdd/</guid>
       <description>&lt;p&gt;Parece evidente, ¿verdad? Cuando explicas &lt;a title=&#34;TDD&#34; href=&#34;http://c2.com/cgi/wiki?TestDrivenDevelopment&#34; target=&#34;_blank&#34;&gt;TDD (Test Driven Development)&lt;/a&gt;, explicas que tiene 3 fases: rojo, verde y refactoring. Sin embargo, parece que son las 2 primeras las que entran con mayor facilidad en la mente del programador.&lt;/p&gt;
 
 &lt;p&gt;Presentas la kata y allí van disparados a escribir su primer test para estar en rojo. Una vez allí, _baby step_ en el código con lo mínimo indispensable para pasar el test y ponernos en verde. Es entonces cuando deberíamos pensar en el refactoring, pero normalmente es difícil encontrar cosas a refactorizar en nuestro (poquito) código en las primeras iteraciones, así que pasamos a rojo otra vez escribiendo un nuevo test.&lt;/p&gt;
